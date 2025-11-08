@@ -1,0 +1,252 @@
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:gdacs="http://www.gdacs.org" xmlns:glide="http://glidenumber.net" xmlns:georss="http://www.georss.org/georss" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+<channel>
+<title>GDACS RSS information</title>
+<link>https://www.gdacs.org/</link>
+<copyright>public domain</copyright>
+<description>Near real-time alerts about natural disaster with a potential humanitarian impact</description>
+<managingEditor>stefano.paris@ext.ec.europa.eu</managingEditor>
+<!-- Records number 1 -->
+<!-- Start 11/3/2025 8:49:55 PM -->
+<!-- =Start 11/3/2025 8:49:55 PM -->
+<webMaster>stefano.paris@ext.ec.europa.eu</webMaster>
+<pubDate>Mon, 03 Nov 2025 19:49:55 GMT</pubDate>
+<atom:link href="https://www.gdacs.org/xml/rss_1508599.xml" rel="self" type="application/rss+xml"/>
+<item>
+<title>Green earthquake alert (Magnitude 5.5M, Depth:24.928km) in Chile 03/11/2025 15:51 UTC, 20 thousand in MMI IV.</title>
+<description>On 11/3/2025 3:51:54 PM, an earthquake occurred in Chile potentially affecting 20 thousand in MMI IV. The earthquake had Magnitude 5.5M, Depth:24.928km.</description>
+<enclosure type="image/png" length="1" url="https://www.gdacs.org/contentdata/resources/imgtemp/gdacs/eq/eq1669942_1.png"/>
+<gdacs:temporary>false</gdacs:temporary>
+<link>https://www.gdacs.org/report.aspx?eventtype=EQ&eventid=1508599</link>
+<pubDate>Mon, 03 Nov 2025 16:12:59 GMT</pubDate>
+<gdacs:dateadded>Mon, 03 Nov 2025 16:12:59 GMT</gdacs:dateadded>
+<gdacs:datemodified>Mon, 03 Nov 2025 18:19:22 GMT</gdacs:datemodified>
+<gdacs:iscurrent>true</gdacs:iscurrent>
+<gdacs:fromdate>Mon, 03 Nov 2025 15:51:54 GMT</gdacs:fromdate>
+<gdacs:todate>Mon, 03 Nov 2025 15:51:54 GMT</gdacs:todate>
+<gdacs:durationinweek>0</gdacs:durationinweek>
+<gdacs:year>2025</gdacs:year>
+<dc:subject>EQ1</dc:subject>
+<guid isPermaLink="false">EQ1508599</guid>
+<geo:Point>
+<geo:lat>-27.4457</geo:lat>
+<geo:long>-71.4784</geo:long>
+</geo:Point>
+<!-- gdacs:bbox format = lonmin lonmax latmin latmax -->
+<gdacs:bbox>-75.4784 -67.4784 -31.4457 -23.4457</gdacs:bbox>
+<georss:point>-27.4457 -71.4784</georss:point>
+<gdacs:cap>https://www.gdacs.org/contentdata/resources/EQ/1508599/cap_1508599.xml</gdacs:cap>
+<gdacs:icon>https://www.gdacs.org/Images/gdacs_icons/alerts/Green/EQ.png</gdacs:icon>
+<gdacs:version>1</gdacs:version>
+<gdacs:eventtype>EQ</gdacs:eventtype>
+<gdacs:alertlevel>Green</gdacs:alertlevel>
+<gdacs:alertscore>0</gdacs:alertscore>
+<gdacs:episodealertlevel>Green</gdacs:episodealertlevel>
+<gdacs:episodealertscore>1</gdacs:episodealertscore>
+<gdacs:eventname/>
+<gdacs:eventid>1508599</gdacs:eventid>
+<gdacs:episodeid>1669942</gdacs:episodeid>
+<gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+<gdacs:severity unit="M" value="5.5">Magnitude 5.5M, Depth:24.9km</gdacs:severity>
+<gdacs:population unit="in MMI IV" value="22980">20 thousand in MMI IV</gdacs:population>
+<gdacs:vulnerability value="1.3145341380124"/>
+<gdacs:iso3>CHL</gdacs:iso3>
+<gdacs:country>Chile</gdacs:country>
+<gdacs:glide/>
+<gdacs:mapimage/>
+<gdacs:maplink/>
+<gdacs:gtsimage/>
+<gdacs:gtslink/>
+<gdacs:resources>
+<gdacs:resource id="event_rss" version="0" source="EC-JRC" url="https://www.gdacs.org//datareport/resources/EQ/1508599/rss_1508599.xml" type="rss">
+<gdacs:title>Event in rss format</gdacs:title>
+<gdacs:description>Joint Research Center of the European Commission</gdacs:description>
+<gdacs:acknowledgements>Copyright European Union. Syndication allowed, provided the source is acknowledged.</gdacs:acknowledgements>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="overviewmap" version="0" source="EC-JRC" url="https://www.gdacs.org/contentdata/resources/imgtemp/gdacs/eq/eq1669942_2.png" type="image">
+<gdacs:title>Population density map</gdacs:title>
+<gdacs:description>Joint Research Center of the European Commission</gdacs:description>
+<gdacs:acknowledgements>Copyright European Union. Syndication allowed, provided the source is acknowledged. Population data from LandScan 2008.</gdacs:acknowledgements>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="UNOSATmaps_country" version="0" source="" url="http://www.unitar.org/unosat/maps/CHL" type="html">
+<gdacs:title>UNOSAT maps by country</gdacs:title>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="neic_pager" version="0" source="NEIC" url="https://www.gdacs.org/contentdata/resources/EQ/1508599/1508599_1669942_alertfatal_small.png" type="image">
+<gdacs:title>Estimated casualties (PAGER)</gdacs:title>
+<gdacs:description>USGS estimates the number of casualties for each earthquake for the Prompt Assessment of Global Earthquakes for Response (PAGER) product. The graph shows the current fatalities estimate.</gdacs:description>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="impact_xml" version="0" source="EC-JRC" url="https://www.gdacs.org/gis/calculation/EQ1_WPS/-071\eq_-07150_-02745.xml" type="xml">
+<gdacs:title>Affected population and infrastructure in 100km</gdacs:title>
+<gdacs:xslt>http://www.gdacs.org/xslt/asgard_summary.xslt&pname=eventtype&pvalue=EQ</gdacs:xslt>
+<gdacs:description>The impact estimation file based on a radius of 100km by epicenter</gdacs:description>
+<gdacs:acknowledgements>Copyright European Union. Syndication allowed, provided the source is acknowledged.</gdacs:acknowledgements>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="ocha_sitrep" version="0" source="OCHA" url="http://www.reliefweb.int/updates?sl=environment-report_listing%252Ctaxonomy_index_tid_source-1503%252Ctaxonomy_index_tid_content_format-10%252Ctaxonomy_index_tid_disaster_type-4628" type="rss">
+<gdacs:title>OCHA Situation Reports for Earthquakes</gdacs:title>
+<gdacs:description>List of most recent OCHA situation reports published on ReliefWeb</gdacs:description>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="neic_report" version="0" source="NEIC" url="http://earthquake.usgs.gov/earthquakes/eventpage/us6000rl7b#summary" type="link">
+<gdacs:title>USGS earthquake report</gdacs:title>
+<gdacs:description>Report of the USGS National Earthquake Information Center</gdacs:description>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="geooffice" version="0" source="INGV" url="http://cnt.rm.ingv.it/" type="link">
+<gdacs:title>Istituto Nazionale di Geofisica e Vulcanologia</gdacs:title>
+<gdacs:description>Latest earthquakes recorded by the Italian National Earthquake Centre</gdacs:description>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="thumbnailmap_cached" version="0" source="EC-JRC" url="https://www.gdacs.org/contentdata/resources/imgtemp/gdacs/eq/eq1669942_1.png" type="image">
+<gdacs:title>Overview thumbnail map</gdacs:title>
+<gdacs:description>Joint Research Center of the European Commission</gdacs:description>
+<gdacs:acknowledgements>Copyright European Union. Syndication allowed, provided the source is acknowledged.</gdacs:acknowledgements>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="populationmap_cached" version="0" source="EC-JRC" url="https://www.gdacs.org/contentdata/resources/imgtemp/gdacs/eq/eq1669942_4.png" type="image">
+<gdacs:title>Population map close up</gdacs:title>
+<gdacs:description>Joint Research Center of the European Commission</gdacs:description>
+<gdacs:acknowledgements>Copyright European Union. Syndication allowed, provided the source is acknowledged.</gdacs:acknowledgements>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="desinventar_disasters_profile" version="0" source="DesInventar" url="http://www.DesInventar.net/DesInventar/profiletab.jsp?countrycode=chl&continue=y" type="link">
+<gdacs:title>Country disaster profile (DesInventar)</gdacs:title>
+<gdacs:description>This Country Profile shows a set of typical results known as "Preliminary Analysis" comming from the disaster database. Charts, Maps and tables below will provide you with a basic understanding of the effects of many types of natural disasters occurred in the region.</gdacs:description>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="neic_json" version="0" source="NEIC" url="http://earthquake.usgs.gov/earthquakes/eventpage/us6000rl7b.json" type="json">
+<gdacs:title>USGS NEIC Json Product Feed</gdacs:title>
+<gdacs:description>Json feed of products available on USGS NEIC website</gdacs:description>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="gts_message_file" version="0" source="EC-JRC" url="https://www.gdacs.org/gis/gts_message/EQ/1508599/" type="txt">
+<gdacs:title>GTS Message Folder</gdacs:title>
+<gdacs:description>Joint Research Center of the European Commission</gdacs:description>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="kml_link" version="0" source="EC-JRC" url="https://www.gdacs.org/kml.aspx?profile=archive&eventid=1508599&eventtype=EQ" type="kml">
+<gdacs:title>KML Event</gdacs:title>
+<gdacs:description>Joint Research Center of the European Commission</gdacs:description>
+<gdacs:acknowledgements>Copyright European Union. Syndication allowed, provided the source is acknowledged.</gdacs:acknowledgements>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="cap_link" version="0" source="EC-JRC" url="https://www.gdacs.org/cap.aspx?profile=archive&eventid=1508599&eventtype=EQ" type="xml">
+<gdacs:title>CAP file</gdacs:title>
+<gdacs:description>Joint Research Center of the European Commission</gdacs:description>
+<gdacs:acknowledgements>Copyright European Union. Syndication allowed, provided the source is acknowledged.</gdacs:acknowledgements>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="metoffice" version="0" source="WMO" url="http://www.meteochile.cl/PortalDMC-web/index.xhtml" type="link">
+<gdacs:title>Dirección Meteorológica de Chile</gdacs:title>
+<gdacs:description>National Weather Service of Chile</gdacs:description>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="jsonEvent" version="0" source="EC-JRC" url="https://www.gdacs.org/contentdata/resources/EQ/1508599/geojson_1508599_1669942.geojson" type="geojson">
+<gdacs:title>The event in geojson format by static file</gdacs:title>
+<gdacs:description>The event data information structured in a geojson format</gdacs:description>
+<gdacs:acknowledgements>Copyright European Union. Syndication allowed, provided the source is acknowledged.</gdacs:acknowledgements>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="shakemap_populationmap_static_v01" version="0" source="USGS" url="https://www.gdacs.org/contentdata/resources/EQ/1508599/shakemap/eq1508599_1669942_3_2.png" type="image">
+<gdacs:title>Shakemap Image</gdacs:title>
+<gdacs:description>The Shakemap impact image </gdacs:description>
+<gdacs:acknowledgements>Copyright European Union. Syndication allowed, provided the source is acknowledged.</gdacs:acknowledgements>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="shakemap_populationmap_overview_static_v01" version="0" source="USGS" url="https://www.gdacs.org/contentdata/resources/imgtemp/gdacs/eq/sm/eq1508599_1669942_3_1.png" type="image">
+<gdacs:title>Population Shakemap Overview </gdacs:title>
+<gdacs:description>The Shakemap impact image zoomed</gdacs:description>
+<gdacs:acknowledgements>Copyright European Union. Syndication allowed, provided the source is acknowledged.</gdacs:acknowledgements>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="shakemap_impact_xml_v01" version="0" source="EC-JRC" url="https://www.gdacs.org/datareport/resources/EQ/1508599/1508599_3.xml" type="xml">
+<gdacs:title>Affected Population and Critical infrastructure Shake</gdacs:title>
+<gdacs:xslt>http://www.gdacs.org/xslt/asgard_summary_shakemap.xslt&pname=eventtype&pvalue=EQ</gdacs:xslt>
+<gdacs:description>The impact estimation file based on shakemap model contianing places,critical infrastrutures in each intensity detected</gdacs:description>
+<gdacs:acknowledgements>Copyright European Union. Syndication allowed, provided the source is acknowledged.</gdacs:acknowledgements>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="shakemap_USGS_polygons_kml" version="0" source="EC-JRC" url="https://www.gdacs.org/datareport/resources/EQ/1508599/1508599_1669942_3_shakemap.kml" type="kml">
+<gdacs:title>Intensity Polygons from USGS (after 2013)</gdacs:title>
+<gdacs:description>The shakemap polygons area by USGS</gdacs:description>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="inform_report" version="0" source="INFORM" url="https://web.jrc.ec.europa.eu/dashboard/embed/INFORMRISKCOUNTRYPROFILE2024/index.html?no-header=1&v-vISO3=CHL&no-scroll=1" type="link">
+<gdacs:title>Inform Country Report</gdacs:title>
+<gdacs:description>The link to inform data by country specified</gdacs:description>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="inform_reference" version="0" source="INFORM" url="http://www.inform-index.org/" type="link">
+<gdacs:title>Inform Website</gdacs:title>
+<gdacs:description>The link to inform website</gdacs:description>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="episode_rss" version="0" source="EC-JRC" url="https://www.gdacs.org//datareport/resources/EQ/1508599/rss_1508599_1669942.xml" type="rss">
+<gdacs:title>Episode in rss format</gdacs:title>
+<gdacs:description>Joint Research Center of the European Commission</gdacs:description>
+<gdacs:acknowledgements>Copyright European Union. Syndication allowed, provided the source is acknowledged.</gdacs:acknowledgements>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="shakemap_USGS_polygons_kml_complete" version="0" source="EC-JRC" url="https://www.gdacs.org/datareport/resources/EQ/1508599/1508599_1669942_3_shakemap_complete.kml" type="kml">
+<gdacs:title>Intensity affected places</gdacs:title>
+<gdacs:description>The affected critical infrastructures in the each intensity area </gdacs:description>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="geometry_shape" version="0" source="EC-JRC" url="https://www.gdacs.org//datareport/resources/EQ/1508599/Shape_1508599_1669942.zip" type="shp">
+<gdacs:title>The Shapefile </gdacs:title>
+<gdacs:description>The event evalualtion areas affected for a single episode</gdacs:description>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="dynamic_map_event" version="0" source="EC-JRC" url="https://www.gdacs.org/gdacsapi/api/polygons/getgeometry?eventtype=EQ&eventid=1508599&episodeid=1669942" type="geojson">
+<gdacs:title>The event polygons in geojson format by api </gdacs:title>
+<gdacs:description>The polygon event data information structured in a geojson format</gdacs:description>
+<gdacs:accesslevel>Private</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="shakemap_USGS_tif" version="0" source="USGS" url="https://www.gdacs.org/contentdata/resources/EQ/1508599/shakemap/1508599_3_raster.zip" type="zip">
+<gdacs:title>Intensity TIFF files from USGS</gdacs:title>
+<gdacs:description>The Zip with the Tiff raster file with the shakemap information </gdacs:description>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="aftershock" version="0" source="EC-JRC" url="https://www.gdacs.org/contentdata/resources/EQ/1508599/aftershock.json" type="json">
+<gdacs:title>Aftershock Timeline</gdacs:title>
+<gdacs:description>Joint Research Center of the European Commission</gdacs:description>
+<gdacs:accesslevel>Private</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="shakemap_critical_zones" version="0" source="EC-JRC" url="https://www.gdacs.org/datareport/resources/EQ/1508599/1508599_3_locations.txt" type="txt">
+<gdacs:title>Critical zones by Shakemap</gdacs:title>
+<gdacs:description>The list of critical places in the different intensity</gdacs:description>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="alertbar_email" version="0" source="EC-JRC" url="https://www.gdacs.org/datareport/resources/EQ/1508599/alertbar_1508599_1669942_3.jpg" type="image">
+<gdacs:title>Image having the alertbar</gdacs:title>
+<gdacs:description>Joint Research Center of the European Commission</gdacs:description>
+<gdacs:acknowledgements>JRC</gdacs:acknowledgements>
+<gdacs:accesslevel>Private</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="alertlevels_detail" version="0" source="" url="https://www.gdacs.org/gdacsapi/api/events/getepisodealertlevel?eventtype=EQ&eventid=1508599&episodeid=1669942" type="json">
+<gdacs:title>Structured files to obtain the detailed alertlevel info</gdacs:title>
+</gdacs:resource>
+<gdacs:resource id="shake_preliminary_image" version="0" source="EC-JRC" url="https://www.gdacs.org/contentdata/resources/EQ/1508599/smpreliminary_1508599_1669942_intensity.jpg" type="image">
+<gdacs:title>Rapid Impact Image</gdacs:title>
+<gdacs:description>The rapid impact image create based on estimated intensity</gdacs:description>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+<gdacs:resource id="eventdatabyapi" version="0" source="EC-JRC" url="https://www.gdacs.org/gdacsapi/api/events/geteventdata?eventtype=EQ&eventid=1508599" type="geojson">
+<gdacs:title>The event data in geojson format by api </gdacs:title>
+<gdacs:description>The eventdata in json format by api. In the structure there are reference to obtain data in sublevel</gdacs:description>
+<gdacs:acknowledgements>Copyright European Union. Syndication allowed, provided the source is acknowledged.</gdacs:acknowledgements>
+<gdacs:accesslevel>Public</gdacs:accesslevel>
+</gdacs:resource>
+</gdacs:resources>
+<gdacs:identifiers>
+<gdacs:identifier id="eqcalculationpath" src="JRC">-071\eq_-07150_-02745.xml</gdacs:identifier>
+<gdacs:identifier id="gdpcapita" src="JRC">5121.3950195</gdacs:identifier>
+<gdacs:identifier id="neicid" src="NEIC">us6000rl7b</gdacs:identifier>
+</gdacs:identifiers>
+</item>
+</channel>
+</rss>
+<!-- End 11/3/2025 8:49:55 PM -->
