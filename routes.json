@@ -1,0 +1,5 @@
+{
+  "http://www.gdacs.org/XML/RSS.xml": "gdacs_rss_sample.xml",
+  "https://www.gdacs.org//datareport/resources/EQ/1508599/rss_1508599.xml": "downstream1.xml",
+  "https://www.gdacs.org/gis/calculation/EQ1_WPS/-071\\eq_-07150_-02745.xml": "downstream2.xml"
+}
