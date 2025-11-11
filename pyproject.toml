@@ -7,10 +7,13 @@ name = "disaster_factor"
 version = "0.1.0"
 description = "Business Continuity Disaster Tracker"
 readme = "README.md"
-authors = [ { name = "Your Name", email = "you@example.com" } ]
+authors = [
+  { name = "Jeff Stock", email = "jeff.stock@hiredlabs.org" },
+  { name = "Daniel Murillo", email = "hoorayfordantheman@gmail.com" }
+]
 license = { text = "MIT" }
 
-# Runtime dependencies: taken directly from requirements.txt as a starting point.
+# AI NOTES: Runtime dependencies: taken directly from requirements.txt as a starting point.
 # Consider moving test/dev-only packages (pytest, pluggy, iniconfig, Pygments) into
 # [project.optional-dependencies] or a separate dev/constraints file.
 dependencies = [
@@ -35,7 +38,7 @@ dependencies = [
 [project.urls]
 "Homepage" = "https://example.org/"
 
-# Optional/dev dependencies example (uncomment and adjust if you want a dev group)
+# AI NOTES: Optional/dev dependencies example (uncomment and adjust if you want a dev group)
 # [project.optional-dependencies]
 # dev = [
 #   "pytest==9.0.0",
