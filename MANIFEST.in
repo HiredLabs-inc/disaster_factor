@@ -1,0 +1,19 @@
+# Include top-level metadata
+include README.md
+include LICENSE
+include pyproject.toml
+
+# Include the package source tree in the sdist
+graft src/disaster_factor
+
+# If you have package data directories, include typical patterns
+recursive-include src/disaster_factor/data *
+recursive-include src/disaster_factor/templates *
+recursive-include src/disaster_factor/static *
+
+# Exclude tests from the sdist (optional; remove if you want to ship tests)
+prune tests
+
+# Exclude common junk
+global-exclude __pycache__ *.py[cod] *.so *.pyd
+
