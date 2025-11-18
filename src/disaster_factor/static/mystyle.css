@@ -24,6 +24,51 @@ body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial
     border: 1px solid darkslateblue;
     padding: 16px;
     background-color: #f5f7fd;
+    display: flex;               /* layout improvements */
+    flex-direction: column;
+    gap: 12px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+}
+
+/* Buttons/links inside the right container */
+.right-content-box a,
+.right-content-box button,
+.right-content-box .btn {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Default/link-style button */
+.right-content-box a,
+.right-content-box a.btn {
+    background-color: #ffffff;
+    color: #2c3e50;
+    border-color: #d0d7e2;
+}
+
+.right-content-box a:hover,
+.right-content-box a.btn:hover {
+    background-color: #f7fafc;
+    border-color: #b8c3d6;
+}
+
+/* Primary button */
+.right-content-box .btn-primary {
+    background-color: #2d6cdf;
+    border-color: #2d6cdf;
+    color: #ffffff;
+}
+
+.right-content-box .btn-primary:hover {
+    background-color: #1f5acc;
+    border-color: #1f5acc;
 }
 
 /* "Possibly Affected" table styling */
