@@ -1,17 +1,24 @@
 /* placeholder stylesheet to avoid 404s; customize as needed */
 body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
 
-.left-content-box {
-    margin: 25px;
-    border-color: cornflowerblue;
-    width: 75%;
-    height: auto;
+/* Row containing left and right content blocks */
+.content-row {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
 }
 
+/* Left block: ~75% */
 .left-content-box {
+    flex: 3;
     margin: 25px;
-    border-color: darkslateblue;
-    width: 25%;
-    height: auto;
+    border: 1px solid cornflowerblue;
 }
 
+/* Right block: ~25% */
+.right-content-box {
+    flex: 1;
+    margin: 25px 25px 25px 0;
+    border: 1px solid darkslateblue;
+    padding: 10px;
+}
