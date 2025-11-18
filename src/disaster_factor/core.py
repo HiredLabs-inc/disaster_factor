@@ -158,7 +158,11 @@ def track_disasters():
 
   print("TOTAL NUMBER OF RED-LEVEL ALERTS:")
   print(total_red)
-  serve_static_and_open()
+  srv = serve_static_and_open()
+
+  # Keep process alive briefly so linked assets (CSS/JS/SVG) can be fetched before daemon thread dies
+  import time as _time
+  _time.sleep(3)
 
   with open('affected.csv', 'w') as csvFile:
     writer = csv.writer(csvFile)
