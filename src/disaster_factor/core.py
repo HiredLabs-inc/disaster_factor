@@ -1,10 +1,11 @@
 # IMPORTS
 
 from bs4 import BeautifulSoup
-import lxml
 import requests
 import re
 import csv
+
+from .helpers import serve_static_and_open
 
 
 # DATA RETRIEVAL
@@ -58,11 +59,12 @@ def track_disasters():
       if d['alias'] == 'City':
         data = d.find_all('datum')
         for i in data:
+          # ensure we always have a fresh disaster dict for each datum
+          disaster = {}
           scalars = i.find_all('scalar')
           for scalar in scalars:
             name = scalar.find('name')
             if name.text == 'NAME':
-              disaster = {}
               counter += 1
               disaster['city'] = scalar.value.text
 
@@ -128,7 +130,7 @@ def track_disasters():
   affected = {}
   affected_counter = 0
 
-  # print(f'There are {len(disasters)} cities recently affected by natural disasters worldwide.')
+  # print(f'Tere are {len(disasters)} cities recently affected by natural disasters worldwide.')
   # print()
 
   # print(f'According to our platform data, the contractors below are in one of the affected cities:')
@@ -156,6 +158,7 @@ def track_disasters():
 
   print("TOTAL NUMBER OF RED-LEVEL ALERTS:")
   print(total_red)
+  serve_static_and_open()
 
   with open('affected.csv', 'w') as csvFile:
     writer = csv.writer(csvFile)
