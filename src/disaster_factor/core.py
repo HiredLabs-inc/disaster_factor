@@ -163,7 +163,6 @@ def track_disasters():
   # Keep process alive briefly so linked assets (CSS/JS/SVG) can be fetched before daemon thread dies
   import time as _time
   _time.sleep(3)
-
   with open('affected.csv', 'w') as csvFile:
     writer = csv.writer(csvFile)
     writer.writerows(outreach_list)
