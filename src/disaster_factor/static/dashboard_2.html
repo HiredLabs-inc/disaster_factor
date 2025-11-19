@@ -10,8 +10,9 @@
   </head>
   <body>
 	  <div>
-		  <div>
-			<img src="map.svg" align="center" height="400" width="100%">
+		  <div class="top-section">
+            <div class="top-banner">Global Disaster Tracker</div>
+			<img class="map-image" src="map.svg" height="400" width="100%" alt="World map">
 		</div>
 
 		<!-- Row with 75% / 25% content blocks -->
@@ -20,7 +21,7 @@
 				<h2>
 					Possibly Affected
 				</h2>
-				<table style="border-collapse: collapse;">
+				<table>
 					<thead>
 						<th>Location</th>
 						<th>Personnel</th>
@@ -34,31 +35,29 @@
 <td>7</td>
 <td>0</td>
 <td>Flood</td>
-<td>Red</td>
+<td class="sev-yellow">Yellow</td>
 </tr>
 <tr>
 <td>Manilla, PH</td>
 <td>5</td>
 <td>0</td>
 <td>Typhoon</td>
-<td>Red</td>
+<td class="sev-red">Red</td>
 </tr>
 <tr>
 <td>Eugene, OR, USA</td>
 <td>0</td>
 <td>10</td>
 <td>Flood</td>
-<td>Green</td>
+<td class="sev-green">Green</td>
 </tr>
 </tbody>
 </table>
 			</div>
 
 			<div class="right-content-box">
-				<a href="#">Download Report</a>
-				<button class="btn btn-primary">
-					Reset Data
-				</button>
+				<a class="btn" href="#">Download Report</a>
+				<button class="btn btn-primary">Reset Data</button>
 			</div>
 		</section>
 		  </div>
