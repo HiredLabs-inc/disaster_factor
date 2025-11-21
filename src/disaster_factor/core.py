@@ -1,15 +1,13 @@
 # IMPORTS
-
 from bs4 import BeautifulSoup
 import requests
 import re
 import csv
-
 from .helpers import serve_static_and_open
 
 
 # DATA RETRIEVAL
-def track_disasters():
+def track_disasters(open_webapp: bool = True) -> None:
   #TODO: Add disaster categories
   url = 'http://www.gdacs.org/XML/RSS.xml'
   resp = requests.get(url)
@@ -158,11 +156,14 @@ def track_disasters():
 
   print("TOTAL NUMBER OF RED-LEVEL ALERTS:")
   print(total_red)
-  srv = serve_static_and_open()
-
-  # Keep process alive briefly so linked assets (CSS/JS/SVG) can be fetched before daemon thread dies
-  import time as _time
-  _time.sleep(3)
-  with open('affected.csv', 'w') as csvFile:
+  
+  # Only run local instance of web UI using CLI commands
+  if open_webapp:
+      srv = serve_static_and_open()
+      # Keep process alive briefly so linked assets (CSS/JS/SVG) can be fetched before daemon thread dies
+      import time as _time
+      _time.sleep(3)
+  # Always write CSV regardless of web UI
+  with open('affected.csv', 'w', newline="") as csvFile:
     writer = csv.writer(csvFile)
     writer.writerows(outreach_list)
