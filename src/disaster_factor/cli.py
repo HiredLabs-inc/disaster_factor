@@ -31,7 +31,8 @@ def _build_parser(prog: str | None = None) -> argparse.ArgumentParser:
 
 
 def _cmd_track(_args: argparse.Namespace) -> int:
-    track_disasters()
+    # CLI explicit about running web UI
+    track_disasters(open_webapp=True)
     return 0
 
 
