@@ -25,14 +25,20 @@ def _build_parser(prog: str | None = None) -> argparse.ArgumentParser:
     subparsers = parser.add_subparsers(dest="command")
 
     sp_track = subparsers.add_parser("track", help="Track current disasters")
+    sp_track.add_argument(
+        "--debug",
+        action="store_true",
+        help="Run without starting the local web UI (no http server / browser).",
+    )
     sp_track.set_defaults(func=_cmd_track)
 
     return parser
 
 
 def _cmd_track(_args: argparse.Namespace) -> int:
-    # CLI explicit about running web UI
-    track_disasters(open_webapp=True)
+    # If --debug is set, do not start the http server / browser
+    open_webapp = not getattr(_args, "debug", False)
+    track_disasters(open_webapp=open_webapp)
     return 0
 
 
