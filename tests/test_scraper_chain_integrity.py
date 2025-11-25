@@ -26,7 +26,7 @@ class MockResp:
         self.content = content
 
 
-# ✅ This fixture ensures NO real HTTP calls happen – everything comes from local XML files
+# This fixture ensures NO real HTTP calls happen – everything comes from local XML files
 @pytest.fixture(autouse=True)
 def mock_requests(monkeypatch):
     import requests
@@ -98,6 +98,7 @@ def test_disastertracker_runs_with_snapshots_and_writes_csv(tmp_path: Path) -> N
 
     # Build personnel.csv that guarantees potential matches
     _build_personnel_from_downstream2(tmp_path)
+    personnel_path = _build_personnel_from_downstream2(tmp_path)
 
     # Call only the pure function without running web UI
     track_disasters(open_webapp=False)
@@ -106,12 +107,18 @@ def test_disastertracker_runs_with_snapshots_and_writes_csv(tmp_path: Path) -> N
     out = tmp_path / "affected.csv"
     assert out.exists(), "Expected affected.csv to be created by track_disasters()"
 
-    # Copy to artifacts/ so you can eyeball it after the test
-    artifacts_dir = REPO_ROOT / "artifacts"
+    # Copy to tests/data/artifacts/ for review
+    artifacts_dir = REPO_ROOT / "tests/data/artifacts"
     artifacts_dir.mkdir(exist_ok=True)
     (artifacts_dir / "affected.csv").write_text(
         out.read_text(encoding="utf-8"),
         encoding="utf-8",
+    )
+
+    # copy personnel.csv for review
+    (artifacts_dir / "personnel.csv").write_text(
+    personnel_path.read_text(encoding="utf-8"),
+    encoding="utf-8",
     )
 
     # Basic sanity: file exists and is not negative size (duh, but keeps shape)
