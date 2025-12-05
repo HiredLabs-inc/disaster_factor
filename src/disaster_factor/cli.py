@@ -25,13 +25,21 @@ def _build_parser(prog: str | None = None) -> argparse.ArgumentParser:
     subparsers = parser.add_subparsers(dest="command")
 
     sp_track = subparsers.add_parser("track", help="Track current disasters")
+    sp_track.add_argument(
+        "--debug",
+        action="store_true",
+        help=(
+            "Run in debug mode: skip launching the web UI server and just write "
+            "affected.csv plus console output."
+        ),
+    )
     sp_track.set_defaults(func=_cmd_track)
 
     return parser
 
 
-def _cmd_track(_args: argparse.Namespace) -> int:
-    track_disasters()
+def _cmd_track(args: argparse.Namespace) -> int:
+    track_disasters(debug=getattr(args, "debug", False))
     return 0
 
 
