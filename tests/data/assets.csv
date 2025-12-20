@@ -1,0 +1,11 @@
+asset_id,city,country,type
+AST001,Lumajang,Indonesia,personnel
+AST002,Probolinggo,Indonesia,building
+AST003,Malang,Indonesia,vehicle
+AST004,Surabaya,Indonesia,personnel
+AST005,Jakarta,Indonesia,building
+AST006,Bandung,Indonesia,vehicle
+AST007,Yogyakarta,Indonesia,personnel
+AST008,Semarang,Indonesia,building
+AST009,Manila,Philippines,vehicle
+AST010,Cebu,Philippines,personnel
