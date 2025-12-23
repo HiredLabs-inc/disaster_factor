@@ -1,184 +1,279 @@
+# src/disaster_factor/core.py
+
 # IMPORTS
+from __future__ import annotations
 from bs4 import BeautifulSoup
+from pathlib import Path
 import requests
-import re
 import csv
 import time
+import os
+from typing import Any
 
 from .helpers import serve_static_and_open
 
 
-def _extract_impact_urls_from_rss_items(items) -> tuple[list[str], list[str]]:
-    """
-    Internal helper.
+# -----------------------------
+# GDACS JSON pipeline helpers
+# -----------------------------
 
-    Given a list of <item> nodes from the GDACS RSS feed, extract:
-      - impact_xmls: URLs whose resource id="impact_xml"
-      - impact_data: URLs whose resource id="impact_data"
+def _find_text_suffix(tag, suffix: str) -> str:
     """
-    impact_xmls: list[str] = []
-    impact_data: list[str] = []
+    Find first sub-tag whose name ends with suffix (case-insensitive) and return stripped text.
+    """
 
-    for item in items:
-        # Some items simply have no <resources> block at all.
-        if item.resources is None:
+    t = tag.find(lambda x: getattr(x, "name", None) and x.name.lower().endswith(suffix))
+    return (t.text or "").strip() if t and t.text else ""
+
+
+def _get_json(url: str, *, timeout: float = 20.0) -> dict[str, Any]:
+    """Fetch JSON and return as dict."""
+    resp = requests.get(url, timeout=timeout)
+    resp.raise_for_status()
+    data = resp.json()
+    if not isinstance(data, dict):
+        raise TypeError(f"Expected JSON object at {url}, got {type(data).__name__}")
+    return data
+
+
+def _extract_impact_export_url(eventdata_json: dict[str, Any]) -> str:
+    """
+    Step-3 JSON path: properties.impacts[0].resource.impact. Return "" if missing.
+    """
+
+    props = eventdata_json.get("properties")
+    if not isinstance(props, dict):
+        return ""
+    impacts = props.get("impacts")
+    if not isinstance(impacts, list) or not impacts:
+        return ""
+    first = impacts[0]
+    if not isinstance(first, dict):
+        return ""
+    resource = first.get("resource")
+    if not isinstance(resource, dict):
+        return ""
+    impact_url = resource.get("impact")
+    return impact_url if isinstance(impact_url, str) and impact_url else ""
+
+
+def _scalars_to_dict(datum: dict[str, Any]) -> dict[str, str]:
+    """
+    Convert Step-4 scalar list to name->value mapping.
+    """
+
+    out: dict[str, str] = {}
+    
+    scalars = datum.get("scalars")
+    if not isinstance(scalars, dict):
+        return out
+    scalar_list = scalars.get("scalar")
+    if not isinstance(scalar_list, list):
+        return out
+    for s in scalar_list:
+        if not isinstance(s, dict):
+            continue
+        name = s.get("name")
+        value = s.get("value")
+        if isinstance(name, str) and isinstance(value, str):
+            out[name] = value
+
+    return out
+
+
+def _parse_impact_json_to_disasters(impact_json: dict[str, Any], eventtype: str) -> list[dict[str, str]]:
+    """
+    Step-4 impact JSON -> disasters list.
+    Alias priority is heterogeneous in real GDACS exports. Aim for locality-ish blocks, then fall back to country:
+
+      City -> UrbanAreas -> province -> country
+
+    For locality-ish blocks, the label scalar key varies; will need to try common candidates.
+    """
+    datums = impact_json.get("datums")
+    if not isinstance(datums, list):
+        return []
+
+    # Only these aliases are eligible for locality output.
+    priority = ["city", "urbanareas", "aru", "province", "country"]
+
+    blocks: dict[str, dict[str, Any]] = {}
+    for block in datums:
+        if not isinstance(block, dict):
+            continue
+        alias = block.get("alias")
+        if isinstance(alias, str):
+            blocks[alias.strip().casefold()] = block
+
+    chosen: dict[str, Any] | None = None
+    chosen_alias = ""
+
+    for a in priority:
+        if a in blocks:
+            chosen = blocks[a]
+            chosen_alias = a
+            break
+    if chosen is None:
+        return []
+
+    records = chosen.get("datum")
+    if not isinstance(records, list) or not records:
+        return []
+
+    disasters: list[dict[str, str]] = []
+    
+    for datum in records:
+        if not isinstance(datum, dict):
+            continue
+        if chosen_alias == "aru" and datum.get("datasource") != "aru":
+            continue
+        s = _scalars_to_dict(datum)
+
+        country = (
+            s.get("CNTRY_NAME")
+            or s.get("COUNTRY")
+            or s.get("Country")
+            or s.get("country")
+            or s.get("CNTRY")
+            or ""
+        ).strip()
+        if not country:
             continue
 
-        resource_group = item.resources.find_all("resource")
-        for res in resource_group:
-            res_id = res.get("id")
-            url = res.get("url")
-            if not url:
-                continue
-
-            if res_id == "impact_xml":
-                impact_xmls.append(url)
-            elif res_id == "impact_data":
-                impact_data.append(url)
-
-    return impact_xmls, impact_data
-
-
-def _parse_calculation_xmls(impact_xmls: list[str]) -> tuple[dict[int, dict[str, str]], int]:
-    """
-    Internal helper.
-
-    Parse the 'calculation' XMLs to build the initial disasters dict.
-
-    Returns:
-      disasters: {counter -> {"city": str, "country": str, "type": str}}
-      counter:   last used integer id (for continuing numbering later)
-    """
-    disasters: dict[int, dict[str, str]] = {}
-    counter = 0
-
-    xml_calculations: list[str] = []
-    # NOTE: xml_contentdata is not used for the disasters dict in the current logic,
-    # but we keep the split so behaviour matches the original implementation.
-    xml_contentdata: list[str] = []
-
-    for xml_url in impact_xmls:
-        if "calculation" in xml_url:
-            xml_calculations.append(xml_url)
+        if chosen_alias in ("aru", "city", "urbanareas", "province"):
+            name = (
+                s.get("Name")
+                or s.get("NAME")
+                or s.get("CITY_NAME")
+                or s.get("cityname")
+                or s.get("URBAN_NAME")
+                or s.get("PROV_NAME")
+                or s.get("PROVINCE")
+                or s.get("ADMIN1")
+                or s.get("admin1")
+                or s.get("ADM1_NAME")
+                or ""
+            ).strip()
+            city = name
         else:
-            xml_contentdata.append(xml_url)
+            city = ""
 
-    for site in xml_calculations:
-        resp_3 = requests.get(site)
-        soup_3 = BeautifulSoup(resp_3.content, features="xml")
-        datums = soup_3.find_all("datums")
+        disasters.append({"city": city, "country": country, "type": eventtype})
 
-        for d in datums:
-            if d.get("alias") != "City":
-                continue
-
-            data = d.find_all("datum")
-
-            for datum in data:
-                disaster: dict[str, str] = {}
-                scalars = datum.find_all("scalar")
-
-                for scalar in scalars:
-                    name_tag = scalar.find("name")
-                    if not name_tag:
-                        continue
-
-                    name_text = name_tag.text
-                    value_tag = scalar.find("value")
-
-                    if name_text == "NAME" and value_tag is not None:
-                        counter += 1
-                        disaster["city"] = value_tag.text
-
-                    elif name_text == "COUNTRY" and value_tag is not None:
-                        disaster["country"] = value_tag.text
-                        model_name_tag = soup_3.find("model-name")
-                        if model_name_tag is not None:
-                            # Disaster *type* is the model name (e.g. "VO", "EQ", etc.)
-                            disaster["type"] = model_name_tag.text
-
-                # Only store complete entries (city + country present)
-                if "city" in disaster and "country" in disaster:
-                    disasters[counter] = disaster
-
-    return disasters, counter
+    return disasters
 
 
-def _parse_impact_data_locations(
-    impact_data: list[str],
-    disasters: dict[int, dict[str, str]],
-    counter: int,
-) -> tuple[dict[int, dict[str, str]], int]:
+def _dedupe_disasters(disasters: list[dict[str, str]]) -> list[dict[str, str]]:
     """
-    Internal helper.
-
-    Parse the 'impact_data' HTML pages that link to locations.xml and
-    extend the disasters dict with those locations.
+    Deduplicate by (type,country,city), normalized.
     """
-    for link in impact_data:
-        resp_4 = requests.get(link)
-        soup_4 = BeautifulSoup(resp_4.content, "lxml")
-
-        if soup_4.pre is None:
+    seen: set[tuple[str, str, str]] = set()
+    out: list[dict[str, str]] = []
+    for d in disasters:
+        city = (d.get("city") or "").strip()
+        country = (d.get("country") or "").strip()
+        dtype = (d.get("type") or "").strip()
+        key = (dtype.casefold(), country.casefold(), city.casefold())
+        if key in seen:
             continue
+        seen.add(key)
+        out.append({"city": city, "country": country, "type": dtype})
 
-        anchors = soup_4.pre.find_all("a")
-        for a in anchors:
-            if a.text != "final":
-                continue
-
-            href = a.get("href")
-            if not href:
-                continue
-
-            url = "http://webcritech.jrc.ec.europa.eu" + href + "locations.xml"
-            resp_5 = requests.get(url)
-            soup_5 = BeautifulSoup(resp_5.content, features="xml")
-            items = soup_5.find_all("item")
-
-            for item in items:
-                if item.cityName is None:
-                    continue
-
-                counter += 1
-                disasters[counter] = {
-                    "city": item.cityName.text,
-                    "country": item.country.text,
-                    # Original logic: disaster "type" is the locations.xml <title>, lowercased
-                    "type": soup_5.title.text.lower(),
-                }
-
-    return disasters, counter
+    return out
 
 
-def recon() -> tuple[dict[int, dict[str, str]], int]:
+# -----------------------------
+# RAID pipeline
+# -----------------------------
+
+def recon(debug: bool = False) -> tuple[list[dict[str, str]], int]:
     """
     R — RECON (DATA RETRIEVAL)
 
-    Fetch disaster events from the GDACS RSS feed and return:
-      - disasters: mapping of int -> {'city', 'country', 'type'}
-      - total_red: count of red-level alerts (currently stubbed)
+    GDACS JSON pipeline:
+      RSS -> (eventtype,eventid,alertlevel) -> construct eventdata URL
+      eventdata JSON -> impact export URL
+      impact JSON -> disasters list
 
-    Contract:
-      Returns (disasters, total_red) exactly as described; callers must not
-      depend on implementation details.
+    Returns:
+      (disasters, total_red)
+
+    disasters: list[dict[str,str]] with keys {city, country, type}
+    total_red: count of RSS items with alertlevel == "Red"
     """
-    url = "http://www.gdacs.org/XML/RSS.xml"
-    resp = requests.get(url)
+
+    rss_url = "https://www.gdacs.org/XML/RSS.xml"
+
+    resp = requests.get(rss_url, timeout=20)
+    resp.raise_for_status()
+
     soup = BeautifulSoup(resp.content, features="xml")
     items = soup.find_all("item")
 
-    # 1) From the RSS items, extract the URLs we care about.
-    impact_xmls, impact_data = _extract_impact_urls_from_rss_items(items)
-
-    # 2) Parse the XML "calculation" files to build initial disasters dict.
-    disasters, counter = _parse_calculation_xmls(impact_xmls)
-
-    # 3) Parse the "impact_data" pages that lead to locations.xml and extend disasters.
-    disasters, counter = _parse_impact_data_locations(impact_data, disasters, counter)
-
-    # NOTE: total_red is currently stubbed out; we keep it for future use.
+    # Build events directly from eventtype/eventid; count total_red from alertlevel.
+    events: list[dict[str, str]] = []
     total_red = 0
+    for item in items:
+        alert = _find_text_suffix(item, "alertlevel")
+        if alert.casefold() == "red":
+            total_red += 1
+
+        eventtype = _find_text_suffix(item, "eventtype")
+        eventid = _find_text_suffix(item, "eventid")
+        if not eventtype or not eventid:
+            continue
+
+        eventdata_url = (
+            "https://www.gdacs.org/gdacsapi/api/events/geteventdata"
+            f"?eventtype={eventtype}&eventid={eventid}"
+        )
+        events.append(
+            {
+            "eventtype": eventtype,
+            "eventid": eventid,
+            "eventdata_url": eventdata_url,
+            }
+        )
+
+    # Dev cap (optional)
+    cap_raw = os.getenv("GDACS_DEV_CAP", "").strip()
+    if cap_raw.isdigit() and int(cap_raw) > 0:
+        cap = int(cap_raw)
+        events = events[:cap]
+
+    disasters: list[dict[str, str]] = []
+
+    for idx, ev in enumerate(events, start=1):
+        if debug and (idx == 1 or idx % 10 == 0):
+            print(f"[RECON] progress {idx}/{len(events)}")
+
+        eventtype = ev["eventtype"]
+        eventid = ev["eventid"]
+        eventdata_url = ev["eventdata_url"]
+
+        try:
+            eventdata_json = _get_json(ev["eventdata_url"], timeout=20)
+        except Exception as e:
+            continue
+
+        impact_url = _extract_impact_export_url(eventdata_json)
+        if not impact_url:
+            continue
+
+        try:
+            impact_json = _get_json(impact_url, timeout=20)
+        except Exception as e:
+            continue
+
+        disasters.extend(_parse_impact_json_to_disasters(impact_json, eventtype))
+
+        # GDACS respect
+        time.sleep(0.02)
+
+    disasters = _dedupe_disasters(disasters)
+
+    if debug:
+        print("[RECON] disasters (deduped):", len(disasters))
 
     return disasters, total_red
 
@@ -187,8 +282,7 @@ def assets() -> tuple[dict[str, str], dict[str, str], dict[str, dict[str, str]]]
     """
     A — ASSETS (DATA INPUT)
 
-    Load company / contractor asset data (cities, countries, assets, etc.)
-    from a local CSV file (for example ``assets.csv``).
+    Load company / contractor asset data (cities, countries, assets, etc.) from assets.csv
 
     The CSV is expected to have at least the columns:
       - asset_id    (anonymized unique ID, no PII)
@@ -197,46 +291,36 @@ def assets() -> tuple[dict[str, str], dict[str, str], dict[str, dict[str, str]]]
       - type        (e.g. 'personnel', 'building', 'vehicle', ...)
 
     Returns:
-      cities:    mapping[str, str]   – optional lookup of city_id -> city name
-      countries: mapping[str, str]   – optional lookup of country_id -> country name
-      assets_by_id: mapping[str, dict[str, str]] – core asset records used for
+      cities:    mapping[str, str]   optional lookup of city_id -> city name
+      countries: mapping[str, str]   optional lookup of country_id -> country name
+      assets_by_id: mapping[str, dict[str, str]]  core asset records used for
         impact matching. Each asset dict should at least contain
         ``city``, ``country``, and ``type``.
     """
+    cities: dict[str, str] = {}
+    countries: dict[str, str] = {}
     assets_by_id: dict[str, dict[str, str]] = {}
 
-    try:
-        with open("assets.csv", newline="", encoding="utf-8") as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                asset_id = row.get("asset_id")
-                if not asset_id:
-                    # Skip rows without a usable asset_id
-                    continue
-                # Normalise keys we care about; keep the rest as-is for flexibility.
-                asset_record: dict[str, str] = {
-                    "unique_id": asset_id,
-                    "city": row.get("city", ""),
-                    "country": row.get("country", ""),
-                    "type": row.get("type", ""),
-                }
-                # Optionally keep any extra columns from the CSV:
-                for k, v in row.items():
-                    if k not in asset_record and v is not None:
-                        asset_record[k] = v
+    csv_path = Path(__file__).resolve().parents[2] / "tests" / "data" / "assets.csv"
+    if not csv_path.exists():
+        raise FileNotFoundError(f"assets.csv not found at {csv_path}")
 
-                assets_by_id[asset_id] = asset_record
-    except FileNotFoundError:
-        assets_by_id = {}
+    with csv_path.open(newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            asset_id = (row.get("unique_id") or "").strip()
+            if not asset_id:
+                continue
 
-    cities: dict[str, str] = {}     # e.g. city_id -> city name
-    countries: dict[str, str] = {}  # e.g. country_id -> country name
+            assets_by_id[asset_id] = row
+            cities[asset_id] = (row.get("city") or "").strip()
+            countries[asset_id] = (row.get("country") or "").strip()
 
     return cities, countries, assets_by_id
 
 
 def intel(
-    disasters: dict[int, dict[str, str]],
+    disasters: list[dict[str, str]],
     cities: dict[str, str],
     countries: dict[str, str],
     assets_by_id: dict[str, dict[str, str]],
@@ -246,31 +330,34 @@ def intel(
 
     Cross-reference disaster locations with company assets.
     """
-    _ = (cities, countries)
-
     matches: list[dict[str, str]] = []
-    outreach_list: list[list[str]] = []
+    outreach_list: list[dict[str, str]] = []
 
-    for disaster_id, disaster in disasters.items():
-        loc_key = (disaster.get("city"), disaster.get("country"))
+    for asset_id, asset in assets_by_id.items():
+        asset_city = (cities.get(asset_id) or "").strip().casefold()
+        asset_country = (countries.get(asset_id) or "").strip().casefold()
 
-        impacted_asset_ids = [
-            asset_id
-            for asset_id, asset in assets_by_id.items()
-            if (asset.get("city"), asset.get("country")) == loc_key
-        ]
+        for d in disasters:
+            d_city = (d.get("city") or "").strip().casefold()
+            d_country = (d.get("country") or "").strip().casefold()
+            d_type = (d.get("type") or "").strip()
 
-        for asset_id in impacted_asset_ids:
-            asset = assets_by_id.get(asset_id, {})
-            match = {
-                "unique_id": asset.get("unique_id", asset_id),
-                "city": disaster.get("city", ""),
-                "country": disaster.get("country", ""),
-                "type": disaster.get("type", ""),
-                "asset_type": asset.get("type", ""),
-            }
-            matches.append(match)
-            outreach_list.append([match["unique_id"], match["type"]])
+            if not d_country or asset_country != d_country:
+                continue
+
+            # If disaster has a city/locality, require match; otherwise country-only match.
+            if d_city and asset_city != d_city:
+                continue
+
+            matches.append(
+                {
+                    "unique_id": asset_id,
+                    "city": cities.get(asset_id, ""),
+                    "country": countries.get(asset_id, ""),
+                    "event_type": d_type,
+                }
+            )
+            outreach_list.append(asset)
 
     return matches, outreach_list
 
@@ -285,30 +372,27 @@ def disseminate(
     D — DISSEMINATE (OUTPUT)
 
     - Print human-readable details about impacted assets.
-    - Write the outreach CSV file.
-    - Optionally launch the static dashboard UI (disabled in debug mode).
+    - Write the affected CSV file.
+    - Launch the static dashboard UI (disabled in debug mode).
     """
-    for match in matches:
-        print(f'Asset unique id: {match.get("unique_id")}')
-        print(
-            f'Location: {match.get("city")}, {match.get("country")}'
-        )
-        if match.get("type") == "EQ":
-            print("Disaster type: earthquake")
-        else:
-            print(f'Disaster type: {match.get("type")}')
 
-    print("TOTAL NUMBER OF RED-LEVEL ALERTS:")
-    print(total_red)
+    # Write affected.csv
+    if matches:
+        fieldnames = list(matches[0].keys())
+    else:
+        fieldnames = ["unique_id", "city", "country", "event_type"]
 
+    affected_path = Path(__file__).resolve().parents[2] / "tests" / "data" / "affected.csv"
+
+    with affected_path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        for row in matches:
+            writer.writerow(row)
+
+    # Serve dashboard static
     if not debug:
-        srv = serve_static_and_open()
-        time.sleep(3)
-
-    with open("affected.csv", "w", newline="", encoding="utf-8") as tempfile:
-        csv_writer = csv.writer(tempfile)
-        csv_writer.writerow(["unique_id", "disaster_type"])
-        csv_writer.writerows(outreach_list)
+        serve_static_and_open()
 
 
 def track_disasters(debug: bool = False) -> None:
@@ -321,9 +405,7 @@ def track_disasters(debug: bool = False) -> None:
       I — intel()        : assess impact
       D — disseminate()  : output / deliver intel product
     """
-    disasters, total_red = recon()
+    disasters, total_red = recon(debug=debug)
     cities, countries, assets_by_id = assets()
-    matches, outreach_list = intel(
-        disasters, cities, countries, assets_by_id
-    )
+    matches, outreach_list = intel(disasters, cities, countries, assets_by_id)
     disseminate(matches, outreach_list, total_red, debug=debug)
