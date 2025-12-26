@@ -81,20 +81,26 @@ def _scalars_to_dict(datum: dict[str, Any]) -> dict[str, str]:
     return out
 
 
-def _parse_impact_json_to_disasters(impact_json: dict[str, Any], eventtype: str) -> list[dict[str, str]]:
+def _parse_impact_json_to_disasters(impact_json: dict[str, Any], eventtype: str, eventid: str, lat: str = None, long: str = None, comprehensive_aliases: bool = False) -> list[dict[str, str]]:
     """
     Step-4 impact JSON -> disasters list.
-    Alias priority is heterogeneous in real GDACS exports. Aim for locality-ish blocks, then fall back to country:
-
-      City -> UrbanAreas -> province -> country
-
-    For locality-ish blocks, the label scalar key varies; will need to try common candidates.
+    
+    Args:
+        impact_json: GDACS impact JSON data
+        eventtype: Type of disaster event
+        eventid: ID of disaster event
+        lat: Optional latitude override
+        long: Optional longitude override
+        comprehensive_aliases: If True, process ALL available aliases instead of priority aliases only
     """
     datums = impact_json.get("datums")
     if not isinstance(datums, list):
         return []
 
-    # Only these aliases are eligible for locality output.
+    # All known GDACS aliases from exhaustive discovery
+    all_gdacs_aliases = ['airport', 'airports', 'alert', 'alert parameters', 'aru', 'city', 'country', 'hydro', 'input parameters', 'landtable', 'nuclear power plant', 'pop', 'ports', 'province', 'urbanareas']
+    
+    # Priority aliases for backward compatibility
     priority = ["city", "urbanareas", "aru", "province", "country"]
 
     blocks: dict[str, dict[str, Any]] = {}
@@ -105,60 +111,77 @@ def _parse_impact_json_to_disasters(impact_json: dict[str, Any], eventtype: str)
         if isinstance(alias, str):
             blocks[alias.strip().casefold()] = block
 
-    chosen: dict[str, Any] | None = None
-    chosen_alias = ""
-
-    for a in priority:
-        if a in blocks:
-            chosen = blocks[a]
-            chosen_alias = a
-            break
-    if chosen is None:
-        return []
-
-    records = chosen.get("datum")
-    if not isinstance(records, list) or not records:
-        return []
+    # Choose which aliases to process
+    if comprehensive_aliases:
+        # Process ALL available aliases that have data
+        aliases_to_process = [alias for alias in all_gdacs_aliases if alias in blocks]
+    else:
+        # Use priority logic for backward compatibility
+        aliases_to_process = []
+        for a in priority:
+            if a in blocks:
+                aliases_to_process = [a]  # Only the first priority alias
+                break
+        if not aliases_to_process:
+            return []
 
     disasters: list[dict[str, str]] = []
     
-    for datum in records:
-        if not isinstance(datum, dict):
+    # Process each alias separately
+    for chosen_alias in aliases_to_process:
+        chosen = blocks[chosen_alias]
+        records = chosen.get("datum")
+        if not isinstance(records, list) or not records:
             continue
-        if chosen_alias == "aru" and datum.get("datasource") != "aru":
-            continue
-        s = _scalars_to_dict(datum)
+            
+        for datum in records:
+            if not isinstance(datum, dict):
+                continue
 
-        country = (
-            s.get("CNTRY_NAME")
-            or s.get("COUNTRY")
-            or s.get("Country")
-            or s.get("country")
-            or s.get("CNTRY")
-            or ""
-        ).strip()
-        if not country:
-            continue
-
-        if chosen_alias in ("aru", "city", "urbanareas", "province"):
-            name = (
-                s.get("Name")
-                or s.get("NAME")
-                or s.get("CITY_NAME")
-                or s.get("cityname")
-                or s.get("URBAN_NAME")
-                or s.get("PROV_NAME")
-                or s.get("PROVINCE")
-                or s.get("ADMIN1")
-                or s.get("admin1")
-                or s.get("ADM1_NAME")
+            s = _scalars_to_dict(datum)
+            country = (
+                s.get("CNTRY_NAME")
+                or s.get("COUNTRY")
+                or s.get("Country")
+                or s.get("country")
+                or s.get("CNTRY")
                 or ""
             ).strip()
-            city = name
-        else:
-            city = ""
 
-        disasters.append({"city": city, "country": country, "type": eventtype})
+            if not country:
+                continue
+
+            # Extract city name for aliases that have location data
+            if chosen_alias in ("aru", "city", "urbanareas", "province", "airport", "airports", "ports", "hydro", "nuclear power plant"):
+                name = (
+                    s.get("Name")
+                    or s.get("NAME")
+                    or s.get("CITY_NAME")
+                    or s.get("cityname")
+                    or s.get("URBAN_NAME")
+                    or s.get("PROV_NAME")
+                    or s.get("PROVINCE")
+                    or s.get("ADMIN1")
+                    or s.get("admin1")
+                    or s.get("ADM1_NAME")
+                    or s.get("AIRPORT_NAME")
+                    or s.get("PORT_NAME")
+                    or s.get("FACILITY_NAME")
+                    or ""
+                ).strip()
+                city = name
+            else:
+                city = ""
+
+            disasters.append({
+                "city": city, 
+                "country": country, 
+                "type": eventtype,
+                "eventid": eventid,
+                "alias_source": chosen_alias,
+                "latitude": lat,
+                "longitude": long
+            })
 
     return disasters
 
@@ -177,7 +200,15 @@ def _dedupe_disasters(disasters: list[dict[str, str]]) -> list[dict[str, str]]:
         if key in seen:
             continue
         seen.add(key)
-        out.append({"city": city, "country": country, "type": dtype})
+        out.append({
+            "city": city, 
+            "country": country, 
+            "type": dtype,
+            "eventid": d.get("eventid", ""),
+            "alias_source": d.get("alias_source", ""),
+            "latitude": d.get("latitude"),
+            "longitude": d.get("longitude")
+        })
 
     return out
 
@@ -186,7 +217,7 @@ def _dedupe_disasters(disasters: list[dict[str, str]]) -> list[dict[str, str]]:
 # RAID pipeline
 # -----------------------------
 
-def recon(debug: bool = False) -> tuple[list[dict[str, str]], int]:
+def recon(debug: bool = False, comprehensive_aliases: bool = False) -> tuple[list[dict[str, str]], int]:
     """
     R — RECON (DATA RETRIEVAL)
 
@@ -214,6 +245,16 @@ def recon(debug: bool = False) -> tuple[list[dict[str, str]], int]:
     events: list[dict[str, str]] = []
     total_red = 0
     for item in items:
+        # Extract latitude and longitude from geo:Point
+        geo_point = item.find("geo:Point")
+        lat = None
+        long = None
+        if geo_point:
+            lat_elem = geo_point.find("geo:lat")
+            long_elem = geo_point.find("geo:long")
+            lat = lat_elem.text if lat_elem else None
+            long = long_elem.text if long_elem else None
+
         alert = _find_text_suffix(item, "alertlevel")
         if alert.casefold() == "red":
             total_red += 1
@@ -232,6 +273,8 @@ def recon(debug: bool = False) -> tuple[list[dict[str, str]], int]:
             "eventtype": eventtype,
             "eventid": eventid,
             "eventdata_url": eventdata_url,
+            "latitude": lat,
+            "longitude": long,
             }
         )
 
@@ -265,7 +308,7 @@ def recon(debug: bool = False) -> tuple[list[dict[str, str]], int]:
         except Exception as e:
             continue
 
-        disasters.extend(_parse_impact_json_to_disasters(impact_json, eventtype))
+        disasters.extend(_parse_impact_json_to_disasters(impact_json, eventtype, eventid, ev.get("latitude"), ev.get("longitude"), comprehensive_aliases))
 
         # GDACS respect
         time.sleep(0.02)
@@ -274,6 +317,43 @@ def recon(debug: bool = False) -> tuple[list[dict[str, str]], int]:
 
     if debug:
         print("[RECON] disasters (deduped):", len(disasters))
+        
+        # Count disasters by type (eventtype)
+        disaster_counts = {}
+        for d in disasters:
+            event_type = d.get('type', 'unknown')
+            disaster_counts[event_type] = disaster_counts.get(event_type, 0) + 1
+        
+        # Print count for each disaster type
+        print("\n[RECON] Disaster counts by type:")
+        for event_type in sorted(disaster_counts.keys()):
+            print(f"  {event_type}: {disaster_counts[event_type]}")
+        
+                
+        print("\n[RECON] Disaster locations by alias source:")
+        
+        # Group disasters by alias source
+        grouped = {}
+        for d in disasters:
+            alias = d.get('alias_source', 'unknown')
+            if alias not in grouped:
+                grouped[alias] = []
+            grouped[alias].append(d)
+        
+        # Print grouped by alias
+        for alias in sorted(grouped.keys()):
+            print(f"\n  {alias.upper()} ({len(grouped[alias])} records):")
+            for d in grouped[alias]:
+                city = d.get('city', 'N/A')
+                country = d.get('country', 'N/A')
+                lat = d.get('latitude')
+                long = d.get('longitude')
+                
+                # Format coordinates rounded to 4 decimal places
+                lat_str = f"{float(lat):.3f}" if lat and lat.replace('.', '').isdigit() else "N/A"
+                long_str = f"{float(long):.3f}" if long and long.replace('.', '').isdigit() else "N/A"
+                
+                print(f"    {city:25} | {country:15} | {lat_str:8} | {long_str:9}")
 
     return disasters, total_red
 
