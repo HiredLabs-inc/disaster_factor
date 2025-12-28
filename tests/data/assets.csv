@@ -1,31 +1,39 @@
-asset_id,city,country,type
-AST001,Lumajang,Indonesia,personnel
-AST002,Probolinggo,Indonesia,building
-AST003,Malang,Indonesia,vehicle
-AST004,Surabaya,Indonesia,personnel
-AST005,Jakarta,Indonesia,building
-AST006,Bandung,Indonesia,vehicle
-AST007,Yogyakarta,Indonesia,personnel
-AST008,Semarang,Indonesia,building
-AST009,Manila,Philippines,vehicle
-AST010,Cebu,Philippines,personnel
-A001,Usino,Papua New Guinea,EQ
-A002,Koben,Papua New Guinea,EQ
-A003,Sausi Mission,Papua New Guinea,EQ
-A004,Korigei,Papua New Guinea,EQ
-A005,Sana,Papua New Guinea,EQ
-A006,Kesawai,Papua New Guinea,EQ
-A007,Tauya,Papua New Guinea,EQ
-A008,Kesa,Papua New Guinea,EQ
-A009,Weisa,Papua New Guinea,EQ
-A010,Kama,Papua New Guinea,EQ
-A011,Braham Mission,Papua New Guinea,EQ
-A012,Walium,Papua New Guinea,EQ
-A013,Aliveti,Papua New Guinea,EQ
-A014,Kaihovu,Papua New Guinea,EQ
-A015,Wau,Papua New Guinea,EQ
-A016,Promisi,Papua New Guinea,EQ
-A017,Danaru,Papua New Guinea,EQ
-A018,Saipa,Papua New Guinea,EQ
-A019,Mabeluku,Papua New Guinea,EQ
-A020,Paipa,Papua New Guinea,EQ
+unique_id,city,country,type,latitude,longitude
+AST001,Sendai,Japan,personnel,38.2682,140.8694
+AST002,Kobe,Japan,building,34.6901,135.1955
+AST003,Osaka,Japan,vehicle,34.6937,135.5023
+AST004,Yokohama,Japan,personnel,35.4437,139.6380
+AST005,Nagoya,Japan,building,35.1815,136.9066
+AST006,Manila,Philippines,personnel,14.5995,120.9842
+AST007,Cebu,Philippines,vehicle,10.3157,123.8854
+AST008,Davao,Philippines,personnel,7.0731,125.6128
+AST009,Iloilo,Philippines,building,10.7202,122.5621
+AST010,Zamboanga,Philippines,vehicle,6.9214,122.0790
+AST011,Jakarta,Indonesia,personnel,-6.2088,106.8456
+AST012,Surabaya,Indonesia,building,-7.2575,112.7521
+AST013,Bandung,Indonesia,vehicle,-6.9175,107.6191
+AST014,Medan,Indonesia,personnel,3.5952,98.6722
+AST015,Padang,Indonesia,building,-0.9471,100.4172
+AST016,Malang,Indonesia,vehicle,-8.6519,112.6150
+AST017,Yogyakarta,Indonesia,personnel,-7.7956,110.3695
+AST018,Semarang,Indonesia,building,-6.9667,110.4167
+AST019,Makassar,Indonesia,vehicle,-5.1477,119.4327
+AST020,Denpasar,Indonesia,personnel,-8.6705,115.2126
+AST021,Port Moresby,Papua New Guinea,building,-9.4438,147.1803
+AST022,Lae,Papua New Guinea,personnel,-6.8125,146.9372
+AST023,Mount Hagen,Papua New Guinea,vehicle,-5.8267,144.2361
+AST024,Goroka,Papua New Guinea,personnel,-6.0818,145.3898
+AST025,Kokopo,Papua New Guinea,building,-4.3458,152.1740
+AST026,Kimbe,Papua New Guinea,vehicle,-5.5467,150.0989
+AST027,Madang,Papua New Guinea,personnel,-5.2275,145.7880
+AST028,Wewak,Papua New Guinea,building,-4.1436,142.4528
+AST029,Popondetta,Papua New Guinea,vehicle,-8.7628,148.2364
+AST030,Daru,Papua New Guinea,personnel,-9.0833,143.0833
+AST031,Taipei,Taiwan,personnel,25.0330,121.5654
+AST032,Kaohsiung,Taiwan,building,22.6273,120.3014
+AST033,Taichung,Taiwan,vehicle,24.1477,120.6736
+AST034,Juba,South Sudan,personnel,4.8594,31.5713
+AST035,Wau,South Sudan,building,7.7006,28.0150
+AST036,Malakal,South Sudan,vehicle,9.5332,31.6605
+AST037,Sapporo,Japan,personnel,43.0642,141.3469
+AST038,Hakodate,Japan,building,41.7688,140.7272

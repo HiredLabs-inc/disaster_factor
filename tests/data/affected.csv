@@ -1,1 +1,7 @@
-unique_id,city,country,event_type
+unique_id,city,country,event_type,event_id,impact_method,confidence,coordinates
+AST031,Taipei,Taiwan,EQ,1516973,POLYGON,HIGH,"25.0330, 121.5654"
+AST032,Kaohsiung,Taiwan,EQ,1516973,POLYGON,HIGH,"22.6273, 120.3014"
+AST033,Taichung,Taiwan,EQ,1516973,POLYGON,HIGH,"24.1477, 120.6736"
+AST034,Juba,South Sudan,WF,1026480,POLYGON,HIGH,"4.8594, 31.5713"
+AST035,Wau,South Sudan,WF,1026480,POLYGON,HIGH,"7.7006, 28.0150"
+AST036,Malakal,South Sudan,WF,1026480,POLYGON,HIGH,"9.5332, 31.6605"
