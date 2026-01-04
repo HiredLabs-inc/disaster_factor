@@ -1,7 +1,16 @@
-unique_id,city,country,event_type,event_id,impact_method,confidence,coordinates
-AST031,Taipei,Taiwan,EQ,1516973,POLYGON,HIGH,"25.0330, 121.5654"
-AST032,Kaohsiung,Taiwan,EQ,1516973,POLYGON,HIGH,"22.6273, 120.3014"
-AST033,Taichung,Taiwan,EQ,1516973,POLYGON,HIGH,"24.1477, 120.6736"
-AST034,Juba,South Sudan,WF,1026480,POLYGON,HIGH,"4.8594, 31.5713"
-AST035,Wau,South Sudan,WF,1026480,POLYGON,HIGH,"7.7006, 28.0150"
-AST036,Malakal,South Sudan,WF,1026480,POLYGON,HIGH,"9.5332, 31.6605"
+unique_id,city,country,event_type,event_id,impact_method,coordinates,disaster_city,disaster_country
+AST001,Sendai,Japan,EQ,1517494,COORDINATE,"38.2682, 140.8694",宮古市,日本
+AST034,Juba,South Sudan,WF,1026577,POLYGON,"4.8594, 31.5713",Polygon Boundary,Unknown
+AST035,Wau,South Sudan,WF,1026577,POLYGON,"7.7006, 28.0150",Polygon Boundary,Unknown
+AST036,Malakal,South Sudan,WF,1026577,POLYGON,"9.5332, 31.6605",Polygon Boundary,Unknown
+AST037,Sapporo,Japan,EQ,1517494,COORDINATE,"43.0642, 141.3469",普代村,日本
+AST038,Hakodate,Japan,EQ,1517494,COORDINATE,"41.7688, 140.7272",普代村,日本
+AST_SUDAN_1,Khartoum,Sudan,WF,1026577,POLYGON,"15.5007, 32.5599",Polygon Boundary,Unknown
+AST_SUDAN_2,Juba,South Sudan,WF,1026577,POLYGON,"4.8594, 31.5712",Polygon Boundary,Unknown
+AST_SUDAN_3,Al Fashagha,Sudan,WF,1026577,POLYGON,"14.4167, 34.3833",Polygon Boundary,Unknown
+AST_CARIB_1,Roseau,Dominica,EQ,1517835,POLYGON,"15.3010, -61.3880",Polygon Boundary,Unknown
+AST_CARIB_2,Le Lamentin,Martinique,EQ,1517835,POLYGON,"14.6115, -61.0698",Polygon Boundary,Unknown
+AST_CARIB_3,Canefield,Dominica,EQ,1517835,ALIAS,"15.5336, -61.3953",Canefield,Dominica
+AST_ETH_1,Gambela,Ethiopia,WF,1026534,POLYGON,"8.2500, 34.5833",Polygon Boundary,Unknown
+AST_TEST_1,Dominica Cane,Dominica,EQ,1517835,ALIAS,"15.5336, -61.3953",Dominica Cane,Dominica
+AST_TEST_2,Melville Hall,Dominica,EQ,1517835,ALIAS,"15.5833, -61.3000",Melville Hall,Dominica
