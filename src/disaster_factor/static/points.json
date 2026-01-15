@@ -1,0 +1,13 @@
+{
+  "config": {
+    "lat_t": 79.1,
+    "lat_b": -70.0,
+    "lon_c":  -98.6
+  },
+  "points": [
+    { "lat": 34.0522, "lon": -118.2437, "label": "Los Angeles, US", "severity": "yellow" },
+    { "lat": 14.5995, "lon": 120.9842, "label": "Manila, PH", "severity": "red" },
+    { "lat": -23.5505, "lon": -46.6333, "label": "Sao Paulo, BR", "severity": "green" }
+  ]
+}
+
