@@ -10,9 +10,8 @@ import json
 import math
 import time
 import os
-from typing import Any
+from typing import Any, Optional, Tuple, List, Dict
 from .helpers import serve_static_and_open
-from typing import Optional, Tuple
 
 
 
@@ -103,7 +102,6 @@ def _find_text_suffix(tag, suffix: str) -> str:
 
 def _get_json(url: str, *, timeout: float = 20.0) -> dict[str, Any]:
     """Fetch JSON and return as dict."""
-    
     resp = requests.get(url, timeout=timeout)
     resp.raise_for_status()
     data = resp.json()
@@ -152,6 +150,34 @@ def _scalars_to_dict(datum: dict[str, Any]) -> dict[str, str]:
 
     return out
 
+def check_missing_impact_urls(eventdata_json: dict[str, Any]) -> tuple[bool, str]:
+    """
+    Check if a GDACS eventdata JSON contains at least one impact URL.
+
+    Args:
+        eventdata_json: The geteventdata JSON (step-3) for a disaster/event
+
+    Returns:
+        (has_impact_url, reason_if_missing)
+    """
+    props = eventdata_json.get("properties")
+    if not isinstance(props, dict):
+        return False, "Missing properties"
+
+    impacts = props.get("impacts")
+    if not isinstance(impacts, list) or not impacts:
+        return False, "No impacts array"
+
+    for impact in impacts:
+        if not isinstance(impact, dict):
+            continue
+        resource = impact.get("resource")
+        if isinstance(resource, dict):
+            url = resource.get("impact")
+            if isinstance(url, str) and url.strip():
+                return True, ""
+
+    return False, "No impact URL found in resources"
 
 def _print_coverage_analysis(matches, assets_by_id, impact_data):
     """Print detailed hierarchical coverage analysis."""
@@ -171,23 +197,30 @@ def _print_coverage_analysis(matches, assets_by_id, impact_data):
     print("="*60)
     
     # Method matching results
-    print("\n[INTEL] Method Matching Results:")
-    print(f"  Polygon method matched: {len(polygon_matches)} assets")
-    print(f"  Alias method matched: {len(alias_matches)} assets")
-    print(f"  Coordinate method matched: {len(coordinate_matches)} assets")
-    print(f"  Total assets impacted: {total_impacted}/{total_assets} ({total_impacted/total_assets*100:.1f}%)")
+    # print("\n[INTEL] Method Matching Results:")
+    # print(f"  Polygon method matched: {len(polygon_matches)} assets")
+    # print(f"  Alias method matched: {len(alias_matches)} assets")
+    # print(f"  Coordinate method matched: {len(coordinate_matches)} assets")
+    # print(f"  Total assets impacted: {total_impacted}/{total_assets} ({total_impacted/total_assets*100:.1f}%)")
     
     # Coverage analysis
-    print("\n[INTEL] Method Coverage Analysis:")
-    print(f"  Polygon coverage: {len(polygon_matches)}/{total_assets} assets ({len(polygon_matches)/total_assets*100:.1f}%)")
-    print(f"  Alias coverage: {len(alias_matches)}/{total_assets} assets ({len(alias_matches)/total_assets*100:.1f}%)")
-    print(f"  Coordinate coverage: {len(coordinate_matches)}/{total_assets} assets ({len(coordinate_matches)/total_assets*100:.1f}%)")
+    # print("\n[INTEL] Method Coverage Analysis:")
+    # print(f"  Polygon coverage: {len(polygon_matches)}/{total_assets} assets ({len(polygon_matches)/total_assets*100:.1f}%)")
+    # print(f"  Alias coverage: {len(alias_matches)}/{total_assets} assets ({len(alias_matches)/total_assets*100:.1f}%)")
+    # print(f"  Coordinate coverage: {len(coordinate_matches)}/{total_assets} assets ({len(coordinate_matches)/total_assets*100:.1f}%)")
 
     # Method effectiveness
-    print(f"\n[INTEL] Method Effectiveness:")
-    print(f"  1st: Polygon method ({len(polygon_matches)} matches)")
-    print(f"  2nd: Alias method ({len(alias_matches)} matches)")
-    print(f"  3rd: Coordinate method ({len(coordinate_matches)} matches)")
+    # print(f"\n[INTEL] Method Effectiveness:")
+    # print(f"  1st: Polygon method ({len(polygon_matches)} matches)")
+    # print(f"  2nd: Alias method ({len(alias_matches)} matches)")
+    # print(f"  3rd: Coordinate method ({len(coordinate_matches)} matches)")
+
+    # Keep only the headline counts (no coverage %, no effectiveness, no breakdown tables)
+    print(f"[INTEL] Assets loaded: {total_assets}")
+    print(f"[INTEL] Assets impacted: {total_impacted}")
+    print(f"[INTEL] Polygon matches: {len(polygon_matches)}")
+    print(f"[INTEL] Alias matches: {len(alias_matches)}")
+    print(f"[INTEL] Coordinate matches: {len(coordinate_matches)}")    
 
 
 
@@ -526,24 +559,30 @@ def _alias_analysis(asset_city: str, asset_country: str, disasters: list[dict[st
 # COORDINATE helpers
 # ------------------------------------------------------------------------------------
 
-def _extract_disaster_coordinates(impact_json: dict) -> List[Dict]:
-        """Extract all disaster coordinates from impact data."""
-        coords = []
-        
-        datums = impact_json.get("datums", [])
-        for block in datums:
-            if isinstance(block, dict):
-                alias = block.get("alias", "").strip().casefold()
-                records = block.get("datum", [])
-                
-                if isinstance(records, list):
-                    for record in records:
-                        if isinstance(record, dict):
-                            coord = _extract_single_coordinate(record)
-                            if coord:
-                                coords.append(coord)
-        
-        return coords
+def _extract_disaster_coordinates(impact_json: dict, event_id: str) -> List[Dict]:
+    """Extract all disaster coordinates from impact data, with provenance."""
+    coords: List[Dict] = []
+ 
+    datums = impact_json.get("datums", [])
+    for block in datums:
+        if not isinstance(block, dict):
+            continue
+ 
+        alias = (block.get("alias") or "").strip().casefold()
+        records = block.get("datum", [])
+        if not isinstance(records, list):
+            continue
+ 
+        for record in records:
+            if not isinstance(record, dict):
+                continue
+            coord = _extract_single_coordinate(record)
+            if coord:
+                coord["event_id"] = event_id
+                coord["alias"] = alias
+                coords.append(coord)
+ 
+    return coords
 
 
 def _dedupe_coordinates(coords: List[Dict], decimals: int = 4) -> List[Dict]:
@@ -560,8 +599,13 @@ def _dedupe_coordinates(coords: List[Dict], decimals: int = 4) -> List[Dict]:
     unique_coords = []
     
     for coord in coords:
-        # Round coordinates to specified precision for comparison
-        key = (round(coord['latitude'], decimals), round(coord['longitude'], decimals))
+        # Dedupe within provenance (don’t collapse different events into one)
+        key = (
+            coord.get("event_id", ""),
+            coord.get("alias", ""),
+            round(coord.get("latitude"), decimals),
+            round(coord.get("longitude"), decimals)
+        )
         if key not in seen:
             seen.add(key)
             unique_coords.append(coord)
@@ -570,26 +614,41 @@ def _dedupe_coordinates(coords: List[Dict], decimals: int = 4) -> List[Dict]:
 
 
 def _extract_single_coordinate(record: dict) -> Optional[Dict]:
-        """Extract single coordinate from record."""
-        scalars_dict = _scalars_to_dict(record)
-        
-        lat = lon = None
+    """Extract a single coordinate from a datum record with strict field matching."""
+    scalars_dict = _scalars_to_dict(record)
 
-        # Search through all scalar fields for lat/long
-        for name, value in scalars_dict.items():
-            if not value or not value.replace('.', '').replace('-', '').isdigit():
-                continue
+    lat: Optional[float] = None
+    lon: Optional[float] = None
+    # Strict, case-insensitive exact-name matching only
+    lat_names = {"lat", "latitude"}
+    lon_names = {"lon", "long", "longitude"}
 
-            name_lower = name.lower()
-            if 'lat' in name_lower:
-                lat = float(value)
-            elif 'long' in name_lower or 'lon' in name_lower:
-                lon = float(value)
-        
-        if lat is not None and lon is not None:
-            return {'latitude': lat, 'longitude': lon}
+    for name, value in scalars_dict.items():
+        if value is None:
+            continue
+        s = str(value).strip()
+        if not s:
+            continue
+        try:
+            num = float(s)
+        except Exception:
+            continue
+
+        key = str(name).strip().casefold()
+        if key in lat_names:
+            lat = num
+        elif key in lon_names:
+            lon = num
+
+    # Numeric + range validation
+    if lat is None or lon is None:
+        return None
+    if not (-90.0 <= lat <= 90.0):
+        return None
+    if not (-180.0 <= lon <= 180.0):
         return None
 
+    return {"latitude": lat, "longitude": lon}
 
 def _haversine_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     """Calculate distance between two points in miles.
@@ -615,56 +674,64 @@ def _haversine_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> f
     return R * c
 
 
-def _coordinate_analysis(asset_coords: tuple[float, float], impact_data: dict) -> dict[str, Any]:
-    """Check if asset is impacted via coordinate proximity.
-    
+def _coordinate_analysis(asset_coords: tuple[float, float], impact_data: dict, top_n: int = 5) -> dict[str, Any]:
+    """Return the top-N nearest disaster impact coordinates to this asset.
+
+    No boolean cutoff. Pure proximity ranking for downstream decision logic.
+
     Args:
         asset_coords: (latitude, longitude) tuple
         impact_data: dict mapping eventid → {impact_json, eventtype, coordinates}
-    
+        top_n: number of nearest candidates to return
+
     Returns:
         {
-            'impacted': bool,
-            'event_id': str,
-            'location': dict[str, str],  # {'city': str, 'country': str}
-            'distance': float
-        } or {'impacted': False}
+          'nearest': [
+             {'event_id': str, 'alias': str, 'latitude': float, 'longitude': float, 'distance_miles': float},
+             ...
+          ]
+        }  # empty list if none found / invalid asset coords
     """
-    for eventid, data in impact_data.items():
-        disaster_coords = _extract_disaster_coordinates(data['impact_json'])
-        disaster_coords = _dedupe_coordinates(disaster_coords)
-        
-        if not disaster_coords:
-            continue
-            
-        min_distance = float('inf')
-        closest_coord = None
-        
-        for coord in disaster_coords:
-            distance = _haversine_distance(
-                asset_coords[0], asset_coords[1],
-                coord['latitude'], coord['longitude']
-            )
-            if distance < min_distance:
-                min_distance = distance
-                closest_coord = coord
-        
-        if min_distance <= 311:  # 500km ≈ 311 miles
-            location_info = _reverse_geocode(
-                closest_coord['latitude'], 
-                closest_coord['longitude']
-            )
-            
-            return {
-                'impacted': True,
-                'event_id': eventid,
-                'location': location_info,
-                'distance': min_distance
-            }
-    
-    return {'impacted': False}
+    if not asset_coords or len(asset_coords) < 2:
+        return {"nearest": []}
+    if not isinstance(asset_coords[0], (int, float)) or not isinstance(asset_coords[1], (int, float)):
+        return {"nearest": []}
 
+    candidates: List[Dict] = []
 
+    for eventid, data in (impact_data or {}).items():
+        impact_json = (data or {}).get("impact_json") or {}
+        coords = _extract_disaster_coordinates(impact_json, eventid)
+        if coords:
+            candidates.extend(coords)
+
+    if not candidates:
+        return {"nearest": []}
+
+    # Dedupe BEFORE ranking
+    candidates = _dedupe_coordinates(candidates)
+
+    # Compute proximity for every candidate (global ranking)
+    for c in candidates:
+        c["distance_miles"] = _haversine_distance(
+            float(asset_coords[0]), float(asset_coords[1]),
+            float(c["latitude"]), float(c["longitude"])
+        )
+
+    candidates.sort(key=lambda c: (c["distance_miles"], c.get("event_id", ""), c.get("alias", ""), c["latitude"], c["longitude"]))
+
+    nearest = [
+        {
+            "event_id": c.get("event_id", "unknown"),
+            "alias": c.get("alias", ""),
+            "latitude": c["latitude"],
+            "longitude": c["longitude"],
+            "distance_miles": c["distance_miles"],
+        }
+        for c in candidates[: max(0, int(top_n))]
+    ]
+
+    return {"nearest": nearest}
             
 # ------------------------------------------------------------------------------------
 # RAID pipeline
@@ -743,6 +810,10 @@ def recon(debug: bool = False) -> tuple[list[dict[str, str]], int, dict[str, dic
 
     disasters: list[dict[str, str]] = []
 
+    missing_impact_url_count = 0
+    missing_impact_url_reasons: dict[str, int] = {}
+    missing_impact_url_events: list[tuple[str, str]] = []
+
     for idx, ev in enumerate(events, start=1):
         if debug and (idx == 1 or idx % 10 == 0):
             print(f"[RECON] progress {idx}/{len(events)}")
@@ -755,6 +826,12 @@ def recon(debug: bool = False) -> tuple[list[dict[str, str]], int, dict[str, dic
             eventdata_json = _get_json(ev["eventdata_url"], timeout=20)
         except Exception as e:
             continue
+
+        has_impact, reason = check_missing_impact_urls(eventdata_json)
+        if not has_impact:
+            missing_impact_url_count += 1
+            missing_impact_url_reasons[reason] = missing_impact_url_reasons.get(reason, 0) + 1
+            missing_impact_url_events.append((eventtype, eventid))
 
         impact_url = _extract_impact_url(eventdata_json)
         if not impact_url:
@@ -794,8 +871,17 @@ def recon(debug: bool = False) -> tuple[list[dict[str, str]], int, dict[str, dic
     if debug:
         print("[RECON] Hierarchical Collection Summary:")
         print(f"  Impact events collected: {len(impact_data)}")
-        print(f"  Alias disasters extracted: {len(disasters)}")
+        print(f"  Disasters extracted: {len(disasters)}")
         print(f"  Red alert events: {total_red}")
+
+        print("\n[RECON] Missing impact URL analysis:")
+        print(f"  Events missing impact URL: {missing_impact_url_count}/{len(events)}")
+        for k, v in sorted(missing_impact_url_reasons.items(), key=lambda x: (-x[1], x[0])):
+            print(f"   - {k}: {v}")
+        if missing_impact_url_events:
+            print("  Missing-impact events:")
+            for et, eid in missing_impact_url_events:
+                print(f"   - {et} {eid}")
         
         # Data quality validation
         valid_impact_data = sum(1 for data in impact_data.values() if data.get('impact_json'))
@@ -804,28 +890,28 @@ def recon(debug: bool = False) -> tuple[list[dict[str, str]], int, dict[str, dic
         print(f"  Event coordinates: {valid_coordinates}/{len(impact_data)}")
         
         # Show disaster details for debugging
-        print("\n[RECON] Disaster Events Processed:")
-        for eventid, data in impact_data.items():
-            coords = data.get('coordinates')
-            event_type = data.get('eventtype', 'unknown')
-            if coords and isinstance(coords, tuple) and len(coords) == 2:
-                print(f"  {eventid}: {event_type} at ({coords[0]:.3f}, {coords[1]:.3f})")
-            else:
-                print(f"  {eventid}: {event_type} (invalid coordinates: {coords})")
+        # print("\n[RECON] Disaster Events Processed:")
+        # for eventid, data in impact_data.items():
+        #     coords = data.get('coordinates')
+        #     event_type = data.get('eventtype', 'unknown')
+        #     if coords and isinstance(coords, tuple) and len(coords) == 2:
+        #         print(f"  {eventid}: {event_type} at ({coords[0]:.4f}, {coords[1]:.4f})")
+        #     else:
+        #         print(f"  {eventid}: {event_type} (invalid coordinates: {coords})")
         
-        print("\n[RECON] Alias Disasters:")
-        for disaster in disasters[:5]:  # Show first 5
-            city = disaster.get('city', 'N/A')
-            country = disaster.get('country', 'N/A')
-            event_type = disaster.get('type', 'N/A')
-            print(f"  {city}, {country} - {event_type}")
-        if len(disasters) > 5:
-            print(f"  ... and {len(disasters) - 5} more")
+        # print("\n[RECON] Alias Disasters:")
+        # for disaster in disasters[:5]:  # Show first 5
+        #     city = disaster.get('city', 'N/A')
+        #     country = disaster.get('country', 'N/A')
+        #     event_type = disaster.get('type', 'N/A')
+        #     print(f"  {city}, {country} - {event_type}")
+        # if len(disasters) > 5:
+        #     print(f"  ... and {len(disasters) - 5} more")
 
     return disasters, total_red, impact_data
 
 
-def assets() -> tuple[dict[str, str], dict[str, str], dict[str, Tuple[float, float]], dict[str, dict[str, str]]]:
+def assets() -> tuple[dict[str, str], dict[str, str], dict[str, Optional[Tuple[float, float]]], dict[str, dict[str, str]]]:
     """
     A — ASSETS (DATA INPUT)
     Load company / contractor asset data (cities, countries, assets, etc.) from assets.csv
@@ -835,7 +921,7 @@ def assets() -> tuple[dict[str, str], dict[str, str], dict[str, Tuple[float, flo
       - city
       - country
       - type       (e.g. 'personnel', 'building', 'vehicle', ...)
-      - latitude   (pre-geocoded coordinates)
+      - latitude   (pre-geocoded coordinates)""" """  """ """
       - longitude  (pre-geocoded coordinates)
     Returns:
       cities:       mapping[str, str]           optional lookup of asset_id -> city name
@@ -847,7 +933,7 @@ def assets() -> tuple[dict[str, str], dict[str, str], dict[str, Tuple[float, flo
     """
     cities: dict[str, str] = {}
     countries: dict[str, str] = {}
-    coordinates: dict[str, Tuple[float, float]] = {}
+    coordinates: dict[str, Optional[Tuple[float, float]]] = {}
     assets_by_id: dict[str, dict[str, str]] = {}
     csv_path = Path(__file__).resolve().parents[2] / "tests" / "data" / "assets.csv"
     if not csv_path.exists():
@@ -855,11 +941,12 @@ def assets() -> tuple[dict[str, str], dict[str, str], dict[str, Tuple[float, flo
     print("[ASSETS] Loading assets with pre-geocoded coordinates...")
     
     with csv_path.open(newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
+        reader = csv.DictReader(f, skipinitialspace=True)
         loaded_count = 0
         coord_count = 0
         
-        for row in reader:
+        for raw_row in reader:
+            row = {(k.strip() if isinstance(k, str) else k): v for k, v in raw_row.items() if k}
             asset_id = (row.get("unique_id") or "").strip()
             if not asset_id:
                 continue
@@ -889,10 +976,10 @@ def assets() -> tuple[dict[str, str], dict[str, str], dict[str, Tuple[float, flo
 
 
 def intel(
-    disasters: list[dict[str, str]], 
-    cities: dict[str, str], 
-    countries: dict[str, str], 
-    coordinates: dict[str, Tuple[float, float]], 
+    disasters: list[dict[str, str]],
+    cities: dict[str, str],
+    countries: dict[str, str],
+    coordinates: dict[str, Optional[Tuple[float, float]]],
     assets_by_id: dict[str, dict[str, str]],
     impact_data: dict = None
 ) -> tuple[list[dict[str, str]], list[list[str]]]:
@@ -913,14 +1000,21 @@ def intel(
         asset_coords = coordinates.get(asset_id)
         asset_city = (cities.get(asset_id) or "").strip().casefold()
         asset_country = (countries.get(asset_id) or "").strip().casefold()
+
+        has_coords = (
+            isinstance(asset_coords, (tuple, list))
+            and len(asset_coords) == 2
+            and isinstance(asset_coords[0], (int, float))
+            and isinstance(asset_coords[1], (int, float))
+        )
         
         asset_impacted = False
         impact_method = None
         impacting_event = None
         impact_location = None
-        
+
         # METHOD 1: Polygon Analysis (Primary Method) - Check ALL events
-        if impact_data and not asset_impacted:
+        if impact_data and has_coords and not asset_impacted:
             polygon_result = _polygon_analysis(asset_coords, impact_data)
             if polygon_result['impacted']:
                 impact_method = "POLYGON"
@@ -936,14 +1030,12 @@ def intel(
                 impacting_event = alias_result['event_id']
         
         # METHOD 3: Coordinate Analysis (Tertiary Method) - Check ALL events
-        if not asset_impacted:
-            coord_result = _coordinate_analysis(asset_coords, impact_data)
-            if coord_result['impacted']:
-                impact_method = "COORDINATE"
-                asset_impacted = True
-                impacting_event = coord_result['event_id']
-                impact_location = coord_result['location']
-        
+        nearest_disaster_coords = []
+        if not asset_impacted and has_coords:
+            coord_result = _coordinate_analysis(asset_coords, impact_data, top_n=5)
+            nearest_disaster_coords = coord_result.get("nearest", []) if isinstance(coord_result, dict) else []
+            # Nearest candidates are attached for downstream matching rules / review.
+
         # Add impacted asset to results
         if asset_impacted:
             # Get event type from the impacting event
@@ -967,11 +1059,8 @@ def intel(
                 "coordinates": f"{asset_coords[0]:.4f}, {asset_coords[1]:.4f}"
             }
 
-            # Add disaster location context for coordinate method
-            if impact_method == "COORDINATE" and impact_location:
-                match_record["disaster_city"] = impact_location['city']
-                match_record["disaster_country"] = impact_location['country']
-            elif impact_method == "ALIAS" and alias_result:
+            # Add disaster location context for alias/polygon methods
+            if impact_method == "ALIAS" and alias_result:
                 match_record["disaster_city"] = alias_result.get('disaster_city', "Unknown")
                 match_record["disaster_country"] = alias_result.get('disaster_country', "Unknown")
             elif impact_method == "POLYGON" and impacting_event in impact_data:
@@ -980,6 +1069,10 @@ def intel(
             
             matches.append(match_record)
             outreach_list.append(asset)
+        else:
+            # Not impacted by polygon/alias. Attach proximity candidates for later decision rules.
+            if nearest_disaster_coords:
+                asset["nearest_disaster_coords"] = nearest_disaster_coords
 
     return matches, outreach_list
 
