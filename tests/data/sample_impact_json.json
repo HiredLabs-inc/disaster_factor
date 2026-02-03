@@ -1,0 +1,431 @@
+{
+  "episodeid": "EQ_202512311547543118",
+  "eventid": {
+    "namespace": "",
+    "eventtype": "EQ",
+    "eventname": ""
+  },
+  "modelname": "EQ",
+  "modelrun": "202512311547543118",
+  "modelstatus": "info: processing ok",
+  "datums": [
+    {
+      "datum": [
+        {
+          "datasource": "Ports",
+          "io": "o",
+          "datum_id": "1",
+          "type": "Ports",
+          "scalars": {
+            "scalar": [
+              {
+                "name": "OBJECTID",
+                "value": "6606",
+                "valuetype": "Int32"
+              },
+              {
+                "name": "NAME",
+                "value": "Fudai",
+                "valuetype": "String"
+              },
+              {
+                "name": "LOCODE",
+                "value": "",
+                "valuetype": "String"
+              },
+              {
+                "name": "COUNTRY",
+                "value": "Japan",
+                "valuetype": "String"
+              },
+              {
+                "name": "TYPE",
+                "value": "700",
+                "valuetype": "Int32"
+              },
+              {
+                "name": "LONGITUDE",
+                "value": "141.948853000000000",
+                "valuetype": "Decimal"
+              },
+              {
+                "name": "LATITUDE",
+                "value": "39.995838000000000",
+                "valuetype": "Decimal"
+              },
+              {
+                "name": "FID_1",
+                "value": "101006607",
+                "valuetype": "Decimal"
+              },
+              {
+                "name": "distance",
+                "value": "81.2056584082305",
+                "valuetype": "Double"
+              }
+            ]
+          }
+        },
+        {
+          "datasource": "Ports",
+          "io": "o",
+          "datum_id": "2",
+          "type": "Ports",
+          "scalars": {
+            "scalar": [
+              {
+                "name": "OBJECTID",
+                "value": "1771",
+                "valuetype": "Int32"
+              },
+              {
+                "name": "NAME",
+                "value": "Miyako",
+                "valuetype": "String"
+              },
+              {
+                "name": "LOCODE",
+                "value": "JPMYK",
+                "valuetype": "String"
+              },
+              {
+                "name": "COUNTRY",
+                "value": "Japan",
+                "valuetype": "String"
+              },
+              {
+                "name": "TYPE",
+                "value": "700",
+                "valuetype": "Int32"
+              },
+              {
+                "name": "LONGITUDE",
+                "value": "141.975204000000000",
+                "valuetype": "Decimal"
+              },
+              {
+                "name": "LATITUDE",
+                "value": "39.638561000000000",
+                "valuetype": "Decimal"
+              },
+              {
+                "name": "FID_1",
+                "value": "101001770",
+                "valuetype": "Decimal"
+              },
+              {
+                "name": "distance",
+                "value": "94.1621580708157",
+                "valuetype": "Double"
+              }
+            ]
+          }
+        }
+      ],
+      "alias": "Ports",
+      "id": "EQ",
+      "source": "W_PORTS"
+    },
+    {
+      "datum": [
+        {
+          "datasource": "UrbanAreas",
+          "io": "o",
+          "datum_id": "1",
+          "type": "UrbanAreas",
+          "scalars": {
+            "scalar": [
+              {
+                "name": "OBJECTID",
+                "value": "113674",
+                "valuetype": "Int32"
+              },
+              {
+                "name": "cityname",
+                "value": "Kudschi",
+                "valuetype": "String"
+              },
+              {
+                "name": "country",
+                "value": "Japan",
+                "valuetype": "String"
+              },
+              {
+                "name": "admin1",
+                "value": "Iwate",
+                "valuetype": "String"
+              },
+              {
+                "name": "iso3",
+                "value": "JPN",
+                "valuetype": "String"
+              },
+              {
+                "name": "iso2",
+                "value": "JA",
+                "valuetype": "String"
+              },
+              {
+                "name": "population",
+                "value": "6381",
+                "valuetype": "Double"
+              },
+              {
+                "name": "populationboundibox",
+                "value": "7774",
+                "valuetype": "Double"
+              },
+              {
+                "name": "boundiboxjson",
+                "value": "{\"type\": \"Polygon\",\"coordinates\":[[[141.74870415700002,40.18439868400003],[141.83120104400007,40.18439868400003],[141.83120104400007,40.202310705000059],[141.74870415700002,40.202310705000059],[141.74870415700002,40.18439868400003]]]}",
+                "valuetype": "String"
+              },
+              {
+                "name": "SHAPE_JSON",
+                "value": "{\"type\": \"Polygon\",\"coordinates\":[[[141.79588688300009,40.193354473000056],[141.81947824600002,40.193354473000056],[141.83120104400007,40.202310705000059],[141.80760773100008,40.202310705000059],[141.78401441800008,40.202310705000059],[141.76042110500009,40.202310705000059],[141.74870415700002,40.193354473000056],[141.77229552000006,40.193354473000056],[141.76058196300005,40.18439868400003],[141.78417137700012,40.18439868400003],[141.79588688300009,40.193354473000056]]]}",
+                "valuetype": "String"
+              },
+              {
+                "name": "SHAPE_TEXT",
+                "value": "POLYGON ((141.79588688300009 40.193354473000056, 141.81947824600002 40.193354473000056, 141.83120104400007 40.202310705000059, 141.80760773100008 40.202310705000059, 141.78401441800008 40.202310705000059, 141.76042110500009 40.202310705000059, 141.74870415700002 40.193354473000056, 141.77229552000006 40.193354473000056, 141.76058196300005 40.18439868400003, 141.78417137700012 40.18439868400003, 141.79588688300009 40.193354473000056))",
+                "valuetype": "String"
+              },
+              {
+                "name": "distance",
+                "value": "90.6366982616901",
+                "valuetype": "Double"
+              }
+            ]
+          }
+        },
+        {
+          "datasource": "UrbanAreas",
+          "io": "o",
+          "datum_id": "2",
+          "type": "UrbanAreas",
+          "scalars": {
+            "scalar": [
+              {
+                "name": "OBJECTID",
+                "value": "112837",
+                "valuetype": "Int32"
+              },
+              {
+                "name": "cityname",
+                "value": "Miyako",
+                "valuetype": "String"
+              },
+              {
+                "name": "country",
+                "value": "Japan",
+                "valuetype": "String"
+              },
+              {
+                "name": "admin1",
+                "value": "Iwate",
+                "valuetype": "String"
+              },
+              {
+                "name": "iso3",
+                "value": "JPN",
+                "valuetype": "String"
+              },
+              {
+                "name": "iso2",
+                "value": "JA",
+                "valuetype": "String"
+              },
+              {
+                "name": "population",
+                "value": "10415",
+                "valuetype": "Double"
+              },
+              {
+                "name": "populationboundibox",
+                "value": "20824",
+                "valuetype": "Double"
+              },
+              {
+                "name": "boundiboxjson",
+                "value": "{\"type\": \"Polygon\",\"coordinates\":[[[141.92837575200008,39.621068532000038],[141.98318581700005,39.621068532000038],[141.98318581700005,39.647854611000071],[141.92837575200008,39.647854611000071],[141.92837575200008,39.621068532000038]]]}",
+                "valuetype": "String"
+              },
+              {
+                "name": "SHAPE_JSON",
+                "value": "{\"type\": \"Polygon\",\"coordinates\":[[[141.98291708300007,39.647854611000071],[141.92837575200008,39.644458180000072],[141.94040549100009,39.636008791000052],[141.93651728900011,39.629996794000078],[141.94825242900004,39.629996794000078],[141.95632090600009,39.624067822000029],[141.97199898200006,39.621068532000038],[141.98318581700005,39.638925487000051],[141.97144973000002,39.638925487000051],[141.98291708300007,39.647854611000071]]]}",
+                "valuetype": "String"
+              },
+              {
+                "name": "SHAPE_TEXT",
+                "value": "POLYGON ((141.98291708300007 39.647854611000071, 141.92837575200008 39.644458180000072, 141.94040549100009 39.636008791000052, 141.93651728900011 39.629996794000078, 141.94825242900004 39.629996794000078, 141.95632090600009 39.624067822000029, 141.97199898200006 39.621068532000038, 141.98318581700005 39.638925487000051, 141.97144973000002 39.638925487000051, 141.98291708300007 39.647854611000071))",
+                "valuetype": "String"
+              },
+              {
+                "name": "distance",
+                "value": "93.0356940698412",
+                "valuetype": "Double"
+              }
+            ]
+          }
+        }
+      ],
+      "alias": "UrbanAreas",
+      "id": "EQ",
+      "source": "CRITECH_URBAN_AREAS"
+    },
+    {
+      "datum": [
+        {
+          "datasource": "Alert Parameters",
+          "io": "o",
+          "datum_id": "1",
+          "type": "alert",
+          "scalars": {
+            "scalar": [
+              {
+                "name": "SUMPOP200.0",
+                "value": "2073210",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP175.0",
+                "value": "1373333",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP150.0",
+                "value": "655216",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP125.0",
+                "value": "262426",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP100.0",
+                "value": "93293",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP75.0",
+                "value": "0",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP50.0",
+                "value": "0",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP20.0",
+                "value": "0",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP25.0",
+                "value": "0",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP10.0",
+                "value": "0",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP5.0",
+                "value": "0",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP2.0",
+                "value": "0",
+                "valuetype": "String"
+              }
+            ]
+          }
+        }
+      ],
+      "alias": "Alert Parameters",
+      "id": "EQ",
+      "source": "ALERT PARAMETERS"
+    },
+    {
+      "datum": [
+        {
+          "datasource": "POP",
+          "io": "o",
+          "datum_id": "1",
+          "type": "POP",
+          "scalars": {
+            "scalar": [
+              {
+                "name": "SUMPOP200.0",
+                "value": "2073210",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP175.0",
+                "value": "1373333",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP150.0",
+                "value": "655216",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP125.0",
+                "value": "262426",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP100.0",
+                "value": "93293",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP75.0",
+                "value": "0",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP50.0",
+                "value": "0",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP20.0",
+                "value": "0",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP25.0",
+                "value": "0",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP10.0",
+                "value": "0",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP5.0",
+                "value": "0",
+                "valuetype": "String"
+              },
+              {
+                "name": "SUMPOP2.0",
+                "value": "0",
+                "valuetype": "String"
+              }
+            ]
+          }
+        }
+      ],
+      "alias": "POP",
+      "id": "EQ",
+      "source": "Populations"
+    }
+  ]
+}

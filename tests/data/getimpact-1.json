@@ -1,0 +1,1482 @@
+{
+    "episodeid": "EQ_202512191138174907",
+    "eventid": {
+        "namespace": "",
+        "eventtype": "EQ",
+        "eventname": ""
+    },
+    "modelname": "EQ",
+    "modelrun": "202512191138174907",
+    "modelstatus": "info: processing ok",
+    "datums": [
+        {
+            "datum": [
+                {
+                    "datasource": "country",
+                    "io": "o",
+                    "datum_id": "1",
+                    "type": "country",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "OBJECTID",
+                                "value": "28",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "FIPS_CNTRY",
+                                "value": "BL",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "GMI_CNTRY",
+                                "value": "BOL",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "ISO_2DIGIT",
+                                "value": "BO",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "ISO_3DIGIT",
+                                "value": "BOL",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Bolivia",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "POP2007",
+                                "value": "0",
+                                "valuetype": "Int32"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "country",
+                    "io": "o",
+                    "datum_id": "2",
+                    "type": "country",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "OBJECTID",
+                                "value": "33",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "FIPS_CNTRY",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "GMI_CNTRY",
+                                "value": "BRA",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "ISO_2DIGIT",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "ISO_3DIGIT",
+                                "value": "BRA",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Brazil",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "POP2007",
+                                "value": "0",
+                                "valuetype": "Int32"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "country",
+                    "io": "o",
+                    "datum_id": "3",
+                    "type": "country",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "OBJECTID",
+                                "value": "178",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "FIPS_CNTRY",
+                                "value": "PE",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "GMI_CNTRY",
+                                "value": "PER",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "ISO_2DIGIT",
+                                "value": "PE",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "ISO_3DIGIT",
+                                "value": "PER",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Peru",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "POP2007",
+                                "value": "0",
+                                "valuetype": "Int32"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "alias": "country",
+            "id": "0",
+            "source": "country"
+        },
+        {
+            "datum": [
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "1",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "GREEN",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Low",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "116",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "668",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Amazonas",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Brazil",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-3.2510",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-56.8857",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-56.8857&lat=-3.251&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "2",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "ORANGE",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Medium",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "121",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "674",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Maranhao",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Brazil",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-5.4067",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-47.3755",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-47.3755&lat=-5.4067&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "3",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "ORANGE",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Medium",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "122",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "675",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Mato Grosso",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Brazil",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-13.5002",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-51.5000",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-51.5&lat=-13.5002&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "4",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "ORANGE",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Medium",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "125",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "678",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Para",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Brazil",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-6.3134",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-48.7353",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-48.7353&lat=-6.3134&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "5",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "ORANGE",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Medium",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "133",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "686",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Rondonia",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Brazil",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-9.5001",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-63.5000",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-63.5&lat=-9.5001&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "6",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "ORANGE",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Medium",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "138",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "691",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Tocantins",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Brazil",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-13.0456",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-46.9306",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-46.9306&lat=-13.0456&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "7",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "ORANGE",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Medium",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "117",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "669",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Bahia",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Brazil",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-11.5001",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-45.5000",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-45.5&lat=-11.5001&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "8",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "ORANGE",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Medium",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "119",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "672",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Espirito Santo",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Brazil",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-19.7715",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-41.0972",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-41.0972&lat=-19.7715&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "9",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "ORANGE",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Medium",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "120",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "673",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Goias, Distrito Federal",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Brazil",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-17.5002",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-49.5000",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-49.5&lat=-17.5002&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "10",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "ORANGE",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Medium",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "123",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "676",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Mato Grosso Do Sul",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Brazil",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-17.6513",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-56.4536",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-56.4536&lat=-17.6513&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "11",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "ORANGE",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Medium",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "124",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "677",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Minas Gerais",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Brazil",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-18.4970",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-41.5305",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-41.5305&lat=-18.497&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "12",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "GREEN",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Low",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "127",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "680",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Parana",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Brazil",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-25.3570",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-48.0364",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-48.0364&lat=-25.357&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "13",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "ORANGE",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Medium",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "129",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "682",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Piaui",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Brazil",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-8.5001",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-43.5000",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-43.5&lat=-8.5001&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "14",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "ORANGE",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Medium",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "130",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "683",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Rio De Janeiro",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Brazil",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-21.5674",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-41.5380",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-41.538&lat=-21.5674&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "15",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "GREEN",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Low",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "135",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "688",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Santa Catarina",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Brazil",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-28.2804",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-48.8474",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-48.8474&lat=-28.2804&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "16",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "ORANGE",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Medium",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "136",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "689",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Sao Paulo",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Brazil",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-20.5761",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-48.4805",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-48.4805&lat=-20.5761&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "17",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "ORANGE",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Medium",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "110",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "40449",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BO",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Santa Cruz",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Bolivia",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-19.3002",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-57.9193",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-57.9193&lat=-19.3002&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "18",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "GREEN",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Low",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "1112",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "2348",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "PE",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Puno",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Peru",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-15.4851",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-69.6478",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-69.6478&lat=-15.4851&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "19",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "GREEN",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Low",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "107",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "40446",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BO",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "La Paz",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Bolivia",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-14.5115",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-68.4862",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-68.4862&lat=-14.5115&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "20",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "ORANGE",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Medium",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "118",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "670",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Ceara",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Brazil",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-6.4341",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-40.3699",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-40.3699&lat=-6.4341&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "21",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "ORANGE",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Medium",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "128",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "681",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Pernambuco",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Brazil",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-7.7140",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-39.5941",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-39.5941&lat=-7.714&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "datasource": "aru",
+                    "io": "o",
+                    "datum_id": "22",
+                    "type": "aru",
+                    "scalars": {
+                        "scalar": [
+                            {
+                                "name": "Alertcolor",
+                                "value": "ORANGE",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Alertlevel",
+                                "value": "Medium",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "OID",
+                                "value": "129",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ID",
+                                "value": "682",
+                                "valuetype": "Int32"
+                            },
+                            {
+                                "name": "ISO2",
+                                "value": "BR",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Name",
+                                "value": "Piaui",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "CNTRY_NAME",
+                                "value": "Brazil",
+                                "valuetype": "String"
+                            },
+                            {
+                                "name": "Latitude",
+                                "value": "-8.5001",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Longitude",
+                                "value": "-43.5000",
+                                "valuetype": "Decimal"
+                            },
+                            {
+                                "name": "Link",
+                                "value": "http://drought.emergency.copernicus.eu/tumbo/gdo/report?&lon=-43.5&lat=-8.5001&date=2025-11-21",
+                                "valuetype": "String"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "alias": "aru",
+            "id": "1",
+            "source": "aru"
+        }
+    ]
+}

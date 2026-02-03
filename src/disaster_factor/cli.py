@@ -28,17 +28,18 @@ def _build_parser(prog: str | None = None) -> argparse.ArgumentParser:
     sp_track.add_argument(
         "--debug",
         action="store_true",
-        help="Run without starting the local web UI (no http server / browser).",
+        help=(
+            "Run in debug mode: skip launching the web UI server and just write "
+            "affected.csv plus console output."
+        ),
     )
     sp_track.set_defaults(func=_cmd_track)
 
     return parser
 
 
-def _cmd_track(_args: argparse.Namespace) -> int:
-    # If --debug is set, do not start the http server / browser
-    open_webapp = not getattr(_args, "debug", False)
-    track_disasters(open_webapp=open_webapp)
+def _cmd_track(args: argparse.Namespace) -> int:
+    track_disasters(debug=getattr(args, "debug", False))
     return 0
 
 
