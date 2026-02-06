@@ -1,0 +1,42 @@
+{
+  "total_disasters": 111,
+  "disasters_with_polygons": 99,
+  "disasters_with_shape_json": 1003,
+  "disasters_with_boundbox": 1003,
+  "disasters_with_shape_wkt": 353,
+  "by_disaster_type": {
+    "EQ": {
+      "total": 5,
+      "with_polygons": 3,
+      "polygon_sources": {
+        "boundiboxjson": 35,
+        "SHAPE_JSON": 35,
+        "SHAPE_WKT": 2
+      }
+    },
+    "WF": {
+      "total": 102,
+      "with_polygons": 96,
+      "polygon_sources": {
+        "SHAPE_WKT": 351,
+        "boundiboxjson": 968,
+        "SHAPE_JSON": 968
+      }
+    },
+    "FL": {
+      "total": 3,
+      "with_polygons": 0,
+      "polygon_sources": {}
+    },
+    "TC": {
+      "total": 1,
+      "with_polygons": 0,
+      "polygon_sources": {}
+    }
+  },
+  "polygon_sources": {
+    "boundiboxjson": 1003,
+    "SHAPE_JSON": 1003,
+    "SHAPE_WKT": 353
+  }
+}

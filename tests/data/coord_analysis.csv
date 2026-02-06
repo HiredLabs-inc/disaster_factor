@@ -1,0 +1,1181 @@
+COORDINATE SOURCE ANALYSIS - UPDATED
+Total Coordinates,1174
+City Returns,270
+Non-City Returns,904
+
+DETAILED RESULTS
+EVENTTYPE,EVENTID,SOURCE,ALIAS,LATITUDE,LONGITUDE,IS_CITY,RESULT_TYPE,CITY_NAME,STATE_NAME,LOCALITY_LEVEL
+EQ,1516797,RSS_GEO_POINT,rss,-14.4976,-176.8625,False,NO_ADDRESS_DATA,NO_DATA,NO_DATA,NO_DATA
+EQ,1516700,RSS_GEO_POINT,rss,41.2222,142.418,False,NO_ADDRESS_DATA,NO_DATA,NO_DATA,NO_DATA
+WF,1026458,RSS_GEO_POINT,rss,5.7008475677821275,29.415367515228947,False,"NON_CITY: ['administrative_area_level_3', 'political']",Domoloto,Lakes,ADMIN_LEVEL_3
+WF,1026466,IMPACT_AIRPORTS,airports,-22.254723000000000,131.781952000000000,True,CITY_LEVEL,Yuendumu,Northern Territory,LOCALITY
+WF,1026466,IMPACT_AIRPORT,airport,-22.254723000000000,131.781952000000000,True,CITY_LEVEL,Yuendumu,Northern Territory,LOCALITY
+WF,1026466,RSS_GEO_POINT,rss,-22.452173765591969,131.83239793901527,True,CITY_LEVEL,Chilla Well,Northern Territory,LOCALITY
+EQ,1516540,RSS_GEO_POINT,rss,11.7649,143.364,False,NO_ADDRESS_DATA,NO_DATA,NO_DATA,NO_DATA
+EQ,1516500,IMPACT_AIRPORTS,airports,22.791666000000000,121.182777000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Fugang Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_AIRPORTS,airports,22.753611000000000,121.102501000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kangle Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_AIRPORTS,airports,22.671944000000000,121.466667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Nanliao Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_AIRPORTS,airports,22.699722000000000,120.482224000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Guangxing Village,Pingtung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_AIRPORTS,airports,22.672222000000000,120.461670000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Tanqian Village,Pingtung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_AIRPORTS,airports,22.577223000000000,120.348892000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Zhongcuo Village,Kaohsiung City,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_AIRPORTS,airports,22.981112000000000,120.281670000000000,True,CITY_LEVEL,Tainan,Tainan City,LOCALITY
+EQ,1516500,IMPACT_AIRPORTS,airports,22.705278000000000,120.279999000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Shengchang Village,Kaohsiung City,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_AIRPORTS,airports,22.029200000000000,121.533600000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Hongtou Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_AIRPORTS,airports,22.781666000000000,120.262222000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Shitan Village,Kaohsiung City,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_AIRPORTS,airports,22.924723000000000,120.258057000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Zhongzhou Village,Tainan City,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_AIRPORT,airport,22.791204000000000,121.180133000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Fufeng Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_AIRPORT,airport,22.753611000000000,121.102501000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kangle Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_AIRPORT,airport,22.671944000000000,121.466667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Nanliao Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_AIRPORT,airport,22.699722000000000,120.482224000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Guangxing Village,Pingtung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_AIRPORT,airport,22.672222000000000,120.461670000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Tanqian Village,Pingtung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_AIRPORT,airport,22.575278000000000,120.350556000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Shandong Village,Kaohsiung City,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_AIRPORT,airport,22.981112000000000,120.281670000000000,True,CITY_LEVEL,Tainan,Tainan City,LOCALITY
+EQ,1516500,IMPACT_AIRPORT,airport,22.705278000000000,120.279999000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Shengchang Village,Kaohsiung City,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_AIRPORT,airport,22.029200000000000,121.533600000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Hongtou Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_AIRPORT,airport,22.781666000000000,120.262222000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Shitan Village,Kaohsiung City,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_AIRPORT,airport,22.924723000000000,120.258057000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Zhongzhou Village,Tainan City,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_HYDRO,hydro,23.2477900000001,120.539544,False,"NON_CITY: ['administrative_area_level_3', 'political']",Xixing Village,Chiayi County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_HYDRO,hydro,23.202297,120.369704,False,"NON_CITY: ['administrative_area_level_3', 'political']",Jianan Village,Tainan City,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.900000000000000,121.233333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dulan Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.798361000000000,121.176102000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Fufeng Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.933029000000000,121.129097000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Yongan Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.757549000000000,121.141899000000000,True,CITY_LEVEL,Taitung,Taitung County,LOCALITY
+EQ,1516500,IMPACT_CITY,city,22.857361000000000,121.084198000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Chulu Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.972679000000000,121.291801000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Donghe Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.990549000000000,121.132599000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ruifeng Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.020750000000000,121.274902000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Taiyuan Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.770399000000000,121.026604000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dongxing Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.048140000000000,121.154099000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kanding Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.709200000000000,121.048302000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Jianye Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.027550000000000,121.320099000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Xinyi Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.086849000000000,121.213997000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Wanan Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.883333000000000,120.933333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Hongye Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.116076000000000,121.195959000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Xinxing Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.671600000000000,121.462303000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516500,IMPACT_CITY,city,23.109831000000000,121.364098000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Sanxian Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.612780000000000,120.994598000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dawang Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.171921000000000,121.242500000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Funan Village,Hualien County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.150000000000000,121.066667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Wulu Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.649731000000000,121.486000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Nanliao Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.154079000000000,121.385597000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Zhongxiao Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.713341000000000,120.862198000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Wenquan Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.529909000000000,120.955803000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Jinlun Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.580050000000000,120.864998000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Jialan Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.227659000000000,121.401604000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ningpu Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.742630000000000,120.738998000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Wutai Village,Pingtung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.301390000000000,121.266701000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Zhuoqing Village,Hualien County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.464390000000000,120.930801000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Duoliang Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.580320000000000,120.799599000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Liqiu Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.910200000000000,120.700897000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Duona Village,Kaohsiung City,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.778799000000000,120.692497000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dewen Village,Pingtung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.335751000000000,121.307297000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Taichang Village,Hualien County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.457680000000000,120.876099000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Tuba Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.035330000000000,120.692703000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Xinfa Village,Kaohsiung City,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.319691000000000,121.442902000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Changbin Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.218390000000000,120.799202000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Fuxing Village,Kaohsiung City,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.144670000000000,120.732399000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Gaozhong Village,Kaohsiung City,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.712351000000000,120.641701000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Sandi Village,Pingtung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.602369000000000,120.684998000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Wanan Village,Pingtung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.383333000000000,121.083333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Zhuoqing Village,Hualien County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.382500000000000,121.350098000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Guanyin Village,Hualien County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.382010000000000,120.894997000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Daniao Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.086651000000000,120.665703000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Laonong Village,Kaohsiung City,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.411119000000000,120.833000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Xinhua Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.882601000000000,120.602600000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Xinliao Village,Kaohsiung City,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.784420000000000,120.601898000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Nanhua Village,Pingtung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.824129000000000,120.588699000000000,True,CITY_LEVEL,Gaoshu,Pingtung County,LOCALITY
+EQ,1516500,IMPACT_CITY,city,22.491140000000000,120.714600000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Laiyi Village,Pingtung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.433189000000000,121.337997000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lishan Village,Hualien County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.316667000000000,120.800000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Meishan Village,Kaohsiung City,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.668390000000000,120.589104000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Daxin Village,Pingtung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.435610000000000,121.371696000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Songpu Village,Hualien County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.416269000000000,121.467796000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Zhangyuan Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.275030000000000,120.711197000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dakanuwa Village,Kaohsiung City,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,23.086081000000000,120.577103000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Datian Village,Kaohsiung City,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.899010000000000,120.526802000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Fuan Village,Kaohsiung City,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.672930000000000,120.477699000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Tanqian Village,Pingtung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_CITY,city,22.625681000000000,120.354103000000000,True,CITY_LEVEL,Kaohsiung,Kaohsiung City,LOCALITY
+EQ,1516500,IMPACT_CITY,city,22.619341000000000,120.276199000000000,True,CITY_LEVEL,Kaohsiung,Kaohsiung City,LOCALITY
+EQ,1516500,IMPACT_PORTS,ports,22.742262000000000,121.072098000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Jiannong Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_PORTS,ports,23.030986000000000,120.332760000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dongrong Village,Tainan City,ADMIN_LEVEL_3
+EQ,1516500,IMPACT_PORTS,ports,22.053982000000000,121.563240000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dongqing Village,Taitung County,ADMIN_LEVEL_3
+EQ,1516500,RSS_GEO_POINT,rss,22.8505,121.2069,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+WF,1026467,RSS_GEO_POINT,rss,6.1847549942459716,28.064300258119996,False,"NON_CITY: ['administrative_area_level_3', 'political']",Yangiri,Western Equatoria,ADMIN_LEVEL_3
+WF,1026468,RSS_GEO_POINT,rss,6.7146082881952083,27.462372603994588,False,"NON_CITY: ['administrative_area_level_2', 'political']",Nagero,Western Equatoria,ADMIN_LEVEL_2
+WF,1026469,RSS_GEO_POINT,rss,6.3447215358254176,31.800712145335623,False,"NON_CITY: ['administrative_area_level_3', 'political']",Makuach,Jonglei,ADMIN_LEVEL_3
+WF,1026470,RSS_GEO_POINT,rss,6.5721967653492008,32.350978658044,False,"NON_CITY: ['administrative_area_level_3', 'political']",Makuach,Jonglei,ADMIN_LEVEL_3
+WF,1026464,IMPACT_AIRPORTS,airports,-18.833333000000000,128.533333000000000,True,CITY_LEVEL,Tanami,Western Australia,LOCALITY
+WF,1026464,IMPACT_AIRPORTS,airports,-19.333333000000000,128.133333000000000,True,CITY_LEVEL,Sturt Creek,Western Australia,LOCALITY
+WF,1026464,IMPACT_AIRPORTS,airports,-19.583333000000000,127.633333000000000,True,CITY_LEVEL,Sturt Creek,Western Australia,LOCALITY
+WF,1026464,IMPACT_AIRPORTS,airports,-18.233889000000000,127.669722000000000,True,CITY_LEVEL,Halls Creek,Western Australia,LOCALITY
+WF,1026464,IMPACT_AIRPORT,airport,-18.833333000000000,128.533333000000000,True,CITY_LEVEL,Tanami,Western Australia,LOCALITY
+WF,1026464,IMPACT_AIRPORT,airport,-19.333333000000000,128.133333000000000,True,CITY_LEVEL,Sturt Creek,Western Australia,LOCALITY
+WF,1026464,IMPACT_AIRPORT,airport,-19.583333000000000,127.633333000000000,True,CITY_LEVEL,Sturt Creek,Western Australia,LOCALITY
+WF,1026464,IMPACT_AIRPORT,airport,-18.233889000000000,127.669722000000000,True,CITY_LEVEL,Halls Creek,Western Australia,LOCALITY
+WF,1026464,RSS_GEO_POINT,rss,-18.942359686308468,128.16372625416852,True,CITY_LEVEL,Sturt Creek,Western Australia,LOCALITY
+EQ,1516422,IMPACT_AIRPORTS,airports,-14.883333000000000,166.550000000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516422,IMPACT_AIRPORTS,airports,-15.508667000000000,167.213165000000000,True,CITY_LEVEL,Luganville,Sanma Province,LOCALITY
+EQ,1516422,IMPACT_AIRPORTS,airports,-15.422375000000000,167.705249000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",West Ambae,Penama Province,ADMIN_LEVEL_2
+EQ,1516422,IMPACT_AIRPORT,airport,-14.881523000000000,166.558091000000000,True,CITY_LEVEL,Lajmoli,Sanma Province,LOCALITY
+EQ,1516422,IMPACT_AIRPORT,airport,-15.505556000000000,167.221111000000000,True,CITY_LEVEL,Luganville,Sanma Province,LOCALITY
+EQ,1516422,IMPACT_AIRPORT,airport,-15.411727000000000,167.691232000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",West Ambae,Penama Province,ADMIN_LEVEL_2
+EQ,1516422,IMPACT_CITY,city,-15.021740000000000,167.042603000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",East Santo,Sanma Province,ADMIN_LEVEL_2
+EQ,1516422,IMPACT_CITY,city,-15.039050000000000,166.997406000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",East Santo,Sanma Province,ADMIN_LEVEL_2
+EQ,1516422,IMPACT_CITY,city,-15.131080000000000,167.119797000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516422,IMPACT_CITY,city,-14.816800000000000,166.737305000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516422,IMPACT_CITY,city,-15.116720000000000,166.964600000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516422,IMPACT_CITY,city,-14.316667000000000,167.416667000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516422,IMPACT_CITY,city,-15.173500000000000,167.139893000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",East Santo,Sanma Province,ADMIN_LEVEL_2
+EQ,1516422,IMPACT_CITY,city,-15.000940000000000,166.771500000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",North Santo,Sanma Province,ADMIN_LEVEL_2
+EQ,1516422,IMPACT_CITY,city,-15.179900000000000,167.022400000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",East Santo,Sanma Province,ADMIN_LEVEL_2
+EQ,1516422,IMPACT_CITY,city,-14.990570000000000,166.746201000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",North Santo,Sanma Province,ADMIN_LEVEL_2
+EQ,1516422,IMPACT_CITY,city,-14.702890000000000,166.638107000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",North Santo,Sanma Province,ADMIN_LEVEL_2
+EQ,1516422,IMPACT_CITY,city,-15.170620000000000,166.898697000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",North Santo,Sanma Province,ADMIN_LEVEL_2
+EQ,1516422,IMPACT_CITY,city,-15.239830000000000,167.150208000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",East Santo,Sanma Province,ADMIN_LEVEL_2
+EQ,1516422,IMPACT_CITY,city,-15.102320000000000,166.791794000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",North Santo,Sanma Province,ADMIN_LEVEL_2
+EQ,1516422,IMPACT_CITY,city,-15.053970000000000,166.742493000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",North Santo,Sanma Province,ADMIN_LEVEL_2
+EQ,1516422,IMPACT_CITY,city,-15.167700000000000,166.877197000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516422,IMPACT_CITY,city,-14.216667000000000,167.433333000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516422,IMPACT_CITY,city,-14.945310000000000,166.643997000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",North West Santo,Sanma Province,ADMIN_LEVEL_2
+EQ,1516422,IMPACT_CITY,city,-15.167850000000000,166.822693000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",North Santo,Sanma Province,ADMIN_LEVEL_2
+EQ,1516422,IMPACT_CITY,city,-15.158220000000000,166.801102000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",North Santo,Sanma Province,ADMIN_LEVEL_2
+EQ,1516422,IMPACT_CITY,city,-14.673930000000000,166.571396000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516422,IMPACT_CITY,city,-14.735890000000000,166.549194000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516422,IMPACT_CITY,city,-14.709790000000000,166.543106000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516422,IMPACT_CITY,city,-14.766490000000000,166.540100000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516422,IMPACT_CITY,city,-14.817220000000000,166.541702000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516422,IMPACT_CITY,city,-14.914890000000000,166.565704000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516422,IMPACT_CITY,city,-15.204490000000000,166.787399000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",North Santo,Sanma Province,ADMIN_LEVEL_2
+EQ,1516422,IMPACT_CITY,city,-14.945450000000000,166.576508000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516422,IMPACT_CITY,city,-14.882840000000000,166.552597000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516422,IMPACT_CITY,city,-15.000590000000000,166.601898000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516422,IMPACT_CITY,city,-15.328510000000000,167.162094000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",South East Santo,Sanma Province,ADMIN_LEVEL_2
+EQ,1516422,IMPACT_PORTS,ports,-15.139139000000000,167.094971000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",East Santo,Sanma Province,ADMIN_LEVEL_2
+EQ,1516422,IMPACT_PORTS,ports,-15.344452000000000,167.184845000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516422,IMPACT_PORTS,ports,-15.485988000000000,167.222137000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",South East Santo,Sanma Province,ADMIN_LEVEL_2
+EQ,1516422,IMPACT_PORTS,ports,-15.513581000000000,167.179627000000000,True,CITY_LEVEL,Luganville,Sanma Province,LOCALITY
+EQ,1516422,IMPACT_PORTS,ports,-13.944800000000000,167.483124000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Vanua Lava,Torba Province,ADMIN_LEVEL_2
+EQ,1516422,RSS_GEO_POINT,rss,-14.7032,167.1651,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+WF,1026465,IMPACT_AIRPORTS,airports,-32.508333000000000,115.841667000000000,True,CITY_LEVEL,Nambeelup,Western Australia,LOCALITY
+WF,1026465,IMPACT_AIRPORTS,airports,-33.350000000000000,116.150000000000000,True,CITY_LEVEL,Collie,Western Australia,LOCALITY
+WF,1026465,IMPACT_AIRPORTS,airports,-32.933333000000000,117.166667000000000,True,CITY_LEVEL,Narrogin,Western Australia,LOCALITY
+WF,1026465,IMPACT_AIRPORTS,airports,-32.098057000000000,115.880554000000000,True,CITY_LEVEL,Jandakot,Western Australia,LOCALITY
+WF,1026465,IMPACT_AIRPORTS,airports,-33.378333000000000,115.676667000000000,True,CITY_LEVEL,Davenport,Western Australia,LOCALITY
+WF,1026465,IMPACT_AIRPORTS,airports,-31.940277000000000,115.966667000000000,True,CITY_LEVEL,Perth Airport,Western Australia,LOCALITY
+WF,1026465,IMPACT_AIRPORT,airport,-32.508333000000000,115.841667000000000,True,CITY_LEVEL,Nambeelup,Western Australia,LOCALITY
+WF,1026465,IMPACT_AIRPORT,airport,-33.350000000000000,116.150000000000000,True,CITY_LEVEL,Collie,Western Australia,LOCALITY
+WF,1026465,IMPACT_AIRPORT,airport,-32.933333000000000,117.166667000000000,True,CITY_LEVEL,Narrogin,Western Australia,LOCALITY
+WF,1026465,IMPACT_AIRPORT,airport,-32.098057000000000,115.880554000000000,True,CITY_LEVEL,Jandakot,Western Australia,LOCALITY
+WF,1026465,IMPACT_AIRPORT,airport,-33.378333000000000,115.676667000000000,True,CITY_LEVEL,Davenport,Western Australia,LOCALITY
+WF,1026465,IMPACT_AIRPORT,airport,-31.940278000000000,115.966944000000000,True,CITY_LEVEL,Perth Airport,Western Australia,LOCALITY
+WF,1026465,IMPACT_HYDRO,hydro,-32.6484379999999,116.040644,True,CITY_LEVEL,Banksiadale,Western Australia,LOCALITY
+WF,1026465,IMPACT_HYDRO,hydro,-32.8473119999999,115.98549,True,CITY_LEVEL,Waroona,Western Australia,LOCALITY
+WF,1026465,IMPACT_HYDRO,hydro,-32.990845,115.978326,True,CITY_LEVEL,Hoffman,Western Australia,LOCALITY
+WF,1026465,IMPACT_HYDRO,hydro,-32.403993,116.101559,True,CITY_LEVEL,Jarrahdale,Western Australia,LOCALITY
+WF,1026465,IMPACT_HYDRO,hydro,-33.1227069999999,116.036057,True,CITY_LEVEL,Hoffman,Western Australia,LOCALITY
+WF,1026465,IMPACT_HYDRO,hydro,-33.22439,116.032313,True,CITY_LEVEL,Mornington,Western Australia,LOCALITY
+WF,1026465,IMPACT_HYDRO,hydro,-32.202662,116.065137,True,CITY_LEVEL,Bedfordale,Western Australia,LOCALITY
+WF,1026465,IMPACT_HYDRO,hydro,-32.152641,116.128824,True,CITY_LEVEL,Ashendon,Western Australia,LOCALITY
+WF,1026465,IMPACT_HYDRO,hydro,-33.4022629999999,115.98131,True,CITY_LEVEL,Worsley,Western Australia,LOCALITY
+WF,1026465,IMPACT_HYDRO,hydro,-32.044234,116.068769,True,CITY_LEVEL,Canning Mills,Western Australia,LOCALITY
+WF,1026465,IMPACT_HYDRO,hydro,-31.9571759999999,116.166155,True,CITY_LEVEL,Sawyers Valley,Western Australia,LOCALITY
+WF,1026465,IMPACT_CITY,city,-32.717529000000000,116.062302000000000,True,CITY_LEVEL,Dwellingup,Western Australia,LOCALITY
+WF,1026465,IMPACT_CITY,city,-32.849510000000000,115.923203000000000,True,CITY_LEVEL,Waroona,Western Australia,LOCALITY
+WF,1026465,IMPACT_CITY,city,-32.631297000000000,115.875697000000000,True,CITY_LEVEL,Pinjarra,Western Australia,LOCALITY
+WF,1026465,IMPACT_CITY,city,-33.080151000000000,115.892197000000000,True,CITY_LEVEL,Harvey,Western Australia,LOCALITY
+WF,1026465,IMPACT_CITY,city,-33.360688000000000,116.155239000000000,True,CITY_LEVEL,Collie,Western Australia,LOCALITY
+WF,1026465,IMPACT_CITY,city,-32.531545000000000,115.736878000000000,True,CITY_LEVEL,Mandurah,Western Australia,LOCALITY
+WF,1026465,IMPACT_CITY,city,-32.533298000000000,117.086403000000000,True,CITY_LEVEL,Pingelly,Western Australia,LOCALITY
+WF,1026465,IMPACT_CITY,city,-32.459869000000000,115.763496000000000,True,CITY_LEVEL,Lakelands,Western Australia,LOCALITY
+WF,1026465,IMPACT_CITY,city,-32.428452000000000,115.762299000000000,True,CITY_LEVEL,Golden Bay,Western Australia,LOCALITY
+WF,1026465,IMPACT_CITY,city,-32.226040000000000,116.007103000000000,True,CITY_LEVEL,Byford,Western Australia,LOCALITY
+WF,1026465,IMPACT_CITY,city,-32.370768000000000,117.009773000000000,True,CITY_LEVEL,Brookton,Western Australia,LOCALITY
+WF,1026465,IMPACT_CITY,city,-32.582373000000000,115.654755000000000,True,CITY_LEVEL,Falcon,Western Australia,LOCALITY
+WF,1026465,IMPACT_CITY,city,-32.936072000000000,117.177951000000000,True,CITY_LEVEL,Narrogin,Western Australia,LOCALITY
+WF,1026465,IMPACT_CITY,city,-32.343002000000000,115.753332000000000,True,CITY_LEVEL,Warnbro,Western Australia,LOCALITY
+WF,1026465,IMPACT_CITY,city,-32.149914000000000,116.009565000000000,True,CITY_LEVEL,Armadale,Western Australia,LOCALITY
+WF,1026465,IMPACT_CITY,city,-32.236471000000000,115.809285000000000,True,CITY_LEVEL,Medina,Western Australia,LOCALITY
+WF,1026465,IMPACT_CITY,city,-32.287821000000000,115.741650000000000,True,CITY_LEVEL,Rockingham,Western Australia,LOCALITY
+WF,1026465,IMPACT_CITY,city,-33.315781000000000,115.707397000000000,True,CITY_LEVEL,Eaton,Western Australia,LOCALITY
+WF,1026465,IMPACT_CITY,city,-32.108870000000000,116.925176000000000,True,CITY_LEVEL,Beverley,Western Australia,LOCALITY
+WF,1026465,IMPACT_CITY,city,-33.330161000000000,115.638056000000000,True,CITY_LEVEL,Bunbury,Western Australia,LOCALITY
+WF,1026465,IMPACT_PORTS,ports,-32.234944000000000,115.758902000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+WF,1026465,IMPACT_PORTS,ports,-33.321781000000000,115.641937000000000,True,CITY_LEVEL,Bunbury,Western Australia,LOCALITY
+WF,1026465,IMPACT_PORTS,ports,-32.098442000000000,115.759926000000000,True,CITY_LEVEL,North Coogee,Western Australia,LOCALITY
+WF,1026465,RSS_GEO_POINT,rss,-32.78078037540638,116.40571035843637,True,CITY_LEVEL,Bannister,Western Australia,LOCALITY
+EQ,1516247,IMPACT_AIRPORTS,airports,-5.700000000000000,145.366667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORTS,airports,-5.583333000000000,145.416667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORTS,airports,-5.500000000000000,145.433333000000000,True,CITY_LEVEL,Usino,Madang Province,LOCALITY
+EQ,1516247,IMPACT_AIRPORTS,airports,-5.700000000000000,145.250000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORTS,airports,-5.833333000000000,145.750000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Naho Rawa Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORTS,airports,-5.733333000000000,145.216667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORTS,airports,-6.081944000000000,145.391663000000000,True,CITY_LEVEL,Goroka,Eastern Highlands Province,LOCALITY
+EQ,1516247,IMPACT_AIRPORTS,airports,-5.483333000000000,145.833333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORTS,airports,-5.808333000000000,145.083333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Mitnande Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORTS,airports,-5.800000000000000,145.916667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Naho Rawa Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORTS,airports,-6.050000000000000,145.966667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Umi/Atzera Rural LLG,Morobe Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORTS,airports,-5.208889000000000,145.787781000000000,True,CITY_LEVEL,Madang,Madang Province,LOCALITY
+EQ,1516247,IMPACT_AIRPORTS,airports,-6.250000000000000,145.233333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Siane Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORTS,airports,-6.021945000000000,144.968887000000000,True,CITY_LEVEL,Kundiawa,Chimbu Province,LOCALITY
+EQ,1516247,IMPACT_AIRPORTS,airports,-5.533333000000000,146.116667000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516247,IMPACT_AIRPORTS,airports,-5.666667000000000,144.800000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kol Rural LLG,Jiwaka Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORTS,airports,-6.183333000000000,144.966667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Suai Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORTS,airports,-6.250000000000000,145.966667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Agarabi Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORTS,airports,-6.333333000000000,145.900000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Gadsup/Tairora Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORTS,airports,-6.316667000000000,145.066667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Nomane Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORTS,airports,-4.900000000000000,145.316667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Josephstaal Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORTS,airports,-5.866667000000000,144.666667000000000,True,CITY_LEVEL,Minj,Jiwaka Province,LOCALITY
+EQ,1516247,IMPACT_AIRPORTS,airports,-5.583333000000000,146.350000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Rai Coast Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORTS,airports,-5.783333000000000,144.616667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",North Waghi Rural LLG,Jiwaka Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORTS,airports,-5.500000000000000,144.633333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Jimi Rural LLG,Jiwaka Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORT,airport,-5.700000000000000,145.366667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORT,airport,-5.583333000000000,145.416667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORT,airport,-5.500000000000000,145.433333000000000,True,CITY_LEVEL,Usino,Madang Province,LOCALITY
+EQ,1516247,IMPACT_AIRPORT,airport,-5.700000000000000,145.250000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORT,airport,-5.833333000000000,145.750000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Naho Rawa Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORT,airport,-5.733333000000000,145.216667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORT,airport,-6.082500000000000,145.391111000000000,True,CITY_LEVEL,Goroka,Eastern Highlands Province,LOCALITY
+EQ,1516247,IMPACT_AIRPORT,airport,-5.483333000000000,145.833333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORT,airport,-5.808333000000000,145.083333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Mitnande Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORT,airport,-5.800000000000000,145.916667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Naho Rawa Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORT,airport,-6.050000000000000,145.966667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Umi/Atzera Rural LLG,Morobe Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORT,airport,-5.208611000000000,145.787778000000000,True,CITY_LEVEL,Madang,Madang Province,LOCALITY
+EQ,1516247,IMPACT_AIRPORT,airport,-6.250000000000000,145.233333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Siane Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORT,airport,-6.025458000000000,144.969622000000000,True,CITY_LEVEL,Kundiawa,Chimbu Province,LOCALITY
+EQ,1516247,IMPACT_AIRPORT,airport,-5.533333000000000,146.116667000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516247,IMPACT_AIRPORT,airport,-5.666667000000000,144.800000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kol Rural LLG,Jiwaka Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORT,airport,-6.183333000000000,144.966667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Suai Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORT,airport,-6.250000000000000,145.966667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Agarabi Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORT,airport,-6.333333000000000,145.900000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Gadsup/Tairora Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORT,airport,-6.316667000000000,145.066667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Nomane Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORT,airport,-4.900000000000000,145.316667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Josephstaal Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORT,airport,-5.866667000000000,144.666667000000000,True,CITY_LEVEL,Minj,Jiwaka Province,LOCALITY
+EQ,1516247,IMPACT_AIRPORT,airport,-5.583333000000000,146.350000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Rai Coast Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORT,airport,-5.783333000000000,144.616667000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",North Waghi Rural LLG,Jiwaka Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_AIRPORT,airport,-5.500000000000000,144.633333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Jimi Rural LLG,Jiwaka Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_HYDRO,hydro,-6.25265399999995,145.980817,False,"NON_CITY: ['administrative_area_level_3', 'political']",Gadsup/Tairora Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.699538000000000,145.538300000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.726577000000000,145.553696000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.658769000000000,145.494705000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.781683000000000,145.538895000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.629618000000000,145.492004000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.765810000000000,145.593506000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.786993000000000,145.401703000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.612932000000000,145.539902000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.828720000000000,145.538498000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.830873000000000,145.457199000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.747890000000000,145.375198000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.597928000000000,145.460297000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.840900000000000,145.561493000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.789981000000000,145.620895000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.729559000000000,145.335907000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.764705000000000,145.340805000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.566821000000000,145.412903000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.695639000000000,145.669601000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.603625000000000,145.653305000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.715343000000000,145.698395000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.634406000000000,145.305603000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.516667000000000,145.550000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.566162000000000,145.349503000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.605336000000000,145.674896000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.513935000000000,145.426102000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.550542000000000,145.647202000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.518005000000000,145.386597000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.583670000000000,145.309906000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.716484000000000,145.737900000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.955925000000000,145.565506000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Upper Bena Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.571167000000000,145.693207000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.522958000000000,145.651901000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.477245000000000,145.416794000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.592373000000000,145.722794000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.991591000000000,145.548706000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Upper Bena Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.440223000000000,145.447800000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.529500000000000,145.708496000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.891243000000000,145.741394000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.830348000000000,145.774796000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Naho Rawa Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.510870000000000,145.712402000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.418874000000000,145.477798000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.427975000000000,145.418793000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.806590000000000,145.788498000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Naho Rawa Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.020217000000000,145.573807000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Upper Bena Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.002410000000000,145.366592000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Mimanalo Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.978055000000000,145.322098000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lower Asaro Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.930436000000000,145.266693000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Upper Asaro Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.758584000000000,145.184998000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.949241000000000,145.279907000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Upper Asaro Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.715962000000000,145.179504000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.987799000000000,145.325806000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lower Asaro Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.530678000000000,145.751694000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.966537000000000,145.291702000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lower Asaro Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.739037000000000,145.172501000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.690489000000000,145.171600000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.581006000000000,145.198807000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.563112000000000,145.784195000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.405255000000000,145.388504000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.051754000000000,145.518295000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Upper Bena Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.972376000000000,145.278900000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Upper Asaro Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.046314000000000,145.570602000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Upper Bena Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.454775000000000,145.703995000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.049250000000000,145.419800000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Gahuku Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.961720000000000,145.259705000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Upper Asaro Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.953414000000000,145.250793000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Upper Asaro Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.809190000000000,145.824997000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Naho Rawa Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.755288000000000,145.155899000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.025295000000000,145.341797000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Mimanalo Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.380474000000000,145.447601000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.418846000000000,145.330994000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.010046000000000,145.311401000000000,True,CITY_LEVEL,Asaro,Eastern Highlands Province,LOCALITY
+EQ,1516247,IMPACT_CITY,city,-5.979754000000000,145.270599000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Upper Asaro Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.496373000000000,145.756500000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.049695000000000,145.390701000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Gahuku Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.970647000000000,145.256607000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Upper Asaro Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.459545000000000,145.733002000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.062563000000000,145.407806000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Gahuku Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.664824000000000,145.145706000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.547637000000000,145.805206000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.072290000000000,145.555405000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Upper Bena Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.074877000000000,145.443497000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Gahuku Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.395235000000000,145.650208000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.878616000000000,145.823593000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Naho Rawa Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.715446000000000,145.130997000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.485357000000000,145.775299000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.087129000000000,145.546295000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Upper Bena Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.443997000000000,145.746597000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516247,IMPACT_CITY,city,-5.387312000000000,145.679398000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.013676000000000,145.740204000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dunantina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.087728000000000,145.386597000000000,True,CITY_LEVEL,Goroka,Eastern Highlands Province,LOCALITY
+EQ,1516247,IMPACT_CITY,city,-5.793965000000000,145.871399000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Naho Rawa Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.457192000000000,145.213501000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.348516000000000,145.390594000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Transgogol Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.414826000000000,145.732368000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.054703000000000,145.298203000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Mimanalo Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.705444000000000,145.103500000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.645029000000000,145.110199000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.328893000000000,145.442902000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Transgogol Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.360981000000000,145.660202000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Transgogol Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.113910000000000,145.537003000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Upper Bena Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.031815000000000,145.251404000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lower Asaro Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.412671000000000,145.240799000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.923572000000000,145.839493000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.114968000000000,145.567596000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Upper Bena Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.113362000000000,145.410995000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Gahuku Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.325068000000000,145.580093000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Transgogol Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.856372000000000,145.112396000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Mitnande Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.313456000000000,145.466995000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Transgogol Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.325401000000000,145.612900000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Transgogol Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.845816000000000,145.102798000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Mitnande Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.131109000000000,145.539902000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Upper Bena Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.872781000000000,145.110703000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Mitnande Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.315458000000000,145.589905000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Transgogol Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.507023000000000,145.851807000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.633605000000000,145.089401000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bundi Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.088693000000000,145.701401000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dunantina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.370732000000000,145.739197000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ambenob Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.151621000000000,145.501602000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lower Benna LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.527476000000000,145.881500000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Astrolabe Bay Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.875567000000000,145.091995000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Mitnande Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.114573000000000,145.676498000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dunantina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.155771000000000,145.469498000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lower Benna LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.885264000000000,145.091202000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Mitnande Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.277634000000000,145.542603000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Transgogol Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.110525000000000,145.281998000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Unggai Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.281702000000000,145.575302000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Transgogol Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.136026000000000,145.656906000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dunantina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.355206000000000,145.755005000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ambenob Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.133922000000000,145.670395000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dunantina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.338088000000000,145.250595000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.154684000000000,145.364304000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Unggai Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.310602000000000,145.701004000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ambenob Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.299953000000000,145.681702000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ambenob Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.883467000000000,145.062897000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Mitnande Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.177627000000000,145.417007000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lower Benna LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.170628000000000,145.608795000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dunantina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.084350000000000,145.206894000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Watabung Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.301006000000000,145.712296000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ambenob Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.162324000000000,145.673798000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dunantina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.197816000000000,145.492905000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lower Benna LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.264472000000000,145.644104000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ambenob Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.157285000000000,145.692505000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dunantina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.901256000000000,145.050705000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Mitnande Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.147089000000000,145.718002000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dunantina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.188535000000000,145.607895000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dunantina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.236481000000000,145.462494000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Transgogol Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.979949000000000,145.905197000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.287615000000000,145.717606000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ambenob Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.250087000000000,145.624802000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ambenob Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.194634000000000,145.620499000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dunantina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.203968000000000,145.583893000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dunantina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.301451000000000,145.757004000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ambenob Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.903302000000000,145.032806000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Mitnande Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.195629000000000,145.645096000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dunantina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.286382000000000,145.743698000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ambenob Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.229749000000000,145.607895000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ambenob Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.246984000000000,145.323105000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Transgogol Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.288075000000000,145.763794000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ambenob Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.915158000000000,145.024506000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Niglkande Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.212812000000000,145.558197000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Transgogol Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.936158000000000,145.033203000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Niglkande Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.925642000000000,145.027298000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Niglkande Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.876223000000000,145.982803000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Naho Rawa Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.924061000000000,145.966293000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Naho Rawa Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.211675000000000,145.593201000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Transgogol Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.232598000000000,145.391098000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Unggai Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.200321000000000,145.578400000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Transgogol Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.928475000000000,145.013107000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Niglkande Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.174842000000000,145.230194000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Siane Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.244877000000000,145.569305000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Fayantina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.224896000000000,145.660507000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kafentina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.251690000000000,145.432693000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Yagaria Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.986763000000000,145.964996000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.221037000000000,145.707108000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ambenob Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.181544000000000,145.568207000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Transgogol Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.120078000000000,145.126694000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Chuave Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.215790000000000,145.720306000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kafentina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.002575000000000,145.030197000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Yonggomugl Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.175448000000000,145.556305000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Transgogol Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.927554000000000,146.002594000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Naho Rawa Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.221971000000000,145.725693000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ambenob Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.897488000000000,144.976395000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Gena/Waugla Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.892444000000000,146.016403000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Naho Rawa Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.256624000000000,145.623596000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kafentina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.203583000000000,145.768906000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kafentina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.964265000000000,144.995697000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Niglkande Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.161083000000000,145.539307000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Transgogol Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.677770000000000,146.055893000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Rai Coast Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.220788000000000,145.757004000000000,True,CITY_LEVEL,Madang,Madang Province,LOCALITY
+EQ,1516247,IMPACT_CITY,city,-5.194854000000000,145.702896000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ambenob Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.122014000000000,145.098297000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Chuave Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.178778000000000,145.827301000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Agarabi Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.226963000000000,145.777100000000000,True,CITY_LEVEL,Madang,Madang Province,LOCALITY
+EQ,1516247,IMPACT_CITY,city,-6.232411000000000,145.740295000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kafentina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.233667000000000,145.788895000000000,True,CITY_LEVEL,Madang,Madang Province,LOCALITY
+EQ,1516247,IMPACT_CITY,city,-5.927292000000000,146.024002000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Naho Rawa Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.071439000000000,145.046600000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Tabare Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.290522000000000,145.506897000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Fayantina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.286685000000000,145.424103000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Yagaria Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.279807000000000,145.627899000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kafentina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.131670000000000,145.093796000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Chuave Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.168692000000000,145.135101000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Chuave Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.218030000000000,145.780197000000000,True,CITY_LEVEL,Madang,Madang Province,LOCALITY
+EQ,1516247,IMPACT_CITY,city,-6.121058000000000,145.078903000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Chuave Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.852138000000000,146.061401000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Naho Rawa Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.291470000000000,145.381500000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Yagaria Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.502103000000000,146.037506000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516247,IMPACT_CITY,city,-6.167778000000000,145.119507000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Chuave Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.205282000000000,145.775101000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Madang Urban LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.303102000000000,145.569397000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Fayantina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.088487000000000,145.035294000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Tabare Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.707107000000000,144.906006000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kol Rural LLG,Jiwaka Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.650277000000000,144.910004000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kol Rural LLG,Jiwaka Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.264358000000000,145.725006000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kafentina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.166165000000000,145.108307000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Chuave Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.316005000000000,145.517105000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Fayantina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.193356000000000,145.777405000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ambenob Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.257343000000000,145.234406000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Siane Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.144905000000000,145.074997000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Chuave Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.314080000000000,145.421799000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Yagaria Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.318761000000000,145.494705000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Fayantina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.264780000000000,145.243393000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Siane Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.316667000000000,145.050000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.091335000000000,145.022598000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Tabare Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.257218000000000,145.222504000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Siane Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.860824000000000,144.910004000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Gena/Waugla Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.243961000000000,145.197296000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Elimbari Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.646048000000000,146.096497000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Rai Coast Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.293169000000000,145.694901000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kafentina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.219261000000000,145.844803000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Agarabi Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.299782000000000,145.684402000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kafentina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.324573000000000,145.406601000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Yagaria Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.331151000000000,145.465393000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Yagaria Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.524861000000000,146.074600000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Rai Coast Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.293348000000000,145.712799000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kafentina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.928741000000000,146.071594000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Naho Rawa Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.051948000000000,144.979599000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Suai Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.231647000000000,145.154495000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Elimbari Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.023244000000000,144.960403000000000,True,CITY_LEVEL,Kundiawa,Chimbu Province,LOCALITY
+EQ,1516247,IMPACT_CITY,city,-6.243680000000000,145.822998000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kamano No. 1 Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.335276000000000,145.431107000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Yagaria Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.010036000000000,144.949707000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Waiye LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.266639000000000,145.205505000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Elimbari Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.183333000000000,145.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Gama Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.975339000000000,146.061203000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Naho Rawa Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-5.099093000000000,145.466904000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Transgogol Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.108375000000000,145.010498000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Suai Rural LLG,Chimbu Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.327604000000000,145.630402000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kafentina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.331887000000000,145.610901000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Fayantina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.297303000000000,145.735107000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kafentina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.212191000000000,145.885193000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Agarabi Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_CITY,city,-6.349286000000000,145.486893000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Fayantina Rural LLG,Eastern Highlands Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_PORTS,ports,-5.330554000000000,145.066254000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+EQ,1516247,IMPACT_PORTS,ports,-5.216843000000000,145.804001000000000,True,CITY_LEVEL,Madang,Madang Province,LOCALITY
+EQ,1516247,IMPACT_PORTS,ports,-5.086624000000000,145.823502000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+EQ,1516247,RSS_GEO_POINT,rss,-5.7199,145.4955,False,"NON_CITY: ['administrative_area_level_3', 'political']",Usino Rural LLG,Madang Province,ADMIN_LEVEL_3
+WF,1026459,IMPACT_AIRPORTS,airports,9.563797000000000,-0.863358000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Savelugu,Northern Region,ADMIN_LEVEL_2
+WF,1026459,IMPACT_AIRPORTS,airports,10.949069000000000,-1.081377000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Kasena Nankana West,Upper East Region,ADMIN_LEVEL_2
+WF,1026459,IMPACT_AIRPORTS,airports,9.407222000000000,-0.879167000000000,True,CITY_LEVEL,Tamale,Northern Region,LOCALITY
+WF,1026459,IMPACT_AIRPORTS,airports,11.133333000000000,-1.000000000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Nahouri,Centre-Sud Region,ADMIN_LEVEL_2
+WF,1026459,IMPACT_AIRPORT,airport,10.949069000000000,-1.081377000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Kasena Nankana West,Upper East Region,ADMIN_LEVEL_2
+WF,1026459,IMPACT_AIRPORT,airport,9.410199000000000,-0.877921000000000,True,CITY_LEVEL,Tamale,Northern Region,LOCALITY
+WF,1026459,IMPACT_AIRPORT,airport,9.407222000000000,-0.879167000000000,True,CITY_LEVEL,Tamale,Northern Region,LOCALITY
+WF,1026459,IMPACT_AIRPORT,airport,11.133333000000000,-1.000000000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Nahouri,Centre-Sud Region,ADMIN_LEVEL_2
+WF,1026459,IMPACT_HYDRO,hydro,10.8699090000001,-0.852082999999936,False,"NON_CITY: ['administrative_area_level_2', 'political']",Bongo,Upper East Region,ADMIN_LEVEL_2
+WF,1026459,IMPACT_HYDRO,hydro,9.56842200000006,-1.02263499999998,False,"NON_CITY: ['administrative_area_level_2', 'political']",Kumbungu,Northern Region,ADMIN_LEVEL_2
+WF,1026459,IMPACT_HYDRO,hydro,10.87019,-1.14967099999996,False,"NON_CITY: ['administrative_area_level_2', 'political']",Builsa North,Upper East Region,ADMIN_LEVEL_2
+WF,1026459,IMPACT_HYDRO,hydro,11.118181,-0.961488999999972,False,"NON_CITY: ['administrative_area_level_2', 'political']",Nahouri,Centre-Sud Region,ADMIN_LEVEL_2
+WF,1026459,IMPACT_CITY,city,9.617872000000000,-0.822468000000000,True,CITY_LEVEL,Savelugu,Northern Region,LOCALITY
+WF,1026459,IMPACT_CITY,city,9.397204000000000,-0.832912000000000,True,CITY_LEVEL,Tamale,Northern Region,LOCALITY
+WF,1026459,RSS_GEO_POINT,rss,10.22055674197596,-0.94550676409849477,False,"NON_CITY: ['administrative_area_level_2', 'political']",West Mamprusi Municipal,Northern East Region,ADMIN_LEVEL_2
+WF,1026450,RSS_GEO_POINT,rss,6.87742136812169,24.454472372529917,False,"NON_CITY: ['administrative_area_level_3', 'political']",Djéma,Haut-Mbomou,ADMIN_LEVEL_3
+WF,1026454,RSS_GEO_POINT,rss,6.3261216679311074,28.25403858219704,False,"NON_CITY: ['administrative_area_level_3', 'political']",Yangiri,Western Equatoria,ADMIN_LEVEL_3
+WF,1026457,IMPACT_AIRPORTS,airports,-21.715000000000000,122.228611000000000,True,CITY_LEVEL,Telfer,Western Australia,LOCALITY
+WF,1026457,IMPACT_AIRPORT,airport,-21.715000000000000,122.228611000000000,True,CITY_LEVEL,Telfer,Western Australia,LOCALITY
+WF,1026457,RSS_GEO_POINT,rss,-22.508526111983134,122.46874014986977,True,CITY_LEVEL,Telfer,Western Australia,LOCALITY
+WF,1026443,IMPACT_AIRPORTS,airports,-31.640961000000000,18.544789000000000,True,CITY_LEVEL,Vredendal,Western Cape,LOCALITY
+WF,1026443,IMPACT_AIRPORT,airport,-31.640961000000000,18.544789000000000,True,CITY_LEVEL,Vredendal,Western Cape,LOCALITY
+WF,1026443,IMPACT_HYDRO,hydro,-32.1866909999999,18.8760550000001,False,"NON_CITY: ['administrative_area_level_3', 'political']",Cederberg Municipality,Western Cape,ADMIN_LEVEL_3
+WF,1026443,IMPACT_HYDRO,hydro,-31.998499,18.785789,False,"NON_CITY: ['administrative_area_level_3', 'political']",Cederberg Municipality,Western Cape,ADMIN_LEVEL_3
+WF,1026443,IMPACT_HYDRO,hydro,-32.9560109999999,19.2152080000001,False,"NON_CITY: ['administrative_area_level_3', 'political']",Witzenberg Local Municipality,Western Cape,ADMIN_LEVEL_3
+WF,1026443,IMPACT_HYDRO,hydro,-32.9927999999999,19.243845,False,"NON_CITY: ['administrative_area_level_3', 'political']",Witzenberg Local Municipality,Western Cape,ADMIN_LEVEL_3
+WF,1026443,IMPACT_HYDRO,hydro,-32.392285,19.89525,False,"NON_CITY: ['administrative_area_level_3', 'political']",Breede River DC,Western Cape,ADMIN_LEVEL_3
+WF,1026443,IMPACT_HYDRO,hydro,-33.2764599999999,19.255706,False,"NON_CITY: ['administrative_area_level_3', 'political']",Witzenberg Local Municipality,Western Cape,ADMIN_LEVEL_3
+WF,1026443,IMPACT_HYDRO,hydro,-33.1146449999999,19.7839710000001,False,"NON_CITY: ['administrative_area_level_3', 'political']",Breede River DC,Western Cape,ADMIN_LEVEL_3
+WF,1026443,IMPACT_HYDRO,hydro,-33.340097,19.031599,False,"NON_CITY: ['administrative_area_level_3', 'political']",Drakenstein Municipality,Western Cape,ADMIN_LEVEL_3
+WF,1026443,IMPACT_HYDRO,hydro,-33.3632079999999,19.2720600000001,True,CITY_LEVEL,Ceres,Western Cape,LOCALITY
+WF,1026443,IMPACT_CITY,city,-33.136261000000000,18.658039000000000,True,CITY_LEVEL,Moorreesburg,Western Cape,LOCALITY
+WF,1026443,IMPACT_PORTS,ports,-32.083733000000000,18.309381000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Cederberg Municipality,Western Cape,ADMIN_LEVEL_3
+WF,1026443,RSS_GEO_POINT,rss,-32.414853921745156,19.131471313435092,False,"NON_CITY: ['administrative_area_level_3', 'political']",West Coast DC,Western Cape,ADMIN_LEVEL_3
+WF,1026471,RSS_GEO_POINT,rss,6.4598683843542375,26.865295405644375,False,"NON_CITY: ['administrative_area_level_3', 'political']",Namutina,Western Equatoria,ADMIN_LEVEL_3
+WF,1026472,IMPACT_AIRPORTS,airports,10.232955000000000,22.715388000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ridina,Vakaga,ADMIN_LEVEL_3
+WF,1026472,IMPACT_AIRPORTS,airports,9.584691000000000,21.732662000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ouandja,Vakaga,ADMIN_LEVEL_3
+WF,1026472,IMPACT_AIRPORT,airport,10.232955000000000,22.715388000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ridina,Vakaga,ADMIN_LEVEL_3
+WF,1026472,IMPACT_AIRPORT,airport,9.584691000000000,21.732662000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ouandja,Vakaga,ADMIN_LEVEL_3
+WF,1026472,RSS_GEO_POINT,rss,9.9048924491740511,22.415729404944759,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ridina,Vakaga,ADMIN_LEVEL_3
+FL,1103674,RSS_GEO_POINT,rss,-30.0497222,30.8886111,True,CITY_LEVEL,eManzimtoti,KwaZulu-Natal,LOCALITY
+WF,1026426,IMPACT_AIRPORTS,airports,-38.667283000000000,-62.351855000000000,True,CITY_LEVEL,Bahía Blanca,Buenos Aires Province,LOCALITY
+WF,1026426,IMPACT_AIRPORTS,airports,-38.723999000000000,-62.171165000000000,True,CITY_LEVEL,Bahía Blanca,Buenos Aires Province,LOCALITY
+WF,1026426,IMPACT_AIRPORTS,airports,-38.899944000000000,-62.010612000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Coronel de Marina Leonardo Rosales,Provincia de Buenos Aires,ADMIN_LEVEL_2
+WF,1026426,IMPACT_AIRPORT,airport,-38.667283000000000,-62.351855000000000,True,CITY_LEVEL,Bahía Blanca,Buenos Aires Province,LOCALITY
+WF,1026426,IMPACT_AIRPORT,airport,-38.720278000000000,-62.157500000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Bahía Blanca,Buenos Aires Province,ADMIN_LEVEL_2
+WF,1026426,IMPACT_AIRPORT,airport,-38.899944000000000,-62.010612000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Coronel de Marina Leonardo Rosales,Provincia de Buenos Aires,ADMIN_LEVEL_2
+WF,1026426,IMPACT_CITY,city,-38.725269000000000,-62.274071000000000,True,CITY_LEVEL,Bahía Blanca,Buenos Aires Province,LOCALITY
+WF,1026426,IMPACT_CITY,city,-39.503391000000000,-62.690269000000000,True,CITY_LEVEL,Pedro Luro,Buenos Aires Province,LOCALITY
+WF,1026426,IMPACT_CITY,city,-38.884991000000000,-62.071480000000000,True,CITY_LEVEL,Punta Alta,Buenos Aires Province,LOCALITY
+WF,1026426,IMPACT_PORTS,ports,-38.760040000000000,-62.349846000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+WF,1026426,IMPACT_PORTS,ports,-38.795418000000000,-62.266060000000000,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+WF,1026426,IMPACT_PORTS,ports,-38.883907000000000,-62.104023000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Coronel de Marina Leonardo Rosales,Provincia de Buenos Aires,ADMIN_LEVEL_2
+WF,1026426,IMPACT_PORTS,ports,-38.918133000000000,-62.064373000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Coronel de Marina Leonardo Rosales,Provincia de Buenos Aires,ADMIN_LEVEL_2
+WF,1026426,RSS_GEO_POINT,rss,-39.17541128088,-62.900694450183451,False,"NON_CITY: ['administrative_area_level_2', 'political']",Villarino Partido,Buenos Aires Province,ADMIN_LEVEL_2
+WF,1026444,IMPACT_AIRPORTS,airports,12.066667000000000,0.350000000000000,True,CITY_LEVEL,Fada-Ngourma,Est Region,LOCALITY
+WF,1026444,IMPACT_AIRPORTS,airports,11.783333000000000,-0.366667000000000,True,CITY_LEVEL,Tenkodogo,Centre-Est Region,LOCALITY
+WF,1026444,IMPACT_AIRPORTS,airports,11.250000000000000,0.700000000000000,True,CITY_LEVEL,Pama,Est Region,LOCALITY
+WF,1026444,IMPACT_AIRPORT,airport,12.066667000000000,0.350000000000000,True,CITY_LEVEL,Fada-Ngourma,Est Region,LOCALITY
+WF,1026444,IMPACT_AIRPORT,airport,11.783333000000000,-0.366667000000000,True,CITY_LEVEL,Tenkodogo,Centre-Est Region,LOCALITY
+WF,1026444,IMPACT_AIRPORT,airport,11.250000000000000,0.700000000000000,True,CITY_LEVEL,Pama,Est Region,LOCALITY
+WF,1026444,IMPACT_HYDRO,hydro,12.068046,0.371028000000024,True,CITY_LEVEL,Fada-Ngourma,Est Region,LOCALITY
+WF,1026444,IMPACT_HYDRO,hydro,12.534273,-0.0027529999999274,False,"NON_CITY: ['administrative_area_level_2', 'political']",Gnagna,Est Region,ADMIN_LEVEL_2
+WF,1026444,IMPACT_HYDRO,hydro,12.199169,-0.394181999999944,False,"NON_CITY: ['administrative_area_level_2', 'political']",Kouritenga,Centre-Est Region,ADMIN_LEVEL_2
+WF,1026444,IMPACT_HYDRO,hydro,12.6220720000001,-0.07845999999995,False,"NON_CITY: ['administrative_area_level_2', 'political']",Gnagna,Est Region,ADMIN_LEVEL_2
+WF,1026444,IMPACT_HYDRO,hydro,12.6979170000001,-0.176041999999939,False,"NON_CITY: ['administrative_area_level_2', 'political']",Gnagna,Est Region,ADMIN_LEVEL_2
+WF,1026444,IMPACT_HYDRO,hydro,11.4742900000001,-0.553015999999957,False,"NON_CITY: ['administrative_area_level_2', 'political']",Boulgou,Centre-Est Region,ADMIN_LEVEL_2
+WF,1026444,RSS_GEO_POINT,rss,12.013152391787076,0.13962684682193127,False,"NON_CITY: ['administrative_area_level_2', 'political']",Gourma,Est Region,ADMIN_LEVEL_2
+WF,1026449,IMPACT_AIRPORTS,airports,3.633333000000000,-71.166667000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Puerto Gaitán,Meta,ADMIN_LEVEL_2
+WF,1026449,IMPACT_AIRPORT,airport,3.633333000000000,-71.166667000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Puerto Gaitán,Meta,ADMIN_LEVEL_2
+WF,1026449,RSS_GEO_POINT,rss,3.4274714568305797,-71.978112772707092,False,"NON_CITY: ['administrative_area_level_2', 'political']",Puerto Gaitán,Meta,ADMIN_LEVEL_2
+WF,1026448,IMPACT_AIRPORTS,airports,12.066667000000000,0.350000000000000,True,CITY_LEVEL,Fada-Ngourma,Est Region,LOCALITY
+WF,1026448,IMPACT_AIRPORTS,airports,11.783333000000000,-0.366667000000000,True,CITY_LEVEL,Tenkodogo,Centre-Est Region,LOCALITY
+WF,1026448,IMPACT_AIRPORTS,airports,11.250000000000000,0.700000000000000,True,CITY_LEVEL,Pama,Est Region,LOCALITY
+WF,1026448,IMPACT_AIRPORT,airport,12.066667000000000,0.350000000000000,True,CITY_LEVEL,Fada-Ngourma,Est Region,LOCALITY
+WF,1026448,IMPACT_AIRPORT,airport,11.783333000000000,-0.366667000000000,True,CITY_LEVEL,Tenkodogo,Centre-Est Region,LOCALITY
+WF,1026448,IMPACT_AIRPORT,airport,11.250000000000000,0.700000000000000,True,CITY_LEVEL,Pama,Est Region,LOCALITY
+WF,1026448,IMPACT_HYDRO,hydro,12.068046,0.371028000000024,True,CITY_LEVEL,Fada-Ngourma,Est Region,LOCALITY
+WF,1026448,IMPACT_HYDRO,hydro,12.199169,-0.394181999999944,False,"NON_CITY: ['administrative_area_level_2', 'political']",Kouritenga,Centre-Est Region,ADMIN_LEVEL_2
+WF,1026448,IMPACT_HYDRO,hydro,12.534273,-0.0027529999999274,False,"NON_CITY: ['administrative_area_level_2', 'political']",Gnagna,Est Region,ADMIN_LEVEL_2
+WF,1026448,IMPACT_HYDRO,hydro,12.6220720000001,-0.07845999999995,False,"NON_CITY: ['administrative_area_level_2', 'political']",Gnagna,Est Region,ADMIN_LEVEL_2
+WF,1026448,IMPACT_HYDRO,hydro,11.4742900000001,-0.553015999999957,False,"NON_CITY: ['administrative_area_level_2', 'political']",Boulgou,Centre-Est Region,ADMIN_LEVEL_2
+WF,1026448,IMPACT_HYDRO,hydro,11.085992,0.700693000000058,False,"NON_CITY: ['administrative_area_level_2', 'political']",Kompienga,Est Region,ADMIN_LEVEL_2
+WF,1026448,IMPACT_HYDRO,hydro,12.6979170000001,-0.176041999999939,False,"NON_CITY: ['administrative_area_level_2', 'political']",Gnagna,Est Region,ADMIN_LEVEL_2
+WF,1026448,RSS_GEO_POINT,rss,11.853695240934131,0.19366812323025318,False,"NON_CITY: ['administrative_area_level_2', 'political']",Gourma,Est Region,ADMIN_LEVEL_2
+WF,1026441,IMPACT_AIRPORTS,airports,-21.673913000000000,121.594894000000000,True,CITY_LEVEL,Telfer,Western Australia,LOCALITY
+WF,1026441,IMPACT_AIRPORTS,airports,-21.633333000000000,121.233333000000000,True,CITY_LEVEL,Telfer,Western Australia,LOCALITY
+WF,1026441,IMPACT_AIRPORT,airport,-21.673913000000000,121.594894000000000,True,CITY_LEVEL,Telfer,Western Australia,LOCALITY
+WF,1026441,IMPACT_AIRPORT,airport,-21.633333000000000,121.233333000000000,True,CITY_LEVEL,Telfer,Western Australia,LOCALITY
+WF,1026441,RSS_GEO_POINT,rss,-22.485624148839079,121.60922067096892,True,CITY_LEVEL,Telfer,Western Australia,LOCALITY
+FL,1103675,RSS_GEO_POINT,rss,-50.0143718,-68.5368198,True,CITY_LEVEL,Puerto Santa Cruz,Santa Cruz Province,LOCALITY
+WF,1026442,RSS_GEO_POINT,rss,7.2918018453524853,25.087923057656194,False,"NON_CITY: ['administrative_area_level_3', 'political']",Djéma,Haut-Mbomou,ADMIN_LEVEL_3
+WF,1026428,RSS_GEO_POINT,rss,7.4944353337420875,25.3523114785327,False,"NON_CITY: ['administrative_area_level_3', 'political']",Uyujuku,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026404,RSS_GEO_POINT,rss,6.5795301172332721,26.855582142067856,False,"NON_CITY: ['administrative_area_level_3', 'political']",Namutina,Western Equatoria,ADMIN_LEVEL_3
+WF,1026427,RSS_GEO_POINT,rss,6.3362425565014791,28.517675991322715,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bargel,Lakes,ADMIN_LEVEL_3
+WF,1026455,RSS_GEO_POINT,rss,7.5163866877642418,24.9900981175214,False,"NON_CITY: ['administrative_area_level_3', 'political']",Djéma,Haut-Mbomou,ADMIN_LEVEL_3
+WF,1026456,IMPACT_AIRPORTS,airports,7.966685000000000,23.534122000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Yalinga,Haute-Kotto,ADMIN_LEVEL_3
+WF,1026456,IMPACT_AIRPORT,airport,7.966685000000000,23.534122000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Yalinga,Haute-Kotto,ADMIN_LEVEL_3
+WF,1026456,RSS_GEO_POINT,rss,8.7813683004612564,24.063628180871284,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+WF,1026406,RSS_GEO_POINT,rss,7.5105625348109033,24.712325391011166,False,"NON_CITY: ['administrative_area_level_3', 'political']",Djéma,Haut-Mbomou,ADMIN_LEVEL_3
+WF,1026451,RSS_GEO_POINT,rss,7.6555185996310495,25.789737190986486,False,"NON_CITY: ['administrative_area_level_3', 'political']",Uyujuku,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026383,RSS_GEO_POINT,rss,7.174134660556887,26.555995056332126,False,"NON_CITY: ['administrative_area_level_3', 'political']",Uyujuku,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026452,IMPACT_AIRPORTS,airports,8.899762000000000,22.783394000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Vokouma,Vakaga,ADMIN_LEVEL_3
+WF,1026452,IMPACT_AIRPORTS,airports,9.584691000000000,21.732662000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ouandja,Vakaga,ADMIN_LEVEL_3
+WF,1026452,IMPACT_AIRPORT,airport,8.899762000000000,22.783394000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Vokouma,Vakaga,ADMIN_LEVEL_3
+WF,1026452,IMPACT_AIRPORT,airport,9.584691000000000,21.732662000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ouandja,Vakaga,ADMIN_LEVEL_3
+WF,1026452,IMPACT_CITY,city,8.898046000000000,22.802031000000000,True,CITY_LEVEL,Ouanda Djallé,Bamingui-Bangoran,LOCALITY
+WF,1026452,IMPACT_CITY,city,8.070088000000000,22.399590000000000,True,CITY_LEVEL,Ouadda,Haute-Kotto,LOCALITY
+WF,1026452,RSS_GEO_POINT,rss,8.9312405449448935,22.406609909521283,False,"NON_CITY: ['administrative_area_level_3', 'political']",Vokouma,Vakaga,ADMIN_LEVEL_3
+WF,1026460,RSS_GEO_POINT,rss,8.60038918675139,24.599672548039376,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ringi,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026424,RSS_GEO_POINT,rss,6.6629720972920055,27.835040639915935,False,"NON_CITY: ['administrative_area_level_2', 'political']",Nagero,Western Equatoria,ADMIN_LEVEL_2
+WF,1026405,IMPACT_AIRPORTS,airports,9.558888000000000,31.652222000000000,True,CITY_LEVEL,Malakal,Upper Nile,LOCALITY
+WF,1026405,IMPACT_AIRPORT,airport,9.558889000000000,31.652222000000000,True,CITY_LEVEL,Malakal,Upper Nile,LOCALITY
+WF,1026405,IMPACT_CITY,city,9.529987000000000,31.655479000000000,True,CITY_LEVEL,Malakal,Upper Nile,LOCALITY
+WF,1026405,RSS_GEO_POINT,rss,9.5163092273264169,32.327742092107982,False,"NON_CITY: ['administrative_area_level_3', 'political']",Akotweng,Upper Nile,ADMIN_LEVEL_3
+WF,1026473,IMPACT_AIRPORTS,airports,8.335800000000000,20.108299000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026473,IMPACT_AIRPORT,airport,8.335800000000000,20.108299000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026473,RSS_GEO_POINT,rss,8.4008256653654918,19.264517963766071,False,"NON_CITY: ['administrative_area_level_2', 'political']",Bamingui,Bamingui-Bangoran,ADMIN_LEVEL_2
+TC,1001243,RSS_GEO_POINT,rss,-11.9,91.4,False,NO_ADDRESS_DATA,NO_DATA,NO_DATA,NO_DATA
+WF,1026429,IMPACT_AIRPORTS,airports,9.333333000000000,21.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026429,IMPACT_AIRPORTS,airports,8.500000000000000,21.250000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026429,IMPACT_AIRPORTS,airports,9.584691000000000,21.732662000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ouandja,Vakaga,ADMIN_LEVEL_3
+WF,1026429,IMPACT_AIRPORT,airport,9.333333000000000,21.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026429,IMPACT_AIRPORT,airport,8.500000000000000,21.250000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026429,IMPACT_AIRPORT,airport,9.584691000000000,21.732662000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ouandja,Vakaga,ADMIN_LEVEL_3
+WF,1026429,RSS_GEO_POINT,rss,9.0631060293870558,21.39451872831901,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026430,RSS_GEO_POINT,rss,7.300126211718176,32.477098050901255,False,"NON_CITY: ['administrative_area_level_3', 'political']",Pieri,Jonglei,ADMIN_LEVEL_3
+WF,1026419,IMPACT_AIRPORTS,airports,-26.773890000000000,150.617783000000000,True,CITY_LEVEL,Chinchilla,Queensland,LOCALITY
+WF,1026419,IMPACT_AIRPORTS,airports,-26.810301000000000,150.166702000000000,True,CITY_LEVEL,Miles,Queensland,LOCALITY
+WF,1026419,IMPACT_AIRPORTS,airports,-27.283333000000000,150.466667000000000,True,CITY_LEVEL,Tara,Queensland,LOCALITY
+WF,1026419,IMPACT_AIRPORTS,airports,-27.156666000000000,151.267776000000000,True,CITY_LEVEL,Dalby,Queensland,LOCALITY
+WF,1026419,IMPACT_AIRPORT,airport,-26.773890000000000,150.617783000000000,True,CITY_LEVEL,Chinchilla,Queensland,LOCALITY
+WF,1026419,IMPACT_AIRPORT,airport,-26.810301000000000,150.166702000000000,True,CITY_LEVEL,Miles,Queensland,LOCALITY
+WF,1026419,IMPACT_AIRPORT,airport,-27.283333000000000,150.466667000000000,True,CITY_LEVEL,Tara,Queensland,LOCALITY
+WF,1026419,IMPACT_AIRPORT,airport,-27.156666000000000,151.267776000000000,True,CITY_LEVEL,Dalby,Queensland,LOCALITY
+WF,1026419,IMPACT_HYDRO,hydro,-26.801665,150.577976,True,CITY_LEVEL,Crossroads,Queensland,LOCALITY
+WF,1026419,IMPACT_HYDRO,hydro,-26.09538,151.434907,True,CITY_LEVEL,Okeden,Queensland,LOCALITY
+WF,1026419,IMPACT_CITY,city,-27.186327000000000,151.267329000000000,True,CITY_LEVEL,Dalby,Queensland,LOCALITY
+WF,1026419,RSS_GEO_POINT,rss,-26.437849702951453,150.69291042260633,True,CITY_LEVEL,Barakula,Queensland,LOCALITY
+WF,1026461,RSS_GEO_POINT,rss,10.103486279651406,23.941409819154224,False,"NON_CITY: ['administrative_area_level_2', 'political']",Al Radoum,South Darfur,ADMIN_LEVEL_2
+WF,1026462,IMPACT_AIRPORTS,airports,8.899762000000000,22.783394000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Vokouma,Vakaga,ADMIN_LEVEL_3
+WF,1026462,IMPACT_AIRPORT,airport,8.899762000000000,22.783394000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Vokouma,Vakaga,ADMIN_LEVEL_3
+WF,1026462,IMPACT_CITY,city,8.898046000000000,22.802031000000000,True,CITY_LEVEL,Ouanda Djallé,Bamingui-Bangoran,LOCALITY
+WF,1026462,RSS_GEO_POINT,rss,9.0752167106785482,23.114047518587746,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ouandja,Vakaga,ADMIN_LEVEL_3
+WF,1026447,RSS_GEO_POINT,rss,7.9830762352127831,25.263063539445628,False,"NON_CITY: ['administrative_area_level_3', 'political']",Raga,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026384,RSS_GEO_POINT,rss,6.7594443023041286,26.587916420771183,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bagari,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026431,RSS_GEO_POINT,rss,8.3229660271010513,24.664307674446963,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ringi,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026358,RSS_GEO_POINT,rss,6.803346515707406,26.698723592732978,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bagari,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026408,RSS_GEO_POINT,rss,8.1834121275328862,25.541497972592687,False,"NON_CITY: ['administrative_area_level_3', 'political']",Raga,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026421,IMPACT_AIRPORTS,airports,8.899762000000000,22.783394000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Vokouma,Vakaga,ADMIN_LEVEL_3
+WF,1026421,IMPACT_AIRPORT,airport,8.899762000000000,22.783394000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Vokouma,Vakaga,ADMIN_LEVEL_3
+WF,1026421,IMPACT_CITY,city,8.898046000000000,22.802031000000000,True,CITY_LEVEL,Ouanda Djallé,Bamingui-Bangoran,LOCALITY
+WF,1026421,RSS_GEO_POINT,rss,8.970647704861344,23.524384983917688,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+WF,1026400,IMPACT_CITY,city,4.565986000000000,28.395880000000000,True,CITY_LEVEL,Naduru,Western Equatoria,NEIGHBORHOOD
+WF,1026400,RSS_GEO_POINT,rss,4.9957744498527319,28.894685357372669,False,"NON_CITY: ['administrative_area_level_3', 'political']",Maruko,Western Equatoria,ADMIN_LEVEL_3
+WF,1026432,RSS_GEO_POINT,rss,6.6528313688866465,31.60561861558968,False,"NON_CITY: ['administrative_area_level_3', 'political']",Jalle,Jonglei,ADMIN_LEVEL_3
+WF,1026410,RSS_GEO_POINT,rss,8.093140493360675,26.36590587161113,False,"NON_CITY: ['administrative_area_level_3', 'political']",Uyujuku,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026382,RSS_GEO_POINT,rss,-21.419062129729433,146.04470580367408,True,CITY_LEVEL,Llanarth,Queensland,LOCALITY
+WF,1026386,RSS_GEO_POINT,rss,6.3888574599780483,28.008001949189623,False,"NON_CITY: ['administrative_area_level_2', 'political']",Nagero,Western Equatoria,ADMIN_LEVEL_2
+WF,1026387,IMPACT_AIRPORTS,airports,9.333333000000000,21.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026387,IMPACT_AIRPORTS,airports,8.400000000000000,20.650000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026387,IMPACT_AIRPORTS,airports,8.500000000000000,21.250000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026387,IMPACT_AIRPORTS,airports,9.931871000000000,20.900909000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Haraze-Mangueigne,Salamat,ADMIN_LEVEL_2
+WF,1026387,IMPACT_AIRPORT,airport,9.333333000000000,21.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026387,IMPACT_AIRPORT,airport,8.400000000000000,20.650000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026387,IMPACT_AIRPORT,airport,8.500000000000000,21.250000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026387,IMPACT_AIRPORT,airport,9.931871000000000,20.900909000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Haraze-Mangueigne,Salamat,ADMIN_LEVEL_2
+WF,1026387,IMPACT_CITY,city,8.410221000000000,20.651291000000000,True,CITY_LEVEL,N'Délé,Bamingui-Bangoran,LOCALITY
+WF,1026387,RSS_GEO_POINT,rss,9.046440066864827,20.777301071098087,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026378,RSS_GEO_POINT,rss,7.0218769421899259,26.094396522827584,False,"NON_CITY: ['administrative_area_level_3', 'political']",Uyujuku,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026445,IMPACT_AIRPORTS,airports,9.600000000000000,-4.033333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bouna,Zanzan District,ADMIN_LEVEL_3
+WF,1026445,IMPACT_AIRPORTS,airports,9.266667000000000,-3.000000000000000,True,CITY_LEVEL,Bouna,Zanzan District,LOCALITY
+WF,1026445,IMPACT_AIRPORT,airport,9.600000000000000,-4.033333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bouna,Zanzan District,ADMIN_LEVEL_3
+WF,1026445,IMPACT_AIRPORT,airport,9.266667000000000,-3.000000000000000,True,CITY_LEVEL,Bouna,Zanzan District,LOCALITY
+WF,1026445,RSS_GEO_POINT,rss,8.8130677928515571,-3.75875502282048,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bouna,Zanzan District,ADMIN_LEVEL_3
+WF,1026446,IMPACT_AIRPORTS,airports,9.266667000000000,-3.000000000000000,True,CITY_LEVEL,Bouna,Zanzan District,LOCALITY
+WF,1026446,IMPACT_AIRPORTS,airports,9.600000000000000,-4.033333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bouna,Zanzan District,ADMIN_LEVEL_3
+WF,1026446,IMPACT_AIRPORT,airport,9.266667000000000,-3.000000000000000,True,CITY_LEVEL,Bouna,Zanzan District,LOCALITY
+WF,1026446,IMPACT_AIRPORT,airport,9.600000000000000,-4.033333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bouna,Zanzan District,ADMIN_LEVEL_3
+WF,1026446,RSS_GEO_POINT,rss,8.74842734881818,-3.6642805879623581,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bouna,Zanzan District,ADMIN_LEVEL_3
+WF,1026388,RSS_GEO_POINT,rss,6.2674393900330729,27.998452607677891,False,"NON_CITY: ['administrative_area_level_2', 'political']",Nagero,Western Equatoria,ADMIN_LEVEL_2
+WF,1026391,RSS_GEO_POINT,rss,6.7144533698558746,28.136557831208812,False,"NON_CITY: ['administrative_area_level_2', 'political']",Nagero,Western Equatoria,ADMIN_LEVEL_2
+WF,1026411,IMPACT_CITY,city,4.565986000000000,28.395880000000000,True,CITY_LEVEL,Naduru,Western Equatoria,NEIGHBORHOOD
+WF,1026411,RSS_GEO_POINT,rss,5.07868468417025,28.871836168056316,False,"NON_CITY: ['administrative_area_level_3', 'political']",Maruko,Western Equatoria,ADMIN_LEVEL_3
+WF,1026377,RSS_GEO_POINT,rss,11.137615926637517,32.371380340645239,False,"NON_CITY: ['administrative_area_level_2', 'political']",Abu Jubaiyah,South Kordofan,ADMIN_LEVEL_2
+WF,1026379,RSS_GEO_POINT,rss,5.5551310292967591,28.884107856902446,False,"NON_CITY: ['administrative_area_level_3', 'political']",Manikakara,Western Equatoria,ADMIN_LEVEL_3
+WF,1026390,IMPACT_AIRPORTS,airports,8.500000000000000,21.250000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026390,IMPACT_AIRPORTS,airports,9.333333000000000,21.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026390,IMPACT_AIRPORTS,airports,9.584691000000000,21.732662000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ouandja,Vakaga,ADMIN_LEVEL_3
+WF,1026390,IMPACT_AIRPORTS,airports,8.400000000000000,20.650000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026390,IMPACT_AIRPORT,airport,8.500000000000000,21.250000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026390,IMPACT_AIRPORT,airport,9.333333000000000,21.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026390,IMPACT_AIRPORT,airport,9.584691000000000,21.732662000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ouandja,Vakaga,ADMIN_LEVEL_3
+WF,1026390,IMPACT_AIRPORT,airport,8.400000000000000,20.650000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026390,IMPACT_CITY,city,8.410221000000000,20.651291000000000,True,CITY_LEVEL,N'Délé,Bamingui-Bangoran,LOCALITY
+WF,1026390,RSS_GEO_POINT,rss,8.8016654274559851,21.420182044554277,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026401,IMPACT_AIRPORTS,airports,9.931871000000000,20.900909000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Haraze-Mangueigne,Salamat,ADMIN_LEVEL_2
+WF,1026401,IMPACT_AIRPORTS,airports,9.333333000000000,21.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026401,IMPACT_AIRPORT,airport,9.931871000000000,20.900909000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Haraze-Mangueigne,Salamat,ADMIN_LEVEL_2
+WF,1026401,IMPACT_AIRPORT,airport,9.333333000000000,21.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026401,RSS_GEO_POINT,rss,9.3869511305581188,20.227623064645119,False,"NON_CITY: ['administrative_area_level_2', 'political']",Haraze-Mangueigne,Salamat,ADMIN_LEVEL_2
+WF,1026422,IMPACT_AIRPORTS,airports,-20.066667000000000,145.583333000000000,True,CITY_LEVEL,Basalt,Queensland,LOCALITY
+WF,1026422,IMPACT_AIRPORTS,airports,-19.666667000000000,144.900000000000000,True,CITY_LEVEL,Basalt,Queensland,LOCALITY
+WF,1026422,IMPACT_AIRPORTS,airports,-18.663889000000000,146.148605000000000,True,CITY_LEVEL,Ingham,Queensland,LOCALITY
+WF,1026422,IMPACT_AIRPORTS,airports,-20.043333000000000,146.273056000000000,True,CITY_LEVEL,Columbia,Queensland,LOCALITY
+WF,1026422,IMPACT_AIRPORT,airport,-20.066667000000000,145.583333000000000,True,CITY_LEVEL,Basalt,Queensland,LOCALITY
+WF,1026422,IMPACT_AIRPORT,airport,-19.666667000000000,144.900000000000000,True,CITY_LEVEL,Basalt,Queensland,LOCALITY
+WF,1026422,IMPACT_AIRPORT,airport,-18.663889000000000,146.148605000000000,True,CITY_LEVEL,Ingham,Queensland,LOCALITY
+WF,1026422,IMPACT_AIRPORT,airport,-20.043333000000000,146.273056000000000,True,CITY_LEVEL,Columbia,Queensland,LOCALITY
+WF,1026422,IMPACT_HYDRO,hydro,-18.9549749999999,146.149063,True,CITY_LEVEL,Crystal Creek,Queensland,LOCALITY
+WF,1026422,IMPACT_CITY,city,-18.650600000000000,146.157501000000000,True,CITY_LEVEL,Ingham,Queensland,LOCALITY
+WF,1026422,IMPACT_CITY,city,-20.079580000000000,146.258408000000000,True,CITY_LEVEL,Charters Towers City,Queensland,LOCALITY
+WF,1026422,RSS_GEO_POINT,rss,-19.351292501809439,145.6669097662392,True,CITY_LEVEL,Basalt,Queensland,LOCALITY
+FL,1103671,RSS_GEO_POINT,rss,43.6546177,3.3027762,True,CITY_LEVEL,Octon,Occitanie,LOCALITY
+WF,1026304,RSS_GEO_POINT,rss,5.8012533890307791,28.332438352104237,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ringasi,Western Equatoria,ADMIN_LEVEL_3
+WF,1026328,IMPACT_AIRPORTS,airports,11.596571000000000,1.480875000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Tapoa,Est Region,ADMIN_LEVEL_2
+WF,1026328,IMPACT_AIRPORTS,airports,11.034337000000000,0.982698000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Matéri,Atakora Department,ADMIN_LEVEL_2
+WF,1026328,IMPACT_AIRPORTS,airports,11.250000000000000,0.700000000000000,True,CITY_LEVEL,Pama,Est Region,LOCALITY
+WF,1026328,IMPACT_AIRPORTS,airports,10.316667000000000,1.366667000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Natitingou,Atakora Department,ADMIN_LEVEL_2
+WF,1026328,IMPACT_AIRPORTS,airports,12.050000000000000,1.783333000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Tapoa,Est Region,ADMIN_LEVEL_2
+WF,1026328,IMPACT_AIRPORT,airport,11.596571000000000,1.480875000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Tapoa,Est Region,ADMIN_LEVEL_2
+WF,1026328,IMPACT_AIRPORT,airport,11.034337000000000,0.982698000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Matéri,Atakora Department,ADMIN_LEVEL_2
+WF,1026328,IMPACT_AIRPORT,airport,11.250000000000000,0.700000000000000,True,CITY_LEVEL,Pama,Est Region,LOCALITY
+WF,1026328,IMPACT_AIRPORT,airport,10.316667000000000,1.366667000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Natitingou,Atakora Department,ADMIN_LEVEL_2
+WF,1026328,IMPACT_AIRPORT,airport,12.050000000000000,1.783333000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Tapoa,Est Region,ADMIN_LEVEL_2
+WF,1026328,IMPACT_HYDRO,hydro,11.085992,0.700693000000058,False,"NON_CITY: ['administrative_area_level_2', 'political']",Kompienga,Est Region,ADMIN_LEVEL_2
+WF,1026328,IMPACT_CITY,city,10.312910000000000,1.388616000000000,True,CITY_LEVEL,Natitingou,Atakora Department,LOCALITY
+WF,1026328,RSS_GEO_POINT,rss,11.175719633429804,1.4386758919317268,False,"NON_CITY: ['administrative_area_level_2', 'political']",Tanguiéta,Atakora Department,ADMIN_LEVEL_2
+WF,1026412,RSS_GEO_POINT,rss,7.4025513940274132,29.625642416639156,False,"NON_CITY: ['administrative_area_level_3', 'political']",Mayen,Lakes,ADMIN_LEVEL_3
+WF,1026433,RSS_GEO_POINT,rss,7.9344765897640857,25.590048917895217,False,"NON_CITY: ['administrative_area_level_3', 'political']",Uyujuku,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026435,IMPACT_CITY,city,4.565986000000000,28.395880000000000,True,CITY_LEVEL,Naduru,Western Equatoria,NEIGHBORHOOD
+WF,1026435,RSS_GEO_POINT,rss,5.3857725634113987,28.796078782184843,False,"NON_CITY: ['administrative_area_level_3', 'political']",Maruko,Western Equatoria,ADMIN_LEVEL_3
+WF,1026364,IMPACT_AIRPORTS,airports,9.333333000000000,21.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026364,IMPACT_AIRPORTS,airports,8.500000000000000,21.250000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026364,IMPACT_AIRPORTS,airports,8.400000000000000,20.650000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026364,IMPACT_AIRPORTS,airports,9.931871000000000,20.900909000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Haraze-Mangueigne,Salamat,ADMIN_LEVEL_2
+WF,1026364,IMPACT_AIRPORT,airport,9.333333000000000,21.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026364,IMPACT_AIRPORT,airport,8.500000000000000,21.250000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026364,IMPACT_AIRPORT,airport,8.400000000000000,20.650000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026364,IMPACT_AIRPORT,airport,9.931871000000000,20.900909000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Haraze-Mangueigne,Salamat,ADMIN_LEVEL_2
+WF,1026364,IMPACT_CITY,city,8.410221000000000,20.651291000000000,True,CITY_LEVEL,N'Délé,Bamingui-Bangoran,LOCALITY
+WF,1026364,RSS_GEO_POINT,rss,9.0416386009302485,20.901762680246676,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026365,RSS_GEO_POINT,rss,7.8489044347677286,31.987367880952629,False,"NON_CITY: ['administrative_area_level_3', 'political']",Payai,Jonglei,ADMIN_LEVEL_3
+WF,1026392,RSS_GEO_POINT,rss,5.6020800295028339,29.854228590277806,False,"NON_CITY: ['administrative_area_level_3', 'political']",Mundri,Western Equatoria,ADMIN_LEVEL_3
+WF,1026291,RSS_GEO_POINT,rss,7.323836905170733,24.969540977295289,False,"NON_CITY: ['administrative_area_level_3', 'political']",Djéma,Haut-Mbomou,ADMIN_LEVEL_3
+WF,1026336,IMPACT_AIRPORTS,airports,7.733333000000000,27.983333000000000,True,CITY_LEVEL,Wau,Western Bahr el Ghazal,LOCALITY
+WF,1026336,IMPACT_AIRPORT,airport,7.733333000000000,27.983333000000000,True,CITY_LEVEL,Wau,Western Bahr el Ghazal,LOCALITY
+WF,1026336,IMPACT_CITY,city,7.696033000000000,27.992130000000000,True,CITY_LEVEL,Wau,Western Bahr el Ghazal,LOCALITY
+WF,1026336,RSS_GEO_POINT,rss,8.0990825679124612,27.124855523495459,False,"NON_CITY: ['administrative_area_level_3', 'political']",Abul,Northern Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026413,RSS_GEO_POINT,rss,8.179941830283239,25.371113105602266,False,"NON_CITY: ['administrative_area_level_3', 'political']",Raga,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026434,RSS_GEO_POINT,rss,7.3613067949957411,26.465742152436487,False,"NON_CITY: ['administrative_area_level_3', 'political']",Uyujuku,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026453,IMPACT_AIRPORTS,airports,21.985834000000000,82.111946000000000,True,CITY_LEVEL,Tilsara,Chhattisgarh,LOCALITY
+WF,1026453,IMPACT_AIRPORT,airport,21.985834000000000,82.111946000000000,True,CITY_LEVEL,Tilsara,Chhattisgarh,LOCALITY
+WF,1026453,IMPACT_HYDRO,hydro,22.2903470000001,82.219161,True,CITY_LEVEL,Karra,Chhattisgarh,LOCALITY
+WF,1026453,IMPACT_HYDRO,hydro,22.605057,82.5993070000001,True,CITY_LEVEL,Lalpur,Chhattisgarh,LOCALITY
+WF,1026453,IMPACT_HYDRO,hydro,21.4931070000001,81.9093750000001,True,CITY_LEVEL,Keotara,Chhattisgarh,LOCALITY
+WF,1026453,IMPACT_HYDRO,hydro,21.197914,82.181942,True,CITY_LEVEL,Kauwajhar,Chhattisgarh,LOCALITY
+WF,1026453,IMPACT_CITY,city,22.348810000000000,82.697853000000000,True,CITY_LEVEL,Korba,Chhattisgarh,LOCALITY
+WF,1026453,IMPACT_CITY,city,22.083820000000000,82.155022000000000,True,CITY_LEVEL,Gol Bazar,Chhattisgarh,LOCALITY
+WF,1026453,IMPACT_CITY,city,21.876940000000000,83.262741000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Raigarh,Chhattisgarh,ADMIN_LEVEL_3
+WF,1026453,IMPACT_CITY,city,21.734169000000000,81.947921000000000,True,CITY_LEVEL,Bhatapara,Chhattisgarh,LOCALITY
+WF,1026453,RSS_GEO_POINT,rss,21.892936596268157,82.651843394477567,True,CITY_LEVEL,Siud,Chhattisgarh,LOCALITY
+WF,1026362,RSS_GEO_POINT,rss,6.9028658706224491,27.144416135962086,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kpaile,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026352,RSS_GEO_POINT,rss,6.4469744524625812,27.091509542045817,False,"NON_CITY: ['administrative_area_level_3', 'political']",Namutina,Western Equatoria,ADMIN_LEVEL_3
+WF,1026353,RSS_GEO_POINT,rss,7.725238067446047,25.766304691493986,False,"NON_CITY: ['administrative_area_level_3', 'political']",Uyujuku,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026259,RSS_GEO_POINT,rss,7.6387959904993039,25.498765575067239,False,"NON_CITY: ['administrative_area_level_3', 'political']",Uyujuku,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026374,RSS_GEO_POINT,rss,8.71823527062272,24.79113361709727,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ringi,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026354,IMPACT_AIRPORTS,airports,9.584691000000000,21.732662000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ouandja,Vakaga,ADMIN_LEVEL_3
+WF,1026354,IMPACT_AIRPORTS,airports,10.232955000000000,22.715388000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ridina,Vakaga,ADMIN_LEVEL_3
+WF,1026354,IMPACT_AIRPORTS,airports,9.333333000000000,21.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026354,IMPACT_AIRPORT,airport,9.584691000000000,21.732662000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ouandja,Vakaga,ADMIN_LEVEL_3
+WF,1026354,IMPACT_AIRPORT,airport,10.232955000000000,22.715388000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ridina,Vakaga,ADMIN_LEVEL_3
+WF,1026354,IMPACT_AIRPORT,airport,9.333333000000000,21.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026354,RSS_GEO_POINT,rss,9.7099454591637215,22.00245369440464,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ouandja,Vakaga,ADMIN_LEVEL_3
+WF,1026373,IMPACT_AIRPORTS,airports,9.266667000000000,-3.000000000000000,True,CITY_LEVEL,Bouna,Zanzan District,LOCALITY
+WF,1026373,IMPACT_AIRPORTS,airports,9.600000000000000,-4.033333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bouna,Zanzan District,ADMIN_LEVEL_3
+WF,1026373,IMPACT_AIRPORT,airport,9.266667000000000,-3.000000000000000,True,CITY_LEVEL,Bouna,Zanzan District,LOCALITY
+WF,1026373,IMPACT_AIRPORT,airport,9.600000000000000,-4.033333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bouna,Zanzan District,ADMIN_LEVEL_3
+WF,1026373,RSS_GEO_POINT,rss,9.0015206632550182,-3.5906376331471526,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bouna,Zanzan District,ADMIN_LEVEL_3
+WF,1026339,IMPACT_AIRPORTS,airports,9.558888000000000,31.652222000000000,True,CITY_LEVEL,Malakal,Upper Nile,LOCALITY
+WF,1026339,IMPACT_AIRPORT,airport,9.558889000000000,31.652222000000000,True,CITY_LEVEL,Malakal,Upper Nile,LOCALITY
+WF,1026339,IMPACT_CITY,city,9.529987000000000,31.655479000000000,True,CITY_LEVEL,Malakal,Upper Nile,LOCALITY
+WF,1026339,RSS_GEO_POINT,rss,10.054500014538673,31.415170394469055,False,"NON_CITY: ['administrative_area_level_2', 'political']",Ghadeer,South Kordofan,ADMIN_LEVEL_2
+WF,1026263,RSS_GEO_POINT,rss,6.2241369422089123,28.939122136366539,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bargel,Lakes,ADMIN_LEVEL_3
+WF,1026394,RSS_GEO_POINT,rss,6.605039627891542,27.555097086939416,False,"NON_CITY: ['administrative_area_level_2', 'political']",Nagero,Western Equatoria,ADMIN_LEVEL_2
+WF,1026395,RSS_GEO_POINT,rss,5.6508915545827829,29.590715082701987,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kozi,Western Equatoria,ADMIN_LEVEL_3
+WF,1026264,RSS_GEO_POINT,rss,7.7333863755156136,25.647374681685605,False,"NON_CITY: ['administrative_area_level_3', 'political']",Uyujuku,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026293,RSS_GEO_POINT,rss,8.07174198298361,26.214517212556025,False,"NON_CITY: ['administrative_area_level_3', 'political']",Uyujuku,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026357,RSS_GEO_POINT,rss,6.3438024146486329,28.821450343365296,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bargel,Lakes,ADMIN_LEVEL_3
+WF,1026267,RSS_GEO_POINT,rss,7.5557113792061825,25.689224085334136,False,"NON_CITY: ['administrative_area_level_3', 'political']",Uyujuku,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026228,IMPACT_AIRPORTS,airports,-31.465279000000000,115.863052000000000,True,CITY_LEVEL,Yeal,Western Australia,LOCALITY
+WF,1026228,IMPACT_AIRPORTS,airports,-31.667778000000000,116.014999000000000,True,CITY_LEVEL,Bullsbrook,Western Australia,LOCALITY
+WF,1026228,IMPACT_AIRPORTS,airports,-31.940277000000000,115.966667000000000,True,CITY_LEVEL,Perth Airport,Western Australia,LOCALITY
+WF,1026228,IMPACT_AIRPORT,airport,-31.465279000000000,115.863052000000000,True,CITY_LEVEL,Yeal,Western Australia,LOCALITY
+WF,1026228,IMPACT_AIRPORT,airport,-31.667778000000000,116.014999000000000,True,CITY_LEVEL,Bullsbrook,Western Australia,LOCALITY
+WF,1026228,IMPACT_AIRPORT,airport,-31.940278000000000,115.966944000000000,True,CITY_LEVEL,Perth Airport,Western Australia,LOCALITY
+WF,1026228,IMPACT_CITY,city,-31.932854000000000,115.861940000000000,True,CITY_LEVEL,North Perth,Western Australia,LOCALITY
+WF,1026228,IMPACT_CITY,city,-31.657610000000000,116.666801000000000,True,CITY_LEVEL,Northam,Western Australia,LOCALITY
+WF,1026228,RSS_GEO_POINT,rss,-31.01446620437379,115.96947511863846,True,CITY_LEVEL,Mogumber,Western Australia,LOCALITY
+WF,1026307,IMPACT_AIRPORTS,airports,9.931871000000000,20.900909000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Haraze-Mangueigne,Salamat,ADMIN_LEVEL_2
+WF,1026307,IMPACT_AIRPORTS,airports,9.333333000000000,21.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026307,IMPACT_AIRPORTS,airports,9.584691000000000,21.732662000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ouandja,Vakaga,ADMIN_LEVEL_3
+WF,1026307,IMPACT_AIRPORT,airport,9.931871000000000,20.900909000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Haraze-Mangueigne,Salamat,ADMIN_LEVEL_2
+WF,1026307,IMPACT_AIRPORT,airport,9.333333000000000,21.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026307,IMPACT_AIRPORT,airport,9.584691000000000,21.732662000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ouandja,Vakaga,ADMIN_LEVEL_3
+WF,1026307,RSS_GEO_POINT,rss,9.7091434682419,21.147896282826263,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ouandja,Vakaga,ADMIN_LEVEL_3
+WF,1026308,RSS_GEO_POINT,rss,5.6251281625502516,30.032507436751047,False,"NON_CITY: ['administrative_area_level_3', 'political']",Yeri,Western Equatoria,ADMIN_LEVEL_3
+WF,1026437,RSS_GEO_POINT,rss,7.6614401768971341,26.078663619022272,False,"NON_CITY: ['administrative_area_level_3', 'political']",Uyujuku,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026436,RSS_GEO_POINT,rss,7.0529726106406176,29.589516378939972,False,"NON_CITY: ['administrative_area_level_3', 'political']",Mayom,Lakes,ADMIN_LEVEL_3
+WF,1026415,RSS_GEO_POINT,rss,7.1007505854041879,26.806553056858888,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bagari,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026463,IMPACT_AIRPORTS,airports,20.871666000000000,82.518890000000000,True,CITY_LEVEL,Nandapur,Odisha,LOCALITY
+WF,1026463,IMPACT_AIRPORT,airport,20.871666000000000,82.518890000000000,True,CITY_LEVEL,Nandapur,Odisha,LOCALITY
+WF,1026463,IMPACT_HYDRO,hydro,21.197914,82.181942,True,CITY_LEVEL,Kauwajhar,Chhattisgarh,LOCALITY
+WF,1026463,IMPACT_HYDRO,hydro,20.7349350000001,82.4437500000001,True,CITY_LEVEL,Dharambandha,Odisha,LOCALITY
+WF,1026463,IMPACT_HYDRO,hydro,21.143738,82.0020710000001,True,CITY_LEVEL,Goinda,Chhattisgarh,LOCALITY
+WF,1026463,IMPACT_HYDRO,hydro,20.5182540000001,82.3187500000001,True,CITY_LEVEL,Badimar,Chhattisgarh,LOCALITY
+WF,1026463,IMPACT_HYDRO,hydro,21.4931070000001,81.9093750000001,True,CITY_LEVEL,Keotara,Chhattisgarh,LOCALITY
+WF,1026463,IMPACT_CITY,city,21.876940000000000,83.262741000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Raigarh,Chhattisgarh,ADMIN_LEVEL_3
+WF,1026463,RSS_GEO_POINT,rss,21.250578424144408,82.807442380245277,True,CITY_LEVEL,Kudekel,Chhattisgarh,LOCALITY
+WF,1026298,IMPACT_AIRPORTS,airports,8.899762000000000,22.783394000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Vokouma,Vakaga,ADMIN_LEVEL_3
+WF,1026298,IMPACT_AIRPORTS,airports,9.584691000000000,21.732662000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ouandja,Vakaga,ADMIN_LEVEL_3
+WF,1026298,IMPACT_AIRPORT,airport,8.899762000000000,22.783394000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Vokouma,Vakaga,ADMIN_LEVEL_3
+WF,1026298,IMPACT_AIRPORT,airport,9.584691000000000,21.732662000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ouandja,Vakaga,ADMIN_LEVEL_3
+WF,1026298,IMPACT_CITY,city,8.898046000000000,22.802031000000000,True,CITY_LEVEL,Ouanda Djallé,Bamingui-Bangoran,LOCALITY
+WF,1026298,RSS_GEO_POINT,rss,9.220845855947724,22.347965099418811,False,"NON_CITY: ['administrative_area_level_3', 'political']",Vokouma,Vakaga,ADMIN_LEVEL_3
+WF,1026376,IMPACT_AIRPORTS,airports,9.931871000000000,20.900909000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Haraze-Mangueigne,Salamat,ADMIN_LEVEL_2
+WF,1026376,IMPACT_AIRPORTS,airports,9.333333000000000,21.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026376,IMPACT_AIRPORT,airport,9.931871000000000,20.900909000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Haraze-Mangueigne,Salamat,ADMIN_LEVEL_2
+WF,1026376,IMPACT_AIRPORT,airport,9.333333000000000,21.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026376,RSS_GEO_POINT,rss,9.9358409199594568,20.502137457447887,False,"NON_CITY: ['administrative_area_level_2', 'political']",Haraze-Mangueigne,Salamat,ADMIN_LEVEL_2
+WF,1026438,IMPACT_AIRPORTS,airports,8.400000000000000,20.650000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026438,IMPACT_AIRPORTS,airports,8.500000000000000,21.250000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026438,IMPACT_AIRPORTS,airports,8.335800000000000,20.108299000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026438,IMPACT_AIRPORTS,airports,9.333333000000000,21.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026438,IMPACT_AIRPORT,airport,8.400000000000000,20.650000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026438,IMPACT_AIRPORT,airport,8.500000000000000,21.250000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026438,IMPACT_AIRPORT,airport,8.335800000000000,20.108299000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026438,IMPACT_AIRPORT,airport,9.333333000000000,21.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026438,IMPACT_CITY,city,8.410221000000000,20.651291000000000,True,CITY_LEVEL,N'Délé,Bamingui-Bangoran,LOCALITY
+WF,1026438,RSS_GEO_POINT,rss,8.5533529414465885,20.711819823296558,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026440,RSS_GEO_POINT,rss,8.0702976793487373,26.370144567306419,False,"NON_CITY: ['administrative_area_level_3', 'political']",Uyujuku,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026249,RSS_GEO_POINT,rss,7.5946674057717143,26.370405757889834,False,"NON_CITY: ['administrative_area_level_3', 'political']",Uyujuku,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026355,IMPACT_AIRPORTS,airports,7.733333000000000,27.983333000000000,True,CITY_LEVEL,Wau,Western Bahr el Ghazal,LOCALITY
+WF,1026355,IMPACT_AIRPORT,airport,7.733333000000000,27.983333000000000,True,CITY_LEVEL,Wau,Western Bahr el Ghazal,LOCALITY
+WF,1026355,IMPACT_CITY,city,7.696033000000000,27.992130000000000,True,CITY_LEVEL,Wau,Western Bahr el Ghazal,LOCALITY
+WF,1026355,RSS_GEO_POINT,rss,7.8748645808792537,27.163183542175773,False,"NON_CITY: ['administrative_area_level_3', 'political']",Besselia,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026416,IMPACT_AIRPORTS,airports,7.733333000000000,27.983333000000000,True,CITY_LEVEL,Wau,Western Bahr el Ghazal,LOCALITY
+WF,1026416,IMPACT_AIRPORT,airport,7.733333000000000,27.983333000000000,True,CITY_LEVEL,Wau,Western Bahr el Ghazal,LOCALITY
+WF,1026416,IMPACT_CITY,city,7.696033000000000,27.992130000000000,True,CITY_LEVEL,Wau,Western Bahr el Ghazal,LOCALITY
+WF,1026416,RSS_GEO_POINT,rss,7.6292805311417764,27.07880438298886,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bagari,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026274,IMPACT_AIRPORTS,airports,8.500000000000000,21.250000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026274,IMPACT_AIRPORTS,airports,8.400000000000000,20.650000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026274,IMPACT_AIRPORTS,airports,9.333333000000000,21.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026274,IMPACT_AIRPORT,airport,8.500000000000000,21.250000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026274,IMPACT_AIRPORT,airport,8.400000000000000,20.650000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026274,IMPACT_AIRPORT,airport,9.333333000000000,21.183333000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026274,IMPACT_CITY,city,8.410221000000000,20.651291000000000,True,CITY_LEVEL,N'Délé,Bamingui-Bangoran,LOCALITY
+WF,1026274,RSS_GEO_POINT,rss,8.7125237024362665,21.068811423317928,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dar El Kouti,Bamingui-Bangoran,ADMIN_LEVEL_3
+WF,1026231,RSS_GEO_POINT,rss,7.9603837645419269,26.560520798248227,False,"NON_CITY: ['administrative_area_level_3', 'political']",Uyujuku,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026311,RSS_GEO_POINT,rss,7.0408095618684516,26.480459338741866,False,"NON_CITY: ['administrative_area_level_3', 'political']",Uyujuku,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026313,IMPACT_AIRPORTS,airports,9.558888000000000,31.652222000000000,True,CITY_LEVEL,Malakal,Upper Nile,LOCALITY
+WF,1026313,IMPACT_AIRPORT,airport,9.558889000000000,31.652222000000000,True,CITY_LEVEL,Malakal,Upper Nile,LOCALITY
+WF,1026313,IMPACT_CITY,city,9.529987000000000,31.655479000000000,True,CITY_LEVEL,Malakal,Upper Nile,LOCALITY
+WF,1026313,RSS_GEO_POINT,rss,9.8254764265100789,31.476405683191516,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lelo,Upper Nile,ADMIN_LEVEL_3
+WF,1026369,RSS_GEO_POINT,rss,8.2971301891627061,25.613236649963209,False,"NON_CITY: ['administrative_area_level_3', 'political']",Raga,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026439,RSS_GEO_POINT,rss,7.9631693566840944,26.350447140177078,False,"NON_CITY: ['administrative_area_level_3', 'political']",Uyujuku,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026397,RSS_GEO_POINT,rss,7.057739959200986,27.069092735010013,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bagari,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026317,RSS_GEO_POINT,rss,8.8723940956086587,24.142835430176476,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+WF,1026346,RSS_GEO_POINT,rss,7.3058484306822145,25.045232682363707,False,"NON_CITY: ['administrative_area_level_3', 'political']",Djéma,Haut-Mbomou,ADMIN_LEVEL_3
+WF,1026211,RSS_GEO_POINT,rss,8.4873553241083464,25.370938772722376,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ringi,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026160,IMPACT_AIRPORTS,airports,5.431871000000000,27.217576000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lili,Haut-Mbomou,ADMIN_LEVEL_3
+WF,1026160,IMPACT_AIRPORT,airport,5.431871000000000,27.217576000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lili,Haut-Mbomou,ADMIN_LEVEL_3
+WF,1026160,RSS_GEO_POINT,rss,5.832904068735405,27.913011910962876,False,"NON_CITY: ['administrative_area_level_3', 'political']",Yangiri,Western Equatoria,ADMIN_LEVEL_3
+WF,1026417,RSS_GEO_POINT,rss,7.0711184946739127,32.845995831032951,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lekuangole,Jonglei,ADMIN_LEVEL_3
+WF,1026418,RSS_GEO_POINT,rss,7.1917220089389389,32.8679115613673,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lekuangole,Jonglei,ADMIN_LEVEL_3
+WF,1026333,IMPACT_AIRPORTS,airports,9.976100000000000,6.799200000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Galkogo,Niger,ADMIN_LEVEL_3
+WF,1026333,IMPACT_AIRPORTS,airports,9.883695000000000,6.818278000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Gussoro,Niger,ADMIN_LEVEL_3
+WF,1026333,IMPACT_AIRPORTS,airports,10.695000000000000,7.322500000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Afaka,Kaduna,ADMIN_LEVEL_3
+WF,1026333,IMPACT_AIRPORTS,airports,10.597917000000000,7.448389000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Hayin Banki,Kaduna,ADMIN_LEVEL_3
+WF,1026333,IMPACT_AIRPORTS,airports,9.651556000000000,6.461500000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Maikunkele,Niger,ADMIN_LEVEL_3
+WF,1026333,IMPACT_AIRPORT,airport,9.976100000000000,6.799200000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Galkogo,Niger,ADMIN_LEVEL_3
+WF,1026333,IMPACT_AIRPORT,airport,9.883695000000000,6.818278000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Gussoro,Niger,ADMIN_LEVEL_3
+WF,1026333,IMPACT_AIRPORT,airport,10.696636000000000,7.320451000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Afaka,Kaduna,ADMIN_LEVEL_3
+WF,1026333,IMPACT_AIRPORT,airport,10.597917000000000,7.448389000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Hayin Banki,Kaduna,ADMIN_LEVEL_3
+WF,1026333,IMPACT_AIRPORT,airport,9.651556000000000,6.461500000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Maikunkele,Niger,ADMIN_LEVEL_3
+WF,1026333,IMPACT_HYDRO,hydro,9.97146200000003,6.83648800000003,False,"NON_CITY: ['administrative_area_level_3', 'political']",Galkogo,Niger,ADMIN_LEVEL_3
+WF,1026333,IMPACT_HYDRO,hydro,9.56876400000004,6.66040700000002,False,"NON_CITY: ['administrative_area_level_3', 'political']",Maitumbi,Niger,ADMIN_LEVEL_3
+WF,1026333,IMPACT_CITY,city,10.519010000000000,7.443122000000000,True,CITY_LEVEL,City Centre,Kaduna,NEIGHBORHOOD
+WF,1026333,IMPACT_CITY,city,9.607762000000000,6.553394000000000,True,CITY_LEVEL,Minna,Niger,NEIGHBORHOOD
+WF,1026333,RSS_GEO_POINT,rss,10.514622130186064,6.6137860905759442,False,"NON_CITY: ['administrative_area_level_3', 'political']",Allawa,Niger,ADMIN_LEVEL_3
+WF,1026216,RSS_GEO_POINT,rss,5.9461419792963675,28.964885815522976,False,"NON_CITY: ['administrative_area_level_3', 'political']",Domoloto,Lakes,ADMIN_LEVEL_3
+WF,1026237,RSS_GEO_POINT,rss,7.437161711628467,26.431376797266545,False,"NON_CITY: ['administrative_area_level_3', 'political']",Uyujuku,Western Bahr el Ghazal,ADMIN_LEVEL_3
+WF,1026238,RSS_GEO_POINT,rss,5.71673620181335,28.900359050470119,False,"NON_CITY: ['administrative_area_level_3', 'political']",Manikakara,Western Equatoria,ADMIN_LEVEL_3
+WF,1026398,IMPACT_AIRPORTS,airports,5.431871000000000,27.217576000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lili,Haut-Mbomou,ADMIN_LEVEL_3
+WF,1026398,IMPACT_AIRPORT,airport,5.431871000000000,27.217576000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lili,Haut-Mbomou,ADMIN_LEVEL_3
+WF,1026398,RSS_GEO_POINT,rss,6.0583334720623894,27.333556754368793,False,"NON_CITY: ['administrative_area_level_3', 'political']",Namutina,Western Equatoria,ADMIN_LEVEL_3
+FL,1103657,RSS_GEO_POINT,rss,40.5863563,-122.391675,True,CITY_LEVEL,Downtown,California,NEIGHBORHOOD
+WF,1026185,RSS_GEO_POINT,rss,6.0531824852657028,29.183261170618877,False,"NON_CITY: ['administrative_area_level_3', 'political']",Domoloto,Lakes,ADMIN_LEVEL_3
+WF,1026165,IMPACT_CITY,city,7.696033000000000,27.992130000000000,True,CITY_LEVEL,Wau,Western Bahr el Ghazal,LOCALITY
+WF,1026165,RSS_GEO_POINT,rss,6.7307290417011982,27.965739547589067,False,"NON_CITY: ['administrative_area_level_2', 'political']",Nagero,Western Equatoria,ADMIN_LEVEL_2
+WF,1026279,RSS_GEO_POINT,rss,6.2244735561488458,28.525356689818491,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ringasi,Western Equatoria,ADMIN_LEVEL_3
+WF,1026399,IMPACT_AIRPORTS,airports,4.871722000000000,31.602278000000000,True,CITY_LEVEL,Juba,Central Equatoria,LOCALITY
+WF,1026399,IMPACT_AIRPORTS,airports,3.650000000000000,31.716667000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Moyo,Northern Region,ADMIN_LEVEL_2
+WF,1026399,IMPACT_AIRPORT,airport,4.871944000000000,31.601111000000000,True,CITY_LEVEL,Juba,Central Equatoria,LOCALITY
+WF,1026399,IMPACT_AIRPORT,airport,3.645253000000000,31.763569000000000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Moyo,Northern Region,ADMIN_LEVEL_2
+WF,1026399,IMPACT_CITY,city,4.849569000000000,31.604630000000000,True,CITY_LEVEL,Juba,Central Equatoria,LOCALITY
+WF,1026399,RSS_GEO_POINT,rss,4.36820769038513,31.212742072390959,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lobonok,Central Equatoria,ADMIN_LEVEL_3
+WF,1026324,IMPACT_AIRPORTS,airports,4.933333000000000,15.900000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Carnot,Mambéré-Kadéï,ADMIN_LEVEL_3
+WF,1026324,IMPACT_AIRPORTS,airports,4.219861000000000,15.786834000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Basse-Batouri,Mambéré-Kadéï,ADMIN_LEVEL_3
+WF,1026324,IMPACT_AIRPORT,airport,4.933333000000000,15.900000000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Carnot,Mambéré-Kadéï,ADMIN_LEVEL_3
+WF,1026324,IMPACT_AIRPORT,airport,4.219861000000000,15.786834000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Basse-Batouri,Mambéré-Kadéï,ADMIN_LEVEL_3
+WF,1026324,IMPACT_CITY,city,4.928533000000000,15.879930000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Carnot,Mambéré-Kadéï,ADMIN_LEVEL_3
+WF,1026324,IMPACT_CITY,city,4.248611000000000,15.785240000000000,True,CITY_LEVEL,Berbérati,Mambéré-Kadéï,LOCALITY
+WF,1026324,RSS_GEO_POINT,rss,4.9481042009859655,15.931030858846666,False,"NON_CITY: ['administrative_area_level_3', 'political']",Carnot,Mambéré-Kadéï,ADMIN_LEVEL_3
+WF,1026371,IMPACT_AIRPORTS,airports,8.899762000000000,22.783394000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Vokouma,Vakaga,ADMIN_LEVEL_3
+WF,1026371,IMPACT_AIRPORT,airport,8.899762000000000,22.783394000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Vokouma,Vakaga,ADMIN_LEVEL_3
+WF,1026371,IMPACT_CITY,city,8.898046000000000,22.802031000000000,True,CITY_LEVEL,Ouanda Djallé,Bamingui-Bangoran,LOCALITY
+WF,1026371,RSS_GEO_POINT,rss,9.3372298292432845,23.223102292511406,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ouandja,Vakaga,ADMIN_LEVEL_3
+WF,1026425,IMPACT_AIRPORTS,airports,8.899762000000000,22.783394000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Vokouma,Vakaga,ADMIN_LEVEL_3
+WF,1026425,IMPACT_AIRPORT,airport,8.899762000000000,22.783394000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Vokouma,Vakaga,ADMIN_LEVEL_3
+WF,1026425,IMPACT_CITY,city,8.898046000000000,22.802031000000000,True,CITY_LEVEL,Ouanda Djallé,Bamingui-Bangoran,LOCALITY
+WF,1026425,RSS_GEO_POINT,rss,9.1037529702502269,23.623438091529856,False,"NON_CITY: ['country', 'political']",,,COUNTRY
+WF,1026281,RSS_GEO_POINT,rss,9.3184093419162313,28.859016618707457,False,"NON_CITY: ['administrative_area_level_3', 'political']",Abiemnhom,Unity,ADMIN_LEVEL_3
+WF,1026217,RSS_GEO_POINT,rss,6.7270478786962569,27.249456120195539,False,"NON_CITY: ['administrative_area_level_2', 'political']",Nagero,Western Equatoria,ADMIN_LEVEL_2
+WF,1026133,IMPACT_AIRPORTS,airports,9.558888000000000,31.652222000000000,True,CITY_LEVEL,Malakal,Upper Nile,LOCALITY
+WF,1026133,IMPACT_AIRPORT,airport,9.558889000000000,31.652222000000000,True,CITY_LEVEL,Malakal,Upper Nile,LOCALITY
+WF,1026133,IMPACT_CITY,city,9.529987000000000,31.655479000000000,True,CITY_LEVEL,Malakal,Upper Nile,LOCALITY
+WF,1026133,RSS_GEO_POINT,rss,9.5308466973131267,31.312385609064727,False,"NON_CITY: ['administrative_area_level_3', 'political']",Panyikang,Upper Nile,ADMIN_LEVEL_3
+WF,1026166,IMPACT_AIRPORTS,airports,5.431871000000000,27.217576000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lili,Haut-Mbomou,ADMIN_LEVEL_3
+WF,1026166,IMPACT_AIRPORT,airport,5.431871000000000,27.217576000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lili,Haut-Mbomou,ADMIN_LEVEL_3
+WF,1026166,RSS_GEO_POINT,rss,5.6601750881156949,28.158883481475421,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ringasi,Western Equatoria,ADMIN_LEVEL_3
+WF,1026169,IMPACT_AIRPORTS,airports,8.633330000000000,33.083330000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kiech Kuon,Upper Nile,ADMIN_LEVEL_3
+WF,1026169,IMPACT_AIRPORT,airport,8.633330000000000,33.083330000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kiech Kuon,Upper Nile,ADMIN_LEVEL_3
+WF,1026169,RSS_GEO_POINT,rss,9.1023208818909058,32.911390207996348,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kiech Kuon,Upper Nile,ADMIN_LEVEL_3
+WF,1026283,IMPACT_AIRPORTS,airports,5.431871000000000,27.217576000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lili,Haut-Mbomou,ADMIN_LEVEL_3
+WF,1026283,IMPACT_AIRPORT,airport,5.431871000000000,27.217576000000000,False,"NON_CITY: ['administrative_area_level_3', 'political']",Lili,Haut-Mbomou,ADMIN_LEVEL_3
+WF,1026283,RSS_GEO_POINT,rss,6.3571504317661658,27.431261195979125,False,"NON_CITY: ['administrative_area_level_2', 'political']",Nagero,Western Equatoria,ADMIN_LEVEL_2
+FL,1103633,RSS_GEO_POINT,rss,-8.5637593,118.6719665,False,"NON_CITY: ['administrative_area_level_3', 'political']",Woha,West Nusa Tenggara,ADMIN_LEVEL_3
+DR,1018196,IMPACT_ARU,aru,10.0903,-64.5919,False,"NON_CITY: ['administrative_area_level_3', 'political']",El Carmen,Anzoátegui,ADMIN_LEVEL_3
+DR,1018196,IMPACT_ARU,aru,7.4762,-66.7244,False,"NON_CITY: ['administrative_area_level_3', 'political']",San Rafael De Atamaica,Apure,ADMIN_LEVEL_3
+DR,1018196,IMPACT_ARU,aru,9.6573,-66.7803,False,"NON_CITY: ['administrative_area_level_3', 'political']",San Francisco De Cara,Aragua,ADMIN_LEVEL_3
+DR,1018196,IMPACT_ARU,aru,8.2243,-68.3902,False,"NON_CITY: ['administrative_area_level_3', 'political']",San Antonio,Barinas,ADMIN_LEVEL_3
+DR,1018196,IMPACT_ARU,aru,7.3806,-65.4906,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ascensión Farreras,Bolívar,ADMIN_LEVEL_3
+DR,1018196,IMPACT_ARU,aru,9.9379,-67.7550,False,"NON_CITY: ['administrative_area_level_3', 'political']",No Urbana Belén,Carabobo,ADMIN_LEVEL_3
+DR,1018196,IMPACT_ARU,aru,8.9354,-67.9594,False,"NON_CITY: ['administrative_area_level_3', 'political']",El Pao,Cojedes,ADMIN_LEVEL_3
+DR,1018196,IMPACT_ARU,aru,7.9141,-67.2599,False,"NON_CITY: ['administrative_area_level_3', 'political']",Capital San Gerónimo De Guayabal,Guárico,ADMIN_LEVEL_3
+DR,1018196,IMPACT_ARU,aru,9.9876,-66.1338,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ribas,Miranda,ADMIN_LEVEL_3
+DR,1018196,IMPACT_ARU,aru,10.5077,-67.1756,False,"NON_CITY: ['administrative_area_level_3', 'political']",Carayaca,La Guaira,ADMIN_LEVEL_3
+DR,1018196,IMPACT_ARU,aru,10.4579,-67.0406,True,CITY_LEVEL,Caracas,Capital District,LOCALITY
+DR,1018196,IMPACT_ARU,aru,7.0097,-72.1225,False,"NON_CITY: ['administrative_area_level_2', 'political']",Cubará,Boyaca,ADMIN_LEVEL_2
+DR,1018196,IMPACT_ARU,aru,10.0000,-73.0000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Codazzi,Cesar,ADMIN_LEVEL_2
+DR,1018196,IMPACT_ARU,aru,9.0739,-72.8892,False,"NON_CITY: ['administrative_area_level_2', 'political']",Tibú,North Santander,ADMIN_LEVEL_2
+DR,1018196,IMPACT_ARU,aru,7.2110,-72.9424,False,"NON_CITY: ['administrative_area_level_2', 'political']",Tona,Santander,ADMIN_LEVEL_2
+DR,1018196,IMPACT_ARU,aru,9.0863,-71.1083,False,"NON_CITY: ['administrative_area_level_3', 'political']",Capital Tulio Febres Cordero,Mérida,ADMIN_LEVEL_3
+DR,1018196,IMPACT_ARU,aru,7.7079,-72.2239,False,"NON_CITY: ['administrative_area_level_3', 'political']",La Concordia,Táchira,ADMIN_LEVEL_3
+DR,1018196,IMPACT_ARU,aru,9.4799,-71.0365,False,"NON_CITY: ['administrative_area_level_3', 'political']",Santa Apolonia,Trujillo,ADMIN_LEVEL_3
+DR,1018196,IMPACT_ARU,aru,9.2383,-71.0698,False,"NON_CITY: ['administrative_area_level_3', 'political']",Gibraltar,Zulia,ADMIN_LEVEL_3
+DR,1018196,RSS_GEO_POINT,rss,8.356,-66.699,False,"NON_CITY: ['administrative_area_level_3', 'political']",Santa Rita De Manapire,Guárico,ADMIN_LEVEL_3
+DR,1018093,IMPACT_ARU,aru,41.8486,-83.0011,False,"NON_CITY: ['administrative_area_level_2', 'political']",Essex County,Ontario,ADMIN_LEVEL_2
+DR,1018093,IMPACT_ARU,aru,40.3313,-91.2120,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bear Creek Township,Illinois,ADMIN_LEVEL_3
+DR,1018093,IMPACT_ARU,aru,41.3784,-84.9022,False,"NON_CITY: ['administrative_area_level_3', 'political']",Wilmington Township,Indiana,ADMIN_LEVEL_3
+DR,1018093,IMPACT_ARU,aru,39.4252,-77.3764,True,CITY_LEVEL,Frederick,Maryland,LOCALITY
+DR,1018093,IMPACT_ARU,aru,41.8581,-84.4890,True,CITY_LEVEL,Pittsford,Michigan,LOCALITY
+DR,1018093,IMPACT_ARU,aru,42.4899,-78.4874,True,CITY_LEVEL,Delevan,New York,LOCALITY
+DR,1018093,IMPACT_ARU,aru,41.2335,-82.5035,False,"NON_CITY: ['administrative_area_level_3', 'political']",Townsend Township,Ohio,ADMIN_LEVEL_3
+DR,1018093,IMPACT_ARU,aru,39.8620,-78.4998,False,"NON_CITY: ['administrative_area_level_3', 'political']",Monroe Township,Pennsylvania,ADMIN_LEVEL_3
+DR,1018093,IMPACT_ARU,aru,39.1682,-78.2424,False,"NON_CITY: ['administrative_area_level_2', 'political']",Frederick County,Virginia,ADMIN_LEVEL_2
+DR,1018093,IMPACT_ARU,aru,39.3770,-77.8852,False,"NON_CITY: ['administrative_area_level_2', 'political']",Jefferson County,West Virginia,ADMIN_LEVEL_2
+DR,1018093,IMPACT_ARU,aru,41.5040,-91.5091,False,"NON_CITY: ['administrative_area_level_2', 'political']",Johnson County,Iowa,ADMIN_LEVEL_2
+DR,1018093,IMPACT_ARU,aru,40.2861,-91.7598,False,"NON_CITY: ['administrative_area_level_3', 'political']",Union Township,Missouri,ADMIN_LEVEL_3
+DR,1018093,IMPACT_ARU,aru,44.4994,-87.6960,False,"NON_CITY: ['administrative_area_level_3', 'political']",Montpelier,Wisconsin,ADMIN_LEVEL_3
+DR,1018093,IMPACT_ARU,aru,47.2733,-69.0239,False,"NON_CITY: ['administrative_area_level_3', 'political']",Saint-François Parish,New Brunswick,ADMIN_LEVEL_3
+DR,1018093,IMPACT_ARU,aru,47.5398,-69.5227,False,"NON_CITY: ['administrative_area_level_3', 'political']",Kamouraska Regional County Municipality,Quebec,ADMIN_LEVEL_3
+DR,1018093,IMPACT_ARU,aru,47.1783,-69.2618,False,"NON_CITY: ['administrative_area_level_3', 'political']",Northwest Aroostook,Maine,ADMIN_LEVEL_3
+DR,1018093,IMPACT_ARU,aru,45.1266,-71.2584,True,CITY_LEVEL,Pittsburg,New Hampshire,LOCALITY
+DR,1018093,IMPACT_ARU,aru,44.7004,-71.7919,True,CITY_LEVEL,Ferdinand,Vermont,LOCALITY
+DR,1018093,IMPACT_ARU,aru,45.7722,-76.4092,False,"NON_CITY: ['administrative_area_level_3', 'political']",Pontiac Regional County Municipality,Quebec,ADMIN_LEVEL_3
+DR,1018093,RSS_GEO_POINT,rss,41.36,-81.67,True,CITY_LEVEL,Seven Hills,Ohio,LOCALITY
+DR,1018094,IMPACT_ARU,aru,36.2236,1.7960,True,CITY_LEVEL,Rouina,Aïn Defla Province,LOCALITY
+DR,1018094,IMPACT_ARU,aru,35.3809,-0.8352,True,CITY_LEVEL,Oued Sabah,Aïn Témouchent Province,LOCALITY
+DR,1018094,IMPACT_ARU,aru,36.2607,1.3153,True,CITY_LEVEL,Ouled Fares,Chlef Province,LOCALITY
+DR,1018094,IMPACT_ARU,aru,34.1960,0.5138,True,CITY_LEVEL,Bougtob,El Bayadh Province,LOCALITY
+DR,1018094,IMPACT_ARU,aru,35.4611,-0.1732,True,CITY_LEVEL,Chorfa,Mascara Province,LOCALITY
+DR,1018094,IMPACT_ARU,aru,35.7744,-0.0431,True,CITY_LEVEL,Fornaka,Mostaganem Province,LOCALITY
+DR,1018094,IMPACT_ARU,aru,34.1229,-0.6614,True,CITY_LEVEL,El Biodh,Naâma Province,LOCALITY
+DR,1018094,IMPACT_ARU,aru,35.6508,-0.5919,True,CITY_LEVEL,Sidi Chami,Oran Province,LOCALITY
+DR,1018094,IMPACT_ARU,aru,36.0171,1.0290,True,CITY_LEVEL,Merdja Sidi Abed,Relizane Province,LOCALITY
+DR,1018094,IMPACT_ARU,aru,35.0606,-0.1245,True,CITY_LEVEL,Hounet,Saïda Province,LOCALITY
+DR,1018094,IMPACT_ARU,aru,35.0958,-1.0027,True,CITY_LEVEL,Aoubellil,Aïn Témouchent Province,LOCALITY
+DR,1018094,IMPACT_ARU,aru,34.7468,0.8666,True,CITY_LEVEL,Madna,Tiaret Province,LOCALITY
+DR,1018094,IMPACT_ARU,aru,36.4878,1.8301,True,CITY_LEVEL,Aghbal,Tipaza Province,LOCALITY
+DR,1018094,IMPACT_ARU,aru,36.0133,1.5621,True,CITY_LEVEL,Lazharia,Tissemsilt Province,LOCALITY
+DR,1018094,IMPACT_ARU,aru,35.0397,-0.9664,True,CITY_LEVEL,Ain Nehala,Tlemcen Province,LOCALITY
+DR,1018094,IMPACT_ARU,aru,32.4240,-4.5480,False,"NON_CITY: ['administrative_area_level_2', 'political']",Midelt Province,Drâa-Tafilalet,ADMIN_LEVEL_2
+DR,1018094,IMPACT_ARU,aru,32.6607,-4.0207,False,"NON_CITY: ['administrative_area_level_2', 'political']",Boulemane Province,Fez-Meknès,ADMIN_LEVEL_2
+DR,1018094,IMPACT_ARU,aru,33.4110,-3.5471,False,"NON_CITY: ['administrative_area_level_2', 'political']",Boulemane Province,Fez-Meknès,ADMIN_LEVEL_2
+DR,1018094,IMPACT_ARU,aru,33.8575,-3.6607,False,"NON_CITY: ['administrative_area_level_2', 'political']",Province de Guercif,Oriental,ADMIN_LEVEL_2
+DR,1018094,RSS_GEO_POINT,rss,35.226,0.363,True,CITY_LEVEL,Nesmoth,Mascara Province,LOCALITY
+DR,1018091,IMPACT_ARU,aru,43.3766,-7.0577,False,"NON_CITY: ['administrative_area_level_3', 'political']",Oscos - Eo,,ADMIN_LEVEL_3
+DR,1018091,IMPACT_ARU,aru,42.9111,-4.1256,False,"NON_CITY: ['administrative_area_level_3', 'political']",Campoo-Los Valles,Cantabria,ADMIN_LEVEL_3
+DR,1018091,IMPACT_ARU,aru,42.4793,-4.5185,False,"NON_CITY: ['administrative_area_level_3', 'political']",Tierra de Campos,Castile and León,ADMIN_LEVEL_3
+DR,1018091,IMPACT_ARU,aru,43.1127,-6.9328,False,"NON_CITY: ['administrative_area_level_3', 'political']",A Fonsagrada,,ADMIN_LEVEL_3
+DR,1018091,IMPACT_ARU,aru,39.0405,-6.9818,False,"NON_CITY: ['administrative_area_level_3', 'political']",São João Baptista,Portalegre District,ADMIN_LEVEL_3
+DR,1018091,IMPACT_ARU,aru,38.0149,-7.0706,False,"NON_CITY: ['administrative_area_level_3', 'political']",Sierra de Huelva,Andalucía,ADMIN_LEVEL_3
+DR,1018091,IMPACT_ARU,aru,39.7946,-5.1392,False,"NON_CITY: ['administrative_area_level_3', 'political']",Campo de Arañuelo,Castilla-La Mancha,ADMIN_LEVEL_3
+DR,1018091,IMPACT_ARU,aru,38.5298,-7.1199,False,"NON_CITY: ['administrative_area_level_3', 'political']",Llanos de Olivenza,Extremadura,ADMIN_LEVEL_3
+DR,1018091,RSS_GEO_POINT,rss,43.017,-5.823,False,"NON_CITY: ['administrative_area_level_3', 'political']",Montaña Central,,ADMIN_LEVEL_3
+DR,1017944,IMPACT_ARU,aru,13.2445,36.5906,False,"NON_CITY: ['administrative_area_level_3', 'political']",Mirab Armacho,አማራ,ADMIN_LEVEL_3
+DR,1017944,IMPACT_ARU,aru,13.7090,36.7531,False,"NON_CITY: ['administrative_area_level_3', 'political']",ኳታ ሁመራ ፡፡,ትግራይ,ADMIN_LEVEL_3
+DR,1017944,IMPACT_ARU,aru,12.0703,33.8521,False,"NON_CITY: ['administrative_area_level_2', 'political']",At Tadamon - BN,Blue Nile,ADMIN_LEVEL_2
+DR,1017944,IMPACT_ARU,aru,12.4537,35.2491,False,"NON_CITY: ['administrative_area_level_2', 'political']",Ad Dinder,Sennar,ADMIN_LEVEL_2
+DR,1017944,IMPACT_ARU,aru,12.6177,31.8531,False,"NON_CITY: ['administrative_area_level_2', 'political']",As Salam / Ar Rawat,White Nile,ADMIN_LEVEL_2
+DR,1017944,IMPACT_ARU,aru,10.4676,32.5308,False,"NON_CITY: ['administrative_area_level_3', 'political']",Paloch,Upper Nile,ADMIN_LEVEL_3
+DR,1017944,IMPACT_ARU,aru,13.5831,36.1872,False,"NON_CITY: ['administrative_area_level_2', 'political']",Al Qureisha,Gedaref,ADMIN_LEVEL_2
+DR,1017944,RSS_GEO_POINT,rss,-1.212,23.997,False,"NON_CITY: ['administrative_area_level_2', 'political']",Opala,Tshopo,ADMIN_LEVEL_2
+DR,1017904,IMPACT_ARU,aru,17.3149,-92.4368,False,"NON_CITY: ['administrative_area_level_2', 'political']",Tila,Chiapas,ADMIN_LEVEL_2
+DR,1017904,IMPACT_ARU,aru,17.7631,-92.5899,True,CITY_LEVEL,Macuspana,Tabasco,LOCALITY
+DR,1017904,RSS_GEO_POINT,rss,17.699,-92.77,False,"NON_CITY: ['administrative_area_level_2', 'political']",Jalapa,Tabasco,ADMIN_LEVEL_2
+DR,1017922,IMPACT_ARU,aru,48.2956,93.1962,False,"NON_CITY: ['administrative_area_level_2', 'political']",Do'rgon,Khovd,ADMIN_LEVEL_2
+DR,1017922,IMPACT_ARU,aru,48.7856,93.4651,False,"NON_CITY: ['administrative_area_level_2', 'political']",Zavxan,Uvs,ADMIN_LEVEL_2
+DR,1017922,IMPACT_ARU,aru,48.3119,93.7308,False,"NON_CITY: ['administrative_area_level_2', 'political']",Do'rvoljin,Zavkhan,ADMIN_LEVEL_2
+DR,1017922,RSS_GEO_POINT,rss,48.499,93.5,False,"NON_CITY: ['administrative_area_level_2', 'political']",Do'rvoljin,Zavkhan,ADMIN_LEVEL_2
+DR,1017863,IMPACT_ARU,aru,1.9781,44.0497,False,"NON_CITY: ['administrative_area_level_2', 'political']",Buur Hakaba,Bay,ADMIN_LEVEL_2
+DR,1017863,IMPACT_ARU,aru,1.9969,45.2744,True,CITY_LEVEL,Mogadishu,Banadir,LOCALITY
+DR,1017863,IMPACT_ARU,aru,3.1337,44.8384,False,"NON_CITY: ['administrative_area_level_2', 'political']",Wanla Weyn,Lower Shabelle,ADMIN_LEVEL_2
+DR,1017863,IMPACT_ARU,aru,2.8090,46.1930,False,"NON_CITY: ['administrative_area_level_2', 'political']",Cadale,Middle Shabelle,ADMIN_LEVEL_2
+DR,1017863,IMPACT_ARU,aru,6.7686,41.5324,False,"NON_CITY: ['administrative_area_level_3', 'political']",ሬይቱ,ኦሮሚያ,ADMIN_LEVEL_3
+DR,1017863,IMPACT_ARU,aru,6.2769,40.9379,False,"NON_CITY: ['administrative_area_level_3', 'political']",ጉራዶሞሌ,ሶማሌ,ADMIN_LEVEL_3
+DR,1017863,RSS_GEO_POINT,rss,2.346,44.821,False,"NON_CITY: ['administrative_area_level_2', 'political']",Wanla Weyn,Lower Shabelle,ADMIN_LEVEL_2
+DR,1018001,IMPACT_ARU,aru,48.9996,-111.7152,False,"NON_CITY: ['administrative_area_level_2', 'political']",Warner County No. 5,Alberta,ADMIN_LEVEL_2
+DR,1018001,RSS_GEO_POINT,rss,55.499,-117.5,False,"NON_CITY: ['administrative_area_level_2', 'political']",Smoky River No. 130,Alberta,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,34.5000,64.5000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Chishti Shariff,Herat,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,41.4998,74.5000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Toguz Toro,Jalal-Abad Region,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,37.4951,71.7374,False,"NON_CITY: ['administrative_area_level_2', 'political']",Shughnon,Gorno-Badakhshan Autonomous Province,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,38.7814,73.8841,True,CITY_LEVEL,Kizilsu Kyrgyz Autonomous Prefecture,Xinjiang,LOCALITY
+DR,1017535,IMPACT_ARU,aru,38.1232,56.6585,False,"NON_CITY: ['administrative_area_level_2', 'political']",Raz and Jargalan,North Khorasan Province,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,46.4764,60.5155,False,"NON_CITY: ['administrative_area_level_2', 'political']",Aral District,Kyzylorda Region,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,43.4638,69.3723,False,"NON_CITY: ['administrative_area_level_2', 'political']",Sozak District,Turkistan Region,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,36.5546,38.2949,False,"NON_CITY: ['administrative_area_level_3', 'political']",Sarin,Aleppo Governorate,ADMIN_LEVEL_3
+DR,1017535,IMPACT_ARU,aru,35.2549,37.4911,False,"NON_CITY: ['administrative_area_level_3', 'political']",As-Saan,Hama Governorate,ADMIN_LEVEL_3
+DR,1017535,IMPACT_ARU,aru,35.7128,36.6460,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ariha,Idlib Governorate,ADMIN_LEVEL_3
+DR,1017535,IMPACT_ARU,aru,35.6238,35.9139,False,"NON_CITY: ['administrative_area_level_3', 'political']",Bahlolieh,Latakia Governorate,ADMIN_LEVEL_3
+DR,1017535,IMPACT_ARU,aru,35.1060,35.9564,False,"NON_CITY: ['administrative_area_level_3', 'political']",Banyas,Tartus Governorate,ADMIN_LEVEL_3
+DR,1017535,IMPACT_ARU,aru,35.9566,35.9666,False,"NON_CITY: ['administrative_area_level_2', 'political']",Yayladağı,Hatay,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,38.5063,63.5060,False,"NON_CITY: ['administrative_area_level_1', 'political']",Lebap,Lebap,ADMIN_LEVEL_1
+DR,1017535,IMPACT_ARU,aru,36.0005,63.8463,False,"NON_CITY: ['administrative_area_level_2', 'political']",Ghormach,Badghis,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,40.8111,56.8706,False,"NON_CITY: ['administrative_area_level_1', 'political']",Daşoguz Region,Daşoguz Region,ADMIN_LEVEL_1
+DR,1017535,IMPACT_ARU,aru,40.7851,71.7943,False,"NON_CITY: ['administrative_area_level_2', 'political']",Ulugnor District,Andijan region,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,39.6630,63.5839,False,"NON_CITY: ['administrative_area_level_2', 'political']",Karakul District,Bukhara Region,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,40.4569,71.4994,False,"NON_CITY: ['administrative_area_level_2', 'political']",Altyaryk District,Fergana Region,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,38.6689,65.5498,False,"NON_CITY: ['administrative_area_level_2', 'political']",Nishon District,Qashqadaryo Region,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,40.8700,71.3748,False,"NON_CITY: ['administrative_area_level_2', 'political']",Mingbulak District,Namangan Region,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,39.6868,65.6290,False,"NON_CITY: ['administrative_area_level_2', 'political']",Nurabad District,Samarqand Region,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,38.3760,68.1353,False,"NON_CITY: ['administrative_area_level_1', 'political']",Surxondaryo Region,Surxondaryo Region,ADMIN_LEVEL_1
+DR,1017535,IMPACT_ARU,aru,40.4620,68.6056,False,"NON_CITY: ['administrative_area_level_2', 'political']",Mirzaabad District,Sirdaryo Region,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,40.8663,68.8638,False,"NON_CITY: ['administrative_area_level_2', 'political']",Kuyichirchik District,Tashkent Region,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,37.2373,53.9655,False,"NON_CITY: ['administrative_area_level_1', 'political']",Golestan Province,Golestan Province,ADMIN_LEVEL_1
+DR,1017535,IMPACT_ARU,aru,39.8289,67.6350,False,"NON_CITY: ['administrative_area_level_2', 'political']",Bakhmal District,Jizzakh Region,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,40.5101,65.5391,False,"NON_CITY: ['administrative_area_level_2', 'political']",Nurata District,Navoiy Region,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,41.2618,69.2327,True,CITY_LEVEL,Tashkent,,LOCALITY
+DR,1017535,IMPACT_ARU,aru,37.0290,74.6875,False,"NON_CITY: ['administrative_area_level_1', 'political']",Gilgit-Baltistan,Gilgit-Baltistan,ADMIN_LEVEL_1
+DR,1017535,IMPACT_ARU,aru,39.5238,56.4463,False,"NON_CITY: ['administrative_area_level_1', 'political']",Balkan,Balkan,ADMIN_LEVEL_1
+DR,1017535,IMPACT_ARU,aru,38.4614,60.2955,False,"NON_CITY: ['administrative_area_level_1', 'political']",Ahal,Ahal,ADMIN_LEVEL_1
+DR,1017535,IMPACT_ARU,aru,34.5263,47.4365,False,"NON_CITY: ['administrative_area_level_2', 'political']",Harsin,,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,39.1645,47.2784,False,"NON_CITY: ['administrative_area_level_2', 'political']",Kaleybar,East Azerbaijan Province,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,36.8167,49.6381,False,"NON_CITY: ['administrative_area_level_2', 'political']",Rudbar,Gilan Province,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,34.0139,46.0720,False,"NON_CITY: ['administrative_area_level_2', 'political']",Eyvan,Ilam Province,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,36.1222,45.8201,False,"NON_CITY: ['administrative_area_level_2', 'political']",Baneh,,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,34.9608,50.8023,False,"NON_CITY: ['administrative_area_level_2', 'political']",Qom,Qom Province,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,36.3779,51.5093,False,"NON_CITY: ['administrative_area_level_2', 'political']",Nowshahr,Mazandaran Province,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,35.4865,53.5142,False,"NON_CITY: ['administrative_area_level_2', 'political']",Semnan,Semnan Province,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,35.7789,53.0559,False,"NON_CITY: ['administrative_area_level_2', 'political']",Firuzkuh,Tehran Province,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,36.5975,45.5299,False,"NON_CITY: ['administrative_area_level_2', 'political']",Mahabad,West Azerbaijan Province,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,36.4999,48.4993,False,"NON_CITY: ['administrative_area_level_2', 'political']",Zanjan,Zanjan Province,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,36.6511,45.0274,False,"NON_CITY: ['administrative_area_level_2', 'political']",Choman,Erbil Governorate,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,35.2216,46.0730,False,"NON_CITY: ['administrative_area_level_2', 'political']",Byara,Halabja Governorate,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,35.7929,50.1505,False,"NON_CITY: ['administrative_area_level_2', 'political']",Buin Zahra,Qazvin Province,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,35.0681,50.8565,False,"NON_CITY: ['administrative_area_level_2', 'political']",Qom,Qom Province,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,38.9415,46.3143,False,"NON_CITY: ['administrative_area_level_1', 'political']",Syunik Province,Syunik Province,ADMIN_LEVEL_1
+DR,1017535,IMPACT_ARU,aru,41.4146,48.5776,False,"NON_CITY: ['administrative_area_level_2', 'political']",Quba,,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,37.4377,48.0928,False,"NON_CITY: ['administrative_area_level_2', 'political']",Mianeh,East Azerbaijan Province,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,37.2626,49.4664,False,"NON_CITY: ['administrative_area_level_2', 'political']",Shaft,Gilan Province,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,36.4566,53.4481,False,"NON_CITY: ['administrative_area_level_2', 'political']",Neka,Mazandaran Province,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,36.1662,50.7443,False,"NON_CITY: ['administrative_area_level_2', 'political']",Taleqan,Alborz Province,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,38.5493,45.1366,False,"NON_CITY: ['administrative_area_level_2', 'political']",Khoy,West Azerbaijan Province,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,37.0346,49.0342,False,"NON_CITY: ['administrative_area_level_2', 'political']",Tarom,Zanjan Province,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,43.9429,46.0000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Nogaysky District,Republic of Dagestan,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,39.5505,42.7430,False,"NON_CITY: ['administrative_area_level_3', 'political']",Aşağıkülecik,Ağrı,ADMIN_LEVEL_3
+DR,1017535,IMPACT_ARU,aru,40.8377,41.5489,False,"NON_CITY: ['administrative_area_level_2', 'political']",Yusufeli,Artvin,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,40.2789,40.3083,False,"NON_CITY: ['administrative_area_level_3', 'political']",Yerlice,Bayburt,ADMIN_LEVEL_3
+DR,1017535,IMPACT_ARU,aru,39.0113,42.9797,False,"NON_CITY: ['administrative_area_level_3', 'political']",Örentaş,Bitlis,ADMIN_LEVEL_3
+DR,1017535,IMPACT_ARU,aru,39.0131,38.7005,False,"NON_CITY: ['administrative_area_level_3', 'political']",Öğrendik,Elazığ,ADMIN_LEVEL_3
+DR,1017535,IMPACT_ARU,aru,39.5622,38.6605,False,"NON_CITY: ['administrative_area_level_3', 'political']",Yahşılar,Erzincan,ADMIN_LEVEL_3
+DR,1017535,IMPACT_ARU,aru,40.3302,40.7957,False,"NON_CITY: ['administrative_area_level_2', 'political']",Pazaryolu,Erzurum,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,40.8233,39.0711,False,"NON_CITY: ['administrative_area_level_3', 'political']",Deregözü,Giresun,ADMIN_LEVEL_3
+DR,1017535,IMPACT_ARU,aru,40.5652,40.0470,False,"NON_CITY: ['administrative_area_level_3', 'political']",Güngören,Gümüşhane,ADMIN_LEVEL_3
+DR,1017535,IMPACT_ARU,aru,39.8532,44.2887,False,"NON_CITY: ['administrative_area_level_3', 'political']",Elmagöl,Iğdır,ADMIN_LEVEL_3
+DR,1017535,IMPACT_ARU,aru,39.9952,43.0571,False,"NON_CITY: ['administrative_area_level_3', 'political']",Dumanlı,Ağrı,ADMIN_LEVEL_3
+DR,1017535,IMPACT_ARU,aru,37.9573,37.8230,False,"NON_CITY: ['administrative_area_level_2', 'political']",Doğanşehir,Malatya,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,39.2024,42.3605,False,"NON_CITY: ['administrative_area_level_3', 'political']",Arslankaya,Muş,ADMIN_LEVEL_3
+DR,1017535,IMPACT_ARU,aru,40.7377,37.5663,False,"NON_CITY: ['administrative_area_level_2', 'political']",Gölköy,Ordu,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,40.9037,41.0940,False,"NON_CITY: ['administrative_area_level_2', 'political']",Çamlıhemşin,Rize,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,40.1602,38.2514,False,"NON_CITY: ['administrative_area_level_3', 'political']",Büyükgüzel,Sivas,ADMIN_LEVEL_3
+DR,1017535,IMPACT_ARU,aru,40.2639,35.7854,False,"NON_CITY: ['administrative_area_level_3', 'political']",Büyükkarayün,Tokat,ADMIN_LEVEL_3
+DR,1017535,IMPACT_ARU,aru,40.7460,40.2484,False,"NON_CITY: ['administrative_area_level_2', 'political']",Çaykara,Trabzon,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,39.1547,38.8844,False,"NON_CITY: ['administrative_area_level_3', 'political']",Anıl,Tunceli,ADMIN_LEVEL_3
+DR,1017535,IMPACT_ARU,aru,39.1653,43.5410,False,"NON_CITY: ['administrative_area_level_2', 'political']",Erciş,Van,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,37.5747,48.4287,False,"NON_CITY: ['administrative_area_level_2', 'political']",Khalkhal,Ardabil Province,ADMIN_LEVEL_2
+DR,1017535,IMPACT_ARU,aru,36.3714,49.5784,False,"NON_CITY: ['administrative_area_level_2', 'political']",Qazvin,Qazvin Province,ADMIN_LEVEL_2
+DR,1017535,RSS_GEO_POINT,rss,39.202,64.052,False,"NON_CITY: ['administrative_area_level_2', 'political']",Alat District,Bukhara Region,ADMIN_LEVEL_2
+DR,1017051,IMPACT_ARU,aru,44.2159,16.1396,True,CITY_LEVEL,Rastičevo,Zadar County,LOCALITY
+DR,1017051,IMPACT_ARU,aru,46.7178,21.2371,True,CITY_LEVEL,Doboz,,LOCALITY
+DR,1017051,IMPACT_ARU,aru,46.4066,21.6111,False,"NON_CITY: ['administrative_area_level_2', 'political']",Olari,Arad,ADMIN_LEVEL_2
+DR,1017051,IMPACT_ARU,aru,44.4802,16.4609,True,CITY_LEVEL,Drinić,Republika Srpska,LOCALITY
+DR,1017051,IMPACT_ARU,aru,44.9800,16.7000,True,CITY_LEVEL,Prijedor,Republika Srpska,LOCALITY
+DR,1017051,IMPACT_ARU,aru,46.0715,20.1503,True,CITY_LEVEL,Novi Kneževac,Vojvodina,LOCALITY
+DR,1017051,RSS_GEO_POINT,rss,45.88,18.844,False,"NON_CITY: ['administrative_area_level_1', 'political']",Vojvodina,Vojvodina,ADMIN_LEVEL_1
+DR,1016995,IMPACT_ARU,aru,5.2012,7.7496,True,CITY_LEVEL,Ibiaku Ntok Okpo,Akwa Ibom,LOCALITY
+DR,1016995,IMPACT_ARU,aru,5.8707,6.8096,True,CITY_LEVEL,Akpaka,Anambra,LOCALITY
+DR,1016995,IMPACT_ARU,aru,7.4749,8.5160,False,"NON_CITY: ['administrative_area_level_3', 'political']",Mbalom,Benue,ADMIN_LEVEL_3
+DR,1016995,IMPACT_ARU,aru,5.5852,7.9509,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ikun/Etono,Cross River,ADMIN_LEVEL_3
+DR,1016995,IMPACT_ARU,aru,6.0482,5.1500,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ogbinbiri (Egbema 3),Delta,ADMIN_LEVEL_3
+DR,1016995,IMPACT_ARU,aru,6.4460,5.5601,True,CITY_LEVEL,Benin City,Edo,LOCALITY
+DR,1016995,IMPACT_ARU,aru,9.1371,7.3352,False,"NON_CITY: ['administrative_area_level_3', 'political']",Gwagwa,Federal Capital Territory,ADMIN_LEVEL_3
+DR,1016995,IMPACT_ARU,aru,5.5727,7.1798,False,"NON_CITY: ['administrative_area_level_3', 'political']",Amaimo,Imo,ADMIN_LEVEL_3
+DR,1016995,IMPACT_ARU,aru,10.9778,9.9475,False,"NON_CITY: ['administrative_area_level_3', 'political']",Miya A,Bauchi,ADMIN_LEVEL_3
+DR,1016995,IMPACT_ARU,aru,9.0002,8.4926,False,"NON_CITY: ['administrative_area_level_3', 'political']",Akwanga East,Nasarawa,ADMIN_LEVEL_3
+DR,1016995,IMPACT_ARU,aru,8.2383,5.7015,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ilafin/Idofin/Odo-Ogba,Kogi,ADMIN_LEVEL_3
+DR,1016995,IMPACT_ARU,aru,8.5473,5.3809,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ile-Ire,Kwara,ADMIN_LEVEL_3
+DR,1016995,IMPACT_ARU,aru,8.8960,5.7752,False,"NON_CITY: ['administrative_area_level_3', 'political']",Gbara,Niger,ADMIN_LEVEL_3
+DR,1016995,IMPACT_ARU,aru,7.0515,4.1628,False,"NON_CITY: ['administrative_area_level_3', 'political']",Osun,Ogun State,ADMIN_LEVEL_3
+DR,1016995,IMPACT_ARU,aru,8.0162,5.0324,False,"NON_CITY: ['administrative_area_level_3', 'political']",Akesin,Osun,ADMIN_LEVEL_3
+DR,1016995,IMPACT_ARU,aru,8.0003,4.5614,False,"NON_CITY: ['administrative_area_level_3', 'political']",Igbaye,Osun,ADMIN_LEVEL_3
+DR,1016995,IMPACT_ARU,aru,6.0091,7.4254,False,"NON_CITY: ['administrative_area_level_3', 'political']",Mbala/Achara,Abia,ADMIN_LEVEL_3
+DR,1016995,IMPACT_ARU,aru,10.4986,9.4984,False,"NON_CITY: ['administrative_area_level_3', 'political']",Zaranda,Bauchi,ADMIN_LEVEL_3
+DR,1016995,IMPACT_ARU,aru,6.2947,7.8545,False,"NON_CITY: ['administrative_area_level_3', 'political']",Ohofia,Ebonyi,ADMIN_LEVEL_3
+DR,1016995,IMPACT_ARU,aru,8.0261,5.4331,False,"NON_CITY: ['administrative_area_level_3', 'political']",Itapaji / Iyemero,Ekiti,ADMIN_LEVEL_3
+DR,1016995,IMPACT_ARU,aru,5.9741,7.6327,True,CITY_LEVEL,Okpanku,Enugu,LOCALITY
+DR,1016995,IMPACT_ARU,aru,9.1476,7.7908,False,"NON_CITY: ['administrative_area_level_3', 'political']",Gitata,Nasarawa,ADMIN_LEVEL_3
+DR,1016995,IMPACT_ARU,aru,6.1201,5.0463,False,"NON_CITY: ['administrative_area_level_3', 'political']",Arogbo III,Ondo,ADMIN_LEVEL_3
+DR,1016995,IMPACT_ARU,aru,8.6837,8.9578,False,"NON_CITY: ['administrative_area_level_3', 'political']",Namu,Plateau,ADMIN_LEVEL_3
+DR,1016995,IMPACT_ARU,aru,5.0996,7.1249,False,"NON_CITY: ['administrative_area_level_3', 'political']",Obibi/Akwukabi,Rivers,ADMIN_LEVEL_3
+DR,1016995,RSS_GEO_POINT,rss,7.771,7.133,False,"NON_CITY: ['administrative_area_level_3', 'political']",Akuba II,Kogi,ADMIN_LEVEL_3
+DR,1016401,IMPACT_ARU,aru,51.4636,3.7450,True,CITY_LEVEL,Nieuwdorp,Zeeland,LOCALITY
+DR,1016401,IMPACT_ARU,aru,51.1463,3.4657,True,CITY_LEVEL,Aalter,Flanders,LOCALITY
+DR,1016401,RSS_GEO_POINT,rss,51.278,3.58,True,CITY_LEVEL,Sint-Laureins,Flanders,LOCALITY
+DR,1016449,IMPACT_ARU,aru,-3.2510,-56.8857,False,"NON_CITY: ['administrative_area_level_2', 'political']",Parintins,State of Amazonas,ADMIN_LEVEL_2
+DR,1016449,IMPACT_ARU,aru,-5.4067,-47.3755,False,"NON_CITY: ['administrative_area_level_2', 'political']",João Lisboa,State of Maranhão,ADMIN_LEVEL_2
+DR,1016449,IMPACT_ARU,aru,-13.5002,-51.5000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Canarana,State of Mato Grosso,ADMIN_LEVEL_2
+DR,1016449,IMPACT_ARU,aru,-6.3134,-48.7353,False,"NON_CITY: ['administrative_area_level_2', 'political']",São Geraldo do Araguaia,State of Pará,ADMIN_LEVEL_2
+DR,1016449,IMPACT_ARU,aru,-9.5001,-63.5000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Alto Paraíso,State of Rondônia,ADMIN_LEVEL_2
+DR,1016449,IMPACT_ARU,aru,-13.0456,-46.9306,False,"NON_CITY: ['administrative_area_level_2', 'political']",Arraias,State of Tocantins,ADMIN_LEVEL_2
+DR,1016449,IMPACT_ARU,aru,-11.5001,-45.5000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Riachão das Neves,State of Bahia,ADMIN_LEVEL_2
+DR,1016449,IMPACT_ARU,aru,-19.7715,-41.0972,False,"NON_CITY: ['administrative_area_level_2', 'political']",Baixo Guandu,State of Espírito Santo,ADMIN_LEVEL_2
+DR,1016449,IMPACT_ARU,aru,-17.5002,-49.5000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Pontalina,State of Goiás,ADMIN_LEVEL_2
+DR,1016449,IMPACT_ARU,aru,-17.6513,-56.4536,False,"NON_CITY: ['administrative_area_level_2', 'political']",Corumbá,State of Mato Grosso do Sul,ADMIN_LEVEL_2
+DR,1016449,IMPACT_ARU,aru,-18.4970,-41.5305,False,"NON_CITY: ['administrative_area_level_2', 'political']",Nova Módica,State of Minas Gerais,ADMIN_LEVEL_2
+DR,1016449,IMPACT_ARU,aru,-25.3570,-48.0364,False,"NON_CITY: ['administrative_area_level_2', 'political']",Cananéia,State of São Paulo,ADMIN_LEVEL_2
+DR,1016449,IMPACT_ARU,aru,-8.5001,-43.5000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Canto do Buriti,State of Piauí,ADMIN_LEVEL_2
+DR,1016449,IMPACT_ARU,aru,-21.5674,-41.5380,False,"NON_CITY: ['administrative_area_level_2', 'political']",Cardoso Moreira,State of Rio de Janeiro,ADMIN_LEVEL_2
+DR,1016449,IMPACT_ARU,aru,-28.2804,-48.8474,False,"NON_CITY: ['administrative_area_level_2', 'political']",Imaruí,State of Santa Catarina,ADMIN_LEVEL_2
+DR,1016449,IMPACT_ARU,aru,-20.5761,-48.4805,False,"NON_CITY: ['administrative_area_level_2', 'political']",Barretos,State of São Paulo,ADMIN_LEVEL_2
+DR,1016449,IMPACT_ARU,aru,-19.3002,-57.9193,False,"NON_CITY: ['administrative_area_level_3', 'political']",Puerto Suarez,Santa Cruz Department,ADMIN_LEVEL_3
+DR,1016449,IMPACT_ARU,aru,-15.4851,-69.6478,False,"NON_CITY: ['administrative_area_level_1', 'political']",Puno,Puno,ADMIN_LEVEL_1
+DR,1016449,IMPACT_ARU,aru,-14.5115,-68.4862,False,"NON_CITY: ['administrative_area_level_3', 'political']",Apolo,La Paz Department,ADMIN_LEVEL_3
+DR,1016449,IMPACT_ARU,aru,-6.4341,-40.3699,False,"NON_CITY: ['administrative_area_level_2', 'political']",Parambu,Ceará,ADMIN_LEVEL_2
+DR,1016449,IMPACT_ARU,aru,-7.7140,-39.5941,False,"NON_CITY: ['administrative_area_level_2', 'political']",Moreilândia,State of Pernambuco,ADMIN_LEVEL_2
+DR,1016449,IMPACT_ARU,aru,-8.5001,-43.5000,False,"NON_CITY: ['administrative_area_level_2', 'political']",Canto do Buriti,State of Piauí,ADMIN_LEVEL_2
+DR,1016449,RSS_GEO_POINT,rss,-7.341,-53.626,False,"NON_CITY: ['administrative_area_level_2', 'political']",Altamira,State of Pará,ADMIN_LEVEL_2
