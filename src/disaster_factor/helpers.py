@@ -10,12 +10,13 @@ from pathlib import Path
 from functools import partial
 import json
 from urllib.parse import urlparse, parse_qs
+from typing import Optional
 
 # One-time open guard to avoid duplicate tabs when invoked multiple times
 _DASHBOARD_OPENED = False
 
 
-def _find_static_source() -> Path | None:
+def _find_static_source() -> Optional[Path]:
     """Find a static/ directory for development first; fall back to installed resources.
 
     Preferred order (dev-first):
@@ -99,24 +100,66 @@ def _copy_tree(src: Path, dest: Path) -> None:
 # Python-side transform functions.
 # Translates geocoordinates in lat/long into x/y pixels
 
-def mercator(lat):
-    return math.log(math.tan(math.pi/4 + lat * math.pi/360))
+def mercator(lat: float) -> float:
+    """Return the Mercator 'y' value for a latitude in degrees.
 
-def get_y(h, lat, lat_t, lat_b):
-    return  h *  ((mercator(lat) - mercator(lat_t)) / (mercator(lat_b) - mercator(lat_t)))
+    Clamp latitude to avoid singularities at the poles.
+    """
+    # prevent tan() overflow near the poles
+    max_lat = 89.9999
+    lat = max(-max_lat, min(max_lat, float(lat)))
+    rad = math.radians(lat)
+    return math.log(math.tan(math.pi / 4.0 + rad / 2.0))
 
-def get_x(lon, lon_c, w):
-    return ((lon - lon_c)/360) * w + (w/2)
+
+def get_y(h: int, lat: float, lat_t: float, lat_b: float) -> float:
+    """Compute pixel Y for given latitude using a Mercator projection.
+
+    Ensures lat_t is the top (greater) and lat_b is the bottom (smaller),
+    clamps latitudes to avoid pole singularities, handles zero denominators,
+    and clamps output to [0,h].
+    """
+    lat_t = float(lat_t)
+    lat_b = float(lat_b)
+    # Ensure ordering: lat_t should be the northern/top latitude (larger value)
+    if lat_b > lat_t:
+        lat_t, lat_b = lat_b, lat_t
+
+    # Use mercator() helper which already clamps extreme latitudes
+    m_top = mercator(lat_t)
+    m_bottom = mercator(lat_b)
+    denom = m_top - m_bottom
+    if denom == 0:
+        return float(h) / 2.0
+
+    m_lat = mercator(lat)
+    # y = 0 at top, y = h at bottom
+    y = float(h) * (m_top - m_lat) / denom
+    return max(0.0, min(float(h), y))
+
+
+def get_x(lon: float, lon_c: float, w: int) -> float:
+    """Compute pixel X for given longitude and center longitude lon_c.
+
+    Normalize longitude delta to [-180,180] to handle antimeridian wrap,
+    then map to pixel coordinates with center at w/2.
+    """
+    # normalize into [-180, 180)
+    delta = (float(lon) - float(lon_c) + 180.0) % 360.0 - 180.0
+    x = (delta / 360.0) * float(w) + (float(w) / 2.0)
+    return max(0.0, min(float(w), x))
+
 
 def transform_latlon_to_xy(lat: float, lon: float, config: dict, w: int, h: int) -> tuple[float, float]:
-    """Map lat/lon (decimal degrees) -> x/y pixels for an image of size w x h.
+    """Map lat/lon -> x/y pixels for an image of size w x h.
 
-    Default: mercator  projection with optional config values:
+    Defaults: mercator projection with optional config values:
       config['lat_t'] : latitude at the top of the image (default 90)
       config['lat_b'] : latitude at the bottom of the image (default -90)
       config['lon_c'] : center longitude of the image (default 0)
 
-    The function returns (x, y) in pixel coordinates where (0,0) is top-left.
+    Returns (x, y) where (0,0) is the top-left of the image. Values are
+    clamped to the image bounds.
     """
     lat_t = float(config.get('lat_t', 90.0))
     lat_b = float(config.get('lat_b', -90.0))
@@ -125,7 +168,9 @@ def transform_latlon_to_xy(lat: float, lon: float, config: dict, w: int, h: int)
     x = get_x(lon, lon_c, w)
     y = get_y(h, lat, lat_t, lat_b)
 
-
+    # final clamp and return
+    x = max(0.0, min(float(w), x))
+    y = max(0.0, min(float(h), y))
     return (x, y)
 
 
@@ -224,10 +269,42 @@ def serve_static_and_open(port: int = 8000):
                             cfg = base.get('config', {})
                             pts = base.get('points', [])
                             out_pts = []
+
+                            # Determine SVG user-space dimensions (if provided)
+                            svg_w = float(cfg.get('svg_w', w))
+                            svg_h = float(cfg.get('svg_h', h))
+
+                            # Optional explicit linear mapping from projected SVG coords -> observed display coords
+                            sx = cfg.get('sx')
+                            ox = cfg.get('ox')
+                            sy = cfg.get('sy')
+                            oy = cfg.get('oy')
+
                             for pt in pts:
                                 lat = float(pt.get('lat', 0))
                                 lon = float(pt.get('lon', 0))
-                                x, y = transform_latlon_to_xy(lat, lon, cfg, w, h)
+                                # project using SVG user-space dims
+                                x_proj, y_proj = transform_latlon_to_xy(lat, lon, cfg, svg_w, svg_h)
+
+                                # map projected coords to display pixels
+                                if sx is not None and ox is not None and sy is not None and oy is not None:
+                                    try:
+                                        x = float(sx) * x_proj + float(ox)
+                                        y = float(sy) * y_proj + float(oy)
+                                    except Exception:
+                                        x = x_proj * (float(w) / float(svg_w))
+                                        y = y_proj * (float(h) / float(svg_h))
+                                else:
+                                    # fallback: simple scale from svg user-space to requested display size
+                                    try:
+                                        sx_f = float(w) / float(svg_w) if float(svg_w) != 0 else 1.0
+                                        sy_f = float(h) / float(svg_h) if float(svg_h) != 0 else 1.0
+                                        x = x_proj * sx_f
+                                        y = y_proj * sy_f
+                                    except Exception:
+                                        x = x_proj
+                                        y = y_proj
+
                                 new = dict(pt)
                                 new['x'] = x
                                 new['y'] = y
