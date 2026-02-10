@@ -165,3 +165,35 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,.35);
 }
+
+/* Overlay: position svg absolutely over the image */
+.map-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.map-container img.map-image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+svg.map-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none; /* markers non-interactive by default; change if needed */
+}
+
+/* Marker styling */
+.map-marker {
+    fill: #f97316; /* default orange */
+    stroke: #0b1220;
+    stroke-width: 1;
+    opacity: 0.95;
+}
+
+.map-marker.sev-red { fill: #ef4444; }
+.map-marker.sev-yellow { fill: #facc15; stroke: #1f1a00; }
+.map-marker.sev-green { fill: #22c55e; }
