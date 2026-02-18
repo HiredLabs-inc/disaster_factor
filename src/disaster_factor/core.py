@@ -11,8 +11,42 @@ import json
 import math
 import time
 import os
+from contextlib import contextmanager
+from time import perf_counter
 from typing import Any, Optional, Tuple, List, Dict
 from .helpers import serve_static_and_open
+import logging
+
+import logging
+from pathlib import Path
+
+LOG_FILE = Path("disaster_factor.log")
+
+logger = logging.getLogger(__name__)
+
+def setup_logging(*, debug: bool = False) -> None:
+    level = logging.DEBUG if debug else logging.INFO
+
+    root = logging.getLogger()
+    root.setLevel(level)
+
+    # Prevent duplicate logs if setup_logging() is called more than once
+    root.handlers.clear()
+
+    fmt = logging.Formatter("%(asctime)s [%(levelname)s] %(name)s: %(message)s")
+
+    # Terminal
+    sh = logging.StreamHandler()
+    sh.setLevel(level)
+    sh.setFormatter(fmt)
+
+    # File
+    fh = logging.FileHandler(LOG_FILE, mode="w", encoding="utf-8")
+    fh.setLevel(level)
+    fh.setFormatter(fmt)
+
+    root.addHandler(sh)
+    root.addHandler(fh)
 
 
 
@@ -20,17 +54,27 @@ from .helpers import serve_static_and_open
 # GENERAL utilities
 # ------------------------------------------------------------------------------------
 
+@contextmanager
+def _timer(label: str, *, enabled: bool = True) -> None:
+    start = perf_counter()
+    try:
+        yield
+    finally:
+        if enabled:
+            elapsed = perf_counter() - start
+            logger.info(f"[TIMER] {label}: {elapsed:.3f}s")
+
 def _get_geocoding_api_key() -> str:
     """Get Google Geocoding API key from environment or user input."""
 
     api_key = os.getenv("GOOGLE_GEOCODING_API_KEY")
     if not api_key:
-        print("[GEOCODE] Google Geocoding API key not found in environment")
+        logger.info("[GEOCODE] Google Geocoding API key not found in environment")
         api_key = input("Enter your Google Geocoding API key: ").strip()
         if not api_key:
             raise ValueError("Google Geocoding API key is required")
         os.environ["GOOGLE_GEOCODING_API_KEY"] = api_key
-        print("[GEOCODE] API key saved to environment for this session")
+        logger.info("[GEOCODE] API key saved to environment for this session")
     return api_key
 
 
@@ -180,7 +224,7 @@ def check_missing_impact_urls(eventdata_json: dict[str, Any]) -> tuple[bool, str
 
     return False, "No impact URL found in resources"
 
-def _print_coverage_analysis(matches, assets_by_id, impact_data):
+# def _print_coverage_analysis(matches, assets_by_id, impact_data):
     """Print detailed hierarchical coverage analysis."""
 
     # Method matching results
@@ -193,9 +237,9 @@ def _print_coverage_analysis(matches, assets_by_id, impact_data):
     total_impacted = len(matches)
 
     # Print comprehensive analysis
-    print("\n" + "="*60)
-    print("HIERARCHICAL COVERAGE ANALYSIS")
-    print("="*60)
+    # print("\n" + "="*60)
+    # print("HIERARCHICAL COVERAGE ANALYSIS")
+    # print("="*60)
 
     # Method matching results
     # print("\n[INTEL] Method Matching Results:")
@@ -217,11 +261,11 @@ def _print_coverage_analysis(matches, assets_by_id, impact_data):
     # print(f"  3rd: Coordinate method ({len(coordinate_matches)} matches)")
 
     # Keep only the headline counts (no coverage %, no effectiveness, no breakdown tables)
-    print(f"[INTEL] Assets loaded: {total_assets}")
-    print(f"[INTEL] Assets impacted: {total_impacted}")
-    print(f"[INTEL] Polygon matches: {len(polygon_matches)}")
-    print(f"[INTEL] Alias matches: {len(alias_matches)}")
-    print(f"[INTEL] Coordinate matches: {len(coordinate_matches)}")
+    # print(f"[INTEL] Assets loaded: {total_assets}")
+    # print(f"[INTEL] Assets impacted: {total_impacted}")
+    # print(f"[INTEL] Polygon matches: {len(polygon_matches)}")
+    # print(f"[INTEL] Alias matches: {len(alias_matches)}")
+    # print(f"[INTEL] Coordinate matches: {len(coordinate_matches)}")
 
 
 
@@ -763,6 +807,24 @@ def recon(debug: bool = False) -> tuple[list[dict[str, str]], int, dict[str, dic
     soup = BeautifulSoup(resp.content, features="xml")
     items = soup.find_all("item")
 
+    # Timing
+    t_recon_start = perf_counter()
+    t_eventdata_total = 0.0
+    t_impact_total = 0.0
+    t_eventdata_max = 0.0
+    t_impact_max = 0.0
+    slowest_eventdata = ""
+    slowest_impact = ""
+    eventdata_ok = 0
+    impact_ok = 0
+
+    # geo:Point audit (RSS-level coordinates)
+    geo_point_total = 0
+    geo_point_missing_tag = 0
+    geo_point_missing_latlon = 0
+    geo_point_non_numeric = 0
+    geo_point_valid = 0
+
     # Build events directly from eventtype/eventid; count total_red from alertlevel.
     events: list[dict[str, str]] = []
     total_red = 0
@@ -770,16 +832,34 @@ def recon(debug: bool = False) -> tuple[list[dict[str, str]], int, dict[str, dic
     # Store impact data for hierarchical analysis
     impact_data: dict[str, dict] = {}
     for item in items:
-        # Extract latitude and longitude from geo:Point
+        geo_point_total += 1
+
+        # Extract latitude and longitude from geo:Point (RSS-level)
         geo_point = item.find("geo:Point")
         lat = None
         long = None
-        if geo_point:
+
+        if not geo_point:
+            geo_point_missing_tag += 1
+        else:
             lat_elem = geo_point.find("geo:lat")
             long_elem = geo_point.find("geo:long")
-            lat = lat_elem.text if lat_elem else None
-            long = long_elem.text if long_elem else None
 
+            lat_text = (lat_elem.text or "").strip() if lat_elem else ""
+            long_text = (long_elem.text or "").strip() if long_elem else ""
+
+            if not lat_text or not long_text:
+                geo_point_missing_latlon += 1
+            else:
+                try:
+                    float(lat_text)
+                    float(long_text)
+                    lat = lat_text
+                    long = long_text
+                    geo_point_valid += 1
+                except ValueError:
+                    geo_point_non_numeric += 1
+                    
         alert = _find_text_suffix(item, "alertlevel")
         if alert.casefold() == "red":
             total_red += 1
@@ -808,6 +888,10 @@ def recon(debug: bool = False) -> tuple[list[dict[str, str]], int, dict[str, dic
     if cap_raw.isdigit() and int(cap_raw) > 0:
         cap = int(cap_raw)
         events = events[:cap]
+    
+    # Ambiguity breaker: how many disaster-records are produced per eventid BEFORE dedupe
+    raw_disasters_by_event: dict[str, int] = {}
+    raw_disasters_total = 0
 
     disasters: list[dict[str, str]] = []
 
@@ -817,15 +901,25 @@ def recon(debug: bool = False) -> tuple[list[dict[str, str]], int, dict[str, dic
 
     for idx, ev in enumerate(events, start=1):
         if debug and (idx == 1 or idx % 10 == 0):
-            print(f"[RECON] progress {idx}/{len(events)}")
+            logger.debug(f"[RECON] progress {idx}/{len(events)}")
 
         eventtype = ev["eventtype"]
         eventid = ev["eventid"]
         eventdata_url = ev["eventdata_url"]
 
+        # --- eventdata fetch timing ---
+        t0 = perf_counter()
         try:
             eventdata_json = _get_json(ev["eventdata_url"], timeout=20)
-        except Exception as e:
+            dt = perf_counter() - t0
+            t_eventdata_total += dt
+            eventdata_ok += 1
+            if dt > t_eventdata_max:
+                t_eventdata_max = dt
+                slowest_eventdata = ev["eventdata_url"]
+        except Exception:
+            dt = perf_counter() - t0
+            t_eventdata_total += dt
             continue
 
         has_impact, reason = check_missing_impact_urls(eventdata_json)
@@ -838,13 +932,29 @@ def recon(debug: bool = False) -> tuple[list[dict[str, str]], int, dict[str, dic
         if not impact_url:
             continue
 
+        # --- impact fetch timing ---
+        t0 = perf_counter()
         try:
             impact_json = _get_json(impact_url, timeout=20)
-        except Exception as e:
+            dt = perf_counter() - t0
+            t_impact_total += dt
+            impact_ok += 1
+            if dt > t_impact_max:
+                t_impact_max = dt
+                slowest_impact = impact_url
+        except Exception:
+            dt = perf_counter() - t0
+            t_impact_total += dt
             continue
-
         # Parse disasters from impact JSON (alias data)
-        disasters.extend(_parse_impact_json_to_disasters(impact_json, eventtype, eventid, ev.get("latitude"), ev.get("longitude")))
+        parsed = _parse_impact_json_to_disasters(
+            impact_json, eventtype, eventid, ev.get("latitude"), ev.get("longitude")
+        )
+
+        raw_disasters_total += len(parsed)
+        raw_disasters_by_event[eventid] = raw_disasters_by_event.get(eventid, 0) + len(parsed)
+
+        disasters.extend(parsed)
 
         # Store impact data for hierarchical polygon/coordinate analysis
         lat_str = ev.get("latitude")
@@ -867,28 +977,65 @@ def recon(debug: bool = False) -> tuple[list[dict[str, str]], int, dict[str, dic
         # GDACS respect
         time.sleep(0.02)
 
+        if debug and (idx == 1 or idx % 10 == 0):
+            avg_eventdata = t_eventdata_total / max(eventdata_ok, 1)
+            avg_impact = t_impact_total / max(impact_ok, 1)
+
+            logger.debug(
+                f"[RECON][TIMER] {idx}/{len(events)} "
+                f"eventdata avg={avg_eventdata:.2f}s max={t_eventdata_max:.2f}s | "
+                f"impact avg={avg_impact:.2f}s max={t_impact_max:.2f}s"
+            )
+
     disasters = _dedupe_disasters(disasters)
 
     if debug:
-        print("[RECON] Hierarchical Collection Summary:")
-        print(f"  Impact events collected: {len(impact_data)}")
-        print(f"  Disasters extracted: {len(disasters)}")
-        print(f"  Red alert events: {total_red}")
+        logger.debug("[RECON] Hierarchical Collection Summary:")
+        logger.debug(f"  Impact events collected: {len(impact_data)}")
+        logger.debug(f"  Disasters extracted: {len(disasters)}")
+        logger.debug(f"  Red alert events: {total_red}")
 
-        print("\n[RECON] Missing impact URL analysis:")
-        print(f"  Events missing impact URL: {missing_impact_url_count}/{len(events)}")
+        logger.debug("\n[RECON] geo:Point audit (RSS-level):")
+    
+        # Explain 104 RSS items vs "Disasters extracted"
+        logger.debug("\n[RECON] Disaster-records per event (pre-dedupe):")
+        if raw_disasters_by_event:
+            counts = list(raw_disasters_by_event.values())
+            avg = (sum(counts) / len(counts)) if counts else 0.0
+            logger.debug(f"  Events with impact parsed: {len(raw_disasters_by_event)}")
+            logger.debug(f"  Raw disaster-records total: {raw_disasters_total}")
+            logger.debug(f"  Per-event records: min={min(counts)} avg={avg:.2f} max={max(counts)}")
+
+            top = sorted(raw_disasters_by_event.items(), key=lambda kv: kv[1], reverse=True)[:10]
+            logger.debug("  Top events by records:")
+            for eid, n in top:
+                logger.debug(f"   - {eid}: {n}")
+
+            logger.debug("\n  NOTE: _dedupe_disasters() dedupes by (type,country,city) and ignores eventid.")
+            logger.debug("  That means dedupe can collapse records across different events.")
+        else:
+            logger.debug("  No per-event disaster records were produced (unexpected).")
+
+        logger.debug(f"  RSS items: {geo_point_total}")
+        logger.debug(f"  Missing geo:Point tag: {geo_point_missing_tag}")
+        logger.debug(f"  Missing geo:lat/geo:long: {geo_point_missing_latlon}")
+        logger.debug(f"  Non-numeric geo:lat/geo:long: {geo_point_non_numeric}")
+        logger.debug(f"  Valid geo:Point coordinates: {geo_point_valid}")
+
+        logger.debug("\n[RECON] Missing impact URL analysis:")
+        logger.debug(f"  Events missing impact URL: {missing_impact_url_count}/{len(events)}")
         for k, v in sorted(missing_impact_url_reasons.items(), key=lambda x: (-x[1], x[0])):
-            print(f"   - {k}: {v}")
+            logger.debug(f"   - {k}: {v}")
         if missing_impact_url_events:
-            print("  Missing-impact events:")
+            logger.debug("  Missing-impact events:")
             for et, eid in missing_impact_url_events:
-                print(f"   - {et} {eid}")
+                logger.debug(f"   - {et} {eid}")
 
         # Data quality validation
         valid_impact_data = sum(1 for data in impact_data.values() if data.get('impact_json'))
         valid_coordinates = sum(1 for data in impact_data.values() if data.get('coordinates'))
-        print(f"  Valid impact JSON: {valid_impact_data}/{len(impact_data)}")
-        print(f"  Event coordinates: {valid_coordinates}/{len(impact_data)}")
+        logger.debug(f"  Valid impact JSON: {valid_impact_data}/{len(impact_data)}")
+        logger.debug(f"  Event coordinates: {valid_coordinates}/{len(impact_data)}")
 
         # Show disaster details for debugging
         # print("\n[RECON] Disaster Events Processed:")
@@ -908,6 +1055,14 @@ def recon(debug: bool = False) -> tuple[list[dict[str, str]], int, dict[str, dic
         #     print(f"  {city}, {country} - {event_type}")
         # if len(disasters) > 5:
         #     print(f"  ... and {len(disasters) - 5} more")
+    
+    total = perf_counter() - t_recon_start
+    logger.info("\n[RECON][TIMER] totals:")
+    logger.info(f"  recon total: {total:.2f}s")
+    logger.info(f"  eventdata total: {t_eventdata_total:.2f}s (ok={eventdata_ok})")
+    logger.info(f"  impact total: {t_impact_total:.2f}s (ok={impact_ok})")
+    logger.info(f"  slowest eventdata: {t_eventdata_max:.2f}s {slowest_eventdata}")
+    logger.info(f"  slowest impact: {t_impact_max:.2f}s {slowest_impact}")
 
     return disasters, total_red, impact_data
 
@@ -939,7 +1094,7 @@ def assets() -> tuple[dict[str, str], dict[str, str], dict[str, Optional[Tuple[f
     csv_path = Path(__file__).resolve().parents[2] / "tests" / "data" / "assets.csv"
     if not csv_path.exists():
         raise FileNotFoundError(f"assets.csv not found at {csv_path}")
-    print("[ASSETS] Loading assets with pre-geocoded coordinates...")
+    logger.info("[ASSETS] Loading assets with pre-geocoded coordinates...")
 
     with csv_path.open(newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f, skipinitialspace=True)
@@ -964,14 +1119,14 @@ def assets() -> tuple[dict[str, str], dict[str, str], dict[str, Optional[Tuple[f
                     coordinates[asset_id] = (lat, lon)
                     coord_count += 1
                 except ValueError:
-                    print(f"[ASSETS] ⚠ Invalid coordinates for {asset_id}: {lat_str}, {lon_str}")
+                    logger.warning(f"[ASSETS] ⚠ Invalid coordinates for {asset_id}: {lat_str}, {lon_str}")
                     coordinates[asset_id] = None
             else:
                 coordinates[asset_id] = None
             assets_by_id[asset_id] = row
             cities[asset_id] = (row.get("city") or "").strip()
             countries[asset_id] = (row.get("country") or "").strip()
-    print(f"[ASSETS] Loaded {loaded_count} assets with {coord_count} having valid coordinates")
+    logger.info(f"[ASSETS] Loaded {loaded_count} assets with {coord_count} having valid coordinates")
 
     return cities, countries, coordinates, assets_by_id
 
@@ -1095,8 +1250,8 @@ def disseminate(
     - Launch the static dashboard UI (disabled in debug mode).
     """
 
-    if debug:
-        _print_coverage_analysis(matches, assets_by_id, impact_data)
+    # if debug:
+    #     _print_coverage_analysis(matches, assets_by_id, impact_data)
 
     # Write affected.csv
     if matches:
@@ -1126,19 +1281,31 @@ def track_disasters(debug: bool = False) -> None:
       A — assets()       : load company assets with coordinates
       I — intel()        : hierarchical impact assessment (Polygon → Alias → Coordinate)
       D — disseminate()  : output / deliver intel product
+
+      Timed operations:
+        assets() load
+        recon() collect
+        intel() analyze
+        disseminate() output
     """
-    print("=" * 80)
-    print("DISASTER FACTOR - HIERARCHICAL IMPACT ANALYSIS")
-    print("=" * 80)
+
+    setup_logging(debug=debug)
+    logger.info("=" * 80)
+    logger.info("DISASTER FACTOR - HIERARCHICAL IMPACT ANALYSIS")
+    logger.info("=" * 80)
 
     # Load enhanced assets with coordinates
-    cities, countries, coordinates, assets_by_id = assets()
+    with _timer("assets() load", enabled=True):
+        cities, countries, coordinates, assets_by_id = assets()
 
     # Collect disaster intel with impact data for hierarchical analysis
-    disasters, total_red, impact_data = recon(debug)
+    with _timer("recon() collect", enabled=True):
+        disasters, total_red, impact_data = recon(debug)
 
     # Hierarchical impact assessment: Polygon → Alias → Coordinate
-    matches, outreach_list = intel(disasters, cities, countries, coordinates, assets_by_id, impact_data)
+    with _timer("intel() analyze", enabled=True):
+        matches, outreach_list = intel(disasters, cities, countries, coordinates, assets_by_id, impact_data)
 
     # Output results
-    disseminate(matches, outreach_list, total_red, assets_by_id, impact_data, debug)
+    with _timer("disseminate() output", enabled=True):
+        disseminate(matches, outreach_list, total_red, assets_by_id, impact_data, debug)
