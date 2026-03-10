@@ -1,8 +1,1 @@
-unique_id,city,country,event_type,event_id,impact_method,coordinates,disaster_city,disaster_country
-AST027,Madang,Papua New Guinea,EQ,1520376,POLYGON,"-5.2275, 145.7880",Polygon Boundary,Unknown
-AST034,Juba,South Sudan,WF,1027043,POLYGON,"4.8594, 31.5713",Polygon Boundary,Unknown
-AST035,Wau,South Sudan,WF,1027043,POLYGON,"7.7006, 28.0150",Polygon Boundary,Unknown
-AST036,Malakal,South Sudan,WF,1027043,POLYGON,"9.5332, 31.6605",Polygon Boundary,Unknown
-AST_SUDAN_1,Khartoum,Sudan,WF,1027043,POLYGON,"15.5007, 32.5599",Polygon Boundary,Unknown
-AST_SUDAN_2,Juba,South Sudan,WF,1027043,POLYGON,"4.8594, 31.5712",Polygon Boundary,Unknown
-AST_SUDAN_3,Al Fashagha,Sudan,WF,1027043,POLYGON,"14.4167, 34.3833",Polygon Boundary,Unknown
+unique_id,city,country,event_type
