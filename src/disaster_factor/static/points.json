@@ -1,19 +1,10 @@
 {
-  "config": {
-    "lat_t": 79.0,
-    "lat_b": -76.95,
-    "lon_c": -82.3
-  },
   "points": [
     { "lat": 48.86, "lon": 2.3522, "label": "Paris, FR", "severity": "red" },
     { "lat": 37.78, "lon": -122.42, "label": "San Francisco, US", "severity": "red" },
     { "lat": 39.9042, "lon": 116.4074, "label": "Beijing, CH", "severity": "red" },
-    { "lat": 34.0522, "lon": -118.2437, "label": "Los Angeles, US", "severity": "yellow" },
     { "lat": 14.5995, "lon": 120.9842, "label": "Manila, PH", "severity": "red" },
-    { "lat": -23.5505, "lon": -46.6333, "label": "Sao Paulo, BR", "severity": "green" },
     { "lat": 55.7569, "lon": 37.6151, "label": "Moscow, RU", "severity": "red" },
-    { "lat": 35.6764, "lon": 139.6500, "label": "Tokyo, JP", "severity": "green" },
-    { "lat": -33.8727, "lon": 151.2057, "label": "Sydney, AU", "severity": "yellow" },
     { "lat": 40.7128, "lon": -73.935242, "label": "New York, US", "severity": "red" },
     { "lat": 32.7767, "lon": -96.7970, "label": "Dallas, US", "severity": "red" },
     { "lat": 19.4326, "lon": -99.1332, "label": "Mexico City, MX", "severity": "red" },
@@ -21,4 +12,3 @@
     { "lat": -54.93, "lon": -67.61, "label": "Puerto Williams, CI", "severity": "red" }
   ]
 }
-

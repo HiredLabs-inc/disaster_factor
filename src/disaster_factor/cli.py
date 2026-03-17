@@ -30,7 +30,7 @@ def _build_parser(prog: str | None = None) -> argparse.ArgumentParser:
         action="store_true",
         help=(
             "Run in debug mode: skip launching the web UI server and just write "
-            "affected.csv plus console output."
+            "affected.csv, prelim.csv, and points.json plus console output."
         ),
     )
     sp_track.set_defaults(func=_cmd_track)
