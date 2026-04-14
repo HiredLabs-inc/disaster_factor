@@ -1,0 +1,42 @@
+[
+  {
+    "unique_id": "AST008",
+    "city": "Davao",
+    "country": "Philippines",
+    "event_type": "FL",
+    "event_id": "1103838",
+    "impact_method": "EUCLIDEAN",
+    "coordinates": "7.0731, 125.6128",
+    "severity": "green"
+  },
+  {
+    "unique_id": "AST011",
+    "city": "Jakarta",
+    "country": "Indonesia",
+    "event_type": "FL",
+    "event_id": "1103786",
+    "impact_method": "EUCLIDEAN",
+    "coordinates": "-6.2088, 106.8456",
+    "severity": "green"
+  },
+  {
+    "unique_id": "AST013",
+    "city": "Bandung",
+    "country": "Indonesia",
+    "event_type": "FL",
+    "event_id": "1103786",
+    "impact_method": "EUCLIDEAN",
+    "coordinates": "-6.9175, 107.6191",
+    "severity": "green"
+  },
+  {
+    "unique_id": "AST036",
+    "city": "Malakal",
+    "country": "South Sudan",
+    "event_type": "WF",
+    "event_id": "1028362",
+    "impact_method": "EUCLIDEAN",
+    "coordinates": "9.5332, 31.6605",
+    "severity": "green"
+  }
+]

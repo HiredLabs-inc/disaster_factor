@@ -30,16 +30,20 @@ def _build_parser(prog: str | None = None) -> argparse.ArgumentParser:
         action="store_true",
         help=(
             "Run in debug mode: skip launching the web UI server and just write "
-            "affected.csv plus console output."
+            "affected.csv, prelim.csv, and points.json plus console output."
         ),
     )
+    sp_track.add_argument("--output", default="csv", choices=["csv", "json", "xlsx", "pdf"])
     sp_track.set_defaults(func=_cmd_track)
 
     return parser
 
 
 def _cmd_track(args: argparse.Namespace) -> int:
-    track_disasters(debug=getattr(args, "debug", False))
+    from .writers import WRITERS
+
+    writer = WRITERS[args.output]()
+    track_disasters(debug=getattr(args, "debug", False), writer=writer)
     return 0
 
 

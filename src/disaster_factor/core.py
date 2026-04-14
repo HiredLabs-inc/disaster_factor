@@ -2,23 +2,19 @@
 
 # IMPORTS
 from __future__ import annotations
-from bs4 import BeautifulSoup
-from pathlib import Path
-import requests
 import csv
+import logging
 import math
-import time
 import os
 from contextlib import contextmanager
-from time import perf_counter
-from typing import Any, Optional, Tuple, List, Dict
-from .helpers import serve_static_and_open
-import logging
-
-import logging
 from pathlib import Path
+from time import perf_counter
+from typing import Any, Optional, Tuple
+import requests
+from bs4 import BeautifulSoup
+from .helpers import serve_static_and_open
 
-LOG_FILE = Path("disaster_factor.log")
+LOG_FILE = Path(__file__).resolve().parents[2] / "disaster_factor.log"
 
 logger = logging.getLogger(__name__)
 
@@ -199,6 +195,16 @@ def _build_rss_event_summary(item) -> Optional[dict[str, Any]]:
         "longitude": str(lon) if lon is not None else None,
     }
 
+
+_ALERT_PRIORITY: tuple[str, ...] = ("red", "orange", "green")
+
+
+def _normalize_alertlevel(value: Any) -> Optional[str]:
+    """Normalize GDACS alert level to one of {red, orange, green}."""
+    normalized = str(value or "").strip().lower()
+    return normalized if normalized in _ALERT_PRIORITY else None
+
+
 # ------------------------------------------------------------------------------------
 # Euclidean impact decision helpers
 # ------------------------------------------------------------------------------------
@@ -209,7 +215,7 @@ _THRESHOLD_MILES_BY_TYPE: dict[str, float] = {
     "TC": 200.0,    # Tropical Cyclone
     "FL":  75.0,    # Flood
     "VO": 100.0,    # Volcano
-    "DR": 150.0,    # Drought
+#   "DR": 150.0,    # Drought
     "WF":  75.0,    # Wildfire
     "TS": 250.0,    # Tsunami
 }
@@ -235,22 +241,31 @@ def _is_asset_affected(
     event: dict[str, Any],
 ) -> bool:
     """
-    Decide whether an asset is affected by a Red-level event.
+    Decide whether an asset is affected by an event.
  
-    Returns False for non-Red events or events without valid coordinates.
+    Returns False for events without valid coordinates.
     Uses straight Euclidean distance vs. disaster-type threshold.
     """
-    if (event.get("alertlevel") or "").strip().lower() != "red":
-        return False
- 
     lat = event.get("lat")
     lon = event.get("lon")
     if lat is None or lon is None:
         return False
+
+    try:
+        event_lat = float(lat)
+        event_lon = float(lon)
+    except (TypeError, ValueError):
+        logger.debug(
+            "[INTEL] Skipping event with non-numeric coordinates: event_id=%s lat=%r lon=%r",
+            event.get("eventid", "unknown"),
+            lat,
+            lon,
+        )
+        return False
  
     distance = _euclidean_distance(
         asset_coord[0], asset_coord[1],
-        float(lat), float(lon),
+        event_lat, event_lon,
     )
     return distance <= _distance_threshold_miles(event.get("eventtype", ""))
 
@@ -292,6 +307,8 @@ def recon(debug: bool = False) -> tuple[int, list[dict[str, Any]]]:
  
     events: list[dict[str, Any]] = []
     total_red = 0
+    total_orange = 0
+    total_green = 0
  
     for item in items:
         geo_point_total += 1
@@ -306,15 +323,27 @@ def recon(debug: bool = False) -> tuple[int, list[dict[str, Any]]]:
         elif geo_reason == "ok":
             geo_point_valid += 1
  
-        alert = _find_text_suffix(item, "alertlevel")
-        if alert.casefold() == "red":
+        alert = _normalize_alertlevel(_find_text_suffix(item, "alertlevel"))
+        if alert == "red":
             total_red += 1
+        elif alert == "orange":
+            total_orange += 1
+        elif alert == "green":
+            total_green += 1
  
         event = _build_rss_event_summary(item)
         if not event:
             continue
  
         events.append(event)
+
+    for event in events:
+        if _normalize_alertlevel(event.get("alertlevel")) == "red":
+            logger.info(
+                "[RECON] RED ALERT: %s %s lat=%s lon=%s",
+                event["eventtype"], event["eventid"],
+                event["lat"], event["lon"],
+            )
  
     # Dev cap (optional)
     cap_raw = os.getenv("GDACS_DEV_CAP", "").strip()
@@ -326,6 +355,8 @@ def recon(debug: bool = False) -> tuple[int, list[dict[str, Any]]]:
         logger.debug(f"  RSS items: {geo_point_total}")
         logger.debug(f"  Events extracted: {len(events)}")
         logger.debug(f"  Red alert events: {total_red}")
+        logger.debug(f"  Orange alert events: {total_orange}")
+        logger.debug(f"  Green alert events: {total_green}")
         logger.debug(f"  Valid geo:Point coordinates: {geo_point_valid}")
         logger.debug(f"  Missing geo:Point tag: {geo_point_missing_tag}")
         logger.debug(f"  Missing geo:lat/geo:long: {geo_point_missing_latlon}")
@@ -406,21 +437,29 @@ def intel(
     cities: dict[str, str],
     countries: dict[str, str],
     assets_by_id: dict[str, dict[str, str]],
-) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
+) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, Any]]]:
     """
     I — INTEL (Euclidean path)
  
-    One-pass: for each asset with valid coordinates, check against every
-    Red-level RSS event using straight Euclidean distance and disaster-type
-    thresholds.
+    One-pass: for each asset with valid coordinates, check events in priority
+    order red -> orange -> green, and stop on the first matched tier using
+    straight Euclidean distance and disaster-type thresholds.
  
     Returns:
-      (matches, outreach_list)
+      (red_matches, prelim_matches, red_points)
     """
-    matches: list[dict[str, str]] = []
-    outreach_list: list[dict[str, str]] = []
- 
-    for asset_id, asset in assets_by_id.items():
+    red_matches: list[dict[str, str]] = []
+    prelim_matches: list[dict[str, str]] = []
+    red_points: list[dict[str, Any]] = []
+
+    events_by_severity: dict[str, list[dict[str, Any]]] = {sev: [] for sev in _ALERT_PRIORITY}
+    for event in events:
+        severity = _normalize_alertlevel(event.get("alertlevel"))
+        if severity is None:
+            continue
+        events_by_severity[severity].append(event)
+
+    for asset_id in assets_by_id:
         asset_coords = coordinates.get(asset_id)
         if not (
             isinstance(asset_coords, (tuple, list))
@@ -430,63 +469,93 @@ def intel(
         ):
             continue
  
-        for event in events:
-            if _is_asset_affected(asset_coords, event):
-                matches.append({
-                    "unique_id": asset_id,
-                    "city": cities.get(asset_id, ""),
-                    "country": countries.get(asset_id, ""),
-                    "event_type": event.get("eventtype", "unknown"),
-                    "event_id": event.get("eventid", "unknown"),
-                    "impact_method": "EUCLIDEAN",
-                    "coordinates": f"{asset_coords[0]:.4f}, {asset_coords[1]:.4f}",
-                })
-                outreach_list.append(asset)
-                break  # one Red hit is enough to flag this asset
+        matched_event: Optional[dict[str, Any]] = None
+        matched_severity: Optional[str] = None
+        for severity in _ALERT_PRIORITY:
+            for event in events_by_severity[severity]:
+                if _is_asset_affected(asset_coords, event):
+                    matched_event = event
+                    matched_severity = severity
+                    break
+            if matched_event is not None:
+                break
+
+        if matched_event is None or matched_severity is None:
+            continue
+
+        base_match = {
+            "unique_id": asset_id,
+            "city": cities.get(asset_id, ""),
+            "country": countries.get(asset_id, ""),
+            "event_type": matched_event.get("eventtype", "unknown"),
+            "event_id": matched_event.get("eventid", "unknown"),
+            "impact_method": "EUCLIDEAN",
+            "coordinates": f"{asset_coords[0]:.4f}, {asset_coords[1]:.4f}",
+        }
+        prelim_matches.append({
+            **base_match,
+            "severity": matched_severity,
+        })
+        if matched_severity == "red":
+            red_matches.append(base_match)
+            label = ", ".join(
+                p for p in (cities.get(asset_id, "").strip(), countries.get(asset_id, "").strip()) if p
+            ) or asset_id
+            red_points.append({
+                "lat": float(asset_coords[0]),
+                "lon": float(asset_coords[1]),
+                "label": label,
+                "severity": "red",
+            })
  
-    return matches, outreach_list
+    return red_matches, prelim_matches, red_points
+
 
 def disseminate(
-    matches: list[dict[str, str]],
-    outreach_list: list[dict[str, str]],
+    red_matches: list[dict[str, str]],
+    prelim_matches: list[dict[str, str]],
+    red_points: list[dict[str, Any]],
     total_red: int,
     debug: bool = False,
+    **kwargs,
 ) -> None:
     """
     D — DISSEMINATE (OUTPUT)
  
-    - Write the affected CSV file.
+    - Write output via the provided writer (defaults to CsvWriter).
     - Launch the static dashboard UI (disabled in debug mode).
     """
+    from .writers import CsvWriter
 
-    # Write affected.csv
-    if matches:
-        fieldnames = list(matches[0].keys())
-    else:
-        fieldnames = ["unique_id", "city", "country", "event_type"]
+    output_dir = kwargs.get("output_dir", Path(__file__).resolve().parents[2] / "tests" / "data")
+    writer = kwargs.get("writer", CsvWriter())
 
-    affected_path = Path(__file__).resolve().parents[2] / "tests" / "data" / "affected.csv"
+    writer.write_affected(red_matches, output_dir)
+    writer.write_prelim(prelim_matches, output_dir)
+    writer.write_points(red_points, output_dir)
 
-    with affected_path.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        for row in matches:
-            writer.writerow(row)
+    logger.info(
+        "[DISSEMINATE] affected=%d rows, prelim=%d rows, points=%d (total_red=%d)",
+        len(red_matches),
+        len(prelim_matches),
+        len(red_points),
+        total_red,
+    )
 
     # Serve dashboard static
     if not debug:
         serve_static_and_open()
 
 
-def track_disasters(debug: bool = False) -> None:
+def track_disasters(debug: bool = False, **kwargs) -> None:
     """
     Orchestrator for the full disaster tracking pipeline.
 
     RAID-style flow:
       R — recon()             : collect RSS events with geo coordinates
       A — assets()            : load company assets with coordinates
-      I — intel()             : one-pass Euclidean distance classification (Red events only)
-      D — disseminate()       : write affected CSV + launch dashboard
+      I — intel()             : priority classification (red/orange/green)
+      D — disseminate()       : write output via writer + launch dashboard
 
       Timed operations:
         assets() load
@@ -508,10 +577,12 @@ def track_disasters(debug: bool = False) -> None:
     with _timer("recon() collect", enabled=True):
         total_red, events = recon(debug)
     
-    # Euclidean impact assessment (one-pass, Red events only)
+    # Euclidean impact assessment with severity priority
     with _timer("intel() analyze", enabled=True):
-        matches, outreach_list = intel(events, coordinates, cities, countries, assets_by_id)
-    
+        red_matches, prelim_matches, red_points = intel(
+            events, coordinates, cities, countries, assets_by_id
+        )
+ 
     # Output results
     with _timer("disseminate() output", enabled=True):
-        disseminate(matches, outreach_list, total_red, debug)
+        disseminate(red_matches, prelim_matches, red_points, total_red, debug, **kwargs)
