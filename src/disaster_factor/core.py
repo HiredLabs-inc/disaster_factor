@@ -2,9 +2,7 @@
 
 # IMPORTS
 from __future__ import annotations
-
 import csv
-import json
 import logging
 import math
 import os
@@ -12,13 +10,11 @@ from contextlib import contextmanager
 from pathlib import Path
 from time import perf_counter
 from typing import Any, Optional, Tuple
-
 import requests
 from bs4 import BeautifulSoup
-
 from .helpers import serve_static_and_open
 
-LOG_FILE = Path("disaster_factor.log")
+LOG_FILE = Path(__file__).resolve().parents[2] / "disaster_factor.log"
 
 logger = logging.getLogger(__name__)
 
@@ -340,6 +336,14 @@ def recon(debug: bool = False) -> tuple[int, list[dict[str, Any]]]:
             continue
  
         events.append(event)
+
+    for event in events:
+        if _normalize_alertlevel(event.get("alertlevel")) == "red":
+            logger.info(
+                "[RECON] RED ALERT: %s %s lat=%s lon=%s",
+                event["eventtype"], event["eventid"],
+                event["lat"], event["lon"],
+            )
  
     # Dev cap (optional)
     cap_raw = os.getenv("GDACS_DEV_CAP", "").strip()
@@ -507,54 +511,31 @@ def intel(
     return red_matches, prelim_matches, red_points
 
 
-def _write_csv_rows(path: Path, rows: list[dict[str, str]], fallback_fieldnames: list[str]) -> None:
-    fieldnames = list(rows[0].keys()) if rows else fallback_fieldnames
-    with path.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        for row in rows:
-            writer.writerow(row)
-
-
-def _write_points_json(path: Path, points: list[dict[str, Any]]) -> None:
-    with path.open("w", encoding="utf-8") as f:
-        json.dump({"points": points}, f, ensure_ascii=True, indent=2)
-        f.write("\n")
-
 def disseminate(
     red_matches: list[dict[str, str]],
     prelim_matches: list[dict[str, str]],
     red_points: list[dict[str, Any]],
     total_red: int,
     debug: bool = False,
+    **kwargs,
 ) -> None:
     """
     D — DISSEMINATE (OUTPUT)
  
-    - Write the affected CSV file.
+    - Write output via the provided writer (defaults to CsvWriter).
     - Launch the static dashboard UI (disabled in debug mode).
     """
+    from .writers import CsvWriter
 
-    repo_root = Path(__file__).resolve().parents[2]
-    affected_path = repo_root / "tests" / "data" / "affected.csv"
-    prelim_path = repo_root / "tests" / "data" / "prelim.csv"
-    points_path = repo_root / "src" / "disaster_factor" / "static" / "points.json"
+    output_dir = kwargs.get("output_dir", Path(__file__).resolve().parents[2] / "tests" / "data")
+    writer = kwargs.get("writer", CsvWriter())
 
-    base_fields = [
-        "unique_id",
-        "city",
-        "country",
-        "event_type",
-        "event_id",
-        "impact_method",
-        "coordinates",
-    ]
-    _write_csv_rows(affected_path, red_matches, base_fields)
-    _write_csv_rows(prelim_path, prelim_matches, [*base_fields, "severity"])
-    _write_points_json(points_path, red_points)
+    writer.write_affected(red_matches, output_dir)
+    writer.write_prelim(prelim_matches, output_dir)
+    writer.write_points(red_points, output_dir)
 
     logger.info(
-        "[DISSEMINATE] wrote affected.csv=%d rows, prelim.csv=%d rows, points.json=%d rows (total_red=%d)",
+        "[DISSEMINATE] affected=%d rows, prelim=%d rows, points=%d (total_red=%d)",
         len(red_matches),
         len(prelim_matches),
         len(red_points),
@@ -566,7 +547,7 @@ def disseminate(
         serve_static_and_open()
 
 
-def track_disasters(debug: bool = False) -> None:
+def track_disasters(debug: bool = False, **kwargs) -> None:
     """
     Orchestrator for the full disaster tracking pipeline.
 
@@ -574,7 +555,7 @@ def track_disasters(debug: bool = False) -> None:
       R — recon()             : collect RSS events with geo coordinates
       A — assets()            : load company assets with coordinates
       I — intel()             : priority classification (red/orange/green)
-      D — disseminate()       : write affected/prelim CSVs + red-only points + launch dashboard
+      D — disseminate()       : write output via writer + launch dashboard
 
       Timed operations:
         assets() load
@@ -604,4 +585,4 @@ def track_disasters(debug: bool = False) -> None:
  
     # Output results
     with _timer("disseminate() output", enabled=True):
-        disseminate(red_matches, prelim_matches, red_points, total_red, debug)
+        disseminate(red_matches, prelim_matches, red_points, total_red, debug, **kwargs)
