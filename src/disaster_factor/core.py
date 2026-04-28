@@ -71,7 +71,7 @@ def _get_geocoding_api_key() -> str:
         logger.info("[GEOCODE] API key saved to environment for this session")
     return api_key
 
-
+# TODO: Review for removal - not currently called anywhere
 def _reverse_geocode(lat: float, lon: float) -> dict[str, str]:
     """Convert coordinates to city and country using Google Geocoding API V4 Beta."""
 
@@ -392,6 +392,7 @@ def assets() -> tuple[dict[str, str], dict[str, str], dict[str, Optional[Tuple[f
     countries: dict[str, str] = {}
     coordinates: dict[str, Optional[Tuple[float, float]]] = {}
     assets_by_id: dict[str, dict[str, str]] = {}
+    # TODO: Review for refactoring to using Python objects instead of files (see geocode_assets.py/geocode_assets_csv)
     csv_path = Path(__file__).resolve().parents[2] / "tests" / "data" / "assets.csv"
     if not csv_path.exists():
         raise FileNotFoundError(f"assets.csv not found at {csv_path}")

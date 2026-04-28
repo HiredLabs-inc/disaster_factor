@@ -66,6 +66,7 @@ def geocode_assets_csv():
     # Set up paths
     script_dir = Path(__file__).resolve().parent
     input_path = script_dir / "assets.csv"
+    # TODO: Review for refactoring to Python object
     output_path = script_dir / "assets_geocoded.csv"
     
     if not input_path.exists():
