@@ -71,62 +71,6 @@ def _get_geocoding_api_key() -> str:
         logger.info("[GEOCODE] API key saved to environment for this session")
     return api_key
 
-# TODO: Review for removal - not currently called anywhere
-def _reverse_geocode(lat: float, lon: float) -> dict[str, str]:
-    """Convert coordinates to city and country using Google Geocoding API V4 Beta."""
-
-    try:
-        api_key = _get_geocoding_api_key()
-
-        # Google Reverse Geocoding API V4 Beta URL
-        url = f"https://geocode.googleapis.com/v4beta/geocode/location/{lat},{lon}"
-        params = {
-            'key': api_key,
-        }
-
-        response = requests.get(url, params=params, timeout=10.0)
-        response.raise_for_status()
-
-        data = response.json()
-
-        if not data.get('results'):
-            return {
-                'city': 'Unknown',
-                'country': 'Unknown'
-            }
-
-        # Extract location components from first result
-        result = data['results'][0]
-        components = {comp['types'][0]: comp['longText']
-                     for comp in result.get('addressComponents', [])
-                     if comp.get('types')}
-
-        location_info = {
-            'city': components.get('locality', ''),
-            'country': components.get('country', '')
-        }
-
-        # Fill missing city from formatted address if needed
-        if not location_info['city'] and result.get('formattedAddress'):
-            # Try to extract city from formatted address
-            parts = result['formattedAddress'].split(',')
-            if len(parts) >= 2:
-                location_info['city'] = parts[0].strip()
-
-        # Ensure we always return values
-        if not location_info['city']:
-            location_info['city'] = 'Unknown'
-        if not location_info['country']:
-            location_info['country'] = 'Unknown'
-
-        return location_info
-
-    except Exception as e:
-        return {
-            'city': 'Unknown',
-            'country': 'Unknown'
-        }
-
 
 # ------------------------------------------------------------------------------------
 # GDACS helpers
@@ -393,7 +337,7 @@ def assets() -> tuple[dict[str, str], dict[str, str], dict[str, Optional[Tuple[f
     coordinates: dict[str, Optional[Tuple[float, float]]] = {}
     assets_by_id: dict[str, dict[str, str]] = {}
     # TODO: Review for refactoring to using Python objects instead of files (see geocode_assets.py/geocode_assets_csv)
-    csv_path = Path(__file__).resolve().parents[2] / "tests" / "data" / "assets.csv"
+    csv_path = Path(__file__).resolve().parents / "static" / "assets.csv"
     if not csv_path.exists():
         raise FileNotFoundError(f"assets.csv not found at {csv_path}")
     logger.info("[ASSETS] Loading assets with pre-geocoded coordinates...")
