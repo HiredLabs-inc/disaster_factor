@@ -1,24 +1,27 @@
 #!/usr/bin/env python3
 """
-Separate script to geocode assets.csv and add coordinates.
+Separate script to geocode assets.csv, and return all coords as a list[dict]
 
-Run this script once to add latitude/longitude columns to your assets.csv file.
-This keeps the main application fast with no runtime API dependencies.
-
-Usage:
-    python tests/data/geocode_assets.py
+Called in core.py assets() to build assets dict
 """
 
-import csv
-import sys
 import os
+import csv
 from pathlib import Path
 import requests
 from typing import Optional, Tuple
 
-# Import the API key function from core
-sys.path.append(str(Path(__file__).resolve().parents[2]))
-from disaster_factor.core import _get_geocoding_api_key
+
+def _get_geocoding_api_key() -> str:
+    """Get Google Geocoding API key from environment or user input."""
+
+    api_key = os.getenv("GOOGLE_GEOCODING_API_KEY")
+    if not api_key:
+        api_key = input("Enter your Google Geocoding API key: ").strip()
+        if not api_key:
+            raise ValueError("Google Geocoding API key is required")
+        os.environ["GOOGLE_GEOCODING_API_KEY"] = api_key
+    return api_key
 
 
 def _forward_geocoding(city: str, country: str) -> Optional[Tuple[float, float]]:
@@ -61,34 +64,28 @@ def _forward_geocoding(city: str, country: str) -> Optional[Tuple[float, float]]
         return None
 
 
-def geocode_assets_csv():
-    """Add coordinates to assets.csv file."""
+def geocode_assets():
+    """Read assets.csv, geocode any missing coordinates, and return data as list[dict]."""
     # Set up paths
-    script_dir = Path(__file__).resolve().parent
-    input_path = script_dir / "assets.csv"
-    # TODO: Review for refactoring to Python object
-    output_path = script_dir / "assets_geocoded.csv"
-    
-    if not input_path.exists():
-        print(f"[ERROR] assets.csv not found at {input_path}")
-        return
+    path = Path(__file__).resolve().parent / "static" / "assets.csv"
+   
+    if not path.exists():
+        print(f"[ERROR] assets.csv not found at {path}")
+        raise FileNotFoundError(f"[GEOCODE] assets.csv not found at {path}")
     
     print("[GEOCODE] Processing assets.csv...")
-    print(f"[GEOCODE] Input: {input_path}")
-    print(f"[GEOCODE] Output: {output_path}")
+    print(f"[GEOCODE] Input: {path}")
     
     # Read original assets
     assets = []
-    with input_path.open(newline="", encoding="utf-8") as f:
+    with path.open(newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         
         # Check if coordinates already exist
         if 'latitude' in reader.fieldnames and 'longitude' in reader.fieldnames:
-            print("[GEOCODE] Assets already have coordinates! Checking for missing values...")
-            fieldnames = reader.fieldnames
+            print("[GEOCODE] Assets already have coordinates. Checking for missing values...")
         else:
-            print("[GEOCODE] Adding coordinate columns...")
-            fieldnames = reader.fieldnames + ['latitude', 'longitude']
+            print("[GEOCODE] Adding coordinate data...")
         
         for i, row in enumerate(reader, 1):
             city = row.get('city', '').strip()
@@ -115,30 +112,23 @@ def geocode_assets_csv():
             if coords:
                 row['latitude'] = str(coords[0])
                 row['longitude'] = str(coords[1])
-                print(f"[GEOCODE] ✓ Success: {coords}")
+                print(f"[GEOCODE] Success: {coords}")
             else:
                 row['latitude'] = ''
                 row['longitude'] = ''
-                print(f"[GEOCODE] ✗ Failed")
+                print(f"[GEOCODE] Failed")
             
             assets.append(row)
-    
-    # Write geocoded assets
-    with output_path.open(newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(assets)
     
     successful = len([a for a in assets if a.get('latitude') and a.get('longitude')])
     print(f"\n[GEOCODE] Complete!")
     print(f"[GEOCODE] Total assets: {len(assets)}")
     print(f"[GEOCODE] Successfully geocoded: {successful}")
     print(f"[GEOCODE] Failed: {len(assets) - successful}")
-    print(f"[GEOCODE] Saved to: {output_path}")
-    
-    print(f"\n[GEOCODE] To use the geocoded assets:")
-    print(f"[GEOCODE] cp {output_path} {input_path}")
 
+    # Return Python Object
+    return assets
+    
 
 if __name__ == "__main__":
-    geocode_assets_csv()
+    geocode_assets()

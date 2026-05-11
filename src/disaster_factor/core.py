@@ -13,6 +13,7 @@ from typing import Any, Optional, Tuple
 import requests
 from bs4 import BeautifulSoup
 from .helpers import serve_static_and_open
+from .geocode_assets import geocode_assets
 
 LOG_FILE = Path(__file__).resolve().parents[2] / "disaster_factor.log"
 
@@ -57,19 +58,6 @@ def _timer(label: str, *, enabled: bool = True) -> None:
         if enabled:
             elapsed = perf_counter() - start
             logger.info(f"[TIMER] {label}: {elapsed:.3f}s")
-
-def _get_geocoding_api_key() -> str:
-    """Get Google Geocoding API key from environment or user input."""
-
-    api_key = os.getenv("GOOGLE_GEOCODING_API_KEY")
-    if not api_key:
-        logger.info("[GEOCODE] Google Geocoding API key not found in environment")
-        api_key = input("Enter your Google Geocoding API key: ").strip()
-        if not api_key:
-            raise ValueError("Google Geocoding API key is required")
-        os.environ["GOOGLE_GEOCODING_API_KEY"] = api_key
-        logger.info("[GEOCODE] API key saved to environment for this session")
-    return api_key
 
 
 # ------------------------------------------------------------------------------------
@@ -365,7 +353,7 @@ def assets() -> tuple[dict[str, str], dict[str, str], dict[str, Optional[Tuple[f
                     coordinates[asset_id] = (lat, lon)
                     coord_count += 1
                 except ValueError:
-                    logger.warning(f"[ASSETS] ⚠ Invalid coordinates for {asset_id}: {lat_str}, {lon_str}")
+                    logger.warning(f"[ASSETS] *warning* Invalid coordinates for {asset_id}: {lat_str}, {lon_str}")
                     coordinates[asset_id] = None
             else:
                 coordinates[asset_id] = None
@@ -467,7 +455,7 @@ def disseminate(
     """
     D — DISSEMINATE (OUTPUT)
  
-    - Write output via the provided writer (defaults to CsvWriter).
+    - Capture output in Python object .
     - Launch the static dashboard UI (disabled in debug mode).
     """
     from .writers import CsvWriter
