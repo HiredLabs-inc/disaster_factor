@@ -324,42 +324,35 @@ def assets() -> tuple[dict[str, str], dict[str, str], dict[str, Optional[Tuple[f
     countries: dict[str, str] = {}
     coordinates: dict[str, Optional[Tuple[float, float]]] = {}
     assets_by_id: dict[str, dict[str, str]] = {}
+    
+    
     # TODO: Review for refactoring to using Python objects instead of files (see geocode_assets.py/geocode_assets_csv)
-    csv_path = Path(__file__).resolve().parents / "static" / "assets.csv"
-    if not csv_path.exists():
-        raise FileNotFoundError(f"assets.csv not found at {csv_path}")
     logger.info("[ASSETS] Loading assets with pre-geocoded coordinates...")
+    asset_rows = geocode_assets()
+    loaded_count = 0
+    coord_count = 0
 
-    with csv_path.open(newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f, skipinitialspace=True)
-        loaded_count = 0
-        coord_count = 0
+    for asset_row in asset_rows:
+        asset_id = (asset_row.get("unique_id") or "").strip()
+        if not asset_id:
+            continue
+        loaded_count += 1
+    
+        lat = asset_row.get("latitude")
+        lon = asset_row.get("longitude")
 
-        for raw_row in reader:
-            row = {(k.strip() if isinstance(k, str) else k): v for k, v in raw_row.items() if k}
-            asset_id = (row.get("unique_id") or "").strip()
-            if not asset_id:
-                continue
-            loaded_count += 1
-
-            # Read pre-geocoded coordinates
-            lat_str = (row.get("latitude") or "").strip()
-            lon_str = (row.get("longitude") or "").strip()
-
-            if lat_str and lon_str:
-                try:
-                    lat = float(lat_str)
-                    lon = float(lon_str)
-                    coordinates[asset_id] = (lat, lon)
-                    coord_count += 1
-                except ValueError:
-                    logger.warning(f"[ASSETS] *warning* Invalid coordinates for {asset_id}: {lat_str}, {lon_str}")
-                    coordinates[asset_id] = None
-            else:
+        if lat and lon:
+            try:
+                coordinates[asset_id] = (float(lat), float(lon))
+                coord_count += 1
+            except (ValueError, TypeError):
+                logger.warning(f"[ASSETS] Invalid coordinates for {asset_id}: {lat}, {lon}")
                 coordinates[asset_id] = None
-            assets_by_id[asset_id] = row
-            cities[asset_id] = (row.get("city") or "").strip()
-            countries[asset_id] = (row.get("country") or "").strip()
+        else:
+            coordinates[asset_id] = None
+        assets_by_id[asset_id] = asset_row
+        cities[asset_id] = (asset_row.get("city") or "").strip()
+        countries[asset_id] = (asset_row.get("country") or "").strip()
     logger.info(f"[ASSETS] Loaded {loaded_count} assets with {coord_count} having valid coordinates")
 
     return cities, countries, coordinates, assets_by_id
