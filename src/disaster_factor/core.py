@@ -6,9 +6,7 @@ import csv
 import logging
 import math
 import os
-from contextlib import contextmanager
 from pathlib import Path
-from time import perf_counter
 from typing import Any, Optional, Tuple
 import requests
 from bs4 import BeautifulSoup
@@ -42,22 +40,6 @@ def setup_logging(*, debug: bool = False) -> None:
 
     root.addHandler(sh)
     root.addHandler(fh)
-
-
-
-# ------------------------------------------------------------------------------------
-# GENERAL utilities
-# ------------------------------------------------------------------------------------
-
-@contextmanager
-def _timer(label: str, *, enabled: bool = True) -> None:
-    start = perf_counter()
-    try:
-        yield
-    finally:
-        if enabled:
-            elapsed = perf_counter() - start
-            logger.info(f"[TIMER] {label}: {elapsed:.3f}s")
 
 
 # ------------------------------------------------------------------------------------
@@ -228,8 +210,6 @@ def recon(debug: bool = False) -> tuple[int, list[dict[str, Any]]]:
     soup = BeautifulSoup(resp.content, features="xml")
     items = soup.find_all("item")
  
-    t_recon_start = perf_counter()
- 
     # geo:Point audit
     geo_point_total = 0
     geo_point_missing_tag = 0
@@ -294,23 +274,19 @@ def recon(debug: bool = False) -> tuple[int, list[dict[str, Any]]]:
         logger.debug(f"  Missing geo:lat/geo:long: {geo_point_missing_latlon}")
         logger.debug(f"  Non-numeric geo:lat/geo:long: {geo_point_non_numeric}")
  
-    total = perf_counter() - t_recon_start
-    logger.info(f"[RECON][TIMER] recon total: {total:.2f}s")
- 
     return total_red, events
 
 
 def assets() -> tuple[dict[str, str], dict[str, str], dict[str, Optional[Tuple[float, float]]], dict[str, dict[str, str]]]:
     """
     A — ASSETS (DATA INPUT)
-    Load company / contractor asset data (cities, countries, assets, etc.) from assets.csv
-    and read pre-geocoded coordinates.
-    The CSV is expected to have at least the columns:
+    Load company / contractor asset data (cities, countries, assets, etc.) from geocode_assets() 'assets' object.
+    The assets object is expected to have at least the columns:
       - unique_id  (anonymized unique ID, no PII)
       - city
       - country
       - type       (e.g. 'personnel', 'building', 'vehicle', ...)
-      - latitude   (pre-geocoded coordinates)""" """  """ """
+      - latitude   (pre-geocoded coordinates)
       - longitude  (pre-geocoded coordinates)
     Returns:
       cities:       mapping[str, str]           optional lookup of asset_id -> city name
@@ -325,14 +301,12 @@ def assets() -> tuple[dict[str, str], dict[str, str], dict[str, Optional[Tuple[f
     coordinates: dict[str, Optional[Tuple[float, float]]] = {}
     assets_by_id: dict[str, dict[str, str]] = {}
     
-    
-    # TODO: Review for refactoring to using Python objects instead of files (see geocode_assets.py/geocode_assets_csv)
     logger.info("[ASSETS] Loading assets with pre-geocoded coordinates...")
-    asset_rows = geocode_assets()
+    assets = geocode_assets()
     loaded_count = 0
     coord_count = 0
 
-    for asset_row in asset_rows:
+    for asset_row in assets:
         asset_id = (asset_row.get("unique_id") or "").strip()
         if not asset_id:
             continue
@@ -341,15 +315,12 @@ def assets() -> tuple[dict[str, str], dict[str, str], dict[str, Optional[Tuple[f
         lat = asset_row.get("latitude")
         lon = asset_row.get("longitude")
 
-        if lat and lon:
-            try:
-                coordinates[asset_id] = (float(lat), float(lon))
-                coord_count += 1
-            except (ValueError, TypeError):
-                logger.warning(f"[ASSETS] Invalid coordinates for {asset_id}: {lat}, {lon}")
-                coordinates[asset_id] = None
+        if lat not in (None, "") and lon not in (None, ""):
+            coordinates[asset_id] = (lat, lon)
+            coord_count += 1
         else:
             coordinates[asset_id] = None
+        
         assets_by_id[asset_id] = asset_row
         cities[asset_id] = (asset_row.get("city") or "").strip()
         countries[asset_id] = (asset_row.get("country") or "").strip()
@@ -443,22 +414,13 @@ def disseminate(
     red_points: list[dict[str, Any]],
     total_red: int,
     debug: bool = False,
-    **kwargs,
-) -> None:
+) -> tuple[list[dict], int]:
     """
     D — DISSEMINATE (OUTPUT)
  
-    - Capture output in Python object .
+    - Capture output in Python object.
     - Launch the static dashboard UI (disabled in debug mode).
     """
-    from .writers import CsvWriter
-
-    output_dir = kwargs.get("output_dir", Path(__file__).resolve().parents[2] / "tests" / "data")
-    writer = kwargs.get("writer", CsvWriter())
-
-    writer.write_affected(red_matches, output_dir)
-    writer.write_prelim(prelim_matches, output_dir)
-    writer.write_points(red_points, output_dir)
 
     logger.info(
         "[DISSEMINATE] affected=%d rows, prelim=%d rows, points=%d (total_red=%d)",
@@ -468,12 +430,9 @@ def disseminate(
         total_red,
     )
 
-    # Serve dashboard static
-    if not debug:
-        serve_static_and_open()
+    return red_matches, prelim_matches, red_points, total_red
 
-
-def track_disasters(debug: bool = False, **kwargs) -> None:
+def track_disasters(debug: bool = False) -> None:
     """
     Orchestrator for the full disaster tracking pipeline.
 
@@ -481,13 +440,7 @@ def track_disasters(debug: bool = False, **kwargs) -> None:
       R — recon()             : collect RSS events with geo coordinates
       A — assets()            : load company assets with coordinates
       I — intel()             : priority classification (red/orange/green)
-      D — disseminate()       : write output via writer + launch dashboard
-
-      Timed operations:
-        assets() load
-        recon() collect
-        intel() analyze
-        disseminate() output
+      D — disseminate()       : store output in memory + launch dashboard
     """
 
     setup_logging(debug=debug)
@@ -496,19 +449,17 @@ def track_disasters(debug: bool = False, **kwargs) -> None:
     logger.info("=" * 80)
 
     # Load enhanced assets with coordinates
-    with _timer("assets() load", enabled=True):
-        cities, countries, coordinates, assets_by_id = assets()
+    cities, countries, coordinates, assets_by_id = assets()
 
     # Collect disaster intel from RSS
-    with _timer("recon() collect", enabled=True):
-        total_red, events = recon(debug)
+    total_red, events = recon(debug)
     
     # Euclidean impact assessment with severity priority
-    with _timer("intel() analyze", enabled=True):
-        red_matches, prelim_matches, red_points = intel(
-            events, coordinates, cities, countries, assets_by_id
-        )
+    red_matches, prelim_matches, red_points = intel(events, coordinates, cities, countries, assets_by_id)
  
     # Output results
-    with _timer("disseminate() output", enabled=True):
-        disseminate(red_matches, prelim_matches, red_points, total_red, debug, **kwargs)
+    final_output = disseminate(red_matches, prelim_matches, red_points, total_red, debug)
+    
+    # Serve dashboard static
+    if not debug:
+        serve_static_and_open()

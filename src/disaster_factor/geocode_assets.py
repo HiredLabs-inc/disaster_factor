@@ -11,8 +11,12 @@ from pathlib import Path
 import requests
 from typing import Optional, Tuple
 import logging
+from dotenv import load_dotenv
+
+load_dotenv()
 
 logger = logging.getLogger(__name__)
+logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 
 def _get_geocoding_api_key() -> str:
@@ -20,10 +24,7 @@ def _get_geocoding_api_key() -> str:
 
     api_key = os.getenv("GOOGLE_GEOCODING_API_KEY")
     if not api_key:
-        api_key = input("Enter your Google Geocoding API key: ").strip()
-        if not api_key:
-            raise ValueError("Google Geocoding API key is required")
-        os.environ["GOOGLE_GEOCODING_API_KEY"] = api_key
+        raise ValueError("GOOGLE_GEOCODING_API_KEY is not set. Add it to your .env file.")
     return api_key
 
 
@@ -41,7 +42,7 @@ def _forward_geocoding(city: str, country: str) -> Optional[Tuple[float, float]]
     api_key = _get_geocoding_api_key()
     
     address = f"{city}, {country}"
-    url = "https://geocode.googleapis.com/v4beta/geocode"
+    url = "https://maps.googleapis.com/maps/api/geocode/json"
     
     params = {
         "address": address,
@@ -61,9 +62,12 @@ def _forward_geocoding(city: str, country: str) -> Optional[Tuple[float, float]]
         else:
             logger.warning(f"[GEOCODE] No results for {city}, {country}: {data.get('status')}")
             return None
-            
+        
+    except requests.HTTPError as e:
+        logger.error(f"[GEOCODE] API error for {city}, {country}: HTTP {e.response.status_code}")
+        return None
     except Exception as e:
-        logger.error(f"[GEOCODE] API error for {city}, {country}: {str(e)}")
+        logger.error(f"[GEOCODE] API error for {city}, {country}: {type(e).__name__}")
         return None
 
 
@@ -80,7 +84,7 @@ def geocode_assets() -> list[dict]:
     # Check for Latitude and Longitude in header columns
     with path.open(newline="", encoding="utf-8") as f:
         rows = list(csv.reader(f))
-        header_row = rows[0]
+        header_row = [h.strip().lower() for h in rows[0]]
         headers = "latitude" in header_row and "longitude" in header_row
     
     # Write-in missing columns if needed
@@ -96,46 +100,50 @@ def geocode_assets() -> list[dict]:
 
     # Builds assets list and fills in any missing coordinates
     with path.open(newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        geocoded_any = False
+        reader = csv.DictReader(f, skipinitialspace=True)
+        reader.fieldnames = [h.strip().lower() for h in reader.fieldnames]
+        geocoded_count = 0
         
         for i, row in enumerate(reader, 1):
             city = row.get('city', '').strip()
             country = row.get('country', '').strip()
             
             # Check if coordinates already exist and are valid
-            lat_str = row.get('latitude', '').strip()
-            lon_str = row.get('longitude', '').strip()
+            lat_str = (row.get('latitude') or '').strip()
+            lon_str = (row.get('longitude') or '').strip()
             
             if lat_str and lon_str:
                 try:
-                    float(lat_str)
-                    float(lon_str)
+                    row["latitude"] = float(lat_str)
+                    row["longitude"] = float(lon_str)
                     logger.debug(f"[GEOCODE] {i}: {city}, {country} → Already has coordinates")
                     assets.append(row)
                     continue
                 except ValueError:
                     logger.warning(f"[GEOCODE] Invalid coordinates for row {i} ({city}, {country}), re-geocoding")
             
+            if not city or not country:
+                logger.warning(f"[GEOCODE] {i}: missing city or country, skipping")
+                continue
+
             # Geocode if no valid coordinates
             logger.debug(f"[GEOCODE] {i}: {city}, {country}")
             coords = _forward_geocoding(city, country)
             
             if coords:
-                row['latitude'] = (coords[0])
-                row['longitude'] = (coords[1])
-                geocoded_any = True
-                logger.info(f"[GEOCODE] Success: {coords}")
+                row['latitude'] = round((coords[0]), 3)
+                row['longitude'] = round((coords[1]), 3)
+                geocoded_count += 1
+                logger.info(f"[GEOCODE] Success: {row['latitude']}, {row['longitude']}")
             else:
                 row['latitude'] = ''
                 row['longitude'] = ''
                 logger.warning(f"[GEOCODE] {i}: {city}, {country} -> Failed to geocode")
             
-            row = {k.strip(): v for k, v in row.items() if k}
             assets.append(row)
         
         # Write-back after geocoding loop if any missing coordinates were added
-        if geocoded_any:
+        if geocoded_count > 0:
             with path.open("w", newline="", encoding="utf-8") as f:
                 writer = csv.DictWriter(f, fieldnames=list(assets[0].keys()))
                 writer.writeheader()
@@ -144,11 +152,12 @@ def geocode_assets() -> list[dict]:
         else:
             logger.info("[GEOCODE] No new coordinates to write - assets.csv unchanged")
     
-    successful = len([a for a in assets if a.get('latitude') and a.get('longitude')])
+    successful = sum(1 for a in assets if a.get("latitude") not in (None, "") and a.get("longitude") not in (None, ""))
+    failed = len(assets) - successful
     logger.info(f"[GEOCODE] Complete!")
     logger.info(f"[GEOCODE] Total assets: {len(assets)}")
-    logger.info(f"[GEOCODE] Successfully geocoded: {successful}")
-    failed = len(assets) - successful
+    logger.info(f"[GEOCODE] Already had coordinates: {successful - geocoded_count}")
+    logger.info(f"[GEOCODE] Newly geocoded: {geocoded_count}")
     if failed > 0:
         logger.warning(f"[GEOCODE] Failed to geocode {failed} assets")
 
