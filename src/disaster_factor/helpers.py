@@ -330,6 +330,8 @@ def serve_static_and_open(port: int = 8000):
             # default
             return super().do_GET()
 
+
+    return httpd
     # Bind and serve from the temporary directory
     handler = partial(_CustomHandler, directory=str(tmpd))
     httpd = ThreadingHTTPServer(("127.0.0.1", port), handler)
@@ -347,5 +349,3 @@ def serve_static_and_open(port: int = 8000):
     if not _DASHBOARD_OPENED:
         webbrowser.open_new_tab(url)
         _DASHBOARD_OPENED = True
-
-    return httpd

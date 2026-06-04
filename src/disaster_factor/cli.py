@@ -11,6 +11,11 @@ def _default_prog() -> str:
     return Path(sys.argv[0]).name or "python"
 
 
+def _cmd_track(args: argparse.Namespace) -> int:
+    track_disasters(debug=getattr(args, "debug", False))
+    return 0
+
+
 def _build_parser(prog: str | None = None) -> argparse.ArgumentParser:
     prog = prog or _default_prog()
     parser = argparse.ArgumentParser(prog=prog, description=(__doc__ or ""))
@@ -23,7 +28,6 @@ def _build_parser(prog: str | None = None) -> argparse.ArgumentParser:
 
     # Subcommands
     subparsers = parser.add_subparsers(dest="command")
-
     sp_track = subparsers.add_parser("track", help="Track current disasters")
     sp_track.add_argument(
         "--debug",
@@ -33,18 +37,9 @@ def _build_parser(prog: str | None = None) -> argparse.ArgumentParser:
             "affected.csv, prelim.csv, and points.json plus console output."
         ),
     )
-    sp_track.add_argument("--output", default="csv", choices=["csv", "json", "xlsx", "pdf"])
     sp_track.set_defaults(func=_cmd_track)
 
     return parser
-
-
-def _cmd_track(args: argparse.Namespace) -> int:
-    from .writers import WRITERS
-
-    writer = WRITERS[args.output]()
-    track_disasters(debug=getattr(args, "debug", False), writer=writer)
-    return 0
 
 
 def main(argv: list[str] | None = None) -> int:
