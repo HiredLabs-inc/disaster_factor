@@ -2,18 +2,31 @@
 name = "disaster_factor"
 version = "0.1.0"
 description = "Business Continuity Disaster Tracker"
+repository = "https://github.com/HiredLabs-inc/disaster_factor"
+keywords = ["disaster", "tracking", "business-continuity"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Programming Language :: Python :: 3.10",
+]
+
 authors = [
   "Jeff Stock <jeff.stock@hiredlabs.org>",
   "Daniel Murillo <hoorayfordantheman@gmail.com>"
 ]
+
 license = "GPL-3.0-or-later"
 readme = "README.md"
+
 packages = [{ include = "disaster_factor", from = "src" }]
 
-# include non-Python files (static assets) in the built package
 include = [
   "src/disaster_factor/static/**"
 ]
+
+[tool.poetry.scripts]
+disaster-factor = "disaster_factor.cli:main"
 
 [tool.poetry.dependencies]
 python = ">=3.10"
