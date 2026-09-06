@@ -1,4 +1,10 @@
-"""Unit tests for disaster_factor.geocode_assets."""
+"""Unit tests for disaster_factor.geocode_assets.
+
+Covers ``_get_geocoding_api_key()``, ``_forward_geocoding()``, and
+``geocode_assets()``. All tests are offline; the Google Geocoding API and
+the filesystem path to assets.csv are mocked throughout.
+"""
+
 from __future__ import annotations
 
 import csv
@@ -24,7 +30,18 @@ REAL_ASSETS_CSV = Path(__file__).parent.parent / "src" / "disaster_factor" / "st
 # ---------------------------------------------------------------------------
 
 def _make_assets_csv(tmp_path: Path, rows: list[dict], fieldnames: list[str] | None = None) -> Path:
-    """Write a minimal assets.csv to tmp_path and return its path."""
+    """Write a minimal assets.csv to a temporary directory and return its path.
+
+    Args:
+        tmp_path: Temporary directory provided by pytest's ``tmp_path`` fixture.
+        rows: List of row dicts to write as CSV data.
+        fieldnames: Column names for the CSV header. If None, inferred from
+            the keys of the first row, or defaults to a standard set if rows
+            is empty.
+
+    Returns:
+        Path to the written CSV file.
+    """
     csv_path = tmp_path / "assets.csv"
     if fieldnames is None:
         fieldnames = list(rows[0].keys()) if rows else ["unique_id", "city", "country", "type", "latitude", "longitude"]
@@ -36,7 +53,16 @@ def _make_assets_csv(tmp_path: Path, rows: list[dict], fieldnames: list[str] | N
 
 
 def _make_geocode_response(lat: float, lon: float) -> MagicMock:
-    """Build a mock successful Google Geocoding API response."""
+    """Build a mock successful Google Geocoding API response.
+
+    Args:
+        lat: Latitude to embed in the mock result.
+        lon: Longitude to embed in the mock result.
+
+    Returns:
+        A ``MagicMock`` whose ``.json()`` returns a well-formed OK response
+        with a single result at the given coordinates.
+    """
     mock_resp = MagicMock()
     mock_resp.raise_for_status.return_value = None
     mock_resp.json.return_value = {
@@ -49,6 +75,11 @@ def _make_geocode_response(lat: float, lon: float) -> MagicMock:
 
 
 def _make_geocode_no_results_response() -> MagicMock:
+    """Build a mock Google Geocoding API response with no results.
+
+    Returns:
+        A ``MagicMock`` whose ``.json()`` returns a ``ZERO_RESULTS`` response.
+    """
     mock_resp = MagicMock()
     mock_resp.raise_for_status.return_value = None
     mock_resp.json.return_value = {"status": "ZERO_RESULTS", "results": []}
@@ -56,6 +87,12 @@ def _make_geocode_no_results_response() -> MagicMock:
 
 
 def _make_geocode_http_error_response() -> MagicMock:
+    """Build a mock Google Geocoding API response that raises an HTTP error.
+
+    Returns:
+        A ``MagicMock`` whose ``raise_for_status()`` raises an exception
+        with a 403 status code attached.
+    """
     mock_resp = MagicMock()
     http_err = Exception("HTTP 403")
     http_err.response = MagicMock()
@@ -69,12 +106,16 @@ def _make_geocode_http_error_response() -> MagicMock:
 # ---------------------------------------------------------------------------
 
 class TestGetGeocodingApiKey:
+    """Tests for ``_get_geocoding_api_key``."""
+
     def test_returns_key_when_env_var_set(self, monkeypatch):
+        """Returns the key string when the environment variable is present."""
         monkeypatch.setenv("GOOGLE_GEOCODING_API_KEY", "test-api-key-123")
         key = _get_geocoding_api_key()
         assert key == "test-api-key-123"
 
     def test_raises_when_env_var_missing(self, monkeypatch):
+        """Raises ValueError when GOOGLE_GEOCODING_API_KEY is not set."""
         monkeypatch.delenv("GOOGLE_GEOCODING_API_KEY", raising=False)
         with pytest.raises(ValueError, match="GOOGLE_GEOCODING_API_KEY"):
             _get_geocoding_api_key()
@@ -85,7 +126,10 @@ class TestGetGeocodingApiKey:
 # ---------------------------------------------------------------------------
 
 class TestForwardGeocoding:
+    """Tests for ``_forward_geocoding``."""
+
     def test_returns_lat_lon_on_success(self, monkeypatch):
+        """Returns a (lat, lon) tuple when the API returns a valid result."""
         monkeypatch.setenv("GOOGLE_GEOCODING_API_KEY", "fake-key")
         with patch("disaster_factor.geocode_assets.requests.get") as mock_get:
             mock_get.return_value = _make_geocode_response(35.689, 139.692)
@@ -96,6 +140,7 @@ class TestForwardGeocoding:
         assert lon == pytest.approx(139.692)
 
     def test_returns_none_on_zero_results(self, monkeypatch):
+        """Returns None when the API returns ZERO_RESULTS."""
         monkeypatch.setenv("GOOGLE_GEOCODING_API_KEY", "fake-key")
         with patch("disaster_factor.geocode_assets.requests.get") as mock_get:
             mock_get.return_value = _make_geocode_no_results_response()
@@ -103,6 +148,7 @@ class TestForwardGeocoding:
         assert result is None
 
     def test_returns_none_on_http_error(self, monkeypatch):
+        """Returns None when the API call raises an HTTPError."""
         monkeypatch.setenv("GOOGLE_GEOCODING_API_KEY", "fake-key")
         with patch("disaster_factor.geocode_assets.requests.get") as mock_get:
             mock_resp = MagicMock()
@@ -115,6 +161,7 @@ class TestForwardGeocoding:
         assert result is None
 
     def test_returns_none_on_network_exception(self, monkeypatch):
+        """Returns None when a low-level network exception is raised."""
         monkeypatch.setenv("GOOGLE_GEOCODING_API_KEY", "fake-key")
         with patch("disaster_factor.geocode_assets.requests.get") as mock_get:
             mock_get.side_effect = ConnectionError("Network unreachable")
@@ -122,6 +169,7 @@ class TestForwardGeocoding:
         assert result is None
 
     def test_constructs_correct_address(self, monkeypatch):
+        """Passes a correctly formatted address string to the API."""
         monkeypatch.setenv("GOOGLE_GEOCODING_API_KEY", "fake-key")
         with patch("disaster_factor.geocode_assets.requests.get") as mock_get:
             mock_get.return_value = _make_geocode_response(1.0, 2.0)
@@ -135,17 +183,25 @@ class TestForwardGeocoding:
 # ---------------------------------------------------------------------------
 
 class TestGeocodeAssets:
-    """Tests for geocode_assets() using a tmp_path copy of assets.csv."""
+    """Tests for ``geocode_assets()`` using a tmp_path copy of assets.csv."""
 
     def _patch_csv_path(self, tmp_csv: Path):
-        """Return a context manager that patches the CSV path inside geocode_assets."""
+        """Return a context manager that patches the CSV path inside geocode_assets.
+
+        Args:
+            tmp_csv: Path to the temporary CSV file to substitute.
+
+        Returns:
+            A ``unittest.mock.patch`` context manager targeting the Path
+            constructor inside ``disaster_factor.geocode_assets``.
+        """
         return patch(
             "disaster_factor.geocode_assets.Path",
             side_effect=lambda *args, **kwargs: tmp_csv if args and "assets.csv" in str(args[-1]) else Path(*args, **kwargs),
         )
 
     def test_raises_file_not_found_when_csv_missing(self, tmp_path, monkeypatch):
-        """geocode_assets() should raise FileNotFoundError if assets.csv doesn't exist."""
+        """Raises FileNotFoundError when assets.csv does not exist at the resolved path."""
         missing_csv = tmp_path / "assets.csv"
         # Patch the path resolution inside geocode_assets to point to missing file
         with patch("disaster_factor.geocode_assets.Path") as mock_path_cls:
@@ -159,7 +215,7 @@ class TestGeocodeAssets:
                 geocode_assets()
 
     def test_existing_coordinates_not_re_geocoded(self, tmp_path, monkeypatch):
-        """Rows with valid lat/lon should not trigger the geocoding API."""
+        """Rows with valid lat/lon are returned without calling the geocoding API."""
         monkeypatch.setenv("GOOGLE_GEOCODING_API_KEY", "fake-key")
         rows = [
             {"unique_id": "AST001", "city": "Tokyo", "country": "Japan",
@@ -248,9 +304,10 @@ class TestGeocodeAssets:
                     pass
 
     def test_geocode_assets_with_real_csv_copy(self, tmp_path, monkeypatch):
-        """
-        Copy the real assets.csv (which has all coords pre-filled) to tmp_path,
-        then run geocode_assets() pointing at that copy. No API calls should be made.
+        """Copies the real assets.csv to tmp and verifies no API calls are made.
+
+        All rows in the real assets.csv have pre-filled coordinates, so the
+        geocoding API should never be invoked.
         """
         monkeypatch.setenv("GOOGLE_GEOCODING_API_KEY", "fake-key")
 
@@ -294,7 +351,7 @@ class TestGeocodeAssets:
                 pass
 
     def test_missing_city_or_country_skipped(self, tmp_path, monkeypatch):
-        """Rows missing city or country should be skipped (not geocoded, not returned)."""
+        """Rows missing city or country are skipped and not included in results."""
         monkeypatch.setenv("GOOGLE_GEOCODING_API_KEY", "fake-key")
 
         rows = [
@@ -338,7 +395,7 @@ class TestGeocodeAssets:
                 pass
 
     def test_invalid_coordinates_trigger_regeocoding(self, tmp_path, monkeypatch):
-        """Rows with non-numeric lat/lon should trigger the geocoding API."""
+        """Rows with non-numeric lat/lon values trigger a geocoding API call."""
         monkeypatch.setenv("GOOGLE_GEOCODING_API_KEY", "fake-key")
 
         rows = [
@@ -372,9 +429,10 @@ class TestGeocodeAssets:
                 pass
 
     def test_geocode_assets_direct_with_tmp_csv(self, tmp_path, monkeypatch):
-        """
-        Direct integration test: write a minimal CSV to tmp_path, monkeypatch
-        the path inside geocode_assets, and verify the returned list structure.
+        """Verifies returned list structure and coordinate types using a tmp CSV.
+
+        Monkeypatches geocode_assets to read from a controlled CSV and checks
+        that unique_ids are present and coordinates are stored as floats.
         """
         monkeypatch.setenv("GOOGLE_GEOCODING_API_KEY", "fake-key")
 

@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
-"""
-Separate script to geocode assets.csv, and return all coords as a list[dict]
+"""Geocode assets from assets.csv and return their coordinates.
 
-Called in core.py assets() to build assets dict
+Reads assets.csv from the package static directory, geocodes any rows missing
+latitude/longitude using the Google Geocoding API, writes coordinates back to
+the file, and returns all asset data as a list of dicts.
+
+Called by ``core.py`` via ``assets()`` to build the assets dictionary.
 """
 
 import os
@@ -20,8 +23,15 @@ logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 
 def _get_geocoding_api_key() -> str:
-    """Get Google Geocoding API key from environment or user input."""
+    """Read the Google Geocoding API key from the environment.
 
+    Raises:
+        ValueError: If ``GOOGLE_GEOCODING_API_KEY`` is not set in the
+            environment or a loaded ``.env`` file.
+
+    Returns:
+        The API key string.
+    """
     api_key = os.getenv("GOOGLE_GEOCODING_API_KEY")
     if not api_key:
         raise ValueError("GOOGLE_GEOCODING_API_KEY is not set. Add it to your .env file.")
@@ -29,15 +39,18 @@ def _get_geocoding_api_key() -> str:
 
 
 def _forward_geocoding(city: str, country: str) -> Optional[Tuple[float, float]]:
-    """
-    Convert city/country to coordinates using Google Geocoding API v4beta.
-    
+    """Convert a city and country name to geographic coordinates.
+
+    Uses the Google Geocoding API. Returns the highest-confidence result
+    when multiple matches are found.
+
     Args:
-        city: City name from assets.csv
-        country: Country name from assets.csv
-        
+        city: City name as read from assets.csv.
+        country: Country name as read from assets.csv.
+
     Returns:
-        (latitude, longitude) tuple or None if geocoding fails
+        A ``(latitude, longitude)`` tuple if geocoding succeeds, or ``None``
+        if the API returns no results or an error occurs.
     """
     api_key = _get_geocoding_api_key()
     
@@ -72,7 +85,22 @@ def _forward_geocoding(city: str, country: str) -> Optional[Tuple[float, float]]
 
 
 def geocode_assets() -> list[dict]:
-    """Read assets.csv, geocode any missing coordinates, and return data as list[dict]."""
+    """Read assets.csv, geocode missing coordinates, and return all asset data.
+
+    Reads the CSV from the package static directory. If latitude/longitude
+    columns are absent they are added. Rows that already have valid coordinates
+    are passed through unchanged. Rows missing coordinates are geocoded via
+    ``_forward_geocoding()``. Any newly geocoded coordinates are written back
+    to assets.csv before returning.
+
+    Raises:
+        FileNotFoundError: If assets.csv does not exist at the expected path.
+
+    Returns:
+        A list of dicts, one per asset row, with ``latitude`` and ``longitude``
+        keys populated where geocoding succeeded. Rows that could not be
+        geocoded have empty strings for those keys.
+    """
     # Set up paths
     path = Path(__file__).resolve().parent / "static" / "assets.csv"
    

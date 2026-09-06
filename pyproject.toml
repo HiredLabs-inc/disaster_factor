@@ -51,7 +51,16 @@ pytest = "9.0.0"
 pluggy = "1.6.0"
 iniconfig = "2.3.0"
 Pygments = "2.19.2"
+pydocstyle = "^6.3.0"
+tomli = "^2.4.1"
+mkdocs = "^1.6.1"
+mkdocs-material = "^9.7.7"
+mkdocstrings = {extras = ["python"], version = "^1.0.6"}
 
 [build-system]
 requires = ["poetry-core>=2.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pydocstyle]
+convention = "google"
+match = ".*\\.py"
