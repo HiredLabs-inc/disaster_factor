@@ -1,3 +1,10 @@
+"""Disaster Factor package.
+
+Exposes the package version via ``__version__``, sourced from installed
+package metadata. Falls back to ``"0+unknown"`` in editable installs
+where metadata may not yet be available.
+"""
+
 from importlib.metadata import PackageNotFoundError, version as _pkg_version
 
 try:
@@ -7,4 +14,3 @@ except PackageNotFoundError:
     __version__ = "0+unknown"
 
 __all__ = ["__version__"]
-

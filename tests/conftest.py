@@ -1,4 +1,9 @@
-"""Shared pytest fixtures for disaster_factor tests."""
+"""Shared pytest fixtures for disaster_factor tests.
+
+Provides reusable fixtures for RSS feed parsing, sample event dicts covering
+all GDACS alert levels, and sample asset collections used across the test suite.
+No network access is required; all data is sourced from files under tests/data/.
+"""
 from __future__ import annotations
 
 from pathlib import Path
@@ -21,19 +26,37 @@ DATA_DIR = Path(__file__).parent / "data"
 
 @pytest.fixture(scope="session")
 def gdacs_rss_xml() -> bytes:
-    """Raw bytes of the sample GDACS RSS feed."""
+    """Read the sample GDACS RSS feed from disk.
+
+    Returns:
+        Raw bytes of the sample RSS XML file.
+    """
     return (DATA_DIR / "gdacs_rss_sample.xml").read_bytes()
 
 
 @pytest.fixture(scope="session")
 def gdacs_soup(gdacs_rss_xml: bytes) -> BeautifulSoup:
-    """Parsed BeautifulSoup of the sample GDACS RSS feed."""
+    """Parse the sample GDACS RSS feed into a BeautifulSoup object.
+
+    Args:
+        gdacs_rss_xml: Raw bytes of the sample RSS XML file.
+
+    Returns:
+        Parsed BeautifulSoup tree of the sample feed.
+    """
     return BeautifulSoup(gdacs_rss_xml, features="xml")
 
 
 @pytest.fixture(scope="session")
 def gdacs_items(gdacs_soup: BeautifulSoup):
-    """All <item> elements from the sample RSS feed."""
+    """Extract all RSS item elements from the sample feed.
+
+    Args:
+        gdacs_soup: Parsed BeautifulSoup tree of the sample feed.
+
+    Returns:
+        A list of all ``<item>`` BeautifulSoup tags found in the feed.
+    """
     return gdacs_soup.find_all("item")
 
 
@@ -43,7 +66,14 @@ def gdacs_items(gdacs_soup: BeautifulSoup):
 
 @pytest.fixture
 def red_eq_event() -> dict[str, Any]:
-    """A red-alert earthquake event near Afghanistan (from sample XML)."""
+    """Return a red-alert earthquake event near Afghanistan.
+
+    Coordinates are taken from the sample XML and place the event near
+    Kunduz, Afghanistan. Used to test red-severity matching logic.
+
+    Returns:
+        A normalised event dict as produced by ``_build_rss_event_summary()``.
+    """
     return {
         "eventid": "1508467",
         "eventtype": "EQ",
@@ -61,7 +91,14 @@ def red_eq_event() -> dict[str, Any]:
 
 @pytest.fixture
 def orange_fl_event() -> dict[str, Any]:
-    """An orange-alert flood event near Cuba (from sample XML)."""
+    """Return an orange-alert flood event near Cuba.
+
+    Coordinates are taken from the sample XML and place the event near
+    eastern Cuba. Used to test orange-severity matching logic.
+
+    Returns:
+        A normalised event dict as produced by ``_build_rss_event_summary()``.
+    """
     return {
         "eventid": "1103585",
         "eventtype": "FL",
@@ -79,7 +116,14 @@ def orange_fl_event() -> dict[str, Any]:
 
 @pytest.fixture
 def green_eq_event() -> dict[str, Any]:
-    """A green-alert earthquake event near Chile (from sample XML)."""
+    """Return a green-alert earthquake event near Chile.
+
+    Coordinates are taken from the sample XML and place the event off the
+    coast of northern Chile. Used to test green-severity matching logic.
+
+    Returns:
+        A normalised event dict as produced by ``_build_rss_event_summary()``.
+    """
     return {
         "eventid": "1508599",
         "eventtype": "EQ",
@@ -97,7 +141,15 @@ def green_eq_event() -> dict[str, Any]:
 
 @pytest.fixture
 def no_coords_event() -> dict[str, Any]:
-    """An event with no valid coordinates."""
+    """Return an event with no valid coordinates.
+
+    Used to verify that assets are never matched against events whose
+    ``lat`` and ``lon`` values are None.
+
+    Returns:
+        A normalised event dict with ``lat``, ``lon``, ``latitude``, and
+        ``longitude`` all set to None.
+    """
     return {
         "eventid": "9999999",
         "eventtype": "EQ",
@@ -112,7 +164,20 @@ def no_coords_event() -> dict[str, Any]:
 
 @pytest.fixture
 def sample_events(red_eq_event, orange_fl_event, green_eq_event, no_coords_event):
-    """A mixed list of events covering all severity levels and a no-coords case."""
+    """Return a mixed list of events covering all severity levels.
+
+    Includes one red, one orange, one green, and one no-coordinates event
+    to exercise the full range of matching behaviour in a single test.
+
+    Args:
+        red_eq_event: Red-alert earthquake fixture.
+        orange_fl_event: Orange-alert flood fixture.
+        green_eq_event: Green-alert earthquake fixture.
+        no_coords_event: Event with no valid coordinates fixture.
+
+    Returns:
+        A list of four normalised event dicts.
+    """
     return [red_eq_event, orange_fl_event, green_eq_event, no_coords_event]
 
 
@@ -122,14 +187,17 @@ def sample_events(red_eq_event, orange_fl_event, green_eq_event, no_coords_event
 
 @pytest.fixture
 def sample_assets() -> dict:
-    """
-    Returns (cities, countries, coordinates, assets_by_id) for a small set of
-    test assets.
+    """Return a small set of test assets covering all matching scenarios.
 
-    - AST_NEAR_AFG: close to the red EQ event (Afghanistan area)
-    - AST_NEAR_CUBA: close to the orange FL event (Cuba area)
-    - AST_FAR: far from all events
-    - AST_NO_COORD: asset with no coordinates
+    Assets included:
+        - AST_NEAR_AFG: ~50 miles from the red EQ event (Afghanistan area).
+        - AST_NEAR_CUBA: ~30 miles from the orange FL event (Cuba area).
+        - AST_FAR: Wellington, New Zealand — far from all events.
+        - AST_NO_COORD: Asset with no coordinates, should always be skipped.
+
+    Returns:
+        A four-tuple ``(cities, countries, coordinates, assets_by_id)``
+        matching the structure returned by ``core.assets()``.
     """
     cities = {
         "AST_NEAR_AFG": "Kabul",

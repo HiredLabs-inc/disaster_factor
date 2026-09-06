@@ -21,6 +21,7 @@ from disaster_factor.helpers import transform_latlon_to_xy
 
 def _compute_scale_offset(x_proj: Sequence[float], x_obs: Sequence[float]) -> Tuple[float, float]:
     """Compute least-squares scale and offset to map x_proj -> x_obs.
+
     Solves x_obs = s * x_proj + o in least-squares sense.
     Returns (s, o). Handles degenerate var(x_proj)=0 by returning s=1,o=mean(obs)-mean(proj).
     """
