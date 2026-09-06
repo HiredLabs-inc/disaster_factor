@@ -14,6 +14,8 @@ from typing import Optional
 
 # One-time open guard to avoid duplicate tabs when invoked multiple times
 _DASHBOARD_OPENED = False
+# Strong reference to the server instance to prevent garbage collection
+_httpd_instance: Optional[ThreadingHTTPServer] = None
 
 
 def _find_static_source() -> Optional[Path]:
@@ -174,10 +176,11 @@ def transform_latlon_to_xy(lat: float, lon: float, config: dict, w: int, h: int)
     return (x, y)
 
 
-def serve_static_and_open(port: int = 8000):
-    """Serve the package `static` files (recursively) and open the dashboard URL.
+def _prepare_static_files() -> Path:
+    """Prepare static files for serving.
 
-    Returns the HTTPServer instance (caller can call `shutdown()` when done).
+    Copies static files to a temporary directory, ensures the dashboard exists,
+    and injects cache-busting queries. Returns the path to the temporary static_root.
     """
     tmpd = Path(tempfile.mkdtemp())
     static_root = tmpd / "static"
@@ -187,6 +190,7 @@ def serve_static_and_open(port: int = 8000):
     if src_static is not None:
         print(f"DEBUG: Using static source: {src_static}")
         _copy_tree(src_static, static_root)
+
     else:
         # Fallback: try importlib.resources
         try:
@@ -195,7 +199,9 @@ def serve_static_and_open(port: int = 8000):
             print("DEBUG: Using installed package static resources")
         except Exception as e:
             print(f"DEBUG: No static resources found: {e}")
-
+    print(f"DEBUG: Files in static_root ({static_root}):")
+    for f in static_root.rglob('*'):
+        print(f"  {f.relative_to(static_root)}")
     # Ensure dashboard exists at minimum
     if not (static_root / "dashboard_2.html").exists():
         (static_root).mkdir(parents=True, exist_ok=True)
@@ -222,6 +228,17 @@ def serve_static_and_open(port: int = 8000):
             print(f"DEBUG: Could not read static/map.svg: {e}")
     else:
         print("DEBUG: static/map.svg not found in temporary static tree.")
+
+    return static_root
+
+
+def serve_static(static_root: Path, port: int = 8000) -> ThreadingHTTPServer:
+    """Start an HTTP server serving static files from static_root.
+
+    The server runs in a daemon thread and supports dynamic points.json computation.
+    Returns the ThreadingHTTPServer instance.
+    """
+    tmpd = static_root.parent
 
     # Create a custom handler that can compute points.json on-the-fly when
     # requested with query params ?w=...&h=...
@@ -330,8 +347,6 @@ def serve_static_and_open(port: int = 8000):
             # default
             return super().do_GET()
 
-
-    return httpd
     # Bind and serve from the temporary directory
     handler = partial(_CustomHandler, directory=str(tmpd))
     httpd = ThreadingHTTPServer(("127.0.0.1", port), handler)
@@ -339,13 +354,38 @@ def serve_static_and_open(port: int = 8000):
     def _serve():
         httpd.serve_forever()
 
-    thread = threading.Thread(target=_serve, daemon=True)
+    thread = threading.Thread(target=_serve, daemon=False)
     thread.start()
 
     time.sleep(0.1)
+
+    return httpd
+
+
+def open_browser(port: int = 8000) -> None:
+    """Open the dashboard in a new browser tab.
+
+    Uses a global guard to prevent opening duplicate tabs when invoked
+    multiple times within the same process.
+    """
     url = f"http://127.0.0.1:{port}/static/dashboard_2.html"
 
     global _DASHBOARD_OPENED
     if not _DASHBOARD_OPENED:
         webbrowser.open_new_tab(url)
         _DASHBOARD_OPENED = True
+
+
+def serve_static_and_open(port: int = 8000) -> ThreadingHTTPServer:
+    """Serve the package `static` files (recursively) and open the dashboard URL.
+
+    Convenience wrapper that combines static file preparation, server startup,
+    and browser opening. Returns the HTTPServer instance (caller can call
+    `shutdown()` when done).
+    """
+    global _httpd_instance
+    static_root = _prepare_static_files()
+    _httpd_instance = serve_static(static_root, port)
+    open_browser(port)
+    return _httpd_instance
+
