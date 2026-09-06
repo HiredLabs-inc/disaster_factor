@@ -16,15 +16,14 @@ Using pip:
 ```bash
 python -m venv .venv
 . .venv/bin/activate
-pip install .
+pip install -e .
 ```
 
 ## Usage
 
-Run via module (works in both Poetry and pip installs):
 ```bash
-python -m disaster_factor --version
-python -m disaster_factor track
+disaster-factor --version
+disaster-factor track --help
 ```
 
 If you add a console script entry point later, the installed command will mirror the same subcommands.
