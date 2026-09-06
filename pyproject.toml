@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "disaster_factor"
-version = "0.1.0"
+version = "0.2.0"
 description = "Business Continuity Disaster Tracker"
 repository = "https://github.com/HiredLabs-inc/disaster_factor"
 keywords = ["disaster", "tracking", "business-continuity"]
