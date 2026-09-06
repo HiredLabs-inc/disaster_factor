@@ -1,4 +1,12 @@
+"""Helper utilities for static file serving and geographic coordinate projection.
+
+Provides functions to prepare and serve the dashboard static assets over a
+local HTTP server, open the dashboard in a browser, and project geographic
+coordinates to pixel positions using a Mercator projection.
+"""
+
 from importlib.resources import files
+import logging
 import webbrowser
 import math
 import tempfile
@@ -12,6 +20,8 @@ import json
 from urllib.parse import urlparse, parse_qs
 from typing import Optional
 
+logger = logging.getLogger(__name__)
+
 # One-time open guard to avoid duplicate tabs when invoked multiple times
 _DASHBOARD_OPENED = False
 # Strong reference to the server instance to prevent garbage collection
@@ -19,13 +29,17 @@ _httpd_instance: Optional[ThreadingHTTPServer] = None
 
 
 def _find_static_source() -> Optional[Path]:
-    """Find a static/ directory for development first; fall back to installed resources.
+    """Find a static/ directory, preferring the development source tree.
 
-    Preferred order (dev-first):
-    1) Source under current working directory: ./src/disaster_factor/static
-    2) Source under nearest pyproject.toml root: <root>/src/disaster_factor/static
-    3) Source alongside this module (may be site-packages if installed)
-    4) Installed package resources (importlib.resources)
+    Searches in the following order:
+        1. Source under current working directory: ``./src/disaster_factor/static``
+        2. Source under the nearest ``pyproject.toml`` root:
+           ``<root>/src/disaster_factor/static``
+        3. Source alongside this module file (may be site-packages if installed).
+        4. Installed package resources via ``importlib.resources``.
+
+    Returns:
+        Path to the static directory if found, or None if no location exists.
     """
     # 1) under CWD
     p2 = Path.cwd() / "src" / "disaster_factor" / "static"
@@ -53,7 +67,15 @@ def _find_static_source() -> Optional[Path]:
         return None
 
 
-def get_dashboard():
+def get_dashboard() -> str:
+    """Read and return the dashboard HTML content.
+
+    Prefers the local source tree during development. Falls back to the
+    installed package resources if no source tree is found.
+
+    Returns:
+        The full HTML content of ``dashboard_2.html`` as a string.
+    """
     # Prefer local source tree during development
     src = _find_static_source()
     if src and (src / "dashboard_2.html").exists():
@@ -66,8 +88,11 @@ def get_dashboard():
 def open_dashboard_in_browser() -> Path:
     """Write the dashboard HTML to a temporary file and return its path.
 
-    This no longer auto-opens a browser to avoid duplicate tabs alongside the
-    HTTP-served version. Callers can open the returned path if needed.
+    Does not auto-open a browser. The caller is responsible for opening
+    the returned path if needed.
+
+    Returns:
+        Path to the temporary HTML file written to disk.
     """
     html = get_dashboard()
     with tempfile.NamedTemporaryFile(suffix=".html", delete=False, mode="w", encoding="utf-8") as f:
@@ -78,6 +103,13 @@ def open_dashboard_in_browser() -> Path:
 
 
 def _copy_traversable_to_dir(trav, dest: Path) -> None:
+    """Recursively copy an ``importlib.resources`` traversable to a directory.
+
+    Args:
+        trav: An ``importlib.resources`` traversable object representing a
+            package resource directory.
+        dest: Destination directory path. Created if it does not exist.
+    """
     dest.mkdir(parents=True, exist_ok=True)
     for item in getattr(trav, 'iterdir', lambda: [])():
         if item.is_dir():
@@ -88,6 +120,15 @@ def _copy_traversable_to_dir(trav, dest: Path) -> None:
 
 
 def _copy_tree(src: Path, dest: Path) -> None:
+    """Recursively copy all files from src to dest, preserving structure.
+
+    Silently does nothing if src is falsy or does not exist.
+
+    Args:
+        src: Source directory to copy from.
+        dest: Destination directory to copy into. Intermediate directories
+            are created as needed.
+    """
     if not src or not src.exists():
         return
     for p in src.rglob('*'):
@@ -103,9 +144,15 @@ def _copy_tree(src: Path, dest: Path) -> None:
 # Translates geocoordinates in lat/long into x/y pixels
 
 def mercator(lat: float) -> float:
-    """Return the Mercator 'y' value for a latitude in degrees.
+    """Return the Mercator projection y-value for a given latitude.
 
-    Clamp latitude to avoid singularities at the poles.
+    Clamps latitude to avoid singularities at the poles.
+
+    Args:
+        lat: Latitude in degrees.
+
+    Returns:
+        The Mercator y-value as a float.
     """
     # prevent tan() overflow near the poles
     max_lat = 89.9999
@@ -115,11 +162,19 @@ def mercator(lat: float) -> float:
 
 
 def get_y(h: int, lat: float, lat_t: float, lat_b: float) -> float:
-    """Compute pixel Y for given latitude using a Mercator projection.
+    """Compute the pixel Y coordinate for a latitude using Mercator projection.
 
-    Ensures lat_t is the top (greater) and lat_b is the bottom (smaller),
-    clamps latitudes to avoid pole singularities, handles zero denominators,
-    and clamps output to [0,h].
+    Handles pole clamping, ensures correct top/bottom ordering, and guards
+    against zero-denominator cases.
+
+    Args:
+        h: Height of the image in pixels.
+        lat: Latitude to project, in degrees.
+        lat_t: Latitude at the top edge of the image, in degrees.
+        lat_b: Latitude at the bottom edge of the image, in degrees.
+
+    Returns:
+        Pixel Y coordinate clamped to [0, h].
     """
     lat_t = float(lat_t)
     lat_b = float(lat_b)
@@ -141,10 +196,18 @@ def get_y(h: int, lat: float, lat_t: float, lat_b: float) -> float:
 
 
 def get_x(lon: float, lon_c: float, w: int) -> float:
-    """Compute pixel X for given longitude and center longitude lon_c.
+    """Compute the pixel X coordinate for a longitude.
 
-    Normalize longitude delta to [-180,180] to handle antimeridian wrap,
-    then map to pixel coordinates with center at w/2.
+    Normalizes the longitude delta to [-180, 180] to handle antimeridian
+    wrapping, then maps to pixel coordinates with the center longitude at w/2.
+
+    Args:
+        lon: Longitude to project, in degrees.
+        lon_c: Center longitude of the image, in degrees.
+        w: Width of the image in pixels.
+
+    Returns:
+        Pixel X coordinate clamped to [0, w].
     """
     # normalize into [-180, 180)
     delta = (float(lon) - float(lon_c) + 180.0) % 360.0 - 180.0
@@ -153,15 +216,24 @@ def get_x(lon: float, lon_c: float, w: int) -> float:
 
 
 def transform_latlon_to_xy(lat: float, lon: float, config: dict, w: int, h: int) -> tuple[float, float]:
-    """Map lat/lon -> x/y pixels for an image of size w x h.
+    """Map a lat/lon coordinate to pixel (x, y) for an image of size w x h.
 
-    Defaults: mercator projection with optional config values:
-      config['lat_t'] : latitude at the top of the image (default 90)
-      config['lat_b'] : latitude at the bottom of the image (default -90)
-      config['lon_c'] : center longitude of the image (default 0)
+    Uses a Mercator projection. Projection bounds and center longitude are
+    read from config, with sensible defaults.
 
-    Returns (x, y) where (0,0) is the top-left of the image. Values are
-    clamped to the image bounds.
+    Args:
+        lat: Latitude in degrees.
+        lon: Longitude in degrees.
+        config: Dictionary of projection parameters. Recognised keys:
+            - ``lat_t``: Latitude at the top of the image (default 90).
+            - ``lat_b``: Latitude at the bottom of the image (default -90).
+            - ``lon_c``: Center longitude of the image (default 0).
+        w: Width of the image in pixels.
+        h: Height of the image in pixels.
+
+    Returns:
+        A tuple (x, y) in pixel coordinates, with (0, 0) at the top-left.
+        Both values are clamped to the image bounds.
     """
     lat_t = float(config.get('lat_t', 90.0))
     lat_b = float(config.get('lat_b', -90.0))
@@ -177,10 +249,14 @@ def transform_latlon_to_xy(lat: float, lon: float, config: dict, w: int, h: int)
 
 
 def _prepare_static_files() -> Path:
-    """Prepare static files for serving.
+    """Copy static assets to a temporary directory and prepare them for serving.
 
-    Copies static files to a temporary directory, ensures the dashboard exists,
-    and injects cache-busting queries. Returns the path to the temporary static_root.
+    Resolves the static source using ``_find_static_source()``, copies all
+    files to a fresh temporary directory, ensures the dashboard HTML exists,
+    and injects a cache-busting query string into the map.svg reference.
+
+    Returns:
+        Path to the ``static/`` subdirectory inside the temporary directory.
     """
     tmpd = Path(tempfile.mkdtemp())
     static_root = tmpd / "static"
@@ -188,7 +264,7 @@ def _prepare_static_files() -> Path:
     # Prefer live source static if present
     src_static = _find_static_source()
     if src_static is not None:
-        print(f"DEBUG: Using static source: {src_static}")
+        logger.debug("Using static source: %s", src_static)
         _copy_tree(src_static, static_root)
 
     else:
@@ -196,12 +272,12 @@ def _prepare_static_files() -> Path:
         try:
             static_trav = files("disaster_factor").joinpath("static")
             _copy_traversable_to_dir(static_trav, static_root)
-            print("DEBUG: Using installed package static resources")
+            logger.debug("Using installed package static resources")
         except Exception as e:
-            print(f"DEBUG: No static resources found: {e}")
-    print(f"DEBUG: Files in static_root ({static_root}):")
+            logger.debug("No static resources found: %s", e)
+    logger.debug("Files in static_root (%s):", static_root)
     for f in static_root.rglob('*'):
-        print(f"  {f.relative_to(static_root)}")
+        logger.debug("  %s", f.relative_to(static_root))
     # Ensure dashboard exists at minimum
     if not (static_root / "dashboard_2.html").exists():
         (static_root).mkdir(parents=True, exist_ok=True)
@@ -222,21 +298,31 @@ def _prepare_static_files() -> Path:
         try:
             size = map_path.stat().st_size
             preview = map_path.read_bytes()[:200]
-            print(f"DEBUG: Serving static/map.svg from: {map_path}")
-            print(f"DEBUG: size={size} bytes; preview={preview[:80]!r}...")
+            logger.debug("Serving static/map.svg from: %s", map_path)
+            logger.debug("size=%d bytes; preview=%r...", size, preview[:80])
         except Exception as e:
-            print(f"DEBUG: Could not read static/map.svg: {e}")
+            logger.debug("Could not read static/map.svg: %s", e)
     else:
-        print("DEBUG: static/map.svg not found in temporary static tree.")
+        logger.debug("static/map.svg not found in temporary static tree.")
 
     return static_root
 
 
 def serve_static(static_root: Path, port: int = 8000) -> ThreadingHTTPServer:
-    """Start an HTTP server serving static files from static_root.
+    """Start a local HTTP server to serve static files.
 
-    The server runs in a daemon thread and supports dynamic points.json computation.
-    Returns the ThreadingHTTPServer instance.
+    Runs the server in a non-daemon background thread so it stays alive for
+    the lifetime of the process. Supports dynamic ``points.json`` computation
+    when requested with ``?w=<width>&h=<height>`` query parameters.
+
+    Args:
+        static_root: Path to the ``static/`` directory to serve. The parent
+            of this directory becomes the server root.
+        port: TCP port to bind to. Defaults to 8000.
+
+    Returns:
+        The running ``ThreadingHTTPServer`` instance. Call ``shutdown()`` on
+        it to stop the server.
     """
     tmpd = static_root.parent
 
@@ -330,7 +416,7 @@ def serve_static(static_root: Path, port: int = 8000) -> ThreadingHTTPServer:
                             # DEBUG: report candidate and sample
                             try:
                                 sample = out_pts[0] if out_pts else None
-                                print(f"DEBUG: Computed {len(out_pts)} points from {src_pts} (w={w},h={h}); sample={sample}")
+                                logger.debug("Computed %d points from %s (w=%d,h=%d); sample=%s", len(out_pts), src_pts, w, h, sample)
                             except Exception:
                                 pass
                             body = json.dumps(out).encode('utf-8')
@@ -341,9 +427,7 @@ def serve_static(static_root: Path, port: int = 8000) -> ThreadingHTTPServer:
                             self.wfile.write(body)
                             return
                         except Exception as e:
-                            import traceback
-                            print("DEBUG: Error computing points.json (from", src_pts, "):")
-                            traceback.print_exc()
+                            logger.exception("Error computing points.json (from %s):", src_pts)
             # default
             return super().do_GET()
 
@@ -365,8 +449,11 @@ def serve_static(static_root: Path, port: int = 8000) -> ThreadingHTTPServer:
 def open_browser(port: int = 8000) -> None:
     """Open the dashboard in a new browser tab.
 
-    Uses a global guard to prevent opening duplicate tabs when invoked
+    Uses a module-level guard to prevent opening duplicate tabs if called
     multiple times within the same process.
+
+    Args:
+        port: Port on which the local server is running. Defaults to 8000.
     """
     url = f"http://127.0.0.1:{port}/static/dashboard_2.html"
 
@@ -377,11 +464,19 @@ def open_browser(port: int = 8000) -> None:
 
 
 def serve_static_and_open(port: int = 8000) -> ThreadingHTTPServer:
-    """Serve the package `static` files (recursively) and open the dashboard URL.
+    """Prepare static files, start the HTTP server, and open the dashboard.
 
-    Convenience wrapper that combines static file preparation, server startup,
-    and browser opening. Returns the HTTPServer instance (caller can call
-    `shutdown()` when done).
+    Convenience wrapper that calls ``_prepare_static_files()``,
+    ``serve_static()``, and ``open_browser()`` in sequence. Stores a strong
+    reference to the server instance at module level to prevent garbage
+    collection.
+
+    Args:
+        port: TCP port to bind to. Defaults to 8000.
+
+    Returns:
+        The running ``ThreadingHTTPServer`` instance. Call ``shutdown()`` on
+        it to stop the server.
     """
     global _httpd_instance
     static_root = _prepare_static_files()

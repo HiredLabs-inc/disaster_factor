@@ -1,4 +1,14 @@
 # src/disaster_factor/core.py
+"""Disaster Factor core pipeline.
+
+Implements the RAID pipeline for disaster tracking:
+    R — recon()       : fetch and parse GDACS RSS events with geo coordinates.
+    A — assets()      : load company asset data with geocoded coordinates.
+    I — intel()       : classify assets by proximity and alert severity.
+    D — disseminate() : capture output and launch the dashboard.
+
+Entry point is ``track_disasters()``.
+"""
 
 # IMPORTS
 from __future__ import annotations
@@ -18,6 +28,14 @@ LOG_FILE = Path(__file__).resolve().parents[2] / "disaster_factor.log"
 logger = logging.getLogger(__name__)
 
 def setup_logging(*, debug: bool = False) -> None:
+    """Configure root logger with terminal and file handlers.
+
+    Clears existing handlers before applying new ones to prevent duplicate
+    log entries if called more than once.
+
+    Args:
+        debug: If True, sets log level to DEBUG. Defaults to INFO.
+    """
     level = logging.DEBUG if debug else logging.INFO
 
     root = logging.getLogger()
@@ -47,18 +65,32 @@ def setup_logging(*, debug: bool = False) -> None:
 # ------------------------------------------------------------------------------------
 
 def _find_text_suffix(tag, suffix: str) -> str:
-    """Find first sub-tag whose name ends with suffix (case-insensitive) and return stripped text."""
+    """Find the first child tag whose name ends with a given suffix.
 
+    The suffix comparison is case-insensitive.
+
+    Args:
+        tag: A BeautifulSoup tag to search within.
+        suffix: The suffix to match against child tag names.
+
+    Returns:
+        Stripped text content of the matching tag, or an empty string if
+        no matching tag is found.
+    """
     t = tag.find(lambda x: getattr(x, "name", None) and x.name.lower().endswith(suffix))
     return (t.text or "").strip() if t and t.text else ""
 
 def _extract_rss_geo_point(item) -> tuple[Optional[float], Optional[float], str]:
-    """
-    Extract numeric coordinates from RSS geo:Point.
- 
+    """Extract numeric coordinates from an RSS ``geo:Point`` element.
+
+    Args:
+        item: A BeautifulSoup tag representing an RSS ``<item>`` element.
+
     Returns:
-      (lat, lon, reason)
-      reason: "ok" | "missing_tag" | "missing_latlon" | "non_numeric"
+        A three-tuple ``(lat, lon, reason)`` where:
+            - ``lat`` and ``lon`` are floats if extraction succeeded, else None.
+            - ``reason`` is one of ``"ok"``, ``"missing_tag"``,
+              ``"missing_latlon"``, or ``"non_numeric"``.
     """
     geo_point = item.find("geo:Point")
     if not geo_point:
@@ -80,12 +112,18 @@ def _extract_rss_geo_point(item) -> tuple[Optional[float], Optional[float], str]
  
  
 def _build_rss_event_summary(item) -> Optional[dict[str, Any]]:
-    """
-    Build normalized RSS event summary.
- 
-    Returns None when eventtype or eventid are missing.
-    Fields: eventid, eventtype, alertlevel, lat, lon, eventdata_url,
-            latitude, longitude (legacy string keys).
+    """Build a normalised event summary dict from an RSS item.
+
+    Returns None when ``eventtype`` or ``eventid`` are missing, as these
+    are required for downstream processing.
+
+    Args:
+        item: A BeautifulSoup tag representing an RSS ``<item>`` element.
+
+    Returns:
+        A dict with keys ``eventid``, ``eventtype``, ``alertlevel``, ``lat``,
+        ``lon``, ``eventdata_url``, ``latitude``, and ``longitude``, or None
+        if required fields are absent.
     """
     eventtype = _find_text_suffix(item, "eventtype")
     eventid = _find_text_suffix(item, "eventid")
@@ -114,7 +152,15 @@ _ALERT_PRIORITY: tuple[str, ...] = ("red", "orange", "green")
 
 
 def _normalize_alertlevel(value: Any) -> Optional[str]:
-    """Normalize GDACS alert level to one of {red, orange, green}."""
+    """Normalize a GDACS alert level value to a canonical lowercase string.
+
+    Args:
+        value: Raw alert level value from the RSS feed.
+
+    Returns:
+        One of ``"red"``, ``"orange"``, or ``"green"`` if the value matches,
+        otherwise None.
+    """
     normalized = str(value or "").strip().lower()
     return normalized if normalized in _ALERT_PRIORITY else None
 
@@ -137,14 +183,37 @@ _THRESHOLD_MILES_DEFAULT = min(_THRESHOLD_MILES_BY_TYPE.values())
  
  
 def _distance_threshold_miles(eventtype: str) -> float:
-    """Return distance threshold (miles) for a disaster type. Placeholder values."""
+    """Return the distance threshold in miles for a given disaster type.
+
+    Falls back to the minimum threshold across all known types if the
+    event type is unrecognised.
+
+    Args:
+        eventtype: GDACS event type code (e.g. ``"EQ"``, ``"TC"``).
+
+    Returns:
+        Distance threshold in miles as a float.
+    """
     return _THRESHOLD_MILES_BY_TYPE.get(eventtype.strip().upper(), _THRESHOLD_MILES_DEFAULT)
  
  
 _MILES_PER_DEGREE = 69.0  # approximate miles per degree of lat/lon
  
 def _euclidean_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
-    """Straight Euclidean distance in miles between two lat/lon points. No curvature correction."""
+    """Calculate straight-line Euclidean distance in miles between two points.
+
+    Uses a flat-earth approximation with a fixed miles-per-degree constant.
+    No curvature correction is applied.
+
+    Args:
+        lat1: Latitude of the first point in degrees.
+        lon1: Longitude of the first point in degrees.
+        lat2: Latitude of the second point in degrees.
+        lon2: Longitude of the second point in degrees.
+
+    Returns:
+        Approximate distance in miles as a float.
+    """
     dlat = (lat2 - lat1) * _MILES_PER_DEGREE
     dlon = (lon2 - lon1) * _MILES_PER_DEGREE
     return math.sqrt(dlat * dlat + dlon * dlon)
@@ -154,11 +223,18 @@ def _is_asset_affected(
     asset_coord: tuple[float, float],
     event: dict[str, Any],
 ) -> bool:
-    """
-    Decide whether an asset is affected by an event.
- 
-    Returns False for events without valid coordinates.
-    Uses straight Euclidean distance vs. disaster-type threshold.
+    """Determine whether an asset falls within the impact radius of an event.
+
+    Uses straight Euclidean distance compared against a disaster-type-specific
+    threshold. Returns False immediately if the event has no valid coordinates.
+
+    Args:
+        asset_coord: A ``(latitude, longitude)`` tuple for the asset.
+        event: A normalised event dict as returned by ``_build_rss_event_summary()``.
+
+    Returns:
+        True if the asset is within the threshold distance of the event,
+        False otherwise.
     """
     lat = event.get("lat")
     lon = event.get("lon")
@@ -190,18 +266,21 @@ def _is_asset_affected(
 # ------------------------------------------------------------------------------------
 
 def recon(debug: bool = False) -> tuple[int, list[dict[str, Any]]]:
-    """
-    R — RECON (DATA RETRIEVAL)
- 
-    Fetch GDACS RSS feed and extract normalized event summaries with geo:Point coordinates.
- 
+    """Fetch and parse the GDACS RSS feed into normalised event summaries.
+
+    Retrieves the live RSS feed, extracts geo coordinates and alert levels,
+    and logs a breakdown of geo:Point availability. Applies an optional
+    development cap via the ``GDACS_DEV_CAP`` environment variable.
+
+    Args:
+        debug: If True, logs a detailed summary of RSS collection statistics.
+
     Returns:
-      (total_red, events)
- 
-    total_red: count of RSS items with alertlevel == "Red"
-    events: list[dict] with keys {eventid, eventtype, alertlevel, lat, lon}
+        A two-tuple ``(total_red, events)`` where:
+            - ``total_red`` is the count of RSS items with alertlevel ``"red"``.
+            - ``events`` is a list of normalised event dicts with keys
+              ``eventid``, ``eventtype``, ``alertlevel``, ``lat``, and ``lon``.
     """
- 
     rss_url = "https://www.gdacs.org/XML/RSS.xml"
  
     resp = requests.get(rss_url, timeout=20)
@@ -278,23 +357,19 @@ def recon(debug: bool = False) -> tuple[int, list[dict[str, Any]]]:
 
 
 def assets() -> tuple[dict[str, str], dict[str, str], dict[str, Optional[Tuple[float, float]]], dict[str, dict[str, str]]]:
-    """
-    A — ASSETS (DATA INPUT)
-    Load company / contractor asset data (cities, countries, assets, etc.) from geocode_assets() 'assets' object.
-    The assets object is expected to have at least the columns:
-      - unique_id  (anonymized unique ID, no PII)
-      - city
-      - country
-      - type       (e.g. 'personnel', 'building', 'vehicle', ...)
-      - latitude   (pre-geocoded coordinates)
-      - longitude  (pre-geocoded coordinates)
+    """Load and return company asset data with geocoded coordinates.
+
+    Delegates to ``geocode_assets()`` and organises the results into four
+    lookup dicts keyed by ``unique_id``. Assets without valid coordinates
+    are included with a None coordinate value.
+
     Returns:
-      cities:       mapping[str, str]           optional lookup of asset_id -> city name
-      countries:    mapping[str, str]           optional lookup of asset_id -> country name
-      coordinates:  mapping[str, Tuple[float, float]]  asset_id -> (latitude, longitude)
-      assets_by_id: mapping[str, dict[str, str]]  core asset records used for
-        impact matching. Each asset dict should at least contain
-        ``city``, ``country``, and ``type``.
+        A four-tuple ``(cities, countries, coordinates, assets_by_id)`` where:
+            - ``cities``: mapping of asset_id to city name.
+            - ``countries``: mapping of asset_id to country name.
+            - ``coordinates``: mapping of asset_id to ``(latitude, longitude)``
+              tuple, or None if coordinates are unavailable.
+            - ``assets_by_id``: mapping of asset_id to the full asset row dict.
     """
     cities: dict[str, str] = {}
     countries: dict[str, str] = {}
@@ -335,15 +410,27 @@ def intel(
     countries: dict[str, str],
     assets_by_id: dict[str, dict[str, str]],
 ) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, Any]]]:
-    """
-    I — INTEL (Euclidean path)
- 
-    One-pass: for each asset with valid coordinates, check events in priority
-    order red -> orange -> green, and stop on the first matched tier using
-    straight Euclidean distance and disaster-type thresholds.
- 
+    """Classify assets by proximity to disaster events using Euclidean distance.
+
+    Performs a single pass over all assets with valid coordinates. For each
+    asset, events are checked in priority order (red, orange, green) and
+    matching stops at the first hit. Assets with no coordinate data are
+    skipped silently.
+
+    Args:
+        events: List of normalised event dicts from ``recon()``.
+        coordinates: Mapping of asset_id to ``(latitude, longitude)`` or None.
+        cities: Mapping of asset_id to city name.
+        countries: Mapping of asset_id to country name.
+        assets_by_id: Mapping of asset_id to full asset row dict.
+
     Returns:
-      (red_matches, prelim_matches, red_points)
+        A three-tuple ``(red_matches, prelim_matches, red_points)`` where:
+            - ``red_matches``: list of asset dicts matched at red alert level.
+            - ``prelim_matches``: list of all matched asset dicts across all
+              severity levels, each including a ``severity`` key.
+            - ``red_points``: list of coordinate dicts for red-matched assets,
+              suitable for rendering on the dashboard map.
     """
     red_matches: list[dict[str, str]] = []
     prelim_matches: list[dict[str, str]] = []
@@ -415,13 +502,21 @@ def disseminate(
     total_red: int,
     debug: bool = False,
 ) -> tuple[list[dict], int]:
-    """
-    D — DISSEMINATE (OUTPUT)
- 
-    - Capture output in Python object.
-    - Launch the static dashboard UI (disabled in debug mode).
-    """
+    """Log pipeline output summary and return results.
 
+    Logs a summary line with match counts and returns the pipeline results
+    as a tuple for the caller to use or store.
+
+    Args:
+        red_matches: List of asset dicts matched at red alert level.
+        prelim_matches: List of all matched asset dicts across all severities.
+        red_points: List of coordinate dicts for red-matched assets.
+        total_red: Total count of red alert events from the RSS feed.
+        debug: Reserved for future use. Defaults to False.
+
+    Returns:
+        A four-tuple ``(red_matches, prelim_matches, red_points, total_red)``.
+    """
     logger.info(
         "[DISSEMINATE] affected=%d rows, prelim=%d rows, points=%d (total_red=%d)",
         len(red_matches),
@@ -433,16 +528,15 @@ def disseminate(
     return red_matches, prelim_matches, red_points, total_red
 
 def track_disasters(debug: bool = False) -> None:
-    """
-    Orchestrator for the full disaster tracking pipeline.
+    """Run the full RAID disaster tracking pipeline.
 
-    RAID-style flow:
-      R — recon()             : collect RSS events with geo coordinates
-      A — assets()            : load company assets with coordinates
-      I — intel()             : priority classification (red/orange/green)
-      D — disseminate()       : store output in memory + launch dashboard
-    """
+    Orchestrates the four pipeline stages in order, sets up logging, and
+    launches the static dashboard unless running in debug mode.
 
+    Args:
+        debug: If True, enables debug logging and skips launching the
+            dashboard. Defaults to False.
+    """
     setup_logging(debug=debug)
     logger.info("=" * 80)
     logger.info("DISASTER FACTOR - EUCLIDEAN IMPACT ANALYSIS")

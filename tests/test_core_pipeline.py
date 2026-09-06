@@ -1,4 +1,10 @@
-"""Integration tests for the RAID pipeline functions in disaster_factor.core."""
+"""Integration tests for the RAID pipeline functions in disaster_factor.core.
+
+Covers ``recon()``, ``assets()``, ``intel()``, ``disseminate()``, and
+``track_disasters()``. Network calls and geocoding are mocked throughout;
+no real HTTP requests are made.
+"""
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -22,7 +28,16 @@ DATA_DIR = Path(__file__).parent / "data"
 # ---------------------------------------------------------------------------
 
 def _make_mock_response(content: bytes, status_code: int = 200) -> MagicMock:
-    """Build a mock requests.Response."""
+    """Build a mock ``requests.Response`` object.
+
+    Args:
+        content: Raw bytes to set as the response body.
+        status_code: HTTP status code. Defaults to 200.
+
+    Returns:
+        A ``MagicMock`` configured to behave like a ``requests.Response``.
+        ``raise_for_status()`` raises an exception when status_code >= 400.
+    """
     mock_resp = MagicMock()
     mock_resp.content = content
     mock_resp.status_code = status_code
@@ -44,16 +59,22 @@ class TestRecon:
 
     @pytest.fixture
     def rss_bytes(self) -> bytes:
+        """Read the sample GDACS RSS feed bytes from disk.
+
+        Returns:
+            Raw bytes of the sample RSS XML file.
+        """
         return (DATA_DIR / "gdacs_rss_sample.xml").read_bytes()
 
     def test_returns_correct_total_red(self, rss_bytes):
-        """Sample XML has 3 red alerts: Afghanistan EQ + TC KALMAEGI (1001233) + TC 1001230."""
+        """Returns total_red == 3 for the sample XML (Afghanistan EQ + 2 TCs)."""
         with patch("disaster_factor.core.requests.get") as mock_get:
             mock_get.return_value = _make_mock_response(rss_bytes)
             total_red, events = recon()
         assert total_red == 3
 
     def test_returns_list_of_event_dicts(self, rss_bytes):
+        """Returns a non-empty list of dicts as the events value."""
         with patch("disaster_factor.core.requests.get") as mock_get:
             mock_get.return_value = _make_mock_response(rss_bytes)
             _, events = recon()
@@ -63,6 +84,7 @@ class TestRecon:
             assert isinstance(event, dict)
 
     def test_event_dicts_have_required_keys(self, rss_bytes):
+        """Every event dict contains all required keys."""
         with patch("disaster_factor.core.requests.get") as mock_get:
             mock_get.return_value = _make_mock_response(rss_bytes)
             _, events = recon()
@@ -73,6 +95,7 @@ class TestRecon:
             )
 
     def test_red_events_have_correct_alertlevel(self, rss_bytes):
+        """Exactly three red events are extracted, with the expected event IDs."""
         with patch("disaster_factor.core.requests.get") as mock_get:
             mock_get.return_value = _make_mock_response(rss_bytes)
             _, events = recon()
@@ -84,12 +107,14 @@ class TestRecon:
         assert "1001230" in event_ids   # TC (second red TC)
 
     def test_raises_on_http_error(self):
+        """Propagates an exception when the RSS endpoint returns a 500 status."""
         with patch("disaster_factor.core.requests.get") as mock_get:
             mock_get.return_value = _make_mock_response(b"", status_code=500)
             with pytest.raises(Exception):
                 recon()
 
     def test_debug_mode_does_not_raise(self, rss_bytes):
+        """Running with debug=True completes without raising."""
         with patch("disaster_factor.core.requests.get") as mock_get:
             mock_get.return_value = _make_mock_response(rss_bytes)
             total_red, events = recon(debug=True)
@@ -97,6 +122,7 @@ class TestRecon:
         assert isinstance(events, list)
 
     def test_requests_get_called_with_gdacs_url(self, rss_bytes):
+        """The GDACS RSS URL is passed to requests.get."""
         with patch("disaster_factor.core.requests.get") as mock_get:
             mock_get.return_value = _make_mock_response(rss_bytes)
             recon()
@@ -112,6 +138,14 @@ class TestAssets:
     """Tests for the A (Assets) stage — mocks geocode_assets()."""
 
     def _make_asset_rows(self):
+        """Return a list of sample asset row dicts for use in tests.
+
+        Includes two assets with valid coordinates, one with missing
+        coordinates, and one with no unique_id that should be skipped.
+
+        Returns:
+            A list of four asset row dicts.
+        """
         return [
             {"unique_id": "AST001", "city": "Tokyo", "country": "Japan",
              "type": "personnel", "latitude": 35.689, "longitude": 139.692},
@@ -125,6 +159,7 @@ class TestAssets:
         ]
 
     def test_returns_four_tuple(self):
+        """Return value is a tuple of length four."""
         with patch("disaster_factor.core.geocode_assets") as mock_ga:
             mock_ga.return_value = self._make_asset_rows()
             result = assets()
@@ -132,6 +167,7 @@ class TestAssets:
         assert len(result) == 4
 
     def test_cities_and_countries_populated(self):
+        """Cities and countries dicts are keyed by unique_id with correct values."""
         with patch("disaster_factor.core.geocode_assets") as mock_ga:
             mock_ga.return_value = self._make_asset_rows()
             cities, countries, coordinates, assets_by_id = assets()
@@ -141,6 +177,7 @@ class TestAssets:
         assert countries["AST002"] == "Philippines"
 
     def test_valid_coordinates_stored_as_tuple(self):
+        """Valid lat/lon values are stored as a two-element tuple of floats."""
         with patch("disaster_factor.core.geocode_assets") as mock_ga:
             mock_ga.return_value = self._make_asset_rows()
             _, _, coordinates, _ = assets()
@@ -150,18 +187,21 @@ class TestAssets:
         assert coordinates["AST001"][1] == pytest.approx(139.692)
 
     def test_missing_coordinates_stored_as_none(self):
+        """Assets with empty lat/lon strings have their coordinates stored as None."""
         with patch("disaster_factor.core.geocode_assets") as mock_ga:
             mock_ga.return_value = self._make_asset_rows()
             _, _, coordinates, _ = assets()
         assert coordinates["AST003"] is None
 
     def test_asset_without_unique_id_is_skipped(self):
+        """Rows with an empty unique_id are not included in assets_by_id."""
         with patch("disaster_factor.core.geocode_assets") as mock_ga:
             mock_ga.return_value = self._make_asset_rows()
             _, _, _, assets_by_id = assets()
         assert "" not in assets_by_id
 
     def test_assets_by_id_contains_full_row(self):
+        """assets_by_id maps unique_id to the complete asset row dict."""
         with patch("disaster_factor.core.geocode_assets") as mock_ga:
             mock_ga.return_value = self._make_asset_rows()
             _, _, _, assets_by_id = assets()
@@ -177,6 +217,7 @@ class TestIntel:
     """Tests for the I (Intel) stage — pure logic, no mocking needed."""
 
     def test_red_asset_in_red_matches_and_prelim(self, sample_assets, red_eq_event):
+        """An asset within threshold of a red event appears in both red_matches and prelim_matches."""
         cities, countries, coordinates, assets_by_id = sample_assets
         events = [red_eq_event]
         red_matches, prelim_matches, red_points = intel(
@@ -188,6 +229,7 @@ class TestIntel:
         assert "AST_NEAR_AFG" in prelim_ids
 
     def test_orange_asset_only_in_prelim(self, sample_assets, orange_fl_event):
+        """An asset within threshold of an orange event appears only in prelim_matches."""
         cities, countries, coordinates, assets_by_id = sample_assets
         events = [orange_fl_event]
         red_matches, prelim_matches, red_points = intel(
@@ -199,6 +241,7 @@ class TestIntel:
         assert "AST_NEAR_CUBA" in prelim_ids
 
     def test_orange_match_has_correct_severity(self, sample_assets, orange_fl_event):
+        """A prelim match for an orange event carries severity == "orange"."""
         cities, countries, coordinates, assets_by_id = sample_assets
         events = [orange_fl_event]
         _, prelim_matches, _ = intel(
@@ -211,7 +254,7 @@ class TestIntel:
         assert cuba_match["severity"] == "orange"
 
     def test_red_takes_priority_over_orange(self, sample_assets, red_eq_event, orange_fl_event):
-        """An asset near both a red and orange event should be matched to red."""
+        """An asset near both a red and orange event is matched to red."""
         cities, countries, coordinates, assets_by_id = sample_assets
         # Place a new asset near both events — use Afghanistan coords (near red EQ)
         # and add a fake orange event also near Afghanistan
@@ -237,6 +280,7 @@ class TestIntel:
         assert afg_prelim["severity"] == "red"
 
     def test_far_asset_not_in_any_output(self, sample_assets, red_eq_event):
+        """An asset far from all events does not appear in any output list."""
         cities, countries, coordinates, assets_by_id = sample_assets
         events = [red_eq_event]
         red_matches, prelim_matches, red_points = intel(
@@ -249,6 +293,7 @@ class TestIntel:
         assert "AST_FAR" not in all_ids
 
     def test_no_coord_asset_is_skipped(self, sample_assets, red_eq_event):
+        """An asset with no coordinates is silently skipped in all output lists."""
         cities, countries, coordinates, assets_by_id = sample_assets
         events = [red_eq_event]
         red_matches, prelim_matches, red_points = intel(
@@ -261,6 +306,7 @@ class TestIntel:
         assert "AST_NO_COORD" not in all_ids
 
     def test_red_points_structure(self, sample_assets, red_eq_event):
+        """Each entry in red_points has the required keys with correct types."""
         cities, countries, coordinates, assets_by_id = sample_assets
         events = [red_eq_event]
         _, _, red_points = intel(
@@ -277,6 +323,7 @@ class TestIntel:
             assert isinstance(pt["lon"], float)
 
     def test_impact_method_is_euclidean(self, sample_assets, red_eq_event):
+        """All match dicts carry impact_method == "EUCLIDEAN"."""
         cities, countries, coordinates, assets_by_id = sample_assets
         events = [red_eq_event]
         red_matches, prelim_matches, _ = intel(
@@ -286,6 +333,7 @@ class TestIntel:
             assert match["impact_method"] == "EUCLIDEAN"
 
     def test_empty_events_returns_empty_outputs(self, sample_assets):
+        """Passing an empty events list returns three empty lists."""
         cities, countries, coordinates, assets_by_id = sample_assets
         red_matches, prelim_matches, red_points = intel(
             [], coordinates, cities, countries, assets_by_id
@@ -295,6 +343,7 @@ class TestIntel:
         assert red_points == []
 
     def test_empty_assets_returns_empty_outputs(self, red_eq_event):
+        """Passing empty asset dicts returns three empty lists."""
         red_matches, prelim_matches, red_points = intel(
             [red_eq_event], {}, {}, {}, {}
         )
@@ -303,6 +352,7 @@ class TestIntel:
         assert red_points == []
 
     def test_event_without_valid_alertlevel_is_ignored(self, sample_assets):
+        """Events with an unrecognised alert level (e.g. "Yellow") produce no matches."""
         cities, countries, coordinates, assets_by_id = sample_assets
         bad_event = {
             "eventid": "BAD",
@@ -318,6 +368,7 @@ class TestIntel:
         assert prelim_matches == []
 
     def test_coordinates_field_format_in_match(self, sample_assets, red_eq_event):
+        """The coordinates field in a match dict is a comma-separated lat/lon string."""
         cities, countries, coordinates, assets_by_id = sample_assets
         events = [red_eq_event]
         _, prelim_matches, _ = intel(
@@ -339,6 +390,7 @@ class TestDisseminate:
     """Tests for the D (Disseminate) stage."""
 
     def test_returns_four_tuple(self):
+        """Return value is a tuple of length four."""
         red = [{"unique_id": "A"}]
         prelim = [{"unique_id": "A"}, {"unique_id": "B"}]
         points = [{"lat": 1.0, "lon": 2.0, "label": "X", "severity": "red"}]
@@ -347,6 +399,7 @@ class TestDisseminate:
         assert len(result) == 4
 
     def test_passthrough_values(self):
+        """All four input values are returned unchanged and in the correct order."""
         red = [{"unique_id": "A"}]
         prelim = [{"unique_id": "A"}, {"unique_id": "B"}]
         points = [{"lat": 1.0, "lon": 2.0, "label": "X", "severity": "red"}]
@@ -360,6 +413,7 @@ class TestDisseminate:
         assert out_total == total_red
 
     def test_empty_inputs(self):
+        """Passing empty lists and zero returns four empty/zero values."""
         out_red, out_prelim, out_points, out_total = disseminate([], [], [], 0)
         assert out_red == []
         assert out_prelim == []
@@ -375,7 +429,7 @@ class TestTrackDisasters:
     """Smoke test for the full RAID pipeline with all I/O mocked."""
 
     def test_full_pipeline_debug_mode(self):
-        """Run track_disasters(debug=True) with mocked network and geocoding."""
+        """Running with debug=True completes without raising and calls all I/O mocks once."""
         rss_bytes = (DATA_DIR / "gdacs_rss_sample.xml").read_bytes()
 
         mock_assets = [
@@ -396,7 +450,7 @@ class TestTrackDisasters:
         mock_ga.assert_called_once()
 
     def test_full_pipeline_returns_none(self):
-        """track_disasters() returns None (it's a void orchestrator)."""
+        """track_disasters() returns None as it is a void orchestrator function."""
         rss_bytes = (DATA_DIR / "gdacs_rss_sample.xml").read_bytes()
         mock_assets = [
             {"unique_id": "AST001", "city": "Kabul", "country": "Afghanistan",
