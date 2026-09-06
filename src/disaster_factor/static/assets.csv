@@ -1,0 +1,49 @@
+unique_id,city,country,type,latitude,longitude
+AST001     ,Sendai       ,Japan           ,personnel,38.268,140.869
+AST002     ,Kobe         ,Japan           ,building ,34.69,135.196
+AST003     ,Osaka        ,Japan           ,vehicle  ,34.694,135.502
+AST004     ,Yokohama     ,Japan           ,personnel,35.444,139.638
+AST005     ,Nagoya       ,Japan           ,building ,35.181,136.907
+AST006     ,Manila       ,Philippines     ,personnel,14.6,120.984
+AST007     ,Cebu         ,Philippines     ,vehicle  ,10.316,123.885
+AST008     ,Davao        ,Philippines     ,personnel,7.073,125.613
+AST009     ,Iloilo       ,Philippines     ,building ,10.72,122.562
+AST010     ,Zamboanga    ,Philippines     ,vehicle  ,6.921,122.079
+AST011     ,Jakarta      ,Indonesia       ,personnel,-6.209,106.846
+AST012     ,Surabaya     ,Indonesia       ,building ,-7.258,112.752
+AST013     ,Bandung      ,Indonesia       ,vehicle  ,-6.918,107.619
+AST014     ,Medan        ,Indonesia       ,personnel,3.595,98.672
+AST015     ,Padang       ,Indonesia       ,building ,-0.947,100.417
+AST016     ,Malang       ,Indonesia       ,vehicle  ,-8.652,112.615
+AST017     ,Yogyakarta   ,Indonesia       ,personnel,-7.796,110.37
+AST018     ,Semarang     ,Indonesia       ,building ,-6.967,110.417
+AST019     ,Makassar     ,Indonesia       ,vehicle  ,-5.148,119.433
+AST020     ,Denpasar     ,Indonesia       ,personnel,-8.671,115.213
+AST021     ,Port Moresby ,Papua New Guinea,building ,-9.444,147.18
+AST022     ,Lae          ,Papua New Guinea,personnel,-6.812,146.937
+AST023     ,Mount Hagen  ,Papua New Guinea,vehicle  ,-5.827,144.236
+AST024     ,Goroka       ,Papua New Guinea,personnel,-6.083,145.39
+AST025     ,Kokopo       ,Papua New Guinea,building ,-4.346,152.174
+AST026     ,Kimbe        ,Papua New Guinea,vehicle  ,-5.547,150.099
+AST027     ,Madang       ,Papua New Guinea,personnel,-5.228,145.788
+AST028     ,Wewak        ,Papua New Guinea,building ,-4.144,142.453
+AST029     ,Popondetta   ,Papua New Guinea,vehicle  ,-8.763,148.236
+AST030     ,Daru         ,Papua New Guinea,personnel,-9.083,143.083
+AST031     ,Taipei       ,Taiwan          ,personnel,25.033,121.565
+AST032     ,Kaohsiung    ,Taiwan          ,building ,22.627,120.301
+AST033     ,Taichung     ,Taiwan          ,vehicle  ,24.148,120.674
+AST034     ,Juba         ,South Sudan     ,personnel,4.859,31.571
+AST035     ,Wau          ,South Sudan     ,building ,7.701,28.015
+AST036     ,Malakal      ,South Sudan     ,vehicle  ,9.533,31.66
+AST037     ,Sapporo      ,Japan           ,personnel,43.064,141.347
+AST038     ,Hakodate     ,Japan           ,building ,41.769,140.727
+AST_SUDAN_1,Khartoum     ,Sudan           ,building ,15.501,32.56
+AST_SUDAN_2,Juba         ,South Sudan     ,personnel,4.859,31.571
+AST_SUDAN_3,Al Fashagha  ,Sudan           ,building ,14.417,34.383
+AST_CARIB_1,Roseau       ,Dominica        ,building ,15.301,-61.388
+AST_CARIB_2,Le Lamentin  ,Martinique      ,personnel,14.611,-61.07
+AST_CARIB_3,Canefield    ,Dominica        ,building ,15.534,-61.395
+AST_ETH_1  ,Gambela      ,Ethiopia        ,building ,8.25,34.583
+AST_ALG_1  ,Adrar        ,Algeria         ,personnel,27.881,-0.289
+AST_TEST_1 ,Dominica Cane,Dominica        ,building ,15.337,-61.392
+AST_TEST_2 ,Melville Hall,Dominica        ,personnel,15.551,-61.3

@@ -1,0 +1,14 @@
+{
+  "points": [
+    { "lat": 48.86, "lon": 2.3522, "label": "Paris, FR", "severity": "red" },
+    { "lat": 37.78, "lon": -122.42, "label": "San Francisco, US", "severity": "red" },
+    { "lat": 39.9042, "lon": 116.4074, "label": "Beijing, CH", "severity": "red" },
+    { "lat": 14.5995, "lon": 120.9842, "label": "Manila, PH", "severity": "red" },
+    { "lat": 55.7569, "lon": 37.6151, "label": "Moscow, RU", "severity": "red" },
+    { "lat": 40.7128, "lon": -73.935242, "label": "New York, US", "severity": "red" },
+    { "lat": 32.7767, "lon": -96.7970, "label": "Dallas, US", "severity": "red" },
+    { "lat": 19.4326, "lon": -99.1332, "label": "Mexico City, MX", "severity": "red" },
+    { "lat": 53.11, "lon": 158.23, "label": "Yelizovo, RU", "severity": "red" },
+    { "lat": -54.93, "lon": -67.61, "label": "Puerto Williams, CI", "severity": "red" }
+  ]
+}

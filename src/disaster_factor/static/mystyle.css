@@ -1,0 +1,199 @@
+/* Dark theme base */
+body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    background-color: #0b1220; /* darkest page bg */
+    color: #e5e7eb;            /* light text */
+    margin: 0;
+}
+
+/* Top map section (inherits body bg); optionally tweak spacing */
+.top-section {
+    padding: 16px 24px 8px;
+}
+
+/* Bottom section container: make it stand out slightly from top */
+.content-row {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+
+    background-color: #0f172a;        /* slightly lighter than body */
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+    padding: 16px;
+    margin: 16px 24px 24px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.25);
+    gap: 16px; /* spacing between left/right */
+}
+
+/* Left/Right cards: match and stand out from bottom */
+.left-content-box,
+.right-content-box {
+    background-color: #1f2937; /* lighter than .content-row */
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.25);
+}
+
+/* Proportions: 75% / 25% */
+.left-content-box { flex: 3; }
+.right-content-box { flex: 1; }
+
+/* Buttons/links inside the right container */
+.right-content-box a,
+.right-content-box button,
+.right-content-box .btn {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Secondary (link) */
+.right-content-box a,
+.right-content-box a.btn {
+    background-color: #0f172a;
+    color: #e5e7eb;
+    border-color: #334155;
+}
+
+.right-content-box a:hover,
+.right-content-box a.btn:hover {
+    background-color: #1b2433;
+    border-color: #3b4a63;
+}
+
+/* Primary */
+.right-content-box .btn-primary {
+    background-color: #3b82f6; /* blue-500 */
+    border-color: #3b82f6;
+    color: #ffffff;
+}
+
+.right-content-box .btn-primary:hover {
+    background-color: #2563eb; /* blue-600 */
+    border-color: #2563eb;
+}
+
+/* Headings inside cards */
+.left-content-box h2,
+.right-content-box h2 {
+    margin: 0 0 12px;
+    color: #e2e8f0;
+}
+
+/* Table styling tuned for dark */
+.left-content-box table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.left-content-box thead {
+    background-color: #111827;
+    color: #f1f5f9;
+}
+
+.left-content-box thead th {
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 2px solid #334155;
+}
+
+.left-content-box tbody td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #334155;
+}
+
+.left-content-box tbody tr:nth-child(even) {
+    background-color: #0f172a;
+}
+
+.left-content-box tbody tr:hover {
+    background-color: #1b2433;
+}
+
+/* Emphasize severity column */
+.left-content-box td:last-child {
+    font-weight: 600;
+}
+
+.left-content-box td:last-child::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+    background-color: #27ae60; /* default green */
+}
+
+/* Explicit severity colors */
+.left-content-box td.sev-green { color: #22c55e; }
+.left-content-box td.sev-green::before { background-color: #22c55e; }
+
+.left-content-box td.sev-yellow { color: #facc15; }
+.left-content-box td.sev-yellow::before { background-color: #facc15; }
+
+.left-content-box td.sev-red { color: #ef4444; }
+.left-content-box td.sev-red::before { background-color: #ef4444; }
+
+/* Top banner */
+.top-banner {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #e5e7eb;
+    background: linear-gradient(180deg, #111827, #0f172a);
+    border: 1px solid #1f2937;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin: 0 24px 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.35);
+}
+
+/* Map image border/shadow */
+.map-image {
+    display: block;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.35);
+}
+
+/* Overlay: position svg absolutely over the image */
+.map-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.map-container img.map-image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+svg.map-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none; /* markers non-interactive by default; change if needed */
+}
+
+/* Marker styling */
+.map-marker {
+    fill: #f97316; /* default orange */
+    stroke: #0b1220;
+    stroke-width: 1;
+    opacity: 0.95;
+}
+
+.map-marker.sev-red { fill: #ef4444; }
+.map-marker.sev-yellow { fill: #facc15; stroke: #1f1a00; }
+.map-marker.sev-green { fill: #22c55e; }

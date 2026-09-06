@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Disaster Tracker</title>
+    <meta name="description" content="Roughly 155 characters">
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+	  <div>
+		  <div class="top-section">
+            <div class="top-banner">Global Disaster Tracker</div>
+			<div class="map-container">
+				<img class="map-image" src="map.svg" height="400" width="100%" alt="World map">
+				<!-- SVG overlay will be appended here by script.js -->
+			</div>
+		</div>
+
+		<!-- Row with 75% / 25% content blocks -->
+		<section class="content-row">
+			<div class="left-content-box">
+				<h2>
+					Possibly Affected
+				</h2>
+				<table>
+					<thead>
+						<th>Location</th>
+						<th>Personnel</th>
+						<th>Assets</th>
+                                                <th>Disaster Type</th>
+						<th>Severity</th>
+					</thead>
+<tbody>
+<tr>
+<td>Sao Palo, BR</td>
+<td>7</td>
+<td>0</td>
+<td>Flood</td>
+<td class="sev-yellow">Yellow</td>
+</tr>
+<tr>
+<td>Manilla, PH</td>
+<td>5</td>
+<td>0</td>
+<td>Typhoon</td>
+<td class="sev-red">Red</td>
+</tr>
+<tr>
+<td>Eugene, OR, USA</td>
+<td>0</td>
+<td>10</td>
+<td>Flood</td>
+<td class="sev-green">Green</td>
+</tr>
+</tbody>
+</table>
+			</div>
+
+			<div class="right-content-box">
+				<a class="btn" href="#">Download Report</a>
+				<button class="btn btn-primary">Reset Data</button>
+			</div>
+		</section>
+		  </div>
+  </body>
+</html>
