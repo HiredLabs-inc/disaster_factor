@@ -14,6 +14,8 @@ from typing import Optional
 
 # One-time open guard to avoid duplicate tabs when invoked multiple times
 _DASHBOARD_OPENED = False
+# Strong reference to the server instance to prevent garbage collection
+_httpd_instance: Optional[ThreadingHTTPServer] = None
 
 
 def _find_static_source() -> Optional[Path]:
@@ -188,6 +190,7 @@ def _prepare_static_files() -> Path:
     if src_static is not None:
         print(f"DEBUG: Using static source: {src_static}")
         _copy_tree(src_static, static_root)
+
     else:
         # Fallback: try importlib.resources
         try:
@@ -196,7 +199,9 @@ def _prepare_static_files() -> Path:
             print("DEBUG: Using installed package static resources")
         except Exception as e:
             print(f"DEBUG: No static resources found: {e}")
-
+    print(f"DEBUG: Files in static_root ({static_root}):")
+    for f in static_root.rglob('*'):
+        print(f"  {f.relative_to(static_root)}")
     # Ensure dashboard exists at minimum
     if not (static_root / "dashboard_2.html").exists():
         (static_root).mkdir(parents=True, exist_ok=True)
@@ -349,7 +354,7 @@ def serve_static(static_root: Path, port: int = 8000) -> ThreadingHTTPServer:
     def _serve():
         httpd.serve_forever()
 
-    thread = threading.Thread(target=_serve, daemon=True)
+    thread = threading.Thread(target=_serve, daemon=False)
     thread.start()
 
     time.sleep(0.1)
@@ -378,8 +383,9 @@ def serve_static_and_open(port: int = 8000) -> ThreadingHTTPServer:
     and browser opening. Returns the HTTPServer instance (caller can call
     `shutdown()` when done).
     """
+    global _httpd_instance
     static_root = _prepare_static_files()
-    httpd = serve_static(static_root, port)
+    _httpd_instance = serve_static(static_root, port)
     open_browser(port)
-    return httpd
+    return _httpd_instance
 
