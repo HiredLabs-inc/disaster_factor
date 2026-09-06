@@ -44,6 +44,11 @@ pip install -e .[dev]
 pytest -q
 ```
 
+## Documentation
+```
+pip install mkdocs
+mkdocs serve
+```
 ## License
 
 MIT License. See `LICENSE`.

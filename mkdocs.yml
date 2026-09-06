@@ -1,0 +1,24 @@
+site_name: Disaster Factor
+nav:
+  - Home: index.md
+  - Main:
+      - Main: main.md
+      - Core: core.md
+      - Geocode Assets: geocode_assets.md
+      - Helper Functions: helpers.md
+
+  - Tests:
+      - Configuration: conftest.md
+      - Core Helpers: test_core_helpers.md
+      - Core Pipeline: test_core_pipeline.md
+      - Geocode Assets: test_geocode_assets.md
+theme:
+  name: readthedocs
+plugins:
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+
+dev_addr: '127.0.0.1:8001'
